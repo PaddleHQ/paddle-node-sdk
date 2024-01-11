@@ -1,0 +1,53 @@
+import { type Client } from '../api/client';
+import { ApiError } from '../errors/generic';
+import { type ErrorResponse, type ResponsePaginated } from '../types/response';
+
+export abstract class Collection<T, C> implements AsyncIterable<C> {
+  private hasMore: boolean = true;
+  private nextLink: string;
+  private data: C[] = [];
+
+  constructor(
+    private readonly client: Client,
+    initialUri: string,
+  ) {
+    this.nextLink = initialUri;
+  }
+
+  async next(): Promise<C[]> {
+    const response = await this.client.get<undefined, ResponsePaginated<T> | ErrorResponse>(this.nextLink);
+
+    const handledResponse = this.handlePaginatedResponse<T>(response);
+
+    this.hasMore = handledResponse.meta.pagination.has_more ?? false;
+    this.nextLink = handledResponse.meta.pagination.next;
+    this.data = handledResponse.data.map((data) => this.fromJson(data));
+
+    return this.data.length > 0 ? this.data : [];
+  }
+
+  protected handlePaginatedResponse<T>(response: ResponsePaginated<T> | ErrorResponse): ResponsePaginated<T> {
+    const entityResponse = response as ResponsePaginated<T>;
+    const error = response as ErrorResponse;
+
+    if (error.error) {
+      throw new ApiError(error.error);
+    }
+
+    return entityResponse;
+  }
+
+  abstract fromJson(data: any): C;
+
+  async *[Symbol.asyncIterator](): AsyncIterator<C> {
+    while (this.hasMore) {
+      await this.next();
+
+      for (let index = 0; index < this.data.length; index++) {
+        if (this.data[index]) {
+          yield this.data[index] as C;
+        }
+      }
+    }
+  }
+}

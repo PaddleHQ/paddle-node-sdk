@@ -1,0 +1,43 @@
+name: Build & Test
+
+on:
+  push:
+    branches:
+      - main
+      - v1.X
+  pull_request:
+    branches:
+      - main
+      - v1.X
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-build-test:
+    name: Run Build & test
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      actions: write
+
+    steps:
+      - name: Check out git repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: "yarn"
+
+      - name: Install yarn dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn test
