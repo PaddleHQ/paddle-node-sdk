@@ -20,6 +20,7 @@ import {
   type IDiscountResponse,
 } from '../index';
 import { type TransactionStatus, type CurrencyCode, type TransactionOrigin, type CollectionMode } from '../../enums';
+import { type AvailablePaymentMethod } from '../../enums/shared/available-payment-methods';
 
 export interface ITransactionResponse {
   id: string;
@@ -50,4 +51,5 @@ export interface ITransactionResponse {
   business?: IBusinessResponse | null;
   customer?: ICustomerResponse | null;
   discount?: IDiscountResponse | null;
+  available_payment_methods?: AvailablePaymentMethod[] | null;
 }

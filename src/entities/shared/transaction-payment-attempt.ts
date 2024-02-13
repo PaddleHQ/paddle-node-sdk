@@ -10,6 +10,10 @@ import { type PaymentAttemptStatus, type ErrorCode } from '../../enums';
 
 export class TransactionPaymentAttempt {
   public readonly paymentAttemptId: string;
+  public readonly paymentMethodId: string;
+  /**
+   * @deprecated use paymentMethodId instead
+   */
   public readonly storedPaymentMethodId: string;
   public readonly amount: string;
   public readonly status: PaymentAttemptStatus;
@@ -20,6 +24,7 @@ export class TransactionPaymentAttempt {
 
   constructor(transactionPaymentAttempt: ITransactionPaymentAttemptResponse) {
     this.paymentAttemptId = transactionPaymentAttempt.payment_attempt_id;
+    this.paymentMethodId = transactionPaymentAttempt.payment_method_id;
     this.storedPaymentMethodId = transactionPaymentAttempt.stored_payment_method_id;
     this.amount = transactionPaymentAttempt.amount;
     this.status = transactionPaymentAttempt.status;

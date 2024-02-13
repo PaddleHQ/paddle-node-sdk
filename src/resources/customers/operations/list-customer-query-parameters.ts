@@ -12,4 +12,5 @@ export interface ListCustomerQueryParameters {
   perPage?: number;
   search?: string;
   status?: Status[];
+  email?: string[];
 }

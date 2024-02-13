@@ -4,13 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  Transaction,
-  TransactionCollection,
-  TransactionIncludes,
-  TransactionInvoicePDF,
-  TransactionPreview,
-} from '../../entities';
+import { TransactionCollection, TransactionIncludes, TransactionInvoicePDF, TransactionPreview } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import {
@@ -20,6 +14,7 @@ import {
   type ListTransactionQueryParameters,
   type UpdateTransactionRequestBody,
   type TransactionPreviewRequestBody,
+  type UpdateTransactionQueryParameters,
 } from './operations';
 import { type ITransactionResponse, type ITransactionInvoicePDF, type ITransactionPreviewResponse } from '../../types';
 
@@ -55,7 +50,12 @@ export class TransactionsResource extends BaseResource {
     return new TransactionIncludes(data);
   }
 
-  public async update(transactionId: string, updateTransaction: UpdateTransactionRequestBody): Promise<Transaction> {
+  public async update(
+    transactionId: string,
+    updateTransaction: UpdateTransactionRequestBody,
+    queryParams?: UpdateTransactionQueryParameters,
+  ): Promise<TransactionIncludes> {
+    const queryParameters = new QueryParameters(queryParams);
     const urlWithPathParams = new PathParameters(TransactionPaths.update, {
       transaction_id: transactionId,
     }).deriveUrl();
@@ -63,11 +63,11 @@ export class TransactionsResource extends BaseResource {
     const response = await this.client.patch<
       UpdateTransactionRequestBody,
       Response<ITransactionResponse> | ErrorResponse
-    >(urlWithPathParams, updateTransaction);
+    >(urlWithPathParams + queryParameters.toQueryString(), updateTransaction);
 
     const data = this.handleResponse<ITransactionResponse>(response);
 
-    return new Transaction(data);
+    return new TransactionIncludes(data);
   }
 
   public async get(transactionId: string, queryParams?: GetTransactionQueryParameters): Promise<TransactionIncludes> {
