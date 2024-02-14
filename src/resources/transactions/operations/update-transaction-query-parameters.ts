@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export interface CreateTransactionQueryParameters {
+export interface UpdateTransactionQueryParameters {
   include?: Array<
     'address' | 'adjustment' | 'adjustments_totals' | 'available_payment_methods' | 'business' | 'customer' | 'discount'
   >;

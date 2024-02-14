@@ -113,7 +113,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const updatedTransaction = await transactionsResource.update(transactionId, transactionToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/transactions/${transactionId}`, transactionToBeUpdated);
+    expect(paddleInstance.patch).toBeCalledWith(`/transactions/${transactionId}?`, transactionToBeUpdated);
     expect(updatedTransaction).toBeDefined();
     expect(convertToSnakeCase(UpdateTransactionMock)).toEqual(UpdateTransactionExpectation);
   });

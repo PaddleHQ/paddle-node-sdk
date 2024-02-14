@@ -75,6 +75,7 @@ export const SubscriptionTrialingMockExpectation = {
       startsAt: '2023-08-18T13:15:46.864158Z',
     },
     customData: null,
+    importMeta: null,
     customerId: 'ctm_01h84cjfwmdph1k8kgsyjt3k7g',
     discount: null,
     firstBilledAt: null,

@@ -4,8 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SubscriptionEffectiveFrom } from '../../../enums';
-
 export interface ResumeSubscription {
-  effectiveFrom: SubscriptionEffectiveFrom | string;
+  effectiveFrom: 'immediately' | string;
 }

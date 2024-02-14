@@ -91,6 +91,7 @@ export const SubscriptionPausedMockExpectation = {
     currencyCode: 'USD',
     currentBillingPeriod: null,
     customData: null,
+    importMeta: null,
     customerId: 'ctm_01h7hswb86rtps5ggbq7ybydcw',
     discount: null,
     firstBilledAt: '2023-08-11T08:07:35.449123Z',

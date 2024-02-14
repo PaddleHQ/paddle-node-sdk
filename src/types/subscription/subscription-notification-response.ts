@@ -7,6 +7,7 @@
 import {
   type IBillingDetailsResponse,
   type ICustomData,
+  type IImportMetaResponse,
   type INextTransactionResponse,
   type ISubscriptionDiscountResponse,
   type ISubscriptionItemResponse,
@@ -40,6 +41,7 @@ export interface ISubscriptionNotificationResponse {
   scheduled_change?: ISubscriptionScheduledChangeResponse | null;
   items: ISubscriptionItemResponse[];
   custom_data?: ICustomData | null;
+  import_meta?: IImportMetaResponse | null;
   next_transaction?: INextTransactionResponse | null;
   recurring_transaction_details?: ITransactionDetailsPreviewResponse | null;
 }

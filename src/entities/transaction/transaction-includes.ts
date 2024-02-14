@@ -21,6 +21,7 @@ import {
   TransactionsTimePeriod,
 } from '../index';
 import { type CollectionMode, type CurrencyCode, type TransactionStatus, type TransactionOrigin } from '../../enums';
+import { type AvailablePaymentMethod } from '../../enums/shared/available-payment-methods';
 
 export class TransactionIncludes {
   public readonly id: string;
@@ -51,6 +52,7 @@ export class TransactionIncludes {
   public readonly business: Business | null;
   public readonly customer: Customer | null;
   public readonly discount: Discount | null;
+  public readonly availablePaymentMethods: AvailablePaymentMethod[] | null;
 
   constructor(transaction: ITransactionResponse) {
     this.id = transaction.id;
@@ -85,5 +87,6 @@ export class TransactionIncludes {
     this.business = transaction.business ? new Business(transaction.business) : null;
     this.customer = transaction.customer ? new Customer(transaction.customer) : null;
     this.discount = transaction.discount ? new Discount(transaction.discount) : null;
+    this.availablePaymentMethods = transaction.available_payment_methods ? transaction.available_payment_methods : null;
   }
 }

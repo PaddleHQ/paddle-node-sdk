@@ -109,6 +109,7 @@ export const SubscriptionImportedMockExpectation = {
       startsAt: '2023-04-13T09:07:04.730931Z',
     },
     customData: null,
+    importMeta: null,
     customerId: 'ctm_01gxwxe6vzgz6hcsbwjs6zrszr',
     discount: null,
     firstBilledAt: '2023-04-13T09:07:04.730931Z',
