@@ -7,6 +7,7 @@
 import {
   BillingDetails,
   type CustomData,
+  ImportMeta,
   SubscriptionDiscount,
   SubscriptionItem,
   SubscriptionScheduledChange,
@@ -39,6 +40,7 @@ export class SubscriptionNotification {
   public readonly scheduledChange: SubscriptionScheduledChange | null;
   public readonly items: SubscriptionItem[];
   public readonly customData: CustomData | null;
+  public readonly importMeta: ImportMeta | null;
 
   constructor(subscription: ISubscriptionNotificationResponse) {
     this.id = subscription.id;
@@ -67,5 +69,6 @@ export class SubscriptionNotification {
       : null;
     this.items = subscription.items.map((item) => new SubscriptionItem(item));
     this.customData = subscription.custom_data ? subscription.custom_data : null;
+    this.importMeta = subscription.import_meta ? new ImportMeta(subscription.import_meta) : null;
   }
 }

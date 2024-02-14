@@ -13,6 +13,7 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 ### Added
 
 - Added `availablePaymentMethods` as an `include` Parameter to all transaction operations.
+- Added `importMeta` to Subscription webhooks.
 
 ### Changed
 
@@ -22,6 +23,10 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 ### Fixed
 
 - Fixed `effective_from` enum in Resume subscription operations.
+
+### Deprecated
+
+- Deprecated `storedPaymentMethodId` from transaction payments in favour of `paymentMethodId` field.
 
 ---
 
