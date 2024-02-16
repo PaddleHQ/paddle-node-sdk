@@ -5,16 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { Discount } from '../../../entities';
-import { type IDiscountResponse, type IEventsResponse } from '../../../types';
+import { DiscountNotification } from '../../entities';
+import { type IEventsResponse } from '../../../types';
 import { EventName } from '../../helpers';
+import { type IDiscountNotificationResponse } from '../../types';
 
 export class DiscountCreatedEvent extends Event {
   public override readonly eventType = EventName.DiscountCreated;
-  public override readonly data: Discount;
+  public override readonly data: DiscountNotification;
 
-  constructor(response: IEventsResponse<IDiscountResponse>) {
+  constructor(response: IEventsResponse<IDiscountNotificationResponse>) {
     super(response);
-    this.data = new Discount(response.data);
+    this.data = new DiscountNotification(response.data);
   }
 }

@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ITransactionResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ITransactionNotificationResponse } from '../../../notifications';
 
-export const TransactionReadyMock: IEventsResponse<ITransactionResponse> = {
+export const TransactionReadyMock: IEventsResponse<ITransactionNotificationResponse> = {
   event_id: 'evt_01h8e18cwy7atj440tjms1k8dk',
   event_type: 'transaction.ready',
   occurred_at: '2023-08-22T07:10:00.607018Z',

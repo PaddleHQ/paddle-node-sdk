@@ -4,7 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ISubscriptionNotificationResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ISubscriptionNotificationResponse } from '../../../notifications';
 
 export const SubscriptionImportedMock: IEventsResponse<ISubscriptionNotificationResponse> = {
   event_id: 'evt_01gxwxwnghn8xa7amfwqb0992q',
@@ -124,15 +125,22 @@ export const SubscriptionImportedMockExpectation = {
             frequency: 1,
             interval: 'month',
           },
+          customData: null,
           description: 'Monthly (per seat)',
           id: 'pri_01gsz8x8sawmvhz1pv30nge1ke',
+          importMeta: null,
+          name: null,
           productId: 'pro_01gsz4t5hdjse780zja8vvr7jg',
+          quantity: null,
+          status: null,
           taxMode: 'account_setting',
           trialPeriod: null,
+          type: null,
           unitPrice: {
             amount: '3600',
             currencyCode: 'GBP',
           },
+          unitPriceOverrides: [],
         },
         quantity: 10,
         recurring: true,
@@ -149,15 +157,22 @@ export const SubscriptionImportedMockExpectation = {
             frequency: 1,
             interval: 'month',
           },
+          customData: null,
           description: 'Monthly (recurring addon)',
+          importMeta: null,
+          name: null,
           id: 'pri_01gsz95g2zrkagg294kpstx54r',
           productId: 'pro_01gsz92krfzy3hcx5h5rtgnfwz',
+          quantity: null,
+          status: null,
           taxMode: 'account_setting',
           trialPeriod: null,
+          type: null,
           unitPrice: {
             amount: '30000',
             currencyCode: 'GBP',
           },
+          unitPriceOverrides: [],
         },
         quantity: 1,
         recurring: true,
@@ -171,15 +186,22 @@ export const SubscriptionImportedMockExpectation = {
         previouslyBilledAt: '2023-04-13T09:07:04.730931Z',
         price: {
           billingCycle: null,
+          customData: null,
           description: 'One-time charge',
+          importMeta: null,
+          name: null,
           id: 'pri_01gsz98e27ak2tyhexptwc58yk',
           productId: 'pro_01gsz97mq9pa4fkyy0wqenepkz',
+          quantity: null,
+          status: null,
           taxMode: 'account_setting',
           trialPeriod: null,
+          type: null,
           unitPrice: {
             amount: '23880',
             currencyCode: 'GBP',
           },
+          unitPriceOverrides: [],
         },
         quantity: 1,
         recurring: false,

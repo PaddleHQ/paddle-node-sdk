@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionPriceResponse, type ISubscriptionTimePeriodResponse } from '../index';
+import { type IPriceResponse, type ISubscriptionTimePeriodResponse } from '../index';
 import { type SubscriptionItemStatus } from '../../enums';
 
 export interface ISubscriptionItemResponse {
@@ -16,5 +16,5 @@ export interface ISubscriptionItemResponse {
   previously_billed_at?: string | null;
   next_billed_at?: string | null;
   trial_dates?: ISubscriptionTimePeriodResponse | null;
-  price?: ISubscriptionPriceResponse | null;
+  price?: IPriceResponse | null;
 }

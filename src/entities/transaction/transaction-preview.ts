@@ -6,8 +6,7 @@
 
 import { type ITransactionPreviewResponse } from '../../types';
 import { AddressPreview, TransactionDetailsPreview, TransactionItemPreview } from '../index';
-import { type CurrencyCode } from '../../enums';
-import { type AvailablePaymentMethod } from '../../enums/shared/available-payment-methods';
+import { type CurrencyCode, type AvailablePaymentMethod } from '../../enums';
 
 export class TransactionPreview {
   public readonly customerId: string | null;

@@ -5,16 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { Adjustment } from '../../../entities';
-import { type IAdjustmentResponse, type IEventsResponse } from '../../../types';
+import { AdjustmentNotification } from '../../entities';
+import { type IEventsResponse } from '../../../types';
 import { EventName } from '../../helpers';
+import { type IAdjustmentNotificationResponse } from '../../types';
 
 export class AdjustmentCreatedEvent extends Event {
   public override readonly eventType = EventName.AdjustmentCreated;
-  public override readonly data: Adjustment;
+  public override readonly data: AdjustmentNotification;
 
-  constructor(response: IEventsResponse<IAdjustmentResponse>) {
+  constructor(response: IEventsResponse<IAdjustmentNotificationResponse>) {
     super(response);
-    this.data = new Adjustment(response.data);
+    this.data = new AdjustmentNotification(response.data);
   }
 }

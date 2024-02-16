@@ -4,16 +4,17 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 import { Event } from '../../../entities/events/event';
-import { Payout } from '../../../entities';
-import { type IEventsResponse, type IPayoutResponse } from '../../../types';
+import { PayoutNotification } from '../../entities';
+import { type IEventsResponse } from '../../../types';
 import { EventName } from '../../helpers';
+import { type IPayoutNotificationResponse } from '../../types';
 
 export class PayoutCreatedEvent extends Event {
   public override readonly eventType = EventName.PayoutCreated;
-  public override readonly data: Payout;
+  public override readonly data: PayoutNotification;
 
-  constructor(response: IEventsResponse<IPayoutResponse>) {
+  constructor(response: IEventsResponse<IPayoutNotificationResponse>) {
     super(response);
-    this.data = new Payout(response.data);
+    this.data = new PayoutNotification(response.data);
   }
 }

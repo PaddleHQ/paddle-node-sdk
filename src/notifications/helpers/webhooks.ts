@@ -1,13 +1,15 @@
 import { type IEvents } from '../../types';
 import {
   AddressCreatedEvent,
-  AddressUpdatedEvent,
   AddressImportedEvent,
+  AddressUpdatedEvent,
   AdjustmentCreatedEvent,
   AdjustmentUpdatedEvent,
   BusinessCreatedEvent,
+  BusinessImportedEvent,
   BusinessUpdatedEvent,
   CustomerCreatedEvent,
+  CustomerImportedEvent,
   CustomerUpdatedEvent,
   DiscountCreatedEvent,
   DiscountImportedEvent,
@@ -15,8 +17,10 @@ import {
   PayoutCreatedEvent,
   PayoutPaidEvent,
   PriceCreatedEvent,
+  PriceImportedEvent,
   PriceUpdatedEvent,
   ProductCreatedEvent,
+  ProductImportedEvent,
   ProductUpdatedEvent,
   ReportCreatedEvent,
   ReportUpdatedEvent,
@@ -38,10 +42,6 @@ import {
   TransactionPaymentFailedEvent,
   TransactionReadyEvent,
   TransactionUpdatedEvent,
-  BusinessImportedEvent,
-  CustomerImportedEvent,
-  PriceImportedEvent,
-  ProductImportedEvent,
 } from '../events';
 import { type EventEntity, EventName } from './types';
 import { WebhooksValidator } from './webhooks-validator';

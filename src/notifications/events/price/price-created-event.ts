@@ -5,16 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { Price } from '../../../entities';
+import { PriceNotification } from '../../entities';
 import { EventName } from '../../helpers';
-import { type IEventsResponse, type IPriceResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { type IPriceNotificationResponse } from '../../types';
 
 export class PriceCreatedEvent extends Event {
   public override readonly eventType = EventName.PriceCreated;
-  public override readonly data: Price;
+  public override readonly data: PriceNotification;
 
-  constructor(response: IEventsResponse<IPriceResponse>) {
+  constructor(response: IEventsResponse<IPriceNotificationResponse>) {
     super(response);
-    this.data = new Price(response.data);
+    this.data = new PriceNotification(response.data);
   }
 }

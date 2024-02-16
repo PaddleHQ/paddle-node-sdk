@@ -18,14 +18,14 @@ export interface ISharedPriceResponse {
   id: string;
   product_id: string;
   description: string;
-  type?: CatalogType | null;
+  type: CatalogType;
   name?: string | null;
   billing_cycle?: ITimePeriod | null;
   trial_period?: ITimePeriod | null;
   tax_mode: TaxMode;
-  unit_price?: IMoneyResponse | null;
-  unit_price_overrides?: IUnitPriceOverrideResponse[] | null;
-  quantity?: IPriceQuantity | null;
+  unit_price: IMoneyResponse;
+  unit_price_overrides: IUnitPriceOverrideResponse[];
+  quantity: IPriceQuantity;
   status: Status;
   custom_data?: ICustomData | null;
   import_meta?: IImportMetaResponse | null;

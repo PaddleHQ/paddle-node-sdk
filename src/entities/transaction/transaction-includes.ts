@@ -20,8 +20,13 @@ import {
   TransactionPaymentAttempt,
   TransactionsTimePeriod,
 } from '../index';
-import { type CollectionMode, type CurrencyCode, type TransactionStatus, type TransactionOrigin } from '../../enums';
-import { type AvailablePaymentMethod } from '../../enums/shared/available-payment-methods';
+import {
+  type CollectionMode,
+  type CurrencyCode,
+  type TransactionStatus,
+  type TransactionOrigin,
+  type AvailablePaymentMethod,
+} from '../../enums';
 
 export class TransactionIncludes {
   public readonly id: string;

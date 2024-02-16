@@ -5,16 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { Business } from '../../../entities';
-import { type IBusinessResponse, type IEventsResponse } from '../../../types';
+import { BusinessNotification } from '../../entities';
+import { type IEventsResponse } from '../../../types';
 import { EventName } from '../../helpers';
+import { type IBusinessNotificationResponse } from '../../types';
 
 export class BusinessUpdatedEvent extends Event {
   public override readonly eventType = EventName.BusinessUpdated;
-  public override readonly data: Business;
+  public override readonly data: BusinessNotification;
 
-  constructor(response: IEventsResponse<IBusinessResponse>) {
+  constructor(response: IEventsResponse<IBusinessNotificationResponse>) {
     super(response);
-    this.data = new Business(response.data);
+    this.data = new BusinessNotification(response.data);
   }
 }

@@ -19,8 +19,13 @@ import {
   type ICustomerResponse,
   type IDiscountResponse,
 } from '../index';
-import { type TransactionStatus, type CurrencyCode, type TransactionOrigin, type CollectionMode } from '../../enums';
-import { type AvailablePaymentMethod } from '../../enums/shared/available-payment-methods';
+import {
+  type TransactionStatus,
+  type CurrencyCode,
+  type TransactionOrigin,
+  type CollectionMode,
+  type AvailablePaymentMethod,
+} from '../../enums';
 
 export interface ITransactionResponse {
   id: string;

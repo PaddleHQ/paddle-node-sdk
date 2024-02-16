@@ -5,16 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { Report } from '../../../entities';
+import { ReportNotification } from '../../entities';
 import { EventName } from '../../helpers';
-import { type IEventsResponse, type IReportResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { type IReportNotificationResponse } from '../../types';
 
 export class ReportUpdatedEvent extends Event {
   public override readonly eventType = EventName.ReportUpdated;
-  public override readonly data: Report;
+  public override readonly data: ReportNotification;
 
-  constructor(response: IEventsResponse<IReportResponse>) {
+  constructor(response: IEventsResponse<IReportNotificationResponse>) {
     super(response);
-    this.data = new Report(response.data);
+    this.data = new ReportNotification(response.data);
   }
 }
