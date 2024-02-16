@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 0.5.0 - 2024-02-16
+
+> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
+
+### Changed
+
+- We removed the shared entities between API and Notification as we foresee them diverging. No Action required for this change
+
 ## 0.4.0 - 2024-02-14
 
 ### Added

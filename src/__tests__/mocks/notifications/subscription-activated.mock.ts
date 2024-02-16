@@ -4,7 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ISubscriptionNotificationResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ISubscriptionNotificationResponse } from '../../../notifications';
 
 export const SubscriptionActivatedMock: IEventsResponse<ISubscriptionNotificationResponse> = {
   event_id: 'evt_01h7ht60mmw6d4sf4h38g3t4yq',
@@ -109,15 +110,22 @@ export const SubscriptionActivatedMockExpectation = {
             frequency: 1,
             interval: 'month',
           },
+          customData: null,
           description: 'Monthly (per seat)',
           id: 'pri_01gsz8x8sawmvhz1pv30nge1ke',
+          importMeta: null,
+          name: null,
           productId: 'pro_01gsz4t5hdjse780zja8vvr7jg',
+          quantity: null,
+          status: null,
           taxMode: 'account_setting',
           trialPeriod: null,
+          type: null,
           unitPrice: {
             amount: '3240',
             currencyCode: 'USD',
           },
+          unitPriceOverrides: [],
         },
         quantity: 10,
         recurring: true,
@@ -134,15 +142,22 @@ export const SubscriptionActivatedMockExpectation = {
             frequency: 1,
             interval: 'month',
           },
+          customData: null,
           description: 'Monthly (recurring addon)',
+          importMeta: null,
+          name: null,
           id: 'pri_01h1vjfevh5etwq3rb416a23h2',
           productId: 'pro_01h1vjes1y163xfj1rh1tkfb65',
+          quantity: null,
+          status: null,
           taxMode: 'account_setting',
           trialPeriod: null,
+          type: null,
           unitPrice: {
             amount: '10800',
             currencyCode: 'USD',
           },
+          unitPriceOverrides: [],
         },
         quantity: 1,
         recurring: true,

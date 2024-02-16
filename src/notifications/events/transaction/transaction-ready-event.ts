@@ -5,16 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { Transaction } from '../../../entities';
+import { TransactionNotification } from '../../entities';
 import { EventName } from '../../helpers';
-import { type IEventsResponse, type ITransactionResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { type ITransactionNotificationResponse } from '../../types';
 
 export class TransactionReadyEvent extends Event {
   public override readonly eventType = EventName.TransactionReady;
-  public override readonly data: Transaction;
+  public override readonly data: TransactionNotification;
 
-  constructor(response: IEventsResponse<ITransactionResponse>) {
+  constructor(response: IEventsResponse<ITransactionNotificationResponse>) {
     super(response);
-    this.data = new Transaction(response.data);
+    this.data = new TransactionNotification(response.data);
   }
 }

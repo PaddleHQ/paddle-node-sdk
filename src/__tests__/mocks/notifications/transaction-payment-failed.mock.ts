@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ITransactionResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ITransactionNotificationResponse } from '../../../notifications';
 
-export const TransactionPaymentFailedMock: IEventsResponse<ITransactionResponse> = {
+export const TransactionPaymentFailedMock: IEventsResponse<ITransactionNotificationResponse> = {
   event_id: 'evt_01h8e1exw67n96j6n0h3k2qq5x',
   event_type: 'transaction.payment_failed',
   occurred_at: '2023-08-22T07:13:34.599095Z',
@@ -480,6 +481,7 @@ export const TransactionPaymentFailedMockExpectation = {
           type: 'card',
         },
         paymentAttemptId: '3e575fab-e1f2-4168-9ef7-3dd724f450a0',
+        paymentMethodId: null,
         status: 'error',
         storedPaymentMethodId: '6fd9d503-085a-4af1-a562-f05d7217cdd2',
       },

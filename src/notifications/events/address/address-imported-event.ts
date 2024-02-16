@@ -5,16 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { Address } from '../../../entities';
-import { type IAddressResponse, type IEventsResponse } from '../../../types';
+import { AddressNotification } from '../../entities';
+import { type IEventsResponse } from '../../../types';
 import { EventName } from '../../helpers';
+import { type IAddressNotificationResponse } from '../../types';
 
 export class AddressImportedEvent extends Event {
   public override readonly eventType = EventName.AddressImported;
-  public override readonly data: Address;
+  public override readonly data: AddressNotification;
 
-  constructor(response: IEventsResponse<IAddressResponse>) {
+  constructor(response: IEventsResponse<IAddressNotificationResponse>) {
     super(response);
-    this.data = new Address(response.data);
+    this.data = new AddressNotification(response.data);
   }
 }

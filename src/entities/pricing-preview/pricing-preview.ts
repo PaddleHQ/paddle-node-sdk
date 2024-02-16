@@ -4,11 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode } from '../../enums';
+import { type CurrencyCode, type AvailablePaymentMethod } from '../../enums';
 import { type IPricingPreviewResponse } from '../../types';
 import { AddressPreview } from '../transaction';
 import { PricingPreviewDetails } from './pricing-preview-details';
-import { type AvailablePaymentMethod } from '../../enums/shared/available-payment-methods';
 
 export class PricingPreview {
   public readonly customerId: string | null;

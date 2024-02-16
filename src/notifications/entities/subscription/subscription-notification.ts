@@ -5,17 +5,17 @@
  */
 
 import {
-  BillingDetails,
-  type CustomData,
-  ImportMeta,
-  SubscriptionDiscount,
-  SubscriptionItem,
-  SubscriptionScheduledChange,
-  SubscriptionTimePeriod,
-  TimePeriod,
+  BillingDetailsNotification,
+  ImportMetaNotification,
+  SubscriptionDiscountNotification,
+  SubscriptionItemNotification,
+  SubscriptionScheduledChangeNotification,
+  SubscriptionTimePeriodNotification,
+  TimePeriodNotification,
 } from '../index';
-import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../enums';
+import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums';
 import { type ISubscriptionNotificationResponse } from '../../types';
+import { type CustomData } from '../../../entities';
 
 export class SubscriptionNotification {
   public readonly id: string;
@@ -32,15 +32,15 @@ export class SubscriptionNotification {
   public readonly nextBilledAt: string | null;
   public readonly pausedAt: string | null;
   public readonly canceledAt: string | null;
-  public readonly discount: SubscriptionDiscount | null;
+  public readonly discount: SubscriptionDiscountNotification | null;
   public readonly collectionMode: CollectionMode;
-  public readonly billingDetails: BillingDetails | null;
-  public readonly currentBillingPeriod: SubscriptionTimePeriod | null;
-  public readonly billingCycle: TimePeriod;
-  public readonly scheduledChange: SubscriptionScheduledChange | null;
-  public readonly items: SubscriptionItem[];
+  public readonly billingDetails: BillingDetailsNotification | null;
+  public readonly currentBillingPeriod: SubscriptionTimePeriodNotification | null;
+  public readonly billingCycle: TimePeriodNotification;
+  public readonly scheduledChange: SubscriptionScheduledChangeNotification | null;
+  public readonly items: SubscriptionItemNotification[];
   public readonly customData: CustomData | null;
-  public readonly importMeta: ImportMeta | null;
+  public readonly importMeta: ImportMetaNotification | null;
 
   constructor(subscription: ISubscriptionNotificationResponse) {
     this.id = subscription.id;
@@ -57,18 +57,20 @@ export class SubscriptionNotification {
     this.nextBilledAt = subscription.next_billed_at ? subscription.next_billed_at : null;
     this.pausedAt = subscription.paused_at ? subscription.paused_at : null;
     this.canceledAt = subscription.canceled_at ? subscription.canceled_at : null;
-    this.discount = subscription.discount ? new SubscriptionDiscount(subscription.discount) : null;
+    this.discount = subscription.discount ? new SubscriptionDiscountNotification(subscription.discount) : null;
     this.collectionMode = subscription.collection_mode;
-    this.billingDetails = subscription.billing_details ? new BillingDetails(subscription.billing_details) : null;
+    this.billingDetails = subscription.billing_details
+      ? new BillingDetailsNotification(subscription.billing_details)
+      : null;
     this.currentBillingPeriod = subscription.current_billing_period
-      ? new SubscriptionTimePeriod(subscription.current_billing_period)
+      ? new SubscriptionTimePeriodNotification(subscription.current_billing_period)
       : null;
-    this.billingCycle = new TimePeriod(subscription.billing_cycle);
+    this.billingCycle = new TimePeriodNotification(subscription.billing_cycle);
     this.scheduledChange = subscription.scheduled_change
-      ? new SubscriptionScheduledChange(subscription.scheduled_change)
+      ? new SubscriptionScheduledChangeNotification(subscription.scheduled_change)
       : null;
-    this.items = subscription.items.map((item) => new SubscriptionItem(item));
+    this.items = subscription.items.map((item) => new SubscriptionItemNotification(item));
     this.customData = subscription.custom_data ? subscription.custom_data : null;
-    this.importMeta = subscription.import_meta ? new ImportMeta(subscription.import_meta) : null;
+    this.importMeta = subscription.import_meta ? new ImportMetaNotification(subscription.import_meta) : null;
   }
 }

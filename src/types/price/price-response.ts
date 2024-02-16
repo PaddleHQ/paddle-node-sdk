@@ -19,7 +19,7 @@ export interface IPriceResponse {
   id: string;
   product_id: string;
   description: string;
-  type?: CatalogType | null;
+  type: CatalogType;
   name?: string | null;
   billing_cycle?: ITimePeriod | null;
   trial_period?: ITimePeriod | null;

@@ -5,9 +5,10 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { SubscriptionNotification } from '../../../entities';
+import { SubscriptionNotification } from '../../entities';
 import { EventName } from '../../helpers';
-import { type IEventsResponse, type ISubscriptionNotificationResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { type ISubscriptionNotificationResponse } from '../../types';
 
 export class SubscriptionTrialingEvent extends Event {
   public override readonly eventType = EventName.SubscriptionTrialing;

@@ -238,6 +238,7 @@ export const TransactionMock: ITransactionResponse = {
   payments: [
     {
       payment_attempt_id: '497f776b-851d-4ebf-89ab-8ba0f75d2d6a',
+      payment_method_id: 'paymtd_01gxwxw8xgmqqzs4vecthdb50f',
       stored_payment_method_id: '7636e781-3969-49f4-9c77-8226232e28a6',
       amount: '1050',
       status: 'authorized',

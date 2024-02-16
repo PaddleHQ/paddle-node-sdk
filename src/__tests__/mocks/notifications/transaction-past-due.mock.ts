@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ITransactionResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ITransactionNotificationResponse } from '../../../notifications';
 
-export const TransactionPastDueMock: IEventsResponse<ITransactionResponse> = {
+export const TransactionPastDueMock: IEventsResponse<ITransactionNotificationResponse> = {
   event_id: 'evt_01h8e2sys80rn6y8xz31mstgt9',
   event_type: 'transaction.past_due',
   occurred_at: '2023-08-22T07:37:04.552638Z',
@@ -379,6 +380,7 @@ export const TransactionPastDueMockExpectation = {
           type: 'card',
         },
         paymentAttemptId: 'b9032892-96e8-4658-a822-c8177c94147e',
+        paymentMethodId: null,
         status: 'error',
         storedPaymentMethodId: '37bb3dd6-aba6-4eb4-8bf0-e1079a3df543',
       },

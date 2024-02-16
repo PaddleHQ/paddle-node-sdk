@@ -5,7 +5,7 @@
  */
 
 import { type ISubscriptionItemResponse } from '../../types';
-import { SubscriptionPrice, SubscriptionTimePeriod } from '../index';
+import { Price, SubscriptionTimePeriod } from '../index';
 import { type SubscriptionItemStatus } from '../../enums';
 
 export class SubscriptionItem {
@@ -17,7 +17,7 @@ export class SubscriptionItem {
   public readonly previouslyBilledAt: string | null;
   public readonly nextBilledAt: string | null;
   public readonly trialDates: SubscriptionTimePeriod | null;
-  public readonly price: SubscriptionPrice | null;
+  public readonly price: Price | null;
 
   constructor(subscriptionItem: ISubscriptionItemResponse) {
     this.status = subscriptionItem.status;
@@ -28,6 +28,6 @@ export class SubscriptionItem {
     this.previouslyBilledAt = subscriptionItem.previously_billed_at ? subscriptionItem.previously_billed_at : null;
     this.nextBilledAt = subscriptionItem.next_billed_at ? subscriptionItem.next_billed_at : null;
     this.trialDates = subscriptionItem.trial_dates ? new SubscriptionTimePeriod(subscriptionItem.trial_dates) : null;
-    this.price = subscriptionItem.price ? new SubscriptionPrice(subscriptionItem.price) : null;
+    this.price = subscriptionItem.price ? new Price(subscriptionItem.price) : null;
   }
 }

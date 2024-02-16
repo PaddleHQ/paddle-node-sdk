@@ -4,7 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ISubscriptionNotificationResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ISubscriptionNotificationResponse } from '../../../notifications';
 
 export const SubscriptionTrialingMock: IEventsResponse<ISubscriptionNotificationResponse> = {
   event_id: 'evt_01h84cka4p40e737vm1ajb2bc5',
@@ -90,18 +91,25 @@ export const SubscriptionTrialingMockExpectation = {
             frequency: 1,
             interval: 'year',
           },
+          customData: null,
           description: 'Annual plan',
+          importMeta: null,
+          name: null,
           id: 'pri_01h84cdy3xatsp16afda2gekzy',
           productId: 'pro_01h84cd36f900f3wmpdfamgv8w',
+          quantity: null,
+          status: null,
           taxMode: 'account_setting',
           trialPeriod: {
             frequency: 10,
             interval: 'day',
           },
+          type: null,
           unitPrice: {
             amount: '0',
             currencyCode: 'USD',
           },
+          unitPriceOverrides: [],
         },
         quantity: 1,
         recurring: true,
