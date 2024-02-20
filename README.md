@@ -8,15 +8,6 @@ For working with Paddle in your frontend, use [Paddle.js](https://developer.padd
 
 > **Important:** This package works with Paddle Billing. It does not support Paddle Classic. To work with Paddle Classic, see: [Paddle Classic API reference](https://developer.paddle.com/classic/api-reference/1384a288aca7a-api-reference?utm_source=dx&utm_medium=paddle-node-sdk)
 
-
-## Before you begin
-
-This SDK is in early access, which means that we're actively developing it based on feedback from our developer community.
-
-If you've used this SDK, we'd love to hear how you found it! Email us at [team-dx@paddle.com](mailto:team-dx@paddle.com) with any thoughts.
-
-While in early access, we may introduce breaking changes. Where we can, we'll tag breaking changes and communicate ahead of time. Please pin the version of the SDK in your `package.json` to avoid downloading newer versions with potential breaking changes.
-
 ## Installation
 
 Install using `npm`:

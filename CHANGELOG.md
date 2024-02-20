@@ -4,10 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-> **Important:** While in early access (version 0.X.Y) we may introduce breaking changes. Where we can, we'll tag breaking changes in this changelog and communicate ahead of time.
-
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+
+## 1.0.1 - 2024-02-20
+
+### Changed
+
+- Removed early access notice from README and Changelog.
+
+---
 
 ## 1.0.0 - 2024-02-20
 
