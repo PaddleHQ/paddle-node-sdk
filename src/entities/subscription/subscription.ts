@@ -8,12 +8,14 @@ import {
   BillingDetails,
   type CustomData,
   ImportMeta,
+  NextTransaction,
   SubscriptionDiscount,
   SubscriptionItem,
   SubscriptionManagement,
   SubscriptionScheduledChange,
   SubscriptionTimePeriod,
   TimePeriod,
+  TransactionDetailsPreview,
 } from '../index';
 import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../enums';
 import { type ISubscriptionResponse } from '../../types';
@@ -42,6 +44,8 @@ export class Subscription {
   public readonly items: SubscriptionItem[];
   public readonly customData: CustomData | null;
   public readonly importMeta: ImportMeta | null;
+  public readonly nextTransaction: NextTransaction | null;
+  public readonly recurringTransactionDetails: TransactionDetailsPreview | null;
 
   constructor(subscription: ISubscriptionResponse) {
     this.id = subscription.id;
@@ -73,5 +77,9 @@ export class Subscription {
     this.items = subscription.items.map((item) => new SubscriptionItem(item));
     this.customData = subscription.custom_data ? subscription.custom_data : null;
     this.importMeta = subscription.import_meta ? new ImportMeta(subscription.import_meta) : null;
+    this.nextTransaction = subscription.next_transaction ? new NextTransaction(subscription.next_transaction) : null;
+    this.recurringTransactionDetails = subscription.recurring_transaction_details
+      ? new TransactionDetailsPreview(subscription.recurring_transaction_details)
+      : null;
   }
 }

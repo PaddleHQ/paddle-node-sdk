@@ -11,7 +11,6 @@ export * from './subscription-management';
 export * from './subscription-item';
 export * from './subscription';
 export * from './subscription-collection';
-export * from './subscription-includes';
 export * from './next-transaction';
 export * from './transaction-details-preview';
 export * from './transaction-line-item-preview';

@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ProductWithIncludes } from './product-with-includes';
 import { type IProductResponse } from '../../types';
 import { Collection } from '../../internal/base';
+import { Product } from './product';
 
-export class ProductCollection extends Collection<IProductResponse, ProductWithIncludes> {
-  override fromJson(data: IProductResponse): ProductWithIncludes {
-    return new ProductWithIncludes(data);
+export class ProductCollection extends Collection<IProductResponse, Product> {
+  override fromJson(data: IProductResponse): Product {
+    return new Product(data);
   }
 }

@@ -12,8 +12,20 @@ import {
   TransactionDetails,
   TransactionPaymentAttempt,
   TransactionCheckout,
+  Address,
+  TransactionAdjustment,
+  AdjustmentTotals,
+  Business,
+  Customer,
+  Discount,
 } from '../index';
-import { type TransactionStatus, type CurrencyCode, type TransactionOrigin, type CollectionMode } from '../../enums';
+import {
+  type TransactionStatus,
+  type CurrencyCode,
+  type TransactionOrigin,
+  type CollectionMode,
+  type AvailablePaymentMethod,
+} from '../../enums';
 import { type ITransactionResponse } from '../../types';
 
 export class Transaction {
@@ -39,6 +51,13 @@ export class Transaction {
   public readonly createdAt: string;
   public readonly updatedAt: string;
   public readonly billedAt: string | null;
+  public readonly address: Address | null;
+  public readonly adjustments: TransactionAdjustment[] | null;
+  public readonly adjustmentsTotals: AdjustmentTotals | null;
+  public readonly business: Business | null;
+  public readonly customer: Customer | null;
+  public readonly discount: Discount | null;
+  public readonly availablePaymentMethods: AvailablePaymentMethod[] | null;
 
   constructor(transaction: ITransactionResponse) {
     this.id = transaction.id;
@@ -63,5 +82,16 @@ export class Transaction {
     this.createdAt = transaction.created_at;
     this.updatedAt = transaction.updated_at;
     this.billedAt = transaction.billed_at ? transaction.billed_at : null;
+    this.address = transaction.address ? new Address(transaction.address) : null;
+    this.adjustments = transaction.adjustments
+      ? transaction.adjustments?.map((adjustment) => new TransactionAdjustment(adjustment))
+      : null;
+    this.adjustmentsTotals = transaction.adjustments_totals
+      ? new AdjustmentTotals(transaction.adjustments_totals)
+      : null;
+    this.business = transaction.business ? new Business(transaction.business) : null;
+    this.customer = transaction.customer ? new Customer(transaction.customer) : null;
+    this.discount = transaction.discount ? new Discount(transaction.discount) : null;
+    this.availablePaymentMethods = transaction.available_payment_methods ? transaction.available_payment_methods : null;
   }
 }

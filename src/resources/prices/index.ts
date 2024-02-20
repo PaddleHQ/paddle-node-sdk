@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Price, PriceCollection, PriceWithIncludes } from '../../entities';
+import { Price, PriceCollection } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import {
@@ -41,7 +41,7 @@ export class PricesResource extends BaseResource {
     return new Price(data);
   }
 
-  public async get(priceId: string, queryParams?: GetPriceQueryParameters): Promise<PriceWithIncludes> {
+  public async get(priceId: string, queryParams?: GetPriceQueryParameters): Promise<Price> {
     const queryParameters = new QueryParameters(queryParams);
 
     const urlWithPathParams = new PathParameters(PricePaths.get, {
@@ -55,7 +55,7 @@ export class PricesResource extends BaseResource {
 
     const data = this.handleResponse<IPriceResponse>(response);
 
-    return new PriceWithIncludes(data);
+    return new Price(data);
   }
 
   public async update(priceId: string, updatePrice: UpdatePriceRequestBody): Promise<Price> {

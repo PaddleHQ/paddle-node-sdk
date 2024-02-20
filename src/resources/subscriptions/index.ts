@@ -4,13 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  Subscription,
-  SubscriptionCollection,
-  SubscriptionIncludes,
-  SubscriptionPreview,
-  TransactionIncludes,
-} from '../../entities';
+import { Subscription, SubscriptionCollection, SubscriptionPreview, Transaction } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import {
@@ -22,7 +16,7 @@ import {
   type ResumeSubscription,
   type UpdateSubscriptionRequestBody,
 } from './operations';
-import { type ISubscriptionResponse, type ISubscriptionPreviewResponse, type ITransactionResponse } from '../../types';
+import { type ISubscriptionPreviewResponse, type ISubscriptionResponse, type ITransactionResponse } from '../../types';
 
 const SubscriptionPaths = {
   get: '/subscriptions/{subscription_id}',
@@ -82,10 +76,7 @@ export class SubscriptionsResource extends BaseResource {
     return new SubscriptionCollection(this.client, SubscriptionPaths.list + queryParameters.toQueryString());
   }
 
-  public async get(
-    subscriptionId: string,
-    queryParams?: GetSubscriptionQueryParameters,
-  ): Promise<SubscriptionIncludes> {
+  public async get(subscriptionId: string, queryParams?: GetSubscriptionQueryParameters): Promise<Subscription> {
     const queryParameters = new QueryParameters(queryParams);
 
     const urlWithPathParams = new PathParameters(SubscriptionPaths.get, {
@@ -99,7 +90,7 @@ export class SubscriptionsResource extends BaseResource {
 
     const data = this.handleResponse<ISubscriptionResponse>(response);
 
-    return new SubscriptionIncludes(data);
+    return new Subscription(data);
   }
 
   public async activate(subscriptionId: string): Promise<Subscription> {
@@ -198,7 +189,7 @@ export class SubscriptionsResource extends BaseResource {
     return new SubscriptionPreview(data);
   }
 
-  public async getPaymentMethodChangeTransaction(subscriptionId: string): Promise<TransactionIncludes> {
+  public async getPaymentMethodChangeTransaction(subscriptionId: string): Promise<Transaction> {
     const urlWithPathParams = new PathParameters(SubscriptionPaths.getTransactionToUpdatePaymentMethod, {
       subscription_id: subscriptionId,
     }).deriveUrl();
@@ -210,6 +201,6 @@ export class SubscriptionsResource extends BaseResource {
 
     const data = this.handleResponse<ITransactionResponse>(response);
 
-    return new TransactionIncludes(data);
+    return new Transaction(data);
   }
 }
