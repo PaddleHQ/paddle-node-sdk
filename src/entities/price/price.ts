@@ -5,7 +5,7 @@
  */
 
 import { type ICustomData, type IPriceResponse } from '../../types';
-import { ImportMeta, Money, PriceQuantity, TimePeriod, UnitPriceOverride } from '../index';
+import { ImportMeta, Money, PriceQuantity, Product, TimePeriod, UnitPriceOverride } from '../index';
 import { type CatalogType, type Status, type TaxMode } from '../../enums';
 
 export class Price {
@@ -23,6 +23,7 @@ export class Price {
   public readonly status: Status;
   public readonly customData: ICustomData | null;
   public readonly importMeta: ImportMeta | null;
+  public readonly product: Product | null;
 
   constructor(price: IPriceResponse) {
     this.id = price.id;
@@ -41,5 +42,6 @@ export class Price {
     this.status = price.status;
     this.customData = price.custom_data ? price.custom_data : null;
     this.importMeta = price.import_meta ? new ImportMeta(price.import_meta) : null;
+    this.product = price.product ? new Product(price.product) : null;
   }
 }

@@ -4,6 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './product-with-includes';
 export * from './product-collection';
 export * from './product';

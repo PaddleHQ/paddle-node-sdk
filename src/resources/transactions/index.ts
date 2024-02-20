@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { TransactionCollection, TransactionIncludes, TransactionInvoicePDF, TransactionPreview } from '../../entities';
+import { Transaction, TransactionCollection, TransactionInvoicePDF, TransactionPreview } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import {
@@ -12,11 +12,11 @@ import {
   type CreateTransactionRequestBody,
   type GetTransactionQueryParameters,
   type ListTransactionQueryParameters,
-  type UpdateTransactionRequestBody,
   type TransactionPreviewRequestBody,
   type UpdateTransactionQueryParameters,
+  type UpdateTransactionRequestBody,
 } from './operations';
-import { type ITransactionResponse, type ITransactionInvoicePDF, type ITransactionPreviewResponse } from '../../types';
+import { type ITransactionInvoicePDF, type ITransactionPreviewResponse, type ITransactionResponse } from '../../types';
 
 const TransactionPaths = {
   list: '/transactions',
@@ -38,7 +38,7 @@ export class TransactionsResource extends BaseResource {
   public async create(
     createTransactionParameters: CreateTransactionRequestBody,
     queryParams?: CreateTransactionQueryParameters,
-  ): Promise<TransactionIncludes> {
+  ): Promise<Transaction> {
     const queryParameters = new QueryParameters(queryParams);
     const response = await this.client.post<
       CreateTransactionRequestBody,
@@ -47,14 +47,14 @@ export class TransactionsResource extends BaseResource {
 
     const data = this.handleResponse<ITransactionResponse>(response);
 
-    return new TransactionIncludes(data);
+    return new Transaction(data);
   }
 
   public async update(
     transactionId: string,
     updateTransaction: UpdateTransactionRequestBody,
     queryParams?: UpdateTransactionQueryParameters,
-  ): Promise<TransactionIncludes> {
+  ): Promise<Transaction> {
     const queryParameters = new QueryParameters(queryParams);
     const urlWithPathParams = new PathParameters(TransactionPaths.update, {
       transaction_id: transactionId,
@@ -67,10 +67,10 @@ export class TransactionsResource extends BaseResource {
 
     const data = this.handleResponse<ITransactionResponse>(response);
 
-    return new TransactionIncludes(data);
+    return new Transaction(data);
   }
 
-  public async get(transactionId: string, queryParams?: GetTransactionQueryParameters): Promise<TransactionIncludes> {
+  public async get(transactionId: string, queryParams?: GetTransactionQueryParameters): Promise<Transaction> {
     const queryParameters = new QueryParameters(queryParams);
 
     const urlWithPathParams = new PathParameters(TransactionPaths.get, {
@@ -84,7 +84,7 @@ export class TransactionsResource extends BaseResource {
 
     const data = this.handleResponse<ITransactionResponse>(response);
 
-    return new TransactionIncludes(data);
+    return new Transaction(data);
   }
 
   public async getInvoicePDF(transactionId: string): Promise<TransactionInvoicePDF> {

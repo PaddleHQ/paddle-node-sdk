@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISharedProductResponse } from '../../types';
-import { type CustomData, ImportMeta } from '../index';
-import { type TaxCategory, type Status, type CatalogType } from '../../enums';
+import { type IProductResponse } from '../../types';
+import { type CustomData, ImportMeta, Price } from '../index';
+import { type CatalogType, type Status, type TaxCategory } from '../../enums';
 
 export class Product {
   public readonly id: string;
@@ -19,8 +19,9 @@ export class Product {
   public readonly status: Status;
   public readonly createdAt: string;
   public readonly importMeta: ImportMeta | null;
+  public readonly prices: Price[] | null;
 
-  constructor(product: ISharedProductResponse) {
+  constructor(product: IProductResponse) {
     this.id = product.id;
     this.name = product.name;
     this.type = product.type ?? null;
@@ -31,5 +32,6 @@ export class Product {
     this.status = product.status;
     this.createdAt = product.created_at;
     this.importMeta = product.import_meta ? new ImportMeta(product.import_meta) : null;
+    this.prices = product.prices ? product.prices.map((price) => new Price(price)) : null;
   }
 }

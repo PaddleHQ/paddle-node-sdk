@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { TransactionIncludes } from './transaction-includes';
 import { type ITransactionResponse } from '../../types';
 import { Collection } from '../../internal/base';
+import { Transaction } from './transaction';
 
-export class TransactionCollection extends Collection<ITransactionResponse, TransactionIncludes> {
-  override fromJson(data: ITransactionResponse): TransactionIncludes {
-    return new TransactionIncludes(data);
+export class TransactionCollection extends Collection<ITransactionResponse, Transaction> {
+  override fromJson(data: ITransactionResponse): Transaction {
+    return new Transaction(data);
   }
 }

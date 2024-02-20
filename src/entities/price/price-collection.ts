@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { PriceWithIncludes } from './price-with-includes';
 import { type IPriceResponse } from '../../types';
 import { Collection } from '../../internal/base';
+import { Price } from './price';
 
-export class PriceCollection extends Collection<IPriceResponse, PriceWithIncludes> {
-  override fromJson(data: IPriceResponse): PriceWithIncludes {
-    return new PriceWithIncludes(data);
+export class PriceCollection extends Collection<IPriceResponse, Price> {
+  override fromJson(data: IPriceResponse): Price {
+    return new Price(data);
   }
 }
