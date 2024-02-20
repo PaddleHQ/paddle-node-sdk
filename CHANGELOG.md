@@ -8,6 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+
+## 1.0.0 - 2024-02-20
+
+### Changed
+
+- Updated Package version to `1.0.0`
+
+---
+
 ## 0.6.0 - 2024-02-20
 
 > **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
