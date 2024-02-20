@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Product, ProductCollection, ProductWithIncludes } from '../../entities';
+import { Product, ProductCollection } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import {
@@ -41,7 +41,7 @@ export class ProductsResource extends BaseResource {
     return new Product(data);
   }
 
-  public async get(productId: string, queryParams?: GetProductQueryParameters): Promise<ProductWithIncludes> {
+  public async get(productId: string, queryParams?: GetProductQueryParameters): Promise<Product> {
     const queryParameters = new QueryParameters(queryParams);
 
     const urlWithPathParams = new PathParameters(ProductPaths.get, {
@@ -55,7 +55,7 @@ export class ProductsResource extends BaseResource {
 
     const data = this.handleResponse<IProductResponse>(response);
 
-    return new ProductWithIncludes(data);
+    return new Product(data);
   }
 
   public async update(productId: string, updateProduct: UpdateProductRequestBody): Promise<Product> {

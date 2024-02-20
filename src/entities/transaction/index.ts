@@ -13,7 +13,6 @@ export * from './transaction-adjustment-item';
 export * from './transaction-adjustment';
 export * from './adjustment-totals-breakdown';
 export * from './adjustment-totals';
-export * from './transaction-includes';
 export * from './transaction';
 export * from './transaction-collection';
 export * from './transaction-invoice-pdf';

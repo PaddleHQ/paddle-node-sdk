@@ -4,7 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './price-with-includes';
 export * from './price-collection';
 export * from './price-quantity';
 export * from './price';
