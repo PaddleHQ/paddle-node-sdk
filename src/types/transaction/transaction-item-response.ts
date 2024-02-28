@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISharedPriceResponse, type ITransactionProrationResponse } from '../index';
+import { type IPriceResponse, type ITransactionProrationResponse } from '../index';
 
 export interface ITransactionItemResponse {
   price_id?: string | null;
-  price?: ISharedPriceResponse | null;
+  price?: IPriceResponse | null;
   quantity: number;
   proration?: ITransactionProrationResponse | null;
 }

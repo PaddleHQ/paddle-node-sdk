@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.0.2 - 2024-XX-XX
+
+### Added
+
+- Added `createdAt` and `updatedAt` to product and price entities, see [related changelog](https://developer.paddle.com/changelog/2024/product-price-dates?utm_source=dx&utm_medium=paddle-node-sdk).
+
+---
 
 ## 1.0.2 - 2024-03-12
 

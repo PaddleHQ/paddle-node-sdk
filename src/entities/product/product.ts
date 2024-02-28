@@ -18,6 +18,7 @@ export class Product {
   public readonly customData: CustomData | null;
   public readonly status: Status;
   public readonly createdAt: string;
+  public readonly updatedAt: string;
   public readonly importMeta: ImportMeta | null;
   public readonly prices: Price[] | null;
 
@@ -31,6 +32,7 @@ export class Product {
     this.customData = product.custom_data ? product.custom_data : null;
     this.status = product.status;
     this.createdAt = product.created_at;
+    this.updatedAt = product.updated_at;
     this.importMeta = product.import_meta ? new ImportMeta(product.import_meta) : null;
     this.prices = product.prices ? product.prices.map((price) => new Price(price)) : null;
   }

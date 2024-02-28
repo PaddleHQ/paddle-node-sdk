@@ -19,6 +19,7 @@ export class ProductNotification {
   public readonly customData: CustomData | null;
   public readonly status: Status;
   public readonly createdAt: string;
+  public readonly updatedAt: string | null;
   public readonly importMeta: ImportMetaNotification | null;
 
   constructor(product: ISharedProductNotificationResponse) {
@@ -31,6 +32,7 @@ export class ProductNotification {
     this.customData = product.custom_data ? product.custom_data : null;
     this.status = product.status;
     this.createdAt = product.created_at;
+    this.updatedAt = product.updated_at ?? null;
     this.importMeta = product.import_meta ? new ImportMetaNotification(product.import_meta) : null;
   }
 }

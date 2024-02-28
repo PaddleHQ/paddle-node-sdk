@@ -28,6 +28,8 @@ export interface IPriceNotificationResponse {
   unit_price_overrides: IUnitPriceOverrideNotificationResponse[];
   quantity: IPriceQuantityNotification;
   status: Status;
+  created_at?: string | null;
+  updated_at?: string | null;
   custom_data?: ICustomData | null;
   import_meta?: IImportMetaNotificationResponse | null;
   product?: ISharedProductNotificationResponse | null;
