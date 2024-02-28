@@ -6,11 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
-## 1.0.2 - 2024-XX-XX
+### Versioning
+
+When we make [non-breaking changes](https://developer.paddle.com/api-reference/about/versioning?utm_source=dx&utm_medium=paddle-node-sdk#non-breaking-change) to the Paddle API, we'll only release a new major version of the Node.js SDK when it causes problems at runtime. We won't release a new version of the SDK when we weaken TypeScript types in a way that doesn't cause existing implementations to break or malfunction. For example, if we add a new field to a request or an allowed value for a field in a response, this weakens the Typescript type but does not cause existing usages to stop working.
+
+This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
+
+
+## 1.0.3 - 2024-03-13
 
 ### Added
 
 - Added `createdAt` and `updatedAt` to product and price entities, see [related changelog](https://developer.paddle.com/changelog/2024/product-price-dates?utm_source=dx&utm_medium=paddle-node-sdk).
+
+### Changed
+
+- Updated [report API](https://developer.paddle.com/api-reference/reports/create-report?utm_source=dx&utm_medium=paddle-node-sdk) to support `discount` and `product_prices` report, see [related changelog](https://developer.paddle.com/changelog/2024/product-prices-discounts-reports?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
