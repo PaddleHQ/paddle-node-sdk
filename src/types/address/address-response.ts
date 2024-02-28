@@ -9,6 +9,7 @@ import { type CountryCode, type Status } from '../../enums';
 
 export interface IAddressResponse {
   id: string;
+  customer_id: string;
   description?: string | null;
   first_line?: string | null;
   second_line?: string | null;

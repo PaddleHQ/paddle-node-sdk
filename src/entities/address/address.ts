@@ -10,6 +10,7 @@ import { type IAddressResponse } from '../../types';
 
 export class Address {
   public readonly id: string;
+  public readonly customerId: string;
   public readonly description: string | null;
   public readonly firstLine: string | null;
   public readonly secondLine: string | null;
@@ -25,6 +26,7 @@ export class Address {
 
   constructor(address: IAddressResponse) {
     this.id = address.id;
+    this.customerId = address.customer_id;
     this.description = address.description ? address.description : null;
     this.firstLine = address.first_line ? address.first_line : null;
     this.secondLine = address.second_line ? address.second_line : null;

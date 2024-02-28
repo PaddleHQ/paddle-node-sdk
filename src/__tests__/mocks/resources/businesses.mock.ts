@@ -27,6 +27,7 @@ export const UpdateBusinessExpectation = {
 
 export const BusinessMock: IBusinessResponse = {
   id: 'biz_01grrebrzaee2qj2fqqhmcyzaj',
+  customer_id: 'ctm_01grnn4zta5a1mf02jjze7y2ys',
   name: 'Lyda',
   company_number: '123456789',
   tax_identifier: 'AB0123456789',

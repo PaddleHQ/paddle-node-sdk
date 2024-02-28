@@ -42,6 +42,7 @@ export const UpdateAddressExpectation = {
 
 export const AddressMock: IAddressResponse = {
   id: 'add_01gm302t81w94gyjpjpqypkzkf',
+  customer_id: 'ctm_01grnn4zta5a1mf02jjze7y2ys',
   description: 'Paddle.com',
   first_line: '3811 Ditmars Blvd',
   second_line: 'Suite 671',

@@ -10,6 +10,7 @@ import { type ICustomData } from '../../../types';
 
 export interface IBusinessNotificationResponse {
   id: string;
+  customer_id?: string | null;
   name: string;
   company_number?: string | null;
   tax_identifier?: string | null;
