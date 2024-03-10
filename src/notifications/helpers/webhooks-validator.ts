@@ -1,4 +1,9 @@
-import { createHmac } from 'crypto';
+import type { createHmac as createHmacFn } from 'node:crypto';
+let createHmac: typeof createHmacFn;
+(async () => {
+  const crypto = await import('node:crypto');
+  createHmac = crypto.createHmac;
+})();
 
 interface ParsedHeaders {
   ts: number;

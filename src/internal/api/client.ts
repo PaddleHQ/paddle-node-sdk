@@ -4,10 +4,15 @@ import fetch from 'node-fetch';
 import { SDK_VERSION } from '../../version';
 import { type PaddleOptions } from '../types/config';
 import { Environment } from './environment';
-import { randomUUID } from 'crypto';
 import { Logger } from '../base/logger';
 import { convertToSnakeCase } from './case-helpers';
 import { type ErrorResponse } from '../types/response';
+import type { randomUUID as randomUUIDFn } from 'node:crypto';
+let randomUUID: typeof randomUUIDFn;
+(async () => {
+  const crypto = await import('node:crypto');
+  randomUUID = crypto.randomUUID;
+})();
 
 export class Client {
   private readonly baseUrl: string;
