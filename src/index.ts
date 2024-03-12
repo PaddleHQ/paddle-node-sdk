@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export { Environment } from './internal';
+export { Environment, ApiError, type PaddleOptions } from './internal';
 export { SDK_VERSION } from './version';
 
 export { Paddle } from './paddle';
