@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IAddressResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { IAddressNotificationResponse } from '../../../notifications';
 
-export const AddressUpdatedMock: IEventsResponse<IAddressResponse> = {
+export const AddressUpdatedMock: IEventsResponse<IAddressNotificationResponse> = {
   event_id: 'evt_01h849k5rs5jxgctb45s6pmkat',
   event_type: 'address.updated',
   occurred_at: '2023-08-18T12:23:18.041154Z',
@@ -33,6 +34,7 @@ export const AddressUpdatedMockExpectation = {
     countryCode: 'US',
     createdAt: '2023-08-18T12:22:44.543Z',
     customData: null,
+    customerId: null,
     description: 'California Office',
     firstLine: '5400 E Washington Drive, Floor 2',
     id: 'add_01h849j51zpxv1e3zy2vgrrk6a',

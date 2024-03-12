@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IBusinessResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { IBusinessNotificationResponse } from '../../../notifications';
 
-export const BusinessCreatedMock: IEventsResponse<IBusinessResponse> = {
+export const BusinessCreatedMock: IEventsResponse<IBusinessNotificationResponse> = {
   event_id: 'evt_01h84a7j1cpqtrcdqs63ph1pqe',
   event_type: 'business.created',
   occurred_at: '2023-08-18T12:34:25.964234Z',
@@ -37,6 +38,7 @@ export const BusinessCreatedMockExpectation = {
     customData: {
       customer_reference_id: 'abcd1234',
     },
+    customerId: null,
     id: 'biz_01h84a7hr4pzhsajkm8tev89ev',
     importMeta: null,
     name: 'ChatApp Inc.',

@@ -8,6 +8,7 @@ import { type ICustomData, type IImportMetaResponse } from '../../../types';
 
 export interface IAddressNotificationResponse {
   id: string;
+  customer_id?: string | null;
   description?: string | null;
   first_line?: string | null;
   second_line?: string | null;

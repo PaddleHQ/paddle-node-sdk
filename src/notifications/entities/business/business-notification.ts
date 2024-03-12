@@ -11,6 +11,7 @@ import { type CustomData } from '../../../entities';
 
 export class BusinessNotification {
   public readonly id: string;
+  public readonly customerId: string | null;
   public readonly name: string;
   public readonly companyNumber: string | null;
   public readonly taxIdentifier: string | null;
@@ -23,6 +24,7 @@ export class BusinessNotification {
 
   constructor(business: IBusinessNotificationResponse) {
     this.id = business.id;
+    this.customerId = business.customer_id ?? null;
     this.name = business.name;
     this.companyNumber = business.company_number ? business.company_number : null;
     this.taxIdentifier = business.tax_identifier ? business.tax_identifier : null;

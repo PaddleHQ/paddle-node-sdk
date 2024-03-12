@@ -9,6 +9,7 @@ import { type Status } from '../../enums';
 
 export interface IBusinessResponse {
   id: string;
+  customer_id: string;
   name: string;
   company_number?: string | null;
   tax_identifier?: string | null;

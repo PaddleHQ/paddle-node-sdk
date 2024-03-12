@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IAddressResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { IAddressNotificationResponse } from '../../../notifications';
 
-export const AddressCreatedMock: IEventsResponse<IAddressResponse> = {
+export const AddressCreatedMock: IEventsResponse<IAddressNotificationResponse> = {
   event_id: 'evt_01h848pezaj15tkt3dsa36xe59',
   event_type: 'address.created',
   occurred_at: '2023-08-18T12:07:37.194676Z',
@@ -33,6 +34,7 @@ export const AddressCreatedMockExpectation = {
     countryCode: 'US',
     createdAt: '2023-08-18T12:07:36.9Z',
     customData: null,
+    customerId: null,
     description: 'Head Office',
     firstLine: '4050 Jefferson Plaza, 41st Floor',
     id: 'add_01h848pep46enq8y372x7maj0p',

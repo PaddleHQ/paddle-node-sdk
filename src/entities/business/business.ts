@@ -10,6 +10,7 @@ import { type IBusinessResponse } from '../../types';
 
 export class Business {
   public readonly id: string;
+  public readonly customerId: string;
   public readonly name: string;
   public readonly companyNumber: string | null;
   public readonly taxIdentifier: string | null;
@@ -22,6 +23,7 @@ export class Business {
 
   constructor(business: IBusinessResponse) {
     this.id = business.id;
+    this.customerId = business.customer_id;
     this.name = business.name;
     this.companyNumber = business.company_number ? business.company_number : null;
     this.taxIdentifier = business.tax_identifier ? business.tax_identifier : null;
