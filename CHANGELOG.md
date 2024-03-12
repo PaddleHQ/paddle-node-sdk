@@ -15,7 +15,7 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 
 ### Changed
 
-- Added `customerId` property to `Address` and `Business` entities.
+- Added `customerId` property to `Address` and `Business` entities, see [related changelog](https://developer.paddle.com/changelog/2024/address-business-webhooks-customer-id?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
