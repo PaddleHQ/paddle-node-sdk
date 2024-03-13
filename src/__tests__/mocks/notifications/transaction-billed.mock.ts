@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ITransactionResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ITransactionNotificationResponse } from '../../../notifications';
 
-export const TransactionBilledMock: IEventsResponse<ITransactionResponse> = {
+export const TransactionBilledMock: IEventsResponse<ITransactionNotificationResponse> = {
   event_id: 'evt_01h8e3a5029s6xrd5qj89beawp',
   event_type: 'transaction.billed',
   occurred_at: '2023-08-22T07:45:55.202630Z',
@@ -240,6 +241,7 @@ export const TransactionBilledMockExpectation = {
             status: 'active',
             taxCategory: 'standard',
             type: 'standard',
+            updatedAt: null,
           },
           proration: null,
           quantity: 20,
@@ -272,6 +274,7 @@ export const TransactionBilledMockExpectation = {
             status: 'active',
             taxCategory: 'standard',
             type: 'standard',
+            updatedAt: null,
           },
           proration: null,
           quantity: 1,
@@ -304,6 +307,7 @@ export const TransactionBilledMockExpectation = {
             status: 'active',
             taxCategory: 'standard',
             type: 'standard',
+            updatedAt: null,
           },
           proration: null,
           quantity: 1,
@@ -359,6 +363,7 @@ export const TransactionBilledMockExpectation = {
             frequency: 1,
             interval: 'year',
           },
+          createdAt: null,
           customData: null,
           description: 'Annual (per seat)',
           id: 'pri_01gsz91wy9k1yn7kx82aafwvea',
@@ -378,6 +383,7 @@ export const TransactionBilledMockExpectation = {
             currencyCode: 'USD',
           },
           unitPriceOverrides: [],
+          updatedAt: null,
         },
         proration: null,
         quantity: 20,
@@ -388,6 +394,7 @@ export const TransactionBilledMockExpectation = {
             frequency: 1,
             interval: 'year',
           },
+          createdAt: null,
           customData: null,
           description: 'Annual (recurring addon)',
           id: 'pri_01gsz96z29d88jrmsf2ztbfgjg',
@@ -407,6 +414,7 @@ export const TransactionBilledMockExpectation = {
             currencyCode: 'USD',
           },
           unitPriceOverrides: [],
+          updatedAt: null,
         },
         proration: null,
         quantity: 1,
@@ -414,6 +422,7 @@ export const TransactionBilledMockExpectation = {
       {
         price: {
           billingCycle: null,
+          createdAt: null,
           customData: null,
           description: 'One-time charge',
           id: 'pri_01gsz98e27ak2tyhexptwc58yk',
@@ -441,6 +450,7 @@ export const TransactionBilledMockExpectation = {
               },
             },
           ],
+          updatedAt: null,
         },
         proration: null,
         quantity: 1,

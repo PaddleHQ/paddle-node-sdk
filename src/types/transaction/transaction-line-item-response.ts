@@ -4,12 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  type ITransactionProrationResponse,
-  type IUnitTotals,
-  type ITotals,
-  type ISharedProductResponse,
-} from '../index';
+import { type IProductResponse, type ITotals, type ITransactionProrationResponse, type IUnitTotals } from '../index';
 
 export interface ITransactionLineItemResponse {
   id: string;
@@ -19,5 +14,5 @@ export interface ITransactionLineItemResponse {
   tax_rate: string;
   unit_totals?: IUnitTotals | null;
   totals?: ITotals | null;
-  product?: ISharedProductResponse | null;
+  product?: IProductResponse | null;
 }

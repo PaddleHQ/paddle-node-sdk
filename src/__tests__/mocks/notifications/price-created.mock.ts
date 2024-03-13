@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IPriceResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { IPriceNotificationResponse } from '../../../notifications';
 
-export const PriceCreatedMock: IEventsResponse<IPriceResponse> = {
+export const PriceCreatedMock: IEventsResponse<IPriceNotificationResponse> = {
   event_id: 'evt_01h7zd9n8vch227m3dgwqcvf6t',
   event_type: 'price.created',
   occurred_at: '2023-08-16T14:51:48.380054Z',
@@ -46,6 +47,8 @@ export const PriceCreatedMockExpectation = {
       minimum: 1,
     },
     status: 'active',
+    createdAt: null,
+    updatedAt: null,
     taxMode: 'account_setting',
     trialPeriod: {
       frequency: 3,

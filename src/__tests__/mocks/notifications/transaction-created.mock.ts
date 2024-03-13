@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ITransactionResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { ITransactionNotificationResponse } from '../../../notifications';
 
-export const TransactionCreatedMock: IEventsResponse<ITransactionResponse> = {
+export const TransactionCreatedMock: IEventsResponse<ITransactionNotificationResponse> = {
   event_id: 'evt_01h8dzxgzb5af0yzd0mv5v11e2',
   event_type: 'transaction.created',
   occurred_at: '2023-08-22T06:46:35.755631Z',
@@ -212,6 +213,7 @@ export const TransactionCreatedMockExpectation = {
             status: 'active',
             taxCategory: 'standard',
             type: 'standard',
+            updatedAt: null,
           },
           proration: null,
           quantity: 10,
@@ -244,6 +246,7 @@ export const TransactionCreatedMockExpectation = {
             status: 'active',
             taxCategory: 'standard',
             type: 'standard',
+            updatedAt: null,
           },
           proration: null,
           quantity: 1,
@@ -276,6 +279,7 @@ export const TransactionCreatedMockExpectation = {
             status: 'active',
             taxCategory: 'standard',
             type: 'standard',
+            updatedAt: null,
           },
           proration: null,
           quantity: 1,
@@ -331,6 +335,7 @@ export const TransactionCreatedMockExpectation = {
             frequency: 1,
             interval: 'month',
           },
+          createdAt: null,
           customData: null,
           description: 'Monthly (per seat)',
           id: 'pri_01gsz8x8sawmvhz1pv30nge1ke',
@@ -358,6 +363,7 @@ export const TransactionCreatedMockExpectation = {
               },
             },
           ],
+          updatedAt: null,
         },
         proration: null,
         quantity: 10,
@@ -368,6 +374,7 @@ export const TransactionCreatedMockExpectation = {
             frequency: 1,
             interval: 'month',
           },
+          createdAt: null,
           customData: null,
           description: 'Monthly (recurring addon)',
           id: 'pri_01h1vjfevh5etwq3rb416a23h2',
@@ -395,6 +402,7 @@ export const TransactionCreatedMockExpectation = {
               },
             },
           ],
+          updatedAt: null,
         },
         proration: null,
         quantity: 1,
@@ -402,6 +410,7 @@ export const TransactionCreatedMockExpectation = {
       {
         price: {
           billingCycle: null,
+          createdAt: null,
           customData: null,
           description: 'One-time charge',
           id: 'pri_01gsz98e27ak2tyhexptwc58yk',
@@ -429,6 +438,7 @@ export const TransactionCreatedMockExpectation = {
               },
             },
           ],
+          updatedAt: null,
         },
         proration: null,
         quantity: 1,

@@ -5,15 +5,15 @@
  */
 
 import {
-  type ITimePeriod,
-  type IMoneyResponse,
-  type IUnitPriceOverrideResponse,
-  type IPriceQuantity,
   type ICustomData,
-  type ISharedProductResponse,
   type IImportMetaResponse,
+  type IMoneyResponse,
+  type IPriceQuantity,
+  type IProductResponse,
+  type ITimePeriod,
+  type IUnitPriceOverrideResponse,
 } from '../index';
-import { type TaxMode, type Status, type CatalogType } from '../../enums';
+import { type CatalogType, type Status, type TaxMode } from '../../enums';
 
 export interface IPriceResponse {
   id: string;
@@ -28,7 +28,9 @@ export interface IPriceResponse {
   unit_price_overrides: IUnitPriceOverrideResponse[];
   quantity: IPriceQuantity;
   status: Status;
+  created_at: string;
+  updated_at: string;
   custom_data?: ICustomData | null;
   import_meta?: IImportMetaResponse | null;
-  product?: ISharedProductResponse | null;
+  product?: IProductResponse | null;
 }

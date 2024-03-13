@@ -54,6 +54,12 @@ Keep in mind that API keys are separate for your sandbox and live accounts, so y
 
 This SDK comes with TypeScript definitions for the Paddle API. We recommend that you update frequently to keep the TypeScript definitions up-to-date with the API. Use `// @ts-ignore` to prevent any type error if you don't want to update.
 
+### Versioning
+
+When we make [non-breaking changes](https://developer.paddle.com/api-reference/about/versioning?utm_source=dx&utm_medium=paddle-node-sdk#non-breaking-change) to the Paddle API, we'll only release a new major version of the Node.js SDK when it causes problems at runtime. We won't release a new version of the SDK when we weaken TypeScript types in a way that doesn't cause existing implementations to break or malfunction. For example, if we add a new field to a request or an allowed value for a field in a response, this weakens the Typescript type but does not cause existing usages to stop working.
+
+This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
+
 ## Naming conventions
 
 Properties in the Paddle API use `snake_case`. To follow JavaScript conventions, properties in this SDK use `camelCase`. This means:

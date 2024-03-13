@@ -78,6 +78,8 @@ export const PriceMock: IPriceResponse = {
   status: 'active',
   custom_data: { customer_reference_id: 'abcd1234' },
   import_meta: { external_id: '9b95b0b8-e10f-441a-862e-1936a6d818ab', imported_from: 'billing_platform' },
+  created_at: '2024-10-12T07:20:50.52Z',
+  updated_at: '2024-10-12T07:20:50.52Z',
 };
 
 export const PriceMockResponse: Response<IPriceResponse> = {

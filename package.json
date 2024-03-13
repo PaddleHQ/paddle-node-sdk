@@ -1,6 +1,6 @@
 {
   "name": "@paddle/paddle-node-sdk",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A Node.js SDK that you can use to integrate Paddle Billing with applications written in server-side JavaScript.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

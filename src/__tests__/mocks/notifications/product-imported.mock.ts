@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IProductResponse } from '../../../types';
+import { type IEventsResponse } from '../../../types';
+import { IProductNotificationResponse } from '../../../notifications';
 
-export const ProductImportedMock: IEventsResponse<IProductResponse> = {
+export const ProductImportedMock: IEventsResponse<IProductNotificationResponse> = {
   event_id: 'evt_01hgas2cm8r02nxryp83jqvg6k',
   event_type: 'product.imported',
   occurred_at: '2023-11-28T10:54:46.408439Z',
@@ -42,6 +43,7 @@ export const ProductImportedMockExpectation = {
     status: 'active',
     taxCategory: 'standard',
     type: 'standard',
+    updatedAt: null,
   },
   eventId: 'evt_01hgas2cm8r02nxryp83jqvg6k',
   eventType: 'product.imported',

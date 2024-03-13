@@ -49,6 +49,7 @@ export const ProductMock: IProductResponse = {
   status: 'active',
   created_at: '2024-10-12T07:20:50.52Z',
   import_meta: { external_id: '9b95b0b8-e10f-441a-862e-1936a6d818ab', imported_from: 'billing_platform' },
+  updated_at: '2024-10-12T07:20:50.52Z',
 };
 
 export const ProductMockResponse: Response<IProductResponse> = {

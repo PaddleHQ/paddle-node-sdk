@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomData, type IImportMetaResponse, type ISharedPriceResponse } from '../index';
-import { type TaxCategory, type Status, type CatalogType } from '../../enums';
+import { type ICustomData, type IImportMetaResponse, type IPriceResponse } from '../index';
+import { type CatalogType, type Status, type TaxCategory } from '../../enums';
 
 export interface IProductResponse {
   id: string;
@@ -17,6 +17,7 @@ export interface IProductResponse {
   custom_data?: ICustomData | null;
   status: Status;
   created_at: string;
+  updated_at: string;
   import_meta?: IImportMetaResponse | null;
-  prices?: ISharedPriceResponse[] | null;
+  prices?: IPriceResponse[] | null;
 }

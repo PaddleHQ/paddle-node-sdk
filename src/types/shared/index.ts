@@ -10,8 +10,6 @@ export * from './money-response';
 export * from './unit-price-override';
 export * from './unit-price-override-response';
 export * from './price-quantity';
-export * from './shared-price-response';
-export * from './shared-product-response';
 export * from './billing-details-response';
 export * from './totals';
 export * from './tax-rates-used-response';

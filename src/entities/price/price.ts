@@ -21,6 +21,8 @@ export class Price {
   public readonly unitPriceOverrides: UnitPriceOverride[];
   public readonly quantity: PriceQuantity;
   public readonly status: Status;
+  public readonly createdAt: string;
+  public readonly updatedAt: string;
   public readonly customData: ICustomData | null;
   public readonly importMeta: ImportMeta | null;
   public readonly product: Product | null;
@@ -40,6 +42,8 @@ export class Price {
     );
     this.quantity = new PriceQuantity(price.quantity);
     this.status = price.status;
+    this.createdAt = price.created_at;
+    this.updatedAt = price.updated_at;
     this.customData = price.custom_data ? price.custom_data : null;
     this.importMeta = price.import_meta ? new ImportMeta(price.import_meta) : null;
     this.product = price.product ? new Product(price.product) : null;

@@ -28,6 +28,8 @@ export class PriceNotification {
   public readonly unitPriceOverrides: UnitPriceOverrideNotification[];
   public readonly quantity: PriceQuantityNotification;
   public readonly status: Status;
+  public readonly createdAt: string | null;
+  public readonly updatedAt: string | null;
   public readonly customData: ICustomData | null;
   public readonly importMeta: ImportMetaNotification | null;
 
@@ -46,6 +48,8 @@ export class PriceNotification {
     );
     this.quantity = new PriceQuantityNotification(price.quantity);
     this.status = price.status;
+    this.createdAt = price.created_at ?? null;
+    this.updatedAt = price.updated_at ?? null;
     this.customData = price.custom_data ? price.custom_data : null;
     this.importMeta = price.import_meta ? new ImportMetaNotification(price.import_meta) : null;
   }
