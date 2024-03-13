@@ -21,7 +21,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Changed
 
-- Updated [report API](https://developer.paddle.com/api-reference/reports/create-report?utm_source=dx&utm_medium=paddle-node-sdk) to support `discount` and `product_prices` report, see [related changelog](https://developer.paddle.com/changelog/2024/product-prices-discounts-reports?utm_source=dx&utm_medium=paddle-node-sdk).
+- Updated [report API](https://developer.paddle.com/api-reference/reports/create-report?utm_source=dx&utm_medium=paddle-node-sdk) to support `discounts` and `product_prices` report, see [related changelog](https://developer.paddle.com/changelog/2024/product-prices-discounts-reports?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ### Removed
 
