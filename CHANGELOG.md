@@ -13,7 +13,7 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
 
-## 1.0.3 - 2024-03-13
+## 1.1.0 - 2024-03-13
 
 ### Added
 
