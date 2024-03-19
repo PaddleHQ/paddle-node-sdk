@@ -11,6 +11,7 @@ export type ErrorCode =
   | 'blocked_card'
   | 'canceled'
   | 'declined'
+  | 'declined_not_retryable'
   | 'expired_card'
   | 'fraud'
   | 'invalid_amount'
