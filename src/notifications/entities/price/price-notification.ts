@@ -43,9 +43,10 @@ export class PriceNotification {
     this.trialPeriod = price.trial_period ? new TimePeriodNotification(price.trial_period) : null;
     this.taxMode = price.tax_mode;
     this.unitPrice = new MoneyNotification(price.unit_price);
-    this.unitPriceOverrides = price.unit_price_overrides.map(
-      (unit_price_override) => new UnitPriceOverrideNotification(unit_price_override),
-    );
+    this.unitPriceOverrides =
+      price.unit_price_overrides?.map(
+        (unit_price_override) => new UnitPriceOverrideNotification(unit_price_override),
+      ) ?? [];
     this.quantity = new PriceQuantityNotification(price.quantity);
     this.status = price.status;
     this.createdAt = price.created_at ?? null;

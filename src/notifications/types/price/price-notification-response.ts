@@ -25,7 +25,7 @@ export interface IPriceNotificationResponse {
   trial_period?: ITimePeriodNotification | null;
   tax_mode: TaxMode;
   unit_price: IMoneyNotificationResponse;
-  unit_price_overrides: IUnitPriceOverrideNotificationResponse[];
+  unit_price_overrides: IUnitPriceOverrideNotificationResponse[] | null;
   quantity: IPriceQuantityNotification;
   status: Status;
   created_at?: string | null;
