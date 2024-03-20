@@ -25,7 +25,7 @@ export interface IPriceResponse {
   trial_period?: ITimePeriod | null;
   tax_mode: TaxMode;
   unit_price: IMoneyResponse;
-  unit_price_overrides: IUnitPriceOverrideResponse[];
+  unit_price_overrides: IUnitPriceOverrideResponse[] | null;
   quantity: IPriceQuantity;
   status: Status;
   created_at: string;
