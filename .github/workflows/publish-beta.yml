@@ -1,24 +1,13 @@
-name: Lint
+name: Publish to Beta Tag
 
 on:
   push:
     branches:
-      - main
-      - v1.X
       - release/beta
-  pull_request:
-    branches:
-      - main
-      - v1.X
-      - release/beta
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
-  cancel-in-progress: true
 
 jobs:
-  run-linters:
-    name: Run linters
+  run-publish:
+    name: Run publish
     runs-on: ubuntu-latest
 
     permissions:
@@ -34,11 +23,18 @@ jobs:
         with:
           node-version: lts/*
           cache: "yarn"
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install yarn dependencies
         run: yarn install
 
-      - name: Lint
-        run: |
-          yarn lint
-          yarn prettier
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn test
+
+      - name: Publish
+        run: yarn publish:beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
