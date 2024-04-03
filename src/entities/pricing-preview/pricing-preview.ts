@@ -13,22 +13,22 @@ export class PricingPreview {
   public readonly customerId: string | null;
   public readonly addressId: string | null;
   public readonly businessId: string | null;
-  public readonly currencyCode: CurrencyCode | null;
+  public readonly currencyCode: CurrencyCode;
   public readonly discountId: string | null;
   public readonly address: AddressPreview | null;
   public readonly customerIpAddress: string | null;
-  public readonly details: PricingPreviewDetails | null;
-  public readonly availablePaymentMethods: AvailablePaymentMethod | null;
+  public readonly details: PricingPreviewDetails;
+  public readonly availablePaymentMethods: AvailablePaymentMethod[];
 
   constructor(pricePreview: IPricingPreviewResponse) {
     this.customerId = pricePreview.customer_id ?? null;
     this.addressId = pricePreview.address_id ?? null;
     this.businessId = pricePreview.business_id ?? null;
-    this.currencyCode = pricePreview.currency_code ?? null;
+    this.currencyCode = pricePreview.currency_code;
     this.discountId = pricePreview.discount_id ?? null;
     this.address = pricePreview.address ? new AddressPreview(pricePreview.address) : null;
     this.customerIpAddress = pricePreview.customer_ip_address ?? null;
-    this.details = pricePreview.details ? new PricingPreviewDetails(pricePreview.details) : null;
-    this.availablePaymentMethods = pricePreview.available_payment_method ?? null;
+    this.details = new PricingPreviewDetails(pricePreview.details);
+    this.availablePaymentMethods = pricePreview.available_payment_methods ?? [];
   }
 }
