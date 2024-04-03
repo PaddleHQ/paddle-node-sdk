@@ -13,11 +13,11 @@ export interface IPricingPreviewResponse {
   customer_id?: string | null;
   address_id?: string | null;
   business_id?: string | null;
-  currency_code?: CurrencyCode | null;
+  currency_code: CurrencyCode;
   discount_id?: string | null;
   address?: IAddressPreviewResponse | null;
   customer_ip_address?: string | null;
   items: IPricingPreviewItemResponse[];
-  details?: IPricingPreviewDetailsResponse | null;
-  available_payment_method?: AvailablePaymentMethod | null;
+  details: IPricingPreviewDetailsResponse;
+  available_payment_methods: AvailablePaymentMethod[];
 }

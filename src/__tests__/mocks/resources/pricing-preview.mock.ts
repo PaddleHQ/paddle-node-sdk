@@ -18,7 +18,7 @@ export const PricingPreviewRequest: PricingPreviewRequestBody = {
   ],
 };
 export const PricingPreviewMock: IPricingPreviewResponse = {
-  available_payment_method: 'apple_pay',
+  available_payment_methods: ['apple_pay'],
   currency_code: 'USD',
   address: {
     country_code: 'US',
