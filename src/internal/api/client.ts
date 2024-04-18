@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import { SDK_VERSION } from '../../version';
 import { type PaddleOptions } from '../types/config';
 import { Environment } from './environment';
-import { randomUUID } from 'crypto';
+import { randomUUID } from 'node:crypto';
 import { Logger } from '../base/logger';
 import { convertToSnakeCase } from './case-helpers';
 import { type ErrorResponse } from '../types/response';

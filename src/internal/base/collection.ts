@@ -3,7 +3,8 @@ import { ApiError } from '../errors/generic';
 import { type ErrorResponse, type ResponsePaginated } from '../types/response';
 
 export abstract class Collection<T, C> implements AsyncIterable<C> {
-  private hasMore: boolean = true;
+  public hasMore: boolean = true;
+  public estimatedTotal: number = 0;
   private nextLink: string;
   private data: C[] = [];
 
@@ -21,6 +22,7 @@ export abstract class Collection<T, C> implements AsyncIterable<C> {
 
     this.hasMore = handledResponse.meta.pagination.has_more ?? false;
     this.nextLink = handledResponse.meta.pagination.next;
+    this.estimatedTotal = handledResponse.meta.pagination.estimated_total ?? 0;
     this.data = handledResponse.data.map((data) => this.fromJson(data));
 
     return this.data.length > 0 ? this.data : [];
