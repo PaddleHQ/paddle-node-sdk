@@ -17,6 +17,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Changed
 
 - Updated the package to export both CommonJS and ES module formats.
+- Updated `Collection` to return `hasMore` and `estimatedTotal` properties
 
 ---
 
