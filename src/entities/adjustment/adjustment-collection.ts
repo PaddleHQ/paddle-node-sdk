@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Adjustment } from './adjustment';
-import { type IAdjustmentResponse } from '../../types';
-import { Collection } from '../../internal/base';
+import { Collection } from '../../internal/base/index.js';
+import { type IAdjustmentResponse } from '../../types/index.js';
+import { Adjustment } from './adjustment.js';
 
 export class AdjustmentCollection extends Collection<IAdjustmentResponse, Adjustment> {
   override fromJson(data: IAdjustmentResponse): Adjustment {

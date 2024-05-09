@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentOriginalAmountNotificationResponse } from '../index';
+import { type IAdjustmentOriginalAmountNotificationResponse } from './adjustment-original-amount-notification-response.js';
 
 export interface IChargebackFeeNotification {
   amount: string;

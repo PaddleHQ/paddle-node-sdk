@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type NotificationStatus, type Origin } from '../../enums';
-import { type EventEntity, type IEventName, Webhooks } from '../../notifications';
-import { type INotificationResponse } from '../../types';
+import { type EventEntity, type IEventName, Webhooks } from '../../notifications/index.js';
+import { type NotificationStatus, type Origin } from '../../enums/index.js';
+import { type INotificationResponse } from '../../types/index.js';
 
 export class Notification {
   public readonly id: string;

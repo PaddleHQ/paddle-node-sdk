@@ -1,2 +1,2 @@
-export { Environment } from './environment';
-export { convertToSnakeCase } from './case-helpers';
+export { Environment } from './environment.js';
+export { convertToSnakeCase } from './case-helpers.js';

@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IDiscountResponse } from '../../../types';
+import { IDiscountResponse, IEventsResponse } from '../../../types/index.js';
 
 export const DiscountImportedMock: IEventsResponse<IDiscountResponse> = {
   event_id: 'evt_01hdnnd4x84s4r5br068y3rm6d',

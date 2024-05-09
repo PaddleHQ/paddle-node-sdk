@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionPreviewResponse, ISubscriptionResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
-import { CreateSubscriptionCharge, UpdateSubscriptionRequestBody } from '../../../resources';
+import { CreateSubscriptionCharge, UpdateSubscriptionRequestBody } from '../../../resources/index.js';
+import { ISubscriptionPreviewResponse, ISubscriptionResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreateSubscriptionMock: CreateSubscriptionCharge = {
   effectiveFrom: 'next_billing_period',

@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ListNotificationQueryParameters, NotificationsResource } from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   ListNotificationLogsMockResponse,
   ListNotificationMockResponse,
   NotificationMock,
   NotificationMockResponse,
   NotificationReplayMockResponse,
-} from '../mocks/resources/notifications.mock';
+} from '../mocks/resources/notifications.mock.js';
+import { ListNotificationQueryParameters, NotificationsResource } from '../../resources/index.js';
 
 describe('NotificationsResource', () => {
   test('should return a list of notifications', async () => {

@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionAdjustmentItemResponse } from '../../types';
-import { AdjustmentItemTotals, TransactionProration } from '../index';
-import { type AdjustmentType } from '../../enums';
+import { type AdjustmentType } from '../../enums/index.js';
+import { TransactionProration } from './transaction-proration.js';
+import { AdjustmentItemTotals } from '../adjustment/index.js';
+import { type ITransactionAdjustmentItemResponse } from '../../types/index.js';
 
 export class TransactionAdjustmentItem {
   public readonly id: string | null;

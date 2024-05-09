@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-price-query-parameters';
-export * from './create-price-request-body';
-export * from './get-price-query-parameters';
-export * from './update-price-request-body';
+export * from './list-price-query-parameters.js';
+export * from './create-price-request-body.js';
+export * from './get-price-query-parameters.js';
+export * from './update-price-request-body.js';

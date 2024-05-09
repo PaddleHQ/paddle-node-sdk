@@ -4,11 +4,16 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
-import { Notification, NotificationCollection, NotificationLogCollection, ReplayNotification } from '../../entities';
-import { type ListNotificationLogQueryParameters, type ListNotificationQueryParameters } from './operations';
-import { type ErrorResponse, type Response } from '../../internal';
-import { type INotificationResponse, type IReplayNotificationResponse } from '../../types';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
+import { type ListNotificationLogQueryParameters, type ListNotificationQueryParameters } from './operations/index.js';
+import {
+  Notification,
+  NotificationCollection,
+  NotificationLogCollection,
+  ReplayNotification,
+} from '../../entities/index.js';
+import { type INotificationResponse, type IReplayNotificationResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const NotificationPaths = {
   list: '/notifications',
@@ -17,7 +22,7 @@ const NotificationPaths = {
   replay: '/notifications/{notification_id}/replay',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class NotificationsResource extends BaseResource {
   public list(queryParams?: ListNotificationQueryParameters): NotificationCollection {

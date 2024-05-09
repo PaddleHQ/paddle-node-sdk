@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { AdjustmentsResource, ListAdjustmentQueryParameters } from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   AdjustmentMockResponse,
   CreateAdjustmentExpectation,
   CreateAdjustmentMock,
   ListAdjustmentMockResponse,
-} from '../mocks/resources/adjustments.mock';
-import { convertToSnakeCase } from '../../internal';
+} from '../mocks/resources/adjustments.mock.js';
+import { AdjustmentsResource, ListAdjustmentQueryParameters } from '../../resources/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('AdjustmentsResource', () => {
   test('should return a list of adjustments', async () => {

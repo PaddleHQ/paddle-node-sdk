@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './address-created-event';
-export * from './address-updated-event';
-export * from './address-imported-event';
+export * from './address-created-event.js';
+export * from './address-updated-event.js';
+export * from './address-imported-event.js';

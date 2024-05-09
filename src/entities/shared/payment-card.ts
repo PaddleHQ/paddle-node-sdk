@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPaymentCardResponse } from '../../types';
-import { type PaymentCardType } from '../../enums';
+import { type PaymentCardType } from '../../enums/index.js';
+import { type IPaymentCardResponse } from '../../types/index.js';
 
 export class PaymentCard {
   public readonly type: PaymentCardType;

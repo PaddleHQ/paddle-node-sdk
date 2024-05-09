@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './price-response';
-export * from './subscription-non-catalog-price-request';
-export * from './non-catalog-price-request';
+export * from './price-response.js';
+export * from './subscription-non-catalog-price-request.js';
+export * from './non-catalog-price-request.js';

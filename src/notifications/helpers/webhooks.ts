@@ -1,4 +1,6 @@
-import { type IEvents } from '../../types';
+import { WebhooksValidator } from './webhooks-validator.js';
+import { type IEvents } from '../../types/index.js';
+import { type EventEntity, EventName } from './types.js';
 import {
   AddressCreatedEvent,
   AddressImportedEvent,
@@ -42,10 +44,8 @@ import {
   TransactionPaymentFailedEvent,
   TransactionReadyEvent,
   TransactionUpdatedEvent,
-} from '../events';
-import { type EventEntity, EventName } from './types';
-import { WebhooksValidator } from './webhooks-validator';
-import { Logger } from '../../internal/base/logger';
+} from '../events/index.js';
+import { Logger } from '../../internal/base/logger.js';
 
 export class Webhooks {
   unmarshal(requestBody: string, secretKey: string, signature: string) {

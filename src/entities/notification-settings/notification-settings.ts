@@ -3,9 +3,10 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type NotificationSettingsType } from '../../enums';
-import { EventType } from '../event-types';
-import { type INotificationSettingsResponse } from '../../types/notification-settings';
+
+import { type NotificationSettingsType } from '../../enums/index.js';
+import { EventType } from '../event-types/index.js';
+import { type INotificationSettingsResponse } from '../../types/index.js';
 
 export class NotificationSettings {
   public readonly id: string;

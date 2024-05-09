@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentItemTotalsNotificationResponse } from '../../types';
+import { type IAdjustmentItemTotalsNotificationResponse } from '../../types/index.js';
 
 export class AdjustmentItemTotalsNotification {
   public readonly subtotal: string;

@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './notification-settings';
+export * from './notification-settings.js';

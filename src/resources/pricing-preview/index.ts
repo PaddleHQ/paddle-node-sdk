@@ -4,17 +4,17 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { BaseResource } from '../../internal/base';
-import { type ErrorResponse, type Response } from '../../internal';
-import { type IPricingPreviewResponse } from '../../types';
-import { type PricingPreviewRequestBody } from './operations';
-import { PricingPreview } from '../../entities/pricing-preview';
+import { BaseResource } from '../../internal/base/index.js';
+import { type PricingPreviewRequestBody } from './operations/index.js';
+import { PricingPreview } from '../../entities/pricing-preview/index.js';
+import { type IPricingPreviewResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const PricingPreviewPaths = {
   preview: '/pricing-preview',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class PricingPreviewResource extends BaseResource {
   public async preview(pricePreviewParameter: PricingPreviewRequestBody): Promise<PricingPreview> {

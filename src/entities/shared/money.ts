@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IMoneyResponse } from '../../types';
-import { type CurrencyCode } from '../../enums';
+import { type CurrencyCode } from '../../enums/index.js';
+import { type IMoneyResponse } from '../../types/index.js';
 
 export class Money {
   public readonly amount: string;

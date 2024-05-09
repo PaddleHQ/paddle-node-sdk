@@ -5,28 +5,28 @@
  */
 
 import {
-  type CustomData,
-  BillingDetails,
-  TransactionsTimePeriod,
-  TransactionItem,
-  TransactionDetails,
-  TransactionPaymentAttempt,
-  TransactionCheckout,
-  Address,
-  TransactionAdjustment,
-  AdjustmentTotals,
-  Business,
-  Customer,
-  Discount,
-} from '../index';
-import {
-  type TransactionStatus,
+  type AvailablePaymentMethod,
+  type CollectionMode,
   type CurrencyCode,
   type TransactionOrigin,
-  type CollectionMode,
-  type AvailablePaymentMethod,
-} from '../../enums';
-import { type ITransactionResponse } from '../../types';
+  type TransactionStatus,
+} from '../../enums/index.js';
+import {
+  Address,
+  AdjustmentTotals,
+  BillingDetails,
+  Business,
+  type CustomData,
+  Customer,
+  Discount,
+  TransactionAdjustment,
+  TransactionCheckout,
+  TransactionDetails,
+  TransactionItem,
+  TransactionPaymentAttempt,
+  TransactionsTimePeriod,
+} from '../index.js';
+import { type ITransactionResponse } from '../../types/index.js';
 
 export class Transaction {
   public readonly id: string;

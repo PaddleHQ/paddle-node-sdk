@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ReportFilterName, type ReportFilterOperator } from '../../enums';
+import { type ReportFilterName, type ReportFilterOperator } from '../../enums/index.js';
 
 export interface IReportFilters {
   name: ReportFilterName;

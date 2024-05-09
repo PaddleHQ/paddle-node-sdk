@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Report, ReportCollection, ReportCsv } from '../../entities';
-import { type IReportResponse, type IReportCsvResponse } from '../../types';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
-import { type CreateReportRequestBody, type ListReportQueryParameters } from './operations';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
+import { type CreateReportRequestBody, type ListReportQueryParameters } from './operations/index.js';
+import { Report, ReportCollection, ReportCsv } from '../../entities/index.js';
+import { type IReportCsvResponse, type IReportResponse } from '../../types/index.js';
+import { type ErrorResponse, type Response } from '../../internal/index.js';
 
 const ReportPaths = {
   list: '/reports',
@@ -17,7 +17,7 @@ const ReportPaths = {
   getReportCsv: '/reports/{report_id}/download-url',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class ReportsResource extends BaseResource {
   public list(queryParams?: ListReportQueryParameters): ReportCollection {

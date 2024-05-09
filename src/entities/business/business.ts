@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Contacts, type CustomData, ImportMeta } from '../index';
-import { type Status } from '../../enums';
-import { type IBusinessResponse } from '../../types';
+import { type Status } from '../../enums/index.js';
+import { Contacts } from './contacts.js';
+import { type CustomData, ImportMeta } from '../index.js';
+import { type IBusinessResponse } from '../../types/index.js';
 
 export class Business {
   public readonly id: string;

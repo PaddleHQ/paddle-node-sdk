@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITaxRatesUsedResponse } from '../../types';
-import { Totals } from '../index';
+import { Totals } from './totals.js';
+import { type ITaxRatesUsedResponse } from '../../types/index.js';
 
 export class TaxRatesUsed {
   public readonly taxRate: string;

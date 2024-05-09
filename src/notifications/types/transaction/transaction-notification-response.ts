@@ -5,15 +5,20 @@
  */
 
 import {
+  type CollectionMode,
+  type CurrencyCode,
+  type TransactionOrigin,
+  type TransactionStatus,
+} from '../../../enums/index.js';
+import { type ICustomData } from '../../../types/index.js';
+import {
   type IBillingDetailsNotificationResponse,
   type ITransactionCheckoutNotification,
-  type ITransactionDetailsNotificationResponse,
-  type ITransactionItemNotificationResponse,
   type ITransactionPaymentAttemptNotificationResponse,
-  type ITransactionsTimePeriodNotificationResponse,
-} from '../index';
-import { type CollectionMode, type CurrencyCode, type TransactionOrigin, type TransactionStatus } from '../../../enums';
-import { type ICustomData } from '../../../types';
+} from '../shared/index.js';
+import { type ITransactionsTimePeriodNotificationResponse } from './transactions-time-period-notification-response.js';
+import { type ITransactionItemNotificationResponse } from './transaction-item-notification-response.js';
+import { type ITransactionDetailsNotificationResponse } from './transaction-details-notification-response.js';
 
 export interface ITransactionNotificationResponse {
   id: string;

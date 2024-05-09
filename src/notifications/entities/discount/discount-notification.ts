@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../../enums';
-import { type IDiscountNotificationResponse } from '../../types';
-import { ImportMetaNotification } from '../index';
-import { type CustomData } from '../../../entities';
+import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../../enums/index.js';
+import { type CustomData } from '../../../entities/index.js';
+import { ImportMetaNotification } from '../shared/index.js';
+import { type IDiscountNotificationResponse } from '../../types/index.js';
 
 export class DiscountNotification {
   public readonly id: string;

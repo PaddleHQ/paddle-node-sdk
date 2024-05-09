@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Address } from './address';
-import { type IAddressResponse } from '../../types';
-import { Collection } from '../../internal/base';
+import { type IAddressResponse } from '../../types/index.js';
+import { Collection } from '../../internal/base/index.js';
+import { Address } from './address.js';
 
 export class AddressCollection extends Collection<IAddressResponse, Address> {
   override fromJson(data: IAddressResponse): Address {

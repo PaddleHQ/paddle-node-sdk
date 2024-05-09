@@ -4,21 +4,21 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './shared';
-export * from './product';
-export * from './price';
-export * from './transaction';
-export * from './adjustment';
-export * from './customer';
-export * from './business';
-export * from './subscription';
-export * from './address';
-export * from './discount';
-export * from './events';
-export * from './payout';
-export * from './event-types';
-export * from './notification-settings';
-export * from './notifications';
-export * from './report';
+export * from './shared/index.js';
+export * from './product/index.js';
+export * from './price/index.js';
+export * from './transaction/index.js';
+export * from './adjustment/index.js';
+export * from './customer/index.js';
+export * from './business/index.js';
+export * from './subscription/index.js';
+export * from './address/index.js';
+export * from './discount/index.js';
+export * from './events/index.js';
+export * from './payout/index.js';
+export * from './event-types/index.js';
+export * from './notification-settings/index.js';
+export * from './notifications/index.js';
+export * from './report/index.js';
 
 export type CustomData = object;

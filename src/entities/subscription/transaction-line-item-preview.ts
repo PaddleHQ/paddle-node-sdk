@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionLineItemPreviewResponse } from '../../types';
-import { UnitTotals, Totals, Product } from '../index';
+import { Totals, UnitTotals } from '../shared/index.js';
+import { Product } from '../product/index.js';
+import { type ITransactionLineItemPreviewResponse } from '../../types/index.js';
 
 export class TransactionLineItemPreview {
   public readonly priceId: string;

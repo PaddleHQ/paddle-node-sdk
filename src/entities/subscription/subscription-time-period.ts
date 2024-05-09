@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionTimePeriodResponse } from '../../types';
+import { type ISubscriptionTimePeriodResponse } from '../../types/index.js';
 
 export class SubscriptionTimePeriod {
   public readonly startsAt: string;

@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionDiscountResponse } from '../../types';
+import { type ISubscriptionDiscountResponse } from '../../types/index.js';
 
 export class SubscriptionDiscount {
   public readonly id: string;

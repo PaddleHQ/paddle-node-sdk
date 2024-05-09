@@ -1,101 +1,113 @@
-import { AddressCreatedMock, AddressCreatedMockExpectation } from '../mocks/notifications/address-created.mock';
-import type { IEvents, IEventsResponse } from '../../types';
-import { Webhooks } from '../../notifications';
-import { AddressUpdatedMock, AddressUpdatedMockExpectation } from '../mocks/notifications/address-updated.mock';
+import { AddressCreatedMock, AddressCreatedMockExpectation } from '../mocks/notifications/address-created.mock.js';
+import { AddressUpdatedMock, AddressUpdatedMockExpectation } from '../mocks/notifications/address-updated.mock.js';
+import { AddressImportedMock, AddressImportedMockExpectation } from '../mocks/notifications/address-imported.mock.js';
 import {
   AdjustmentCreatedMock,
   AdjustmentCreatedMockExpectation,
-} from '../mocks/notifications/adjustment-created.mock';
+} from '../mocks/notifications/adjustment-created.mock.js';
 import {
   AdjustmentUpdatedMock,
   AdjustmentUpdatedMockExpectation,
-} from '../mocks/notifications/adjustment-updated.mock';
-import { BusinessCreatedMock, BusinessCreatedMockExpectation } from '../mocks/notifications/business-created.mock';
-import { BusinessUpdatedMock, BusinessUpdatedMockExpectation } from '../mocks/notifications/business-updated.mock';
-import { CustomerCreatedMock, CustomerCreatedMockExpectation } from '../mocks/notifications/customer-created.mock';
-import { CustomerUpdatedMock, CustomerUpdatedMockExpectation } from '../mocks/notifications/customer-updated.mock';
-import { DiscountCreatedMock, DiscountCreatedMockExpectation } from '../mocks/notifications/discount-created.mock';
-import { DiscountImportedMock, DiscountImportedMockExpectation } from '../mocks/notifications/discount-imported.mock';
-import { DiscountUpdatedMock, DiscountUpdatedMockExpectation } from '../mocks/notifications/discount-updated.mock';
-import { PayoutCreatedMock, PayoutCreatedMockExpectation } from '../mocks/notifications/payout-created.mock';
-import { PayoutPaidMock, PayoutPaidMockExpectation } from '../mocks/notifications/payout-paid.mock';
-import { PriceCreatedMock, PriceCreatedMockExpectation } from '../mocks/notifications/price-created.mock';
-import { PriceUpdatedMock, PriceUpdatedMockExpectation } from '../mocks/notifications/price-updated.mock';
-import { PriceImportedMock, PriceImportedMockExpectation } from '../mocks/notifications/price-imported.mock';
-import { ProductCreatedMock, ProductCreatedMockExpectation } from '../mocks/notifications/product-created.mock';
-import { ProductImportedMock, ProductImportedMockExpectation } from '../mocks/notifications/product-imported.mock';
-import { ProductUpdatedMock, ProductUpdatedMockExpectation } from '../mocks/notifications/product-updated.mock';
-import { ReportCreatedMock, ReportCreatedMockExpectation } from '../mocks/notifications/report-created.mock';
-import { ReportUpdatedMock, ReportUpdatedMockExpectation } from '../mocks/notifications/report-updated.mock';
+} from '../mocks/notifications/adjustment-updated.mock.js';
+import { BusinessCreatedMock, BusinessCreatedMockExpectation } from '../mocks/notifications/business-created.mock.js';
+import { BusinessUpdatedMock, BusinessUpdatedMockExpectation } from '../mocks/notifications/business-updated.mock.js';
+import {
+  BusinessImportedMock,
+  BusinessImportedMockExpectation,
+} from '../mocks/notifications/business-imported.mock.js';
+import { CustomerCreatedMock, CustomerCreatedMockExpectation } from '../mocks/notifications/customer-created.mock.js';
+import { CustomerUpdatedMock, CustomerUpdatedMockExpectation } from '../mocks/notifications/customer-updated.mock.js';
+import {
+  CustomerImportedMock,
+  CustomerImportedMockExpectation,
+} from '../mocks/notifications/customer-imported.mock.js';
+import { DiscountCreatedMock, DiscountCreatedMockExpectation } from '../mocks/notifications/discount-created.mock.js';
+import {
+  DiscountImportedMock,
+  DiscountImportedMockExpectation,
+} from '../mocks/notifications/discount-imported.mock.js';
+import { DiscountUpdatedMock, DiscountUpdatedMockExpectation } from '../mocks/notifications/discount-updated.mock.js';
+import { PayoutCreatedMock, PayoutCreatedMockExpectation } from '../mocks/notifications/payout-created.mock.js';
+import { PayoutPaidMock, PayoutPaidMockExpectation } from '../mocks/notifications/payout-paid.mock.js';
+import { PriceCreatedMock, PriceCreatedMockExpectation } from '../mocks/notifications/price-created.mock.js';
+import { PriceUpdatedMock, PriceUpdatedMockExpectation } from '../mocks/notifications/price-updated.mock.js';
+import { PriceImportedMock, PriceImportedMockExpectation } from '../mocks/notifications/price-imported.mock.js';
+import { ProductCreatedMock, ProductCreatedMockExpectation } from '../mocks/notifications/product-created.mock.js';
+import { ProductImportedMock, ProductImportedMockExpectation } from '../mocks/notifications/product-imported.mock.js';
+import { ProductUpdatedMock, ProductUpdatedMockExpectation } from '../mocks/notifications/product-updated.mock.js';
+import { ReportCreatedMock, ReportCreatedMockExpectation } from '../mocks/notifications/report-created.mock.js';
+import { ReportUpdatedMock, ReportUpdatedMockExpectation } from '../mocks/notifications/report-updated.mock.js';
 import {
   SubscriptionActivatedMock,
   SubscriptionActivatedMockExpectation,
-} from '../mocks/notifications/subscription-activated.mock';
+} from '../mocks/notifications/subscription-activated.mock.js';
 import {
   SubscriptionCanceledMock,
   SubscriptionCanceledMockExpectation,
-} from '../mocks/notifications/subscription-canceled.mock';
+} from '../mocks/notifications/subscription-canceled.mock.js';
 import {
   SubscriptionCreatedMock,
   SubscriptionCreatedMockExpectation,
-} from '../mocks/notifications/subscription-created.mock';
+} from '../mocks/notifications/subscription-created.mock.js';
 import {
   SubscriptionImportedMock,
   SubscriptionImportedMockExpectation,
-} from '../mocks/notifications/subscription-imported.mock';
+} from '../mocks/notifications/subscription-imported.mock.js';
 import {
   SubscriptionPastDueMock,
   SubscriptionPastDueMockExpectation,
-} from '../mocks/notifications/subscription-past-due.mock';
+} from '../mocks/notifications/subscription-past-due.mock.js';
 import {
   SubscriptionPausedMock,
   SubscriptionPausedMockExpectation,
-} from '../mocks/notifications/subscription-paused.mock';
+} from '../mocks/notifications/subscription-paused.mock.js';
 import {
   SubscriptionResumedMock,
   SubscriptionResumedMockExpectation,
-} from '../mocks/notifications/subscription-resumed.mock';
+} from '../mocks/notifications/subscription-resumed.mock.js';
 import {
   SubscriptionTrialingMock,
   SubscriptionTrialingMockExpectation,
-} from '../mocks/notifications/subscription-trialing.mock';
+} from '../mocks/notifications/subscription-trialing.mock.js';
 import {
   SubscriptionUpdatedMock,
   SubscriptionUpdatedMockExpectation,
-} from '../mocks/notifications/subscription-updated.mock';
+} from '../mocks/notifications/subscription-updated.mock.js';
 import {
   TransactionBilledMock,
   TransactionBilledMockExpectation,
-} from '../mocks/notifications/transaction-billed.mock';
+} from '../mocks/notifications/transaction-billed.mock.js';
 import {
   TransactionCanceledMock,
   TransactionCanceledMockExpectation,
-} from '../mocks/notifications/transaction-canceled.mock';
+} from '../mocks/notifications/transaction-canceled.mock.js';
 import {
   TransactionCompletedMock,
   TransactionCompletedMockExpectation,
-} from '../mocks/notifications/transaction-completed.mock';
+} from '../mocks/notifications/transaction-completed.mock.js';
 import {
   TransactionCreatedMock,
   TransactionCreatedMockExpectation,
-} from '../mocks/notifications/transaction-created.mock';
-import { TransactionPaidMock, TransactionPaidMockExpectation } from '../mocks/notifications/transaction-paid.mock';
+} from '../mocks/notifications/transaction-created.mock.js';
+import { TransactionPaidMock, TransactionPaidMockExpectation } from '../mocks/notifications/transaction-paid.mock.js';
 import {
   TransactionPastDueMock,
   TransactionPastDueMockExpectation,
-} from '../mocks/notifications/transaction-past-due.mock';
+} from '../mocks/notifications/transaction-past-due.mock.js';
 import {
   TransactionPaymentFailedMock,
   TransactionPaymentFailedMockExpectation,
-} from '../mocks/notifications/transaction-payment-failed.mock';
-import { TransactionReadyMock, TransactionReadyMockExpectation } from '../mocks/notifications/transaction-ready.mock';
+} from '../mocks/notifications/transaction-payment-failed.mock.js';
+import {
+  TransactionReadyMock,
+  TransactionReadyMockExpectation,
+} from '../mocks/notifications/transaction-ready.mock.js';
 import {
   TransactionUpdatedMock,
   TransactionUpdatedMockExpectation,
-} from '../mocks/notifications/transaction-updated.mock';
-import { AddressImportedMock, AddressImportedMockExpectation } from '../mocks/notifications/address-imported.mock';
-import { BusinessImportedMock, BusinessImportedMockExpectation } from '../mocks/notifications/business-imported.mock';
-import { CustomerImportedMock, CustomerImportedMockExpectation } from '../mocks/notifications/customer-imported.mock';
+} from '../mocks/notifications/transaction-updated.mock.js';
+import { IEvents, IEventsResponse } from '../../types/index.js';
+import { Webhooks } from '../../notifications/index.js';
 
 describe('Notifications Parser', () => {
   test.each([

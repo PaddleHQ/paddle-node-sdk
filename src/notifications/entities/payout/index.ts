@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './payout-notification';
+export * from './payout-notification.js';

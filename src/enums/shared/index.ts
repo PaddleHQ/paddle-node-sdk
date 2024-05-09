@@ -4,18 +4,18 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './tax-category';
-export * from './status';
-export * from './interval';
-export * from './tax-mode';
-export * from './currency-code';
-export * from './country-code';
-export * from './collection-mode';
-export * from './transaction-status';
-export * from './transaction-origin';
-export * from './payout-currency-code';
-export * from './payment-attempt-status';
-export * from './error-code';
-export * from './payment-type';
-export * from './catalog-type';
-export * from './available-payment-methods';
+export * from './tax-category.js';
+export * from './status.js';
+export * from './interval.js';
+export * from './tax-mode.js';
+export * from './currency-code.js';
+export * from './country-code.js';
+export * from './collection-mode.js';
+export * from './transaction-status.js';
+export * from './transaction-origin.js';
+export * from './payout-currency-code.js';
+export * from './payment-attempt-status.js';
+export * from './error-code.js';
+export * from './payment-type.js';
+export * from './catalog-type.js';
+export * from './available-payment-methods.js';

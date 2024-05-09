@@ -1,4 +1,4 @@
-import { isArray, isBoolean, isDate, isFunction, isObject, isRegExp, snakeCase } from 'lodash';
+import * as lodash from 'lodash';
 
 interface CustomData {
   customData: unknown;
@@ -13,7 +13,13 @@ function isTopLevelCustomDataCamel(input: any): input is CustomData {
 }
 
 function decamelizeKeys(obj: any): ObjectWithData {
-  if (!isObject(obj) || isDate(obj) || isRegExp(obj) || isBoolean(obj) || isFunction(obj)) {
+  if (
+    !lodash.isObject(obj) ||
+    lodash.isDate(obj) ||
+    lodash.isRegExp(obj) ||
+    lodash.isBoolean(obj) ||
+    lodash.isFunction(obj)
+  ) {
     return obj;
   }
 
@@ -21,7 +27,7 @@ function decamelizeKeys(obj: any): ObjectWithData {
   let i = 0;
   let l = 0;
 
-  if (isArray(obj)) {
+  if (lodash.isArray(obj)) {
     output = [];
     for (l = obj.length; i < l; i++) {
       output.push(decamelizeKeys(obj[i]));
@@ -30,7 +36,7 @@ function decamelizeKeys(obj: any): ObjectWithData {
     output = {};
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        output[snakeCase(key)] = decamelizeKeys((obj as any)[key]);
+        output[lodash.snakeCase(key)] = decamelizeKeys((obj as any)[key]);
       }
     }
   }
@@ -38,7 +44,7 @@ function decamelizeKeys(obj: any): ObjectWithData {
 }
 
 export function convertToSnakeCase(input: unknown) {
-  if (!input || !isObject(input)) {
+  if (!input || !lodash.isObject(input)) {
     return input;
   }
 

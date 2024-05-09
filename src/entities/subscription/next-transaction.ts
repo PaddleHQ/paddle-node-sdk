@@ -4,8 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type INextTransactionResponse } from '../../types';
-import { SubscriptionTimePeriod, TransactionDetailsPreview, NextTransactionAdjustmentPreview } from '../index';
+import { SubscriptionTimePeriod } from './subscription-time-period.js';
+import { TransactionDetailsPreview } from './transaction-details-preview.js';
+import { NextTransactionAdjustmentPreview } from './next-transaction-adjustment-preview.js';
+import { type INextTransactionResponse } from '../../types/index.js';
 
 export class NextTransaction {
   public readonly billingPeriod: SubscriptionTimePeriod;

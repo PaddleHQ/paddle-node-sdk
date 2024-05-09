@@ -4,14 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './address';
-export * from './adjustment';
-export * from './business';
-export * from './customer';
-export * from './discount';
-export * from './payout';
-export * from './price';
-export * from './product';
-export * from './subscription';
-export * from './transaction';
-export * from './report';
+export * from './address/index.js';
+export * from './adjustment/index.js';
+export * from './business/index.js';
+export * from './customer/index.js';
+export * from './discount/index.js';
+export * from './payout/index.js';
+export * from './price/index.js';
+export * from './product/index.js';
+export * from './subscription/index.js';
+export * from './transaction/index.js';
+export * from './report/index.js';

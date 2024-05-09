@@ -3,7 +3,8 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type CatalogType, type Status, type TaxCategory } from '../../../enums';
+
+import { type CatalogType, type Status, type TaxCategory } from '../../../enums/index.js';
 
 export interface ListProductQueryParameters {
   after?: string;

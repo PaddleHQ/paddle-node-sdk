@@ -4,19 +4,19 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './transactions-time-period';
-export * from './transaction-proration';
-export * from './transaction-item';
-export * from './transaction-line-item';
-export * from './transaction-details';
-export * from './transaction-adjustment-item';
-export * from './transaction-adjustment';
-export * from './adjustment-totals-breakdown';
-export * from './adjustment-totals';
-export * from './transaction';
-export * from './transaction-collection';
-export * from './transaction-invoice-pdf';
-export * from './transaction-preview';
-export * from './transaction-item-preview';
-export * from './proration';
-export * from './address-preview';
+export * from './transactions-time-period.js';
+export * from './transaction-proration.js';
+export * from './transaction-item.js';
+export * from './transaction-line-item.js';
+export * from './transaction-details.js';
+export * from './transaction-adjustment-item.js';
+export * from './transaction-adjustment.js';
+export * from './adjustment-totals-breakdown.js';
+export * from './adjustment-totals.js';
+export * from './transaction.js';
+export * from './transaction-collection.js';
+export * from './transaction-invoice-pdf.js';
+export * from './transaction-preview.js';
+export * from './transaction-item-preview.js';
+export * from './proration.js';
+export * from './address-preview.js';

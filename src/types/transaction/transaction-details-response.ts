@@ -6,12 +6,12 @@
 
 import {
   type ITaxRatesUsedResponse,
-  type ITransactionTotalsResponse,
-  type ITransactionTotalsAdjustedResponse,
-  type ITransactionPayoutTotalsResponse,
   type ITransactionPayoutTotalsAdjustedResponse,
-  type ITransactionLineItemResponse,
-} from '../index';
+  type ITransactionPayoutTotalsResponse,
+  type ITransactionTotalsAdjustedResponse,
+  type ITransactionTotalsResponse,
+} from '../shared/index.js';
+import { type ITransactionLineItemResponse } from './transaction-line-item-response.js';
 
 export interface ITransactionDetailsResponse {
   tax_rates_used: ITaxRatesUsedResponse[];

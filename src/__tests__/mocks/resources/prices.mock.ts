@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IPriceResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
-import { CreatePriceRequestBody, UpdatePriceRequestBody } from '../../../resources';
+import { CreatePriceRequestBody, UpdatePriceRequestBody } from '../../../resources/index.js';
+import { IPriceResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreatePriceMock: CreatePriceRequestBody = {
   description: 'calculus acsi explicabo spargo vergo cur defluo laboriosam curvo aqua',

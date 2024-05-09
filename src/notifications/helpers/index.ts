@@ -1,3 +1,3 @@
-export * from './types';
-export * from './webhooks';
-export * from './webhooks-validator';
+export * from './types.js';
+export * from './webhooks.js';
+export * from './webhooks-validator.js';

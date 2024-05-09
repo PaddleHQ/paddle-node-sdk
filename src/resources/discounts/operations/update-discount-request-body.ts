@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type DiscountType, type Status } from '../../../enums';
-import { type ICustomData } from '../../../types';
+import { type CurrencyCode, type DiscountType, type Status } from '../../../enums/index.js';
+import { type ICustomData } from '../../../types/index.js';
 
 export interface UpdateDiscountRequestBody {
   status?: Status;

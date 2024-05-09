@@ -4,8 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { CreateDiscountRequestBody, DiscountsResource, ListDiscountQueryParameters } from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreateDiscountExpectation,
   CreateDiscountMock,
@@ -14,8 +13,9 @@ import {
   ListDiscountMockResponse,
   UpdateDiscountExpectation,
   UpdateDiscountMock,
-} from '../mocks/resources/discounts.mock';
-import { convertToSnakeCase } from '../../internal';
+} from '../mocks/resources/discounts.mock.js';
+import { CreateDiscountRequestBody, DiscountsResource, ListDiscountQueryParameters } from '../../resources/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('DiscountsResource', () => {
   test('should return a list of discounts', async () => {

@@ -1,4 +1,4 @@
-import snakeCase from 'lodash/snakeCase';
+import * as lodash from 'lodash';
 
 export class QueryParameters<T> {
   constructor(private readonly queryParameters: T) {}
@@ -7,7 +7,7 @@ export class QueryParameters<T> {
     for (const key in this.queryParameters) {
       const value = this.queryParameters[key];
       if (key && value) {
-        urlSearchParam.append(snakeCase(key), `${value}`);
+        urlSearchParam.append(lodash.snakeCase(key), `${value}`);
       }
     }
     return '?' + urlSearchParam.toString();

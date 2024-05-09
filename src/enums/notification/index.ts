@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './notification-status';
-export * from './origin';
+export * from './notification-status.js';
+export * from './origin.js';

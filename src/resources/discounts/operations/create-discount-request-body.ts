@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type DiscountType } from '../../../enums';
-import { type ICustomData } from '../../../types';
+import { type CurrencyCode, type DiscountType } from '../../../enums/index.js';
+import { type ICustomData } from '../../../types/index.js';
 
 export interface CreateDiscountRequestBody {
   amount: string;

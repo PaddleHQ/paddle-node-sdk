@@ -3,7 +3,8 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type IPricingPreviewLineItemResponse } from './pricing-preview-line-item-response';
+
+import { type IPricingPreviewLineItemResponse } from './pricing-preview-line-item-response.js';
 
 export interface IPricingPreviewDetailsResponse {
   line_items: IPricingPreviewLineItemResponse[];

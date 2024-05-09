@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Event } from '../../../entities/events/event';
-import { PayoutNotification } from '../../entities';
-import { EventName } from '../../helpers';
-import { type IEventsResponse } from '../../../types';
-import { type IPayoutNotificationResponse } from '../../types';
+import { Event } from '../../../entities/events/event.js';
+import { EventName } from '../../helpers/index.js';
+import { PayoutNotification } from '../../entities/index.js';
+import { type IEventsResponse } from '../../../types/index.js';
+import { type IPayoutNotificationResponse } from '../../types/index.js';
 
 export class PayoutPaidEvent extends Event {
   public override readonly eventType = EventName.PayoutPaid;

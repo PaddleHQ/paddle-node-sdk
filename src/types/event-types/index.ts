@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './event-type-response';
+export * from './event-type-response.js';

@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IDiscountResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
-import { CreateDiscountRequestBody, UpdateDiscountRequestBody } from '../../../resources';
+import { CreateDiscountRequestBody, UpdateDiscountRequestBody } from '../../../resources/index.js';
+import { IDiscountResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreateDiscountMock: CreateDiscountRequestBody = {
   amount: '1000',

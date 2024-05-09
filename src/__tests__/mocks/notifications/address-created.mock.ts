@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse } from '../../../types';
-import { IAddressNotificationResponse } from '../../../notifications';
+import { type IEventsResponse } from '../../../types/index.js';
+import { IAddressNotificationResponse } from '../../../notifications/index.js';
 
 export const AddressCreatedMock: IEventsResponse<IAddressNotificationResponse> = {
   event_id: 'evt_01h848pezaj15tkt3dsa36xe59',

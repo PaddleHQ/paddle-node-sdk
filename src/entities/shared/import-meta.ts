@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IImportMetaResponse } from '../../types';
+import { type IImportMetaResponse } from '../../types/index.js';
 
 export class ImportMeta {
   public readonly externalId: string | null;

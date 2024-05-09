@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomData } from '../../../types';
-import { type CatalogType, type TaxCategory } from '../../../enums';
+import { type CatalogType, type TaxCategory } from '../../../enums/index.js';
+import { type ICustomData } from '../../../types/index.js';
 
 export interface CreateProductRequestBody {
   name: string;

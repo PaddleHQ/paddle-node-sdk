@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionPayoutTotalsAdjustedResponse } from '../../types';
-import { ChargebackFee } from '../index';
-import { type PayoutCurrencyCode } from '../../enums';
+import { ChargebackFee } from './chargeback-fee.js';
+import { type PayoutCurrencyCode } from '../../enums/index.js';
+import { type ITransactionPayoutTotalsAdjustedResponse } from '../../types/index.js';
 
 export class TransactionPayoutTotalsAdjusted {
   public readonly subtotal: string;

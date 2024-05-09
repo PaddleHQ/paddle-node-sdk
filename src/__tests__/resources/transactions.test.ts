@@ -4,14 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  CreateTransactionRequestBody,
-  GetTransactionQueryParameters,
-  ListTransactionQueryParameters,
-  TransactionsResource,
-  UpdateTransactionRequestBody,
-} from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreateTransactionExpectation,
   CreateTransactionMock,
@@ -22,9 +15,16 @@ import {
   TransactionPreviewMockResponse,
   UpdateTransactionExpectation,
   UpdateTransactionMock,
-} from '../mocks/resources/transactions.mock';
-import { QueryParameters } from '../../internal/base';
-import { convertToSnakeCase } from '../../internal';
+} from '../mocks/resources/transactions.mock.js';
+import {
+  CreateTransactionRequestBody,
+  GetTransactionQueryParameters,
+  ListTransactionQueryParameters,
+  TransactionsResource,
+  UpdateTransactionRequestBody,
+} from '../../resources/index.js';
+import { QueryParameters } from '../../internal/base/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('TransactionsResource', () => {
   test('should return a list of transactions', async () => {

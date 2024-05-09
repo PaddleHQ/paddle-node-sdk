@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-adjustment-query-parameters';
-export * from './create-adjustment-request-body';
+export * from './list-adjustment-query-parameters.js';
+export * from './create-adjustment-request-body.js';

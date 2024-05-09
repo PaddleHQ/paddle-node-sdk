@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionPreviewUpdateSummary } from '../../types';
-import { Money, SubscriptionPreviewSummaryResult } from '../index';
+import { Money } from '../shared/index.js';
+import { SubscriptionPreviewSummaryResult } from './subscription-preview-summary-result.js';
+import { type ISubscriptionPreviewUpdateSummary } from '../../types/index.js';
 
 export class SubscriptionPreviewUpdateSummary {
   public readonly credit: Money;

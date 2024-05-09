@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentsTimePeriodNotificationResponse } from '../../types';
+import { type IAdjustmentsTimePeriodNotificationResponse } from '../../types/index.js';
 
 export class AdjustmentTimePeriodNotification {
   public readonly startsAt: string;

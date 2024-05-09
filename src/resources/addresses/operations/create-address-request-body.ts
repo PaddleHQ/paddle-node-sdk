@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomData } from '../../../types';
-import { type CountryCode } from '../../../enums';
+import { type CountryCode } from '../../../enums/index.js';
+import { type ICustomData } from '../../../types/index.js';
 
 export interface CreateAddressRequestBody {
   countryCode: CountryCode;

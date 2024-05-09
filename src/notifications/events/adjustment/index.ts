@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './adjustment-created-event';
-export * from './adjustment-updated-event';
+export * from './adjustment-created-event.js';
+export * from './adjustment-updated-event.js';

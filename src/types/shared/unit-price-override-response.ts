@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IMoneyResponse } from '../index';
-import { type CountryCode } from '../../enums';
+import { type CountryCode } from '../../enums/index.js';
+import { type IMoneyResponse } from './money-response.js';
 
 export interface IUnitPriceOverrideResponse {
   country_codes: CountryCode[];

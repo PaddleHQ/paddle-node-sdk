@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IBillingDetailsNotificationResponse } from '../../types';
-import { TimePeriodNotification } from '../index';
+import { TimePeriodNotification } from './time-period-notification.js';
+import { type IBillingDetailsNotificationResponse } from '../../types/index.js';
 
 export class BillingDetailsNotification {
   public readonly enableCheckout: boolean | null;

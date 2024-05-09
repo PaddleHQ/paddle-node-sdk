@@ -1,2 +1,2 @@
-export * from './discount-status';
-export * from './discount-type';
+export * from './discount-status.js';
+export * from './discount-type.js';

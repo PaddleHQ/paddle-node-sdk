@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPriceResponse } from '../../types';
-import { Collection } from '../../internal/base';
-import { Price } from './price';
+import { Collection } from '../../internal/base/index.js';
+import { type IPriceResponse } from '../../types/index.js';
+import { Price } from './price.js';
 
 export class PriceCollection extends Collection<IPriceResponse, Price> {
   override fromJson(data: IPriceResponse): Price {

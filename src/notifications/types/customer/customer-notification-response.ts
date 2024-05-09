@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IImportMetaNotificationResponse } from '../index';
-import { type Status } from '../../../enums';
-import { type ICustomData } from '../../../types';
+import { type Status } from '../../../enums/index.js';
+import { type ICustomData } from '../../../types/index.js';
+import { type IImportMetaNotificationResponse } from '../shared/index.js';
 
 export interface ICustomerNotificationResponse {
   id: string;
