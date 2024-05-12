@@ -4,9 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionPreviewResponse } from '../../types';
-import { AddressPreview, TransactionDetailsPreview, TransactionItemPreview } from '../index';
-import { type CurrencyCode, type AvailablePaymentMethod } from '../../enums';
+import { type AvailablePaymentMethod, type CurrencyCode } from '../../enums/index.js';
+import { AddressPreview } from './address-preview.js';
+import { TransactionItemPreview } from './transaction-item-preview.js';
+import { TransactionDetailsPreview } from '../subscription/index.js';
+import { type ITransactionPreviewResponse } from '../../types/index.js';
 
 export class TransactionPreview {
   public readonly customerId: string | null;

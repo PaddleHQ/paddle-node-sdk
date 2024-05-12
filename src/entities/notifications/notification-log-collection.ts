@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Collection } from '../../internal/base';
-import { type INotificationLogResponse } from '../../types';
-import { NotificationLog } from './notification-log';
+import { Collection } from '../../internal/base/index.js';
+import { type INotificationLogResponse } from '../../types/index.js';
+import { NotificationLog } from './notification-log.js';
 
 export class NotificationLogCollection extends Collection<INotificationLogResponse, NotificationLog> {
   override fromJson(data: INotificationLogResponse): NotificationLog {

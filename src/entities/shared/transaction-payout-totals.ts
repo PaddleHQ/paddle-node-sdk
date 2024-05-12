@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionPayoutTotalsResponse } from '../../types';
-import { type PayoutCurrencyCode } from '../../enums';
+import { type ITransactionPayoutTotalsResponse } from '../../types/index.js';
+import { type PayoutCurrencyCode } from '../../enums/index.js';
 
 export class TransactionPayoutTotals {
   public readonly subtotal: string;

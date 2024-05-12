@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CustomData, ImportMeta } from '../index';
-import { type CountryCode, type Status } from '../../enums';
-import { type IAddressResponse } from '../../types';
+import { type CountryCode, type Status } from '../../enums/index.js';
+import { type CustomData, ImportMeta } from '../index.js';
+import { type IAddressResponse } from '../../types/index.js';
 
 export class Address {
   public readonly id: string;

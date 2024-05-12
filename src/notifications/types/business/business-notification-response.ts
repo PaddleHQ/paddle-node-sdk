@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IBusinessContactsNotification, type IImportMetaNotificationResponse } from '../index';
-import { type Status } from '../../../enums';
-import { type ICustomData } from '../../../types';
+import { type Status } from '../../../enums/index.js';
+import { type IBusinessContactsNotification } from './businesses-contacts-notification.js';
+import { type ICustomData } from '../../../types/index.js';
+import { type IImportMetaNotificationResponse } from '../shared/index.js';
 
 export interface IBusinessNotificationResponse {
   id: string;

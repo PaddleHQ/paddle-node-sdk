@@ -4,14 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type CollectionMode, type CurrencyCode, type TransactionStatus } from '../../../enums/index.js';
 import {
   type IBillingDetailsUpdate,
   type ICustomData,
   type ITransactionCheckout,
   type ITransactionItemWithNonCatalogPrice,
   type ITransactionsTimePeriod,
-} from '../../../types';
-import { type CollectionMode, type CurrencyCode, type TransactionStatus } from '../../../enums';
+} from '../../../types/index.js';
 
 export interface UpdateTransactionRequestBody {
   status?: TransactionStatus;

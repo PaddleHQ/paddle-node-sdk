@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Adjustment, AdjustmentCollection, AdjustmentCreditNotePDF } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreateAdjustmentRequestBody,
-  type ListAdjustmentQueryParameters,
   type GetAdjustmentCreditNoteQueryParameters,
-} from './operations';
-import { type IAdjustmentResponse } from '../../types';
+  type ListAdjustmentQueryParameters,
+} from './operations/index.js';
+import { Adjustment, AdjustmentCollection, AdjustmentCreditNotePDF } from '../../entities/index.js';
+import { type IAdjustmentResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const AdjustmentPaths = {
   list: '/adjustments',
@@ -20,7 +20,7 @@ const AdjustmentPaths = {
   getCreditNotePDF: '/adjustments/{adjustment_id}/credit-note',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class AdjustmentsResource extends BaseResource {
   public list(queryParams?: ListAdjustmentQueryParameters): AdjustmentCollection {

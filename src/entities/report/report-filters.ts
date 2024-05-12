@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IReportFilters } from '../../types';
-import { type ReportFilterName, type ReportFilterOperator } from '../../enums';
+import { type ReportFilterName, type ReportFilterOperator } from '../../enums/index.js';
+import { type IReportFilters } from '../../types/index.js';
 
 export class ReportFilters {
   public readonly name: ReportFilterName;

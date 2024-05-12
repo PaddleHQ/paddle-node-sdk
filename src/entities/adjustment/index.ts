@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './adjustment-time-period';
-export * from './adjustment-proration';
-export * from './adjustment-item';
-export * from './adjustment';
-export * from './adjustment-collection';
-export * from './adjustment-item-totals';
-export * from './adjustment-credit-note-pdf';
+export * from './adjustment-time-period.js';
+export * from './adjustment-proration.js';
+export * from './adjustment-item.js';
+export * from './adjustment.js';
+export * from './adjustment-collection.js';
+export * from './adjustment-item-totals.js';
+export * from './adjustment-credit-note-pdf.js';

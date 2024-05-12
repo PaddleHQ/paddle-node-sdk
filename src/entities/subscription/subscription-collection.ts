@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Subscription } from './subscription';
-import { type ISubscriptionResponse } from '../../types';
-import { Collection } from '../../internal/base';
+import { Collection } from '../../internal/base/index.js';
+import { type ISubscriptionResponse } from '../../types/index.js';
+import { Subscription } from './subscription.js';
 
 export class SubscriptionCollection extends Collection<ISubscriptionResponse, Subscription> {
   override fromJson(data: ISubscriptionResponse): Subscription {

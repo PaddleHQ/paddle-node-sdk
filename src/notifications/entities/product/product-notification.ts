@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISharedProductNotificationResponse } from '../../types';
-import { ImportMetaNotification } from '../index';
-import { type TaxCategory, type Status, type CatalogType } from '../../../enums';
-import { type CustomData } from '../../../entities';
+import { type CatalogType, type Status, type TaxCategory } from '../../../enums/index.js';
+import { type CustomData } from '../../../entities/index.js';
+import { ImportMetaNotification } from '../shared/index.js';
+import { type ISharedProductNotificationResponse } from '../../types/index.js';
 
 export class ProductNotification {
   public readonly id: string;

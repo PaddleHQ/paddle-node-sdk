@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './discount-notification';
+export * from './discount-notification.js';

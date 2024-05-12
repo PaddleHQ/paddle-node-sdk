@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITotals } from '../index';
+import { type ITotals } from './totals.js';
 
 export interface ITaxRatesUsedResponse {
   tax_rate: string;

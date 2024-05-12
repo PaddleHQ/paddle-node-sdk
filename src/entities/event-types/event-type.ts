@@ -3,8 +3,9 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type IEventTypeResponse } from '../../types';
-import { type IEventName } from '../../notifications';
+
+import { type IEventName } from '../../notifications/index.js';
+import { type IEventTypeResponse } from '../../types/index.js';
 
 export class EventType {
   public readonly name: IEventName;

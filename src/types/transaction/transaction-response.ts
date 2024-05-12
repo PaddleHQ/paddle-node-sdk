@@ -5,27 +5,27 @@
  */
 
 import {
-  type ICustomData,
-  type IBillingDetailsResponse,
-  type ITransactionsTimePeriodResponse,
-  type ITransactionItemResponse,
-  type ITransactionDetailsResponse,
-  type ITransactionPaymentAttemptResponse,
-  type ITransactionCheckout,
-  type IAddressResponse,
-  type ITransactionAdjustmentResponse,
-  type IAdjustmentTotalsResponse,
-  type IBusinessResponse,
-  type ICustomerResponse,
-  type IDiscountResponse,
-} from '../index';
-import {
-  type TransactionStatus,
+  type AvailablePaymentMethod,
+  type CollectionMode,
   type CurrencyCode,
   type TransactionOrigin,
-  type CollectionMode,
-  type AvailablePaymentMethod,
-} from '../../enums';
+  type TransactionStatus,
+} from '../../enums/index.js';
+import {
+  type IBillingDetailsResponse,
+  type ICustomData,
+  type ITransactionCheckout,
+  type ITransactionPaymentAttemptResponse,
+} from '../shared/index.js';
+import { type ITransactionsTimePeriodResponse } from './transactions-time-period-response.js';
+import { type ITransactionItemResponse } from './transaction-item-response.js';
+import { type ITransactionDetailsResponse } from './transaction-details-response.js';
+import { type IAddressResponse } from '../address/index.js';
+import { type ITransactionAdjustmentResponse } from './transaction-adjustment-response.js';
+import { type IAdjustmentTotalsResponse } from './adjustment-totals-response.js';
+import { type IBusinessResponse } from '../business/index.js';
+import { type ICustomerResponse } from '../customer/index.js';
+import { type IDiscountResponse } from '../discount/index.js';
 
 export interface ITransactionResponse {
   id: string;

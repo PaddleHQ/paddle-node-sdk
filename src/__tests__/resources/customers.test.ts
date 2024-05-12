@@ -4,13 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  CreateCustomerRequestBody,
-  CustomersResource,
-  ListCustomerQueryParameters,
-  UpdateCustomerRequestBody,
-} from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CustomerCreditBalanceMockResponse,
   CustomerMock,
@@ -18,8 +12,14 @@ import {
   ListCustomerMockResponse,
   UpdateCustomerExpectation,
   UpdateCustomerMock,
-} from '../mocks/resources/customers.mock';
-import { convertToSnakeCase } from '../../internal';
+} from '../mocks/resources/customers.mock.js';
+import {
+  CreateCustomerRequestBody,
+  CustomersResource,
+  ListCustomerQueryParameters,
+  UpdateCustomerRequestBody,
+} from '../../resources/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('CustomersResource', () => {
   test('should return a list of customers', async () => {

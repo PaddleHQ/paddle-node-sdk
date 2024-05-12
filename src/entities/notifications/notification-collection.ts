@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Collection } from '../../internal/base';
-import { Notification } from './notification';
-import { type INotificationResponse } from '../../types/notifications';
+import { type INotificationResponse } from '../../types/index.js';
+import { Notification } from './notification.js';
+import { Collection } from '../../internal/base/index.js';
 
 export class NotificationCollection extends Collection<INotificationResponse, Notification> {
   override fromJson(data: INotificationResponse): Notification {

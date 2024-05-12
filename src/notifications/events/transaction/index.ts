@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './transaction-billed-event';
-export * from './transaction-canceled-event';
-export * from './transaction-created-event';
-export * from './transaction-completed-event';
-export * from './transaction-paid-event';
-export * from './transaction-past-due-event';
-export * from './transaction-payment-failed-event';
-export * from './transaction-ready-event';
-export * from './transaction-updated-event';
+export * from './transaction-billed-event.js';
+export * from './transaction-canceled-event.js';
+export * from './transaction-created-event.js';
+export * from './transaction-completed-event.js';
+export * from './transaction-paid-event.js';
+export * from './transaction-past-due-event.js';
+export * from './transaction-payment-failed-event.js';
+export * from './transaction-ready-event.js';
+export * from './transaction-updated-event.js';

@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-adjustment-query-parameters';
-export * from './create-adjustment-request-body';
-export * from './get-adjustment-credit-note-query-parameters';
+export * from './list-adjustment-query-parameters.js';
+export * from './create-adjustment-request-body.js';
+export * from './get-adjustment-credit-note-query-parameters.js';

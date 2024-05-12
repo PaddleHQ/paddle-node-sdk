@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomerBalance } from '../index';
-import { type CurrencyCode } from '../../enums';
+import { type CurrencyCode } from '../../enums/index.js';
+import { type ICustomerBalance } from './customer-balance.js';
 
 export interface ICreditBalanceResponse {
   customer_id?: string | null;

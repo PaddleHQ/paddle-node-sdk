@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-notification-query-parameters';
-export * from './list-notification-log-query-parameters';
+export * from './list-notification-query-parameters.js';
+export * from './list-notification-log-query-parameters.js';

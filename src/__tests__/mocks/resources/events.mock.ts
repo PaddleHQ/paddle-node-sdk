@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IEventsResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
+import { IEventsResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const EventMock: IEventsResponse = {
   event_id: 'evt_01hj32ak5egqkzw5hxrf3vjgw3',

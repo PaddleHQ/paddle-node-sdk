@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './price-created-event';
-export * from './price-updated-event';
-export * from './price-imported-event';
+export * from './price-created-event.js';
+export * from './price-updated-event.js';
+export * from './price-imported-event.js';

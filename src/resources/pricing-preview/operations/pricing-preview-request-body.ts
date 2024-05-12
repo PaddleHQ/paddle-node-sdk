@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode } from '../../../enums';
-import { type IAddressPreview } from '../../transactions';
+import { type CurrencyCode } from '../../../enums/index.js';
+import { type IAddressPreview } from '../../transactions/index.js';
 
 interface IPricePreviewItem {
   priceId: string;

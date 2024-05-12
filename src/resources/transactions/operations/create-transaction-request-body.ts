@@ -10,8 +10,8 @@ import {
   type ITransactionCheckout,
   type ITransactionItemWithNonCatalogPrice,
   type ITransactionsTimePeriod,
-} from '../../../types';
-import { type CollectionMode, type CurrencyCode, type TransactionStatus } from '../../../enums';
+} from '../../../types/index.js';
+import { type CollectionMode, type CurrencyCode, type TransactionStatus } from '../../../enums/index.js';
 
 export interface CreateTransactionRequestBody {
   items: ITransactionItemWithNonCatalogPrice[];

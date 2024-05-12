@@ -4,12 +4,24 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export { Environment, LogLevel, ApiError, type PaddleOptions } from './internal';
-export { SDK_VERSION } from './version';
+export { Environment, LogLevel, ApiError, type PaddleOptions } from './internal/index.js';
+export { SDK_VERSION } from './version.js';
 
-export { Paddle } from './paddle';
-export * from './entities';
-export * from './enums';
-export * from './notifications';
-export * from './resources';
-export * from './types';
+export * from './entities/index.js';
+export * from './enums/index.js';
+export * from './notifications/index.js';
+export * from './resources/index.js';
+export * from './types/index.js';
+
+import { Paddle as PaddleBase } from './paddle.js';
+import { EdgeRuntime } from './internal/providers/runtime/edge-runtime.js';
+import { PaddleOptions } from './internal/index.js';
+
+export { EdgeRuntime };
+
+export class Paddle extends PaddleBase {
+  constructor(apiKey: string, options?: PaddleOptions) {
+    EdgeRuntime.initialize();
+    super(apiKey, options);
+  }
+}

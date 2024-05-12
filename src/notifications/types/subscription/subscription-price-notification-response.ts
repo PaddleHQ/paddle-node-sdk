@@ -4,16 +4,16 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type CatalogType, type Status, type TaxMode } from '../../../enums/index.js';
 import {
   type IImportMetaNotificationResponse,
   type IMoneyNotificationResponse,
-  type IPriceQuantityNotification,
   type ISharedProductNotificationResponse,
   type ITimePeriodNotification,
   type IUnitPriceOverrideNotificationResponse,
-} from '../index';
-import { type CatalogType, type Status, type TaxMode } from '../../../enums';
-import type { ICustomData } from '../../../types';
+} from '../shared/index.js';
+import { type IPriceQuantityNotification } from '../price/index.js';
+import { type ICustomData } from '../../../types/index.js';
 
 export interface ISubscriptionPriceNotificationResponse {
   id: string;

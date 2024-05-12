@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type ITransactionProrationNotificationResponse } from './transaction-proration-notification-response.js';
 import {
-  type ITransactionProrationNotificationResponse,
-  type IUnitTotalsNotification,
-  type ITotalsNotification,
   type ISharedProductNotificationResponse,
-} from '../index';
+  type ITotalsNotification,
+  type IUnitTotalsNotification,
+} from '../shared/index.js';
 
 export interface ITransactionLineItemNotificationResponse {
   id: string;

@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentItemTotals } from '../../types';
+import { type IAdjustmentItemTotals } from '../../types/index.js';
 
 export class AdjustmentItemTotals {
   public readonly subtotal: string;

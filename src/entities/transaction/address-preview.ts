@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CountryCode } from '../../enums';
-import { type IAddressPreviewResponse } from '../../resources';
+import { type CountryCode } from '../../enums/index.js';
+import { type IAddressPreviewResponse } from '../../resources/index.js';
 
 export class AddressPreview {
   public readonly postalCode: string | null;

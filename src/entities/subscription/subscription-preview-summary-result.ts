@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionResultResponse } from '../../types';
-import { type CurrencyCode } from '../../enums';
+import { type CurrencyCode } from '../../enums/index.js';
+import { type ISubscriptionResultResponse } from '../../types/index.js';
 
 export class SubscriptionPreviewSummaryResult {
   public readonly action: 'credit' | 'charge';

@@ -4,8 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionLineItemResponse } from '../../types';
-import { TransactionProration, UnitTotals, Totals, Product } from '../index';
+import { TransactionProration } from './transaction-proration.js';
+import { Totals, UnitTotals } from '../shared/index.js';
+import { Product } from '../product/index.js';
+import { type ITransactionLineItemResponse } from '../../types/index.js';
 
 export class TransactionLineItem {
   public readonly id: string;

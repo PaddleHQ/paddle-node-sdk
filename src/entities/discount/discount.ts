@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../enums';
-import { type IDiscountResponse } from '../../types';
-import { type CustomData, ImportMeta } from '../index';
+import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../enums/index.js';
+import { type CustomData, ImportMeta } from '../index.js';
+import { type IDiscountResponse } from '../../types/index.js';
 
 export class Discount {
   public readonly id: string;

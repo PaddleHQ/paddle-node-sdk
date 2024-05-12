@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomData, type IImportMetaResponse, type IPriceResponse } from '../index';
-import { type CatalogType, type Status, type TaxCategory } from '../../enums';
+import { type CatalogType, type Status, type TaxCategory } from '../../enums/index.js';
+import { type ICustomData, type IImportMetaResponse } from '../shared/index.js';
+import { type IPriceResponse } from '../price/index.js';
 
 export interface IProductResponse {
   id: string;

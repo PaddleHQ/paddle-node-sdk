@@ -4,14 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { CreateReportRequestBody, ListReportQueryParameters, ReportsResource } from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   ListReportMockResponse,
   ReportCsvMockResponse,
   ReportMock,
   ReportMockResponse,
-} from '../mocks/resources/reports.mock';
+} from '../mocks/resources/reports.mock.js';
+import { CreateReportRequestBody, ListReportQueryParameters, ReportsResource } from '../../resources/index.js';
 
 describe('ReportsResource', () => {
   test('should return a list of reports', async () => {

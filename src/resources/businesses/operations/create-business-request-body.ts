@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IBusinessContacts, type ICustomData } from '../../../types';
+import { type IBusinessContacts, type ICustomData } from '../../../types/index.js';
 
 export interface CreateBusinessRequestBody {
   name: string;

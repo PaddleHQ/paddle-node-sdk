@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ScheduledChangeAction } from '../../enums';
+import { type ScheduledChangeAction } from '../../enums/index.js';
 
 export interface ISubscriptionScheduledChangeResponse {
   action: ScheduledChangeAction;

@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse } from '../../types';
+import { type IEventsResponse } from '../../types/index.js';
 
 export class Event {
   public eventId: string;

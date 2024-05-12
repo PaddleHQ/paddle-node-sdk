@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './business-collection';
-export * from './contacts';
-export * from './business';
+export * from './business-collection.js';
+export * from './contacts.js';
+export * from './business.js';

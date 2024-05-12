@@ -4,11 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  type IAdjustmentItemTotalsNotificationResponse,
-  type IAdjustmentsProrationNotificationResponse,
-} from '../index';
-import { type AdjustmentType } from '../../../enums';
+import { type IAdjustmentsProrationNotificationResponse } from './adjustments-proration-notification-response.js';
+import { type AdjustmentType } from '../../../enums/index.js';
+import { type IAdjustmentItemTotalsNotificationResponse } from './adjustment-totals-notification-response.js';
 
 export interface IAdjustmentItemNotificationResponse {
   id: string;

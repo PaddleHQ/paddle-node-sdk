@@ -1,6 +1,7 @@
-import { WebhooksValidator } from '../../notifications';
-
 // This file does not contain any secret keys. All the hashes are generated using `VALID_SECRET` as key
+import { NodeRuntime } from '../../internal/providers/runtime/node-runtime.js';
+import { WebhooksValidator } from '../../notifications/index.js';
+
 describe('webhooks-validator', () => {
   test.each([
     [

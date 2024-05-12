@@ -1,4 +1,4 @@
-import { type Environment, type LogLevel } from '../api';
+import { type Environment, type LogLevel } from '../api/index.js';
 
 export interface PaddleOptions {
   environment?: Environment;

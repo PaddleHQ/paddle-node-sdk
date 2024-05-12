@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentTotalsBreakdown } from '../../types';
+import { type IAdjustmentTotalsBreakdown } from '../../types/index.js';
 
 export class AdjustmentTotalsBreakdown {
   public readonly credit: string;

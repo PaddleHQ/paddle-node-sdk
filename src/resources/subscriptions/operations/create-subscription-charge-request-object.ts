@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SubscriptionEffectiveFrom, type SubscriptionOnPaymentFailure } from '../../../enums';
-import { type ISubscriptionNonCatalogPriceRequest } from '../../../types';
+import { type ISubscriptionNonCatalogPriceRequest } from '../../../types/index.js';
+import { type SubscriptionEffectiveFrom, type SubscriptionOnPaymentFailure } from '../../../enums/index.js';
 
 interface ITransactionItemBase {
   quantity: number;

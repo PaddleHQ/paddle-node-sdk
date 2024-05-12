@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentTotalsResponse } from '../../types';
-import { AdjustmentTotalsBreakdown } from '../index';
-import { type CurrencyCode } from '../../enums';
+import { AdjustmentTotalsBreakdown } from './adjustment-totals-breakdown.js';
+import { type CurrencyCode } from '../../enums/index.js';
+import { type IAdjustmentTotalsResponse } from '../../types/index.js';
 
 export class AdjustmentTotals {
   public readonly subtotal: string;

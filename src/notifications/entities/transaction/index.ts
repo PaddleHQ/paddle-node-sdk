@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './transactions-time-period-notification';
-export * from './transaction-proration-notification';
-export * from './transaction-item-notification';
-export * from './transaction-line-item-notification';
-export * from './transaction-details-notification';
-export * from './transaction-notification';
+export * from './transactions-time-period-notification.js';
+export * from './transaction-proration-notification.js';
+export * from './transaction-item-notification.js';
+export * from './transaction-line-item-notification.js';
+export * from './transaction-details-notification.js';
+export * from './transaction-notification.js';

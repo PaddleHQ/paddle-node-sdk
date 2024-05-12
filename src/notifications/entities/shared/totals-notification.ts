@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITotalsNotification } from '../../types';
+import { type ITotalsNotification } from '../../types/index.js';
 
 export class TotalsNotification {
   public readonly subtotal: string;

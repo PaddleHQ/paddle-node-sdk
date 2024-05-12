@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITimePeriod } from '../../types';
-import { type Interval } from '../../enums';
+import { type Interval } from '../../enums/index.js';
+import { type ITimePeriod } from '../../types/index.js';
 
 export class TimePeriod {
   public readonly interval: Interval;

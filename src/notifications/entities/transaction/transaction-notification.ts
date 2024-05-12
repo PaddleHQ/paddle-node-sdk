@@ -5,16 +5,21 @@
  */
 
 import {
+  type CollectionMode,
+  type CurrencyCode,
+  type TransactionOrigin,
+  type TransactionStatus,
+} from '../../../enums/index.js';
+import { type CustomData } from '../../../entities/index.js';
+import {
   BillingDetailsNotification,
-  TransactionsTimePeriodNotification,
-  TransactionItemNotification,
-  TransactionDetailsNotification,
-  TransactionPaymentAttemptNotification,
   TransactionCheckoutNotification,
-} from '../index';
-import { type TransactionStatus, type CurrencyCode, type TransactionOrigin, type CollectionMode } from '../../../enums';
-import { type ITransactionNotificationResponse } from '../../types';
-import { type CustomData } from '../../../entities';
+  TransactionPaymentAttemptNotification,
+} from '../shared/index.js';
+import { TransactionsTimePeriodNotification } from './transactions-time-period-notification.js';
+import { TransactionItemNotification } from './transaction-item-notification.js';
+import { TransactionDetailsNotification } from './transaction-details-notification.js';
+import { type ITransactionNotificationResponse } from '../../types/index.js';
 
 export class TransactionNotification {
   public readonly id: string;

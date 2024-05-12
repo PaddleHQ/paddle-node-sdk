@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IProductResponse } from '../../types';
-import { type CustomData, ImportMeta, Price } from '../index';
-import { type CatalogType, type Status, type TaxCategory } from '../../enums';
+import { type CatalogType, type Status, type TaxCategory } from '../../enums/index.js';
+import { type CustomData, ImportMeta, Price } from '../index.js';
+import { type IProductResponse } from '../../types/index.js';
 
 export class Product {
   public readonly id: string;

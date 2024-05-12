@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './pricing-preview-discounts';
-export * from './pricing-preview-line-item';
-export * from './pricing-preview-details';
-export * from './pricing-preview';
+export * from './pricing-preview-discounts.js';
+export * from './pricing-preview-line-item.js';
+export * from './pricing-preview-details.js';
+export * from './pricing-preview.js';

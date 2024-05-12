@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './customer-created-event';
-export * from './customer-updated-event';
-export * from './customer-imported-event';
+export * from './customer-created-event.js';
+export * from './customer-updated-event.js';
+export * from './customer-imported-event.js';

@@ -4,14 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IBillingDetailsUpdate, type ICustomData, type ISubscriptionUpdateItem } from '../../../types';
 import {
   type CollectionMode,
   type CurrencyCode,
   type ProrationBillingMode,
   type SubscriptionEffectiveFrom,
   type SubscriptionOnPaymentFailure,
-} from '../../../enums';
+} from '../../../enums/index.js';
+import { type IBillingDetailsUpdate, type ICustomData, type ISubscriptionUpdateItem } from '../../../types/index.js';
 
 export interface UpdateSubscriptionDiscount {
   id: string;

@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse } from '../../../types';
-import { IBusinessNotificationResponse } from '../../../notifications';
+import { IBusinessNotificationResponse } from '../../../notifications/index.js';
+import { IEventsResponse } from '../../../types/index.js';
 
 export const BusinessUpdatedMock: IEventsResponse<IBusinessNotificationResponse> = {
   event_id: 'evt_01h84b8sq18asjb0m3tvn4g0dn',

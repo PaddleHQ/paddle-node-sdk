@@ -1,5 +1,4 @@
-import { type Response } from 'node-fetch';
-import { LogLevel } from '../api';
+import { LogLevel } from '../api/index.js';
 
 type LogInputProps = Array<string | undefined | null>;
 

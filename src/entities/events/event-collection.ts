@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Collection } from '../../internal/base';
-import { type IEvents, type IEventsResponse } from '../../types';
-import { type EventEntity, Webhooks } from '../../notifications';
+import { type IEvents, type IEventsResponse } from '../../types/index.js';
+import { Collection } from '../../internal/base/index.js';
+import { type EventEntity, Webhooks } from '../../notifications/index.js';
 
 export class EventCollection extends Collection<IEventsResponse, EventEntity | null> {
   override fromJson(data: IEvents): EventEntity | null {

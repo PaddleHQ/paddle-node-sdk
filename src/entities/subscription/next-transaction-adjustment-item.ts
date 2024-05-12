@@ -3,9 +3,10 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { AdjustmentItemTotals, AdjustmentProration } from '../adjustment';
-import { type AdjustmentType } from '../../enums';
-import { type IAdjustmentItemResponse } from '../../types';
+
+import { type AdjustmentType } from '../../enums/index.js';
+import { AdjustmentItemTotals, AdjustmentProration } from '../adjustment/index.js';
+import { type IAdjustmentItemResponse } from '../../types/index.js';
 
 export class NextTransactionAdjustmentItem {
   public readonly itemId: string;

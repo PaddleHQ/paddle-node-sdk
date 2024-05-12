@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CountryCode, type CurrencyCode } from '../../../enums';
-import { type ITransactionItemPreviewRequest } from '../../../types';
+import { type CountryCode, type CurrencyCode } from '../../../enums/index.js';
+import { type ITransactionItemPreviewRequest } from '../../../types/index.js';
 
 export interface IAddressPreviewResponse {
   postal_code?: string | null;

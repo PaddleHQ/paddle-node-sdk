@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IBusinessResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
+import { IBusinessResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const UpdateBusinessMock = {
   name: 'Maryjane',

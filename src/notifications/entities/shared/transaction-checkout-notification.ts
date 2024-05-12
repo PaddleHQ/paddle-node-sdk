@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionCheckoutNotification } from '../../types';
+import { type ITransactionCheckoutNotification } from '../../types/index.js';
 
 export class TransactionCheckoutNotification {
   public readonly url: string | null;

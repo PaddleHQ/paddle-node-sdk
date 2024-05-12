@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionManagementResponse } from '../../types';
+import { type ISubscriptionManagementResponse } from '../../types/index.js';
 
 export class SubscriptionManagement {
   public readonly updatePaymentMethod: string | null;

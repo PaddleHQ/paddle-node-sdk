@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionItemNotificationResponse } from '../../types';
-import { PriceNotification, TransactionProrationNotification } from '../index';
+import { PriceNotification } from '../price/index.js';
+import { TransactionProrationNotification } from './transaction-proration-notification.js';
+import { type ITransactionItemNotificationResponse } from '../../types/index.js';
 
 export class TransactionItemNotification {
   public readonly price: PriceNotification | null;

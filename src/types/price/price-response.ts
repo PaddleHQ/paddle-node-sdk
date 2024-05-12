@@ -12,8 +12,8 @@ import {
   type IProductResponse,
   type ITimePeriod,
   type IUnitPriceOverrideResponse,
-} from '../index';
-import { type CatalogType, type Status, type TaxMode } from '../../enums';
+} from '../index.js';
+import { type CatalogType, type Status, type TaxMode } from '../../enums/index.js';
 
 export interface IPriceResponse {
   id: string;

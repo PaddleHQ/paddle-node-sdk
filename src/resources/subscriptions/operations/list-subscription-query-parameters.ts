@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CollectionMode, type ScheduledChangeAction, type SubscriptionStatus } from '../../../enums';
+import { type CollectionMode, type ScheduledChangeAction, type SubscriptionStatus } from '../../../enums/index.js';
 
 export interface ListSubscriptionQueryParameters {
   addressId?: string[];

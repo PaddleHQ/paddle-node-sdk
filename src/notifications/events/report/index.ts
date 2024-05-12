@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './report-created-event';
-export * from './report-updated-event';
+export * from './report-created-event.js';
+export * from './report-updated-event.js';

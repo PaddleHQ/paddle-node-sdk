@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-product-query-parameters';
-export * from './create-product-request-body';
-export * from './get-product-query-parameters';
-export * from './update-product-request-body';
+export * from './list-product-query-parameters.js';
+export * from './create-product-request-body.js';
+export * from './get-product-query-parameters.js';
+export * from './update-product-request-body.js';

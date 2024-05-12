@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentItemTotals, type ITransactionProrationResponse } from '../index';
-import { type AdjustmentType } from '../../enums';
+import { type AdjustmentType } from '../../enums/index.js';
+import { type ITransactionProrationResponse } from './transaction-proration-response.js';
+import { type IAdjustmentItemTotals } from '../shared/index.js';
 
 export interface ITransactionAdjustmentItemResponse {
   id?: string | null;

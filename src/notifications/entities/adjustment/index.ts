@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './adjustment-time-period-notification';
-export * from './adjustment-proration-notification';
-export * from './adjustment-item-notification';
-export * from './adjustment-item-totals-notification';
-export * from './adjustment-notification';
+export * from './adjustment-time-period-notification.js';
+export * from './adjustment-proration-notification.js';
+export * from './adjustment-item-notification.js';
+export * from './adjustment-item-totals-notification.js';
+export * from './adjustment-notification.js';

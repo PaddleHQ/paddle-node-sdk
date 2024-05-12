@@ -4,15 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  type ITimePeriodNotification,
-  type IMoneyNotificationResponse,
-  type IUnitPriceOverrideNotificationResponse,
-  type IPriceQuantityNotification,
-  type IImportMetaNotificationResponse,
-} from '../index';
-import { type TaxMode, type Status, type CatalogType } from '../../../enums';
-import { type ICustomData } from '../../../types';
+import { type CatalogType, type Status, type TaxMode } from '../../../enums/index.js';
+import { type ITimePeriodNotification } from './time-period-notification.js';
+import { type IMoneyNotificationResponse } from './money-notification-response.js';
+import { type IUnitPriceOverrideNotificationResponse } from './unit-price-override-notification-response.js';
+import { type IPriceQuantityNotification } from '../price/index.js';
+import { type ICustomData } from '../../../types/index.js';
+import { type IImportMetaNotificationResponse } from './import-meta-notification-response.js';
 
 export interface ISharedPriceNotificationResponse {
   id: string;

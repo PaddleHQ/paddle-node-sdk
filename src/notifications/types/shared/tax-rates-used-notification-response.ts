@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITotalsNotification } from '../index';
+import { type ITotalsNotification } from './totals.js';
 
 export interface ITaxRatesUsedNotificationResponse {
   tax_rate: string;

@@ -3,11 +3,12 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { Event } from '../../../entities/events/event';
-import { DiscountNotification } from '../../entities';
-import { type IEventsResponse } from '../../../types';
-import { EventName } from '../../helpers';
-import { type IDiscountNotificationResponse } from '../../types';
+
+import { Event } from '../../../entities/events/event.js';
+import { EventName } from '../../helpers/index.js';
+import { DiscountNotification } from '../../entities/index.js';
+import { type IEventsResponse } from '../../../types/index.js';
+import { type IDiscountNotificationResponse } from '../../types/index.js';
 
 export class DiscountImportedEvent extends Event {
   public override readonly eventType = EventName.DiscountImported;

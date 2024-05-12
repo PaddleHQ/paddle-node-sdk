@@ -3,7 +3,8 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type IBusinessContactsNotification } from '../../types';
+
+import { type IBusinessContactsNotification } from '../../types/index.js';
 
 export class ContactsNotification {
   public readonly name: string | null;

@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentsProrationResponse } from '../../types';
-import { AdjustmentTimePeriod } from '../index';
+import { AdjustmentTimePeriod } from './adjustment-time-period.js';
+import { type IAdjustmentsProrationResponse } from '../../types/index.js';
 
 export class AdjustmentProration {
   public readonly rate: string;

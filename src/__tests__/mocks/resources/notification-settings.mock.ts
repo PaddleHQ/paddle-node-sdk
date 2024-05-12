@@ -4,9 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { INotificationSettingsResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
-import { CreateNotificationSettingsRequestBody, UpdateNotificationSettingsRequestBody } from '../../../resources';
+import {
+  CreateNotificationSettingsRequestBody,
+  UpdateNotificationSettingsRequestBody,
+} from '../../../resources/index.js';
+import { INotificationSettingsResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreateNotificationSettingsMock: CreateNotificationSettingsRequestBody = {
   description: 'considero conscendo tenax centum consuasor vehemens tardus cursus uxor vobis',

@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Discount, DiscountCollection } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreateDiscountRequestBody,
   type ListDiscountQueryParameters,
   type UpdateDiscountRequestBody,
-} from './operations';
-import { type IDiscountResponse } from '../../types';
+} from './operations/index.js';
+import { Discount, DiscountCollection } from '../../entities/index.js';
+import { type IDiscountResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const DiscountPaths = {
   list: '/discounts',
@@ -21,7 +21,7 @@ const DiscountPaths = {
   update: '/discounts/{discount_id}',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class DiscountsResource extends BaseResource {
   public list(queryParams?: ListDiscountQueryParameters): DiscountCollection {
