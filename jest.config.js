@@ -9,6 +9,9 @@ const config = {
   testMatch: ['**/__tests__/**/*.test.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   cacheDirectory: process.env.JEST_CACHE_FOLDER || '/tmp/node-sdk/.jest-cache',
+  moduleNameMapper: {
+    '(.+)\\.js': '$1',
+  },
   coveragePathIgnorePatterns: [
     '/src/types/',
     '__tests__',

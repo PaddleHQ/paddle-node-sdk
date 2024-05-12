@@ -6,12 +6,12 @@
 
 import {
   type ITaxRatesUsedNotificationResponse,
-  type ITransactionTotalsNotificationResponse,
-  type ITransactionTotalsAdjustedNotificationResponse,
-  type ITransactionPayoutTotalsNotificationResponse,
   type ITransactionPayoutTotalsAdjustedNotificationResponse,
-  type ITransactionLineItemNotificationResponse,
-} from '../index';
+  type ITransactionPayoutTotalsNotificationResponse,
+  type ITransactionTotalsAdjustedNotificationResponse,
+  type ITransactionTotalsNotificationResponse,
+} from '../shared/index.js';
+import { type ITransactionLineItemNotificationResponse } from './transaction-line-item-notification-response.js';
 
 export interface ITransactionDetailsNotificationResponse {
   tax_rates_used: ITaxRatesUsedNotificationResponse[];

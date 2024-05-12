@@ -4,7 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IProductResponse, type ITotals, type IUnitTotals } from '../index';
+import { type IUnitTotals } from './unit-totals.js';
+import { type ITotals } from './totals.js';
+import { type IProductResponse } from '../product/index.js';
 
 export interface ITransactionLineItemPreviewResponse {
   price_id: string;

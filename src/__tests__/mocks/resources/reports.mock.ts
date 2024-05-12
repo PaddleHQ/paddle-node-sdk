@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IReportCsvResponse, IReportResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
+import { IReportCsvResponse, IReportResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const ReportMock: IReportResponse = {
   id: 'add_01gm302t81w94gyjpjpqypkzkf',

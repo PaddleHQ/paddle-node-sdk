@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IMoneyResponse } from '../shared';
+import { type IMoneyResponse } from '../shared/index.js';
 
 export interface ISubscriptionResultResponse extends IMoneyResponse {
   action: 'credit' | 'charge';

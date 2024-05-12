@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IReportCsvResponse } from '../../types';
+import { type IReportCsvResponse } from '../../types/index.js';
 
 export class ReportCsv {
   public readonly url: string;

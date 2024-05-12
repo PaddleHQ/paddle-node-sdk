@@ -4,11 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  type ITaxRatesUsedResponse,
-  type ITransactionTotalsResponse,
-  type ITransactionLineItemPreviewResponse,
-} from '../index';
+import { type ITaxRatesUsedResponse } from './tax-rates-used-response.js';
+import { type ITransactionTotalsResponse } from './transaction-totals-response.js';
+import { type ITransactionLineItemPreviewResponse } from './transaction-line-item-preview-response.js';
 
 export interface ITransactionDetailsPreviewResponse {
   tax_rates_used: ITaxRatesUsedResponse[];

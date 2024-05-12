@@ -4,14 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type CatalogType, type TaxMode } from '../../../enums/index.js';
 import {
   type ICustomData,
   type IMoney,
   type IPriceQuantity,
   type ITimePeriod,
   type IUnitPriceOverride,
-} from '../../../types';
-import { type CatalogType, type TaxMode } from '../../../enums';
+} from '../../../types/index.js';
 
 export interface CreatePriceRequestBody {
   name?: string | null;

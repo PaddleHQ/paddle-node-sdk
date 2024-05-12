@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionItemResponse } from '../../types';
-import { Price, TransactionProration } from '../index';
+import { Price } from '../price/index.js';
+import { TransactionProration } from './transaction-proration.js';
+import { type ITransactionItemResponse } from '../../types/index.js';
 
 export class TransactionItem {
   public readonly price: Price | null;

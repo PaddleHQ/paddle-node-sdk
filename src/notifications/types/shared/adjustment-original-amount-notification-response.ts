@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentCurrencyCode } from '../../../enums';
+import { type AdjustmentCurrencyCode } from '../../../enums/index.js';
 
 export interface IAdjustmentOriginalAmountNotificationResponse {
   amount: string;

@@ -17,7 +17,7 @@ import {
   type IReportNotificationResponse,
   type ISubscriptionNotificationResponse,
   type ITransactionNotificationResponse,
-} from '../../notifications';
+} from '../../notifications/index.js';
 
 export interface IEventsResponse<T = object> {
   event_id: string;

@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IBillingDetailsResponse } from '../../types';
-import { TimePeriod } from '../index';
+import { TimePeriod } from './time-period.js';
+import { type IBillingDetailsResponse } from '../../types/index.js';
 
 export class BillingDetails {
   public readonly enableCheckout: boolean | null;

@@ -4,11 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { BaseResource, PathParameters } from '../../internal/base';
-import { type ErrorResponse, type Response } from '../../internal';
-import { NotificationSettings } from '../../entities';
-import { type INotificationSettingsResponse } from '../../types';
-import { type CreateNotificationSettingsRequestBody, type UpdateNotificationSettingsRequestBody } from './operations';
+import { BaseResource, PathParameters } from '../../internal/base/index.js';
+import { NotificationSettings } from '../../entities/index.js';
+import { type INotificationSettingsResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
+import {
+  type CreateNotificationSettingsRequestBody,
+  type UpdateNotificationSettingsRequestBody,
+} from './operations/index.js';
 
 const NotificationSettingsPaths = {
   list: '/notification-settings',
@@ -18,7 +21,7 @@ const NotificationSettingsPaths = {
   delete: '/notification-settings/{notification_setting_id}',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class NotificationSettingsResource extends BaseResource {
   public async list(): Promise<NotificationSettings[]> {

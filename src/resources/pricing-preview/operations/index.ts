@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './pricing-preview-request-body';
+export * from './pricing-preview-request-body.js';

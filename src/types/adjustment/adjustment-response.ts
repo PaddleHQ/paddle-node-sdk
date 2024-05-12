@@ -4,12 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  type IAdjustmentItemResponse,
-  type ITotalAdjustmentsResponse,
-  type IPayoutTotalsAdjustmentResponse,
-} from '../index';
-import { type AdjustmentAction, type CurrencyCode, type AdjustmentStatus } from '../../enums';
+import { type AdjustmentAction, type AdjustmentStatus, type CurrencyCode } from '../../enums/index.js';
+import { type IAdjustmentItemResponse } from './adjustment-item-response.js';
+import { type IPayoutTotalsAdjustmentResponse, type ITotalAdjustmentsResponse } from '../shared/index.js';
 
 export interface IAdjustmentResponse {
   id: string;

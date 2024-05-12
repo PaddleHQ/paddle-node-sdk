@@ -4,21 +4,21 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  BusinessesResource,
-  CreateBusinessRequestBody,
-  ListBusinessQueryParameters,
-  UpdateBusinessRequestBody,
-} from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   BusinessMock,
   BusinessMockResponse,
   ListBusinessMockResponse,
   UpdateBusinessExpectation,
   UpdateBusinessMock,
-} from '../mocks/resources/businesses.mock';
-import { convertToSnakeCase } from '../../internal';
+} from '../mocks/resources/businesses.mock.js';
+import {
+  BusinessesResource,
+  CreateBusinessRequestBody,
+  ListBusinessQueryParameters,
+  UpdateBusinessRequestBody,
+} from '../../resources/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('BusinessesResource', () => {
   test('should return a list of businesses', async () => {

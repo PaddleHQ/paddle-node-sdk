@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-discount-query-parameters';
-export * from './create-discount-request-body';
-export * from './update-discount-request-body';
+export * from './list-discount-query-parameters.js';
+export * from './create-discount-request-body.js';
+export * from './update-discount-request-body.js';

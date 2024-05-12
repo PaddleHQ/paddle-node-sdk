@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IDiscountResponse } from '../discount';
+import { type IDiscountResponse } from '../discount/index.js';
 
 export interface IPricingPreviewDiscountsResponse {
   discount: IDiscountResponse;

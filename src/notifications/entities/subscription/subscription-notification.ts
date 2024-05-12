@@ -4,18 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  BillingDetailsNotification,
-  ImportMetaNotification,
-  SubscriptionDiscountNotification,
-  SubscriptionItemNotification,
-  SubscriptionScheduledChangeNotification,
-  SubscriptionTimePeriodNotification,
-  TimePeriodNotification,
-} from '../index';
-import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums';
-import { type ISubscriptionNotificationResponse } from '../../types';
-import { type CustomData } from '../../../entities';
+import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums/index.js';
+import { SubscriptionDiscountNotification } from './subscription-discount-notification.js';
+import { BillingDetailsNotification, ImportMetaNotification, TimePeriodNotification } from '../shared/index.js';
+import { SubscriptionTimePeriodNotification } from './subscription-time-period-notification.js';
+import { SubscriptionScheduledChangeNotification } from './subscription-scheduled-change-notification.js';
+import { SubscriptionItemNotification } from './subscription-item-notification.js';
+import { type CustomData } from '../../../entities/index.js';
+import { type ISubscriptionNotificationResponse } from '../../types/index.js';
 
 export class SubscriptionNotification {
   public readonly id: string;

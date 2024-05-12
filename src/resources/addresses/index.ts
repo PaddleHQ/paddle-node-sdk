@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Address, AddressCollection } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
-  type ListAddressQueryParameters,
   type CreateAddressRequestBody,
+  type ListAddressQueryParameters,
   type UpdateAddressRequestBody,
-} from './operations';
-import { type IAddressResponse } from '../../types';
+} from './operations/index.js';
+import { Address, AddressCollection } from '../../entities/index.js';
+import { type IAddressResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const AddressPaths = {
   list: '/customers/{customer_id}/addresses',
@@ -21,7 +21,7 @@ const AddressPaths = {
   update: '/customers/{customer_id}/addresses/{address_id}',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class AddressesResource extends BaseResource {
   public list(customerId: string, queryParams?: ListAddressQueryParameters): AddressCollection {

@@ -1,6 +1,6 @@
-import { type Client } from '../api/client';
-import { ApiError } from '../errors/generic';
-import { type ErrorResponse, type ResponsePaginated } from '../types/response';
+import { type Client } from '../api/client.js';
+import { type ErrorResponse, type ResponsePaginated } from '../types/response.js';
+import { ApiError } from '../errors/generic.js';
 
 export abstract class Collection<T, C> implements AsyncIterable<C> {
   public hasMore: boolean = true;

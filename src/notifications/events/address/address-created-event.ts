@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse } from '../../../types';
-import { EventName } from '../../helpers';
-import { Event } from '../../../entities/events/event';
-import { AddressNotification } from '../../entities';
-import { type IAddressNotificationResponse } from '../../types';
+import { EventName } from '../../helpers/index.js';
+import { Event } from '../../../entities/events/event.js';
+import { AddressNotification } from '../../entities/index.js';
+import { type IEventsResponse } from '../../../types/index.js';
+import { type IAddressNotificationResponse } from '../../types/index.js';
 
 export class AddressCreatedEvent extends Event {
   public override readonly eventType = EventName.AddressCreated;

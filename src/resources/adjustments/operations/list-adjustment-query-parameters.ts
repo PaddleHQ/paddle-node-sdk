@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentAction, type AdjustmentStatus } from '../../../enums';
+import { type AdjustmentAction, type AdjustmentStatus } from '../../../enums/index.js';
 
 export interface ListAdjustmentQueryParameters {
   action?: AdjustmentAction;

@@ -12,6 +12,14 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 1.4.0-beta.0 - 2024-05-10
+
+### Changed
+
+- Updated the package to run in deno.
+
+---
+
 ## 1.3.0 - 2024-04-18
 
 ### Changed

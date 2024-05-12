@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IReportFiltersNotification } from '../index';
-import { type ReportType, type ReportStatus } from '../../../enums';
+import { type ReportStatus, type ReportType } from '../../../enums/index.js';
+import { type IReportFiltersNotification } from './report-filters-notification-response.js';
 
 export interface IReportNotificationResponse {
   id: string;

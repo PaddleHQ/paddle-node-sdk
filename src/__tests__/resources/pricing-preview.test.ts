@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { PricingPreviewResource } from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
-import { PricingPreviewMockResponse, PricingPreviewRequest } from '../mocks/resources/pricing-preview.mock';
+import { getPaddleTestClient } from '../helpers/test-client.js';
+import { PricingPreviewMockResponse, PricingPreviewRequest } from '../mocks/resources/pricing-preview.mock.js';
+import { PricingPreviewResource } from '../../resources/index.js';
 
 describe('PricingPreviewResource', () => {
   test('should return a preview of the price', async () => {

@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../enums';
-import { type ICustomData, type IImportMetaResponse } from '../shared';
+import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../enums/index.js';
+import { type ICustomData, type IImportMetaResponse } from '../shared/index.js';
 
 export interface IDiscountResponse {
   id: string;

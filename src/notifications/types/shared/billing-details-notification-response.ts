@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITimePeriodNotification } from '../index';
+import { type ITimePeriodNotification } from './time-period-notification.js';
 
 export interface IBillingDetailsNotificationResponse {
   enable_checkout?: boolean | null;

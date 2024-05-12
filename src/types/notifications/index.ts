@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './notification';
-export * from './notification-log';
-export * from './replay-notification';
+export * from './notification.js';
+export * from './notification-log.js';
+export * from './replay-notification.js';

@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITimePeriod } from '../index';
+import { type ITimePeriod } from './time-period.js';
 
 export interface IBillingDetailsUpdate {
   enableCheckout: boolean;

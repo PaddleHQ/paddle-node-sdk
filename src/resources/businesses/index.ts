@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Business, BusinessCollection } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreateBusinessRequestBody,
   type ListBusinessQueryParameters,
   type UpdateBusinessRequestBody,
-} from './operations';
-import { type IBusinessResponse } from '../../types';
+} from './operations/index.js';
+import { Business, BusinessCollection } from '../../entities/index.js';
+import { type IBusinessResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const BusinessPaths = {
   list: '/customers/{customer_id}/businesses',
@@ -21,7 +21,7 @@ const BusinessPaths = {
   update: '/customers/{customer_id}/businesses/{business_id}',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class BusinessesResource extends BaseResource {
   public list(customerId: string, queryParams?: ListBusinessQueryParameters): BusinessCollection {

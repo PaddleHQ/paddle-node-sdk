@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './report-filters';
-export * from './report';
-export * from './report-csv';
-export * from './report-collection';
+export * from './report-filters.js';
+export * from './report.js';
+export * from './report-csv.js';
+export * from './report-collection.js';

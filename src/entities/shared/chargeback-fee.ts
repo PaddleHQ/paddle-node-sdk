@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IChargebackFee } from '../../types';
-import { AdjustmentOriginalAmount } from '../index';
+import { AdjustmentOriginalAmount } from './adjustment-original-amount.js';
+import { type IChargebackFee } from '../../types/index.js';
 
 export class ChargebackFee {
   public readonly amount: string;

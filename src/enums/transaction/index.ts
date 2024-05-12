@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './payment-card-type';
+export * from './payment-card-type.js';

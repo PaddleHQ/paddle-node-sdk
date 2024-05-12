@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IProductResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
-import { CreateProductRequestBody, UpdateProductRequestBody } from '../../../resources';
+import { CreateProductRequestBody, UpdateProductRequestBody } from '../../../resources/index.js';
+import { IProductResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreateProductMock: CreateProductRequestBody = {
   name: 'Hayley',

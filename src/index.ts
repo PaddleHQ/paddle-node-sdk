@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export { Environment, ApiError, type PaddleOptions } from './internal';
-export { SDK_VERSION } from './version';
+export { Environment, ApiError, type PaddleOptions } from './internal/index.js';
+export { SDK_VERSION } from './version.js';
 
-export { Paddle } from './paddle';
-export * from './entities';
-export * from './enums';
-export * from './notifications';
-export * from './resources';
-export * from './types';
+export { Paddle } from './paddle.js';
+export * from './entities/index.js';
+export * from './enums/index.js';
+export * from './notifications/index.js';
+export * from './resources/index.js';
+export * from './types/index.js';

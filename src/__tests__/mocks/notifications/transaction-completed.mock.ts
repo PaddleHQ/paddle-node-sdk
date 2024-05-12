@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse } from '../../../types';
-import { ITransactionNotificationResponse } from '../../../notifications';
+import { ITransactionNotificationResponse } from '../../../notifications/index.js';
+import { IEventsResponse } from '../../../types/index.js';
 
 export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationResponse> = {
   event_id: 'evt_01h8e1jxjnw9ra6zarhnz1a7y1',

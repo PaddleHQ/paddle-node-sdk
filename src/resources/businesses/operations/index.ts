@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-business-query-parameters';
-export * from './create-business-request-body';
-export * from './update-business-request-body';
+export * from './list-business-query-parameters.js';
+export * from './create-business-request-body.js';
+export * from './update-business-request-body.js';

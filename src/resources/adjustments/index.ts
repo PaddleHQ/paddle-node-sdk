@@ -4,18 +4,18 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { AdjustmentCollection, Adjustment } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, QueryParameters } from '../../internal/base';
-import { type CreateAdjustmentRequestBody, type ListAdjustmentQueryParameters } from './operations';
-import { type IAdjustmentResponse } from '../../types';
+import { BaseResource, QueryParameters } from '../../internal/base/index.js';
+import { type CreateAdjustmentRequestBody, type ListAdjustmentQueryParameters } from './operations/index.js';
+import { Adjustment, AdjustmentCollection } from '../../entities/index.js';
+import { type IAdjustmentResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const AdjustmentPaths = {
   list: '/adjustments',
   create: '/adjustments',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class AdjustmentsResource extends BaseResource {
   public list(queryParams?: ListAdjustmentQueryParameters): AdjustmentCollection {

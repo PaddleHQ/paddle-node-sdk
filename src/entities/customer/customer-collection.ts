@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Customer } from './customer';
-import { type ICustomerResponse } from '../../types';
-import { Collection } from '../../internal/base';
+import { Collection } from '../../internal/base/index.js';
+import { type ICustomerResponse } from '../../types/index.js';
+import { Customer } from './customer.js';
 
 export class CustomerCollection extends Collection<ICustomerResponse, Customer> {
   override fromJson(data: ICustomerResponse): Customer {

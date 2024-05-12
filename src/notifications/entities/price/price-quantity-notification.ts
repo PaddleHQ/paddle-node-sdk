@@ -3,7 +3,8 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type IPriceQuantityNotification } from '../../types';
+
+import { type IPriceQuantityNotification } from '../../types/index.js';
 
 export class PriceQuantityNotification {
   public readonly minimum: number;

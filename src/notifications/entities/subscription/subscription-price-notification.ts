@@ -4,16 +4,16 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionPriceNotificationResponse } from '../../types';
+import { type CatalogType, type Status, type TaxMode } from '../../../enums/index.js';
 import {
-  type ImportMetaNotification,
+  ImportMetaNotification,
   MoneyNotification,
-  PriceQuantityNotification,
   TimePeriodNotification,
   UnitPriceOverrideNotification,
-} from '../index';
-import { type CatalogType, type Status, type TaxMode } from '../../../enums';
-import { type CustomData, ImportMeta } from '../../../entities';
+} from '../shared/index.js';
+import { PriceQuantityNotification } from '../price/index.js';
+import { type CustomData } from '../../../entities/index.js';
+import { type ISubscriptionPriceNotificationResponse } from '../../types/index.js';
 
 export class SubscriptionPriceNotification {
   public readonly id: string;
@@ -47,6 +47,6 @@ export class SubscriptionPriceNotification {
     this.quantity = price.quantity ? new PriceQuantityNotification(price.quantity) : null;
     this.status = price.status ?? null;
     this.customData = price.custom_data ? price.custom_data : null;
-    this.importMeta = price.import_meta ? new ImportMeta(price.import_meta) : null;
+    this.importMeta = price.import_meta ? new ImportMetaNotification(price.import_meta) : null;
   }
 }

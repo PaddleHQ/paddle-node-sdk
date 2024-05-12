@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionDetailsResponse } from '../../types';
 import {
   TaxRatesUsed,
-  TransactionTotals,
-  TransactionTotalsAdjusted,
   TransactionPayoutTotals,
   TransactionPayoutTotalsAdjusted,
-  TransactionLineItem,
-} from '../index';
+  TransactionTotals,
+  TransactionTotalsAdjusted,
+} from '../shared/index.js';
+import { TransactionLineItem } from './transaction-line-item.js';
+import { type ITransactionDetailsResponse } from '../../types/index.js';
 
 export class TransactionDetails {
   public readonly taxRatesUsed: TaxRatesUsed[];

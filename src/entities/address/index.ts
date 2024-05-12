@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './address-collection';
-export * from './address';
+export * from './address-collection.js';
+export * from './address.js';

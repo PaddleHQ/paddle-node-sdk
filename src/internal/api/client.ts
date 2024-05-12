@@ -1,13 +1,13 @@
-import { API_ENVIRONMENT_TO_BASE_URL_MAP } from './constants';
-import { type QueryParameters } from '../base';
+import { type PaddleOptions } from '../types/config.js';
+import { Environment } from './environment.js';
 import fetch from 'node-fetch';
-import { SDK_VERSION } from '../../version';
-import { type PaddleOptions } from '../types/config';
-import { Environment } from './environment';
+import { API_ENVIRONMENT_TO_BASE_URL_MAP } from './constants.js';
 import { randomUUID } from 'node:crypto';
-import { Logger } from '../base/logger';
-import { convertToSnakeCase } from './case-helpers';
-import { type ErrorResponse } from '../types/response';
+import { SDK_VERSION } from '../../version.js';
+import { type QueryParameters } from '../base/index.js';
+import { Logger } from '../base/logger.js';
+import { convertToSnakeCase } from './case-helpers.js';
+import { type ErrorResponse } from '../types/response.js';
 
 export class Client {
   private readonly baseUrl: string;

@@ -4,9 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomData, type IPriceResponse } from '../../types';
-import { ImportMeta, Money, PriceQuantity, Product, TimePeriod, UnitPriceOverride } from '../index';
-import { type CatalogType, type Status, type TaxMode } from '../../enums';
+import { type CatalogType, type Status, type TaxMode } from '../../enums/index.js';
+import { ImportMeta, Money, TimePeriod, UnitPriceOverride } from '../shared/index.js';
+import { PriceQuantity } from './price-quantity.js';
+import { type ICustomData, type IPriceResponse } from '../../types/index.js';
+import { Product } from '../product/index.js';
 
 export class Price {
   public readonly id: string;

@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './customer-notification-response';
+export * from './customer-notification-response.js';

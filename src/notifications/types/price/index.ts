@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './price-notification-response';
-export * from './price-quantity-notification';
+export * from './price-notification-response.js';
+export * from './price-quantity-notification.js';

@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './discount-created-event';
-export * from './discount-updated-event';
-export * from './discount-imported-event';
+export * from './discount-created-event.js';
+export * from './discount-updated-event.js';
+export * from './discount-imported-event.js';

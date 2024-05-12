@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPriceResponse, type ISubscriptionTimePeriodResponse } from '../index';
-import { type SubscriptionItemStatus } from '../../enums';
+import { type SubscriptionItemStatus } from '../../enums/index.js';
+import { type ISubscriptionTimePeriodResponse } from './subscription-time-period-response.js';
+import { type IPriceResponse } from '../price/index.js';
 
 export interface ISubscriptionItemResponse {
   status: SubscriptionItemStatus;

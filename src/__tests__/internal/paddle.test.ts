@@ -1,4 +1,4 @@
-import { Environment, Paddle } from '../../index';
+import { Environment, Paddle } from '../../index.js';
 
 describe('Paddle', () => {
   test('Paddle class can be constructed', () => {

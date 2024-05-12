@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './discount-collection';
-export * from './discount';
+export * from './discount-collection.js';
+export * from './discount.js';

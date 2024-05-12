@@ -1,4 +1,5 @@
-import { Client } from './internal/api/client';
+import { Client } from './internal/api/client.js';
+import { Environment, type PaddleOptions } from './internal/index.js';
 import {
   AddressesResource,
   AdjustmentsResource,
@@ -14,10 +15,9 @@ import {
   ReportsResource,
   SubscriptionsResource,
   TransactionsResource,
-} from './resources';
-import { Environment, type PaddleOptions } from './internal';
-import { EventsResource } from './resources/events';
-import { Webhooks } from './notifications';
+} from './resources/index.js';
+import { EventsResource } from './resources/events/index.js';
+import { Webhooks } from './notifications/index.js';
 
 export class Paddle {
   private readonly client: Client;

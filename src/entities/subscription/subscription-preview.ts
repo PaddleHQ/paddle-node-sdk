@@ -4,22 +4,20 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionItemResponse, type ISubscriptionPreviewResponse } from '../../types';
+import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../enums/index.js';
+import { SubscriptionDiscount } from './subscription-discount.js';
+import { BillingDetails, ImportMeta, TimePeriod } from '../shared/index.js';
+import { SubscriptionTimePeriod } from './subscription-time-period.js';
+import { SubscriptionScheduledChange } from './subscription-scheduled-change.js';
+import { SubscriptionManagement } from './subscription-management.js';
+import { SubscriptionItem } from './subscription-item.js';
 import {
-  BillingDetails,
   type CustomData,
-  ImportMeta,
   NextTransaction,
-  SubscriptionDiscount,
-  SubscriptionItem,
-  SubscriptionManagement,
   SubscriptionPreviewUpdateSummary,
-  SubscriptionScheduledChange,
-  SubscriptionTimePeriod,
-  TimePeriod,
   TransactionDetailsPreview,
-} from '../index';
-import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../enums';
+} from '../index.js';
+import { type ISubscriptionItemResponse, type ISubscriptionPreviewResponse } from '../../types/index.js';
 
 export class SubscriptionPreview {
   public readonly status: SubscriptionStatus;

@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionResponse } from '../../types';
-import { Collection } from '../../internal/base';
-import { Transaction } from './transaction';
+import { Collection } from '../../internal/base/index.js';
+import { type ITransactionResponse } from '../../types/index.js';
+import { Transaction } from './transaction.js';
 
 export class TransactionCollection extends Collection<ITransactionResponse, Transaction> {
   override fromJson(data: ITransactionResponse): Transaction {

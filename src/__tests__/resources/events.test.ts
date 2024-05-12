@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { getPaddleTestClient } from '../helpers/test-client';
-import { ListEventMockResponse } from '../mocks/resources/events.mock';
-import { EventsResource, ListEventsQueryParameters } from '../../resources/events';
+import { getPaddleTestClient } from '../helpers/test-client.js';
+import { ListEventMockResponse } from '../mocks/resources/events.mock.js';
+import { EventsResource, ListEventsQueryParameters } from '../../resources/events/index.js';
 
 describe('EventsResource', () => {
   test('should return a list of events', async () => {

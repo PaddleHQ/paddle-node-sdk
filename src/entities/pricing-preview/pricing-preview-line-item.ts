@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Price } from '../price';
-import { Totals } from '../shared';
-import { Product } from '../product';
-import { PricingPreviewDiscounts } from './pricing-preview-discounts';
-import { type IPricingPreviewLineItemResponse } from '../../types';
+import { Price } from '../price/index.js';
+import { Totals } from '../shared/index.js';
+import { Product } from '../product/index.js';
+import { PricingPreviewDiscounts } from './pricing-preview-discounts.js';
+import { type IPricingPreviewLineItemResponse } from '../../types/index.js';
 
 export class PricingPreviewLineItem {
   public readonly price: Price;

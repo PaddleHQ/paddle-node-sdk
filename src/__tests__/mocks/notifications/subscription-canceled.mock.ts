@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse } from '../../../types';
-import { ISubscriptionNotificationResponse } from '../../../notifications';
+import { ISubscriptionNotificationResponse } from '../../../notifications/index.js';
+import { IEventsResponse } from '../../../types/index.js';
 
 export const SubscriptionCanceledMock: IEventsResponse<ISubscriptionNotificationResponse> = {
   event_id: 'evt_01h7jk37p1ezj1k5b4kt83t35j',

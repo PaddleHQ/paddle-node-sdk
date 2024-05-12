@@ -1,6 +1,6 @@
-import type { TaxMode } from '../../enums';
-import type { ICustomData, IMoney, IPriceQuantity, IUnitPriceOverride } from '../shared';
-import { type CreateProductRequestBody } from '../../resources';
+import type { TaxMode } from '../../enums/index.js';
+import type { ICustomData, IMoney, IPriceQuantity, IUnitPriceOverride } from '../shared/index.js';
+import { type CreateProductRequestBody } from '../../resources/index.js';
 
 interface INonCatalogBasePriceRequest {
   name?: string | null;

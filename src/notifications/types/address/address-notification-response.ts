@@ -3,8 +3,9 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type CountryCode, type Status } from '../../../enums';
-import { type ICustomData, type IImportMetaResponse } from '../../../types';
+
+import { type CountryCode, type Status } from '../../../enums/index.js';
+import { type ICustomData, type IImportMetaResponse } from '../../../types/index.js';
 
 export interface IAddressNotificationResponse {
   id: string;

@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { BaseResource, QueryParameters } from '../../internal/base';
-import { type ListEventsQueryParameters } from './operations';
-import { EventCollection } from '../../entities';
+import { BaseResource, QueryParameters } from '../../internal/base/index.js';
+import { type ListEventsQueryParameters } from './operations/index.js';
+import { EventCollection } from '../../entities/index.js';
 
 const EventPaths = {
   list: '/events',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class EventsResource extends BaseResource {
   public list(queryParams?: ListEventsQueryParameters): EventCollection {

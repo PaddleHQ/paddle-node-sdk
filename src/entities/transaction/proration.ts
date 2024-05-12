@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { TransactionsTimePeriod } from '../index';
-import { type IProrationResponse } from '../../types';
+import { TransactionsTimePeriod } from './transactions-time-period.js';
+import { type IProrationResponse } from '../../types/index.js';
 
 export class Proration {
   public readonly rate: string;

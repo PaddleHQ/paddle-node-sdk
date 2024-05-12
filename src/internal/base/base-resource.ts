@@ -1,6 +1,6 @@
-import { type Client } from '../api/client';
-import { ApiError } from '../errors/generic';
-import { type ErrorResponse, type Response } from '../types/response';
+import { type Client } from '../api/client.js';
+import { type Response, type ErrorResponse } from '../types/response.js';
+import { ApiError } from '../errors/generic.js';
 
 export class BaseResource {
   constructor(protected readonly client: Client) {}

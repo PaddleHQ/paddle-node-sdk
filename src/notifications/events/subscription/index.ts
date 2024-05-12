@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './subscription-activated-event';
-export * from './subscription-canceled-event';
-export * from './subscription-created-event';
-export * from './subscription-imported-event';
-export * from './subscription-past-due-event';
-export * from './subscription-paused-event';
-export * from './subscription-resumed-event';
-export * from './subscription-trialing-event';
-export * from './subscription-updated-event';
+export * from './subscription-activated-event.js';
+export * from './subscription-canceled-event.js';
+export * from './subscription-created-event.js';
+export * from './subscription-imported-event.js';
+export * from './subscription-past-due-event.js';
+export * from './subscription-paused-event.js';
+export * from './subscription-resumed-event.js';
+export * from './subscription-trialing-event.js';
+export * from './subscription-updated-event.js';
