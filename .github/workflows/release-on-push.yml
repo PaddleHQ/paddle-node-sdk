@@ -1,0 +1,17 @@
+name: Release on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release_on_push:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: rymndhng/release-on-push-action@v0.28.0
+        with:
+          bump_version_scheme: norelease
+          use_github_release_notes: true
