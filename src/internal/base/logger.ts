@@ -18,6 +18,7 @@ export class Logger {
         return false;
     }
   }
+
   static log(...args: LogInputProps) {
     if (Logger.shouldLog(LogLevel.verbose)) {
       console.log('[Paddle] [LOG]', ...args);
