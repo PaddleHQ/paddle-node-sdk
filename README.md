@@ -1,9 +1,9 @@
 # Paddle Node.js SDK
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/paddlehq/paddle-node-sdk/build-test.yml)
-![NPM Version](https://img.shields.io/npm/v/%40paddle%2Fpaddle-node-sdk)
-![NPM Downloads](https://img.shields.io/npm/dm/%40paddle%2Fpaddle-node-sdk)
-![GitHub License](https://img.shields.io/github/license/paddlehq/paddle-node-sdk)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/paddlehq/paddle-node-sdk/build-test.yml)](https://github.com/PaddleHQ/paddle-node-sdk/actions/workflows/build-test.yml?query=branch%3Amain)
+[![NPM Version](https://img.shields.io/npm/v/%40paddle%2Fpaddle-node-sdk)](https://www.npmjs.com/package/@paddle/paddle-node-sdk?activeTab=versions)
+[![NPM Downloads](https://img.shields.io/npm/dm/%40paddle%2Fpaddle-node-sdk)](https://www.npmjs.com/package/@paddle/paddle-node-sdk)
+[![GitHub License](https://img.shields.io/github/license/paddlehq/paddle-node-sdk)](https://github.com/PaddleHQ/paddle-node-sdk/blob/main/LICENSE)
 
 
 [Paddle Billing](https://www.paddle.com/billing?utm_source=dx&utm_medium=paddle-node-sdk) is a complete digital product sales and subscription management platform, designed for modern software businesses. It helps you increase your revenue, retain customers, and scale your operations.
