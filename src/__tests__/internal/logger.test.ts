@@ -28,7 +28,7 @@ describe('logger', () => {
     // @ts-expect-error - testing private method
     expect(Logger.shouldLog(level)).toBe(expected);
   });
-  test('log', () => {
+  test('verbose', () => {
     Logger.logLevel = LogLevel.verbose;
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
     Logger.log('test');
@@ -78,5 +78,23 @@ describe('logger', () => {
       'Request ID:',
       '456',
     );
+  });
+  test('verbose is not logged when log level is warn', () => {
+    Logger.logLevel = LogLevel.warn;
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+    Logger.log('test');
+    expect(consoleSpy).not.toHaveBeenCalledWith('[Paddle] [LOG]', 'test');
+  });
+  test('warning is not logged when log level is error', () => {
+    Logger.logLevel = LogLevel.error;
+    const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
+    Logger.warn('test');
+    expect(consoleSpy).not.toHaveBeenCalledWith('[Paddle] [WARN]', 'test');
+  });
+  test('error is not logged when log level is none', () => {
+    Logger.logLevel = LogLevel.none;
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+    Logger.error('test');
+    expect(consoleSpy).not.toHaveBeenCalledWith('[Paddle] [ERROR]', 'test');
   });
 });
