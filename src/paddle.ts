@@ -15,7 +15,7 @@ import {
   SubscriptionsResource,
   TransactionsResource,
 } from './resources';
-import { Environment, type PaddleOptions } from './internal';
+import { Environment, LogLevel, type PaddleOptions } from './internal';
 import { EventsResource } from './resources/events';
 import { Webhooks } from './notifications';
 
@@ -23,6 +23,7 @@ export class Paddle {
   private readonly client: Client;
   private readonly defaultPaddleOptions: Partial<PaddleOptions> = {
     environment: Environment.production,
+    logLevel: LogLevel.verbose, // TODO - Change the default to `error` in next major version
   };
 
   public products: ProductsResource;

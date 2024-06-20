@@ -8,6 +8,7 @@ import { randomUUID } from 'node:crypto';
 import { Logger } from '../base/logger';
 import { convertToSnakeCase } from './case-helpers';
 import { type ErrorResponse } from '../types/response';
+import { LogLevel } from './log-level';
 
 export class Client {
   private readonly baseUrl: string;
@@ -17,6 +18,8 @@ export class Client {
     private readonly options: PaddleOptions,
   ) {
     this.baseUrl = this.getBaseUrl(this.options.environment);
+    // TODO - Change the default to `error` in next major version
+    Logger.logLevel = this.options.logLevel ?? LogLevel.verbose;
   }
 
   private getBaseUrl(environment?: Environment): string {
