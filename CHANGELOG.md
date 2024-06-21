@@ -12,6 +12,14 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 1.4.1 - 2024-06-21
+
+### Fixed
+
+- Dependabot security updates.
+
+---
+
 ## 1.4.0 - 2024-06-20
 
 ### Added
