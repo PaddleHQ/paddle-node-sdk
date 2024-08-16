@@ -5,6 +5,7 @@
  */
 
 import {
+  type IProductNotificationResponse,
   type ISubscriptionPriceNotificationResponse,
   type ISubscriptionTimePeriodNotificationResponse,
 } from '../index';
@@ -20,4 +21,5 @@ export interface ISubscriptionItemNotificationResponse {
   next_billed_at?: string | null;
   trial_dates?: ISubscriptionTimePeriodNotificationResponse | null;
   price?: ISubscriptionPriceNotificationResponse | null;
+  product?: IProductNotificationResponse | null;
 }

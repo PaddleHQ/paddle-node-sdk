@@ -12,6 +12,14 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 1.5.0 - 2024-08-16
+
+### Added
+
+- Updated subscription items model to include `product`. See [related changelog](https://developer.paddle.com/changelog/2024/subscription-items-product?utm_source=dx&utm_medium=paddle-node-sdk).
+
+---
+
 ## 1.4.1 - 2024-06-21
 
 ### Fixed
