@@ -5,7 +5,7 @@
  */
 
 import { type ISubscriptionItemNotificationResponse } from '../../types';
-import { SubscriptionPriceNotification, SubscriptionTimePeriodNotification } from '../index';
+import { ProductNotification, SubscriptionPriceNotification, SubscriptionTimePeriodNotification } from '../index';
 import { type SubscriptionItemStatus } from '../../../enums';
 
 export class SubscriptionItemNotification {
@@ -18,6 +18,7 @@ export class SubscriptionItemNotification {
   public readonly nextBilledAt: string | null;
   public readonly trialDates: SubscriptionTimePeriodNotification | null;
   public readonly price: SubscriptionPriceNotification | null;
+  public readonly product: ProductNotification | null;
 
   constructor(subscriptionItem: ISubscriptionItemNotificationResponse) {
     this.status = subscriptionItem.status;
@@ -31,5 +32,6 @@ export class SubscriptionItemNotification {
       ? new SubscriptionTimePeriodNotification(subscriptionItem.trial_dates)
       : null;
     this.price = subscriptionItem.price ? new SubscriptionPriceNotification(subscriptionItem.price) : null;
+    this.product = subscriptionItem.product ? new ProductNotification(subscriptionItem.product) : null;
   }
 }
