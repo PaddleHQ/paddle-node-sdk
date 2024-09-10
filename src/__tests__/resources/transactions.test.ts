@@ -50,12 +50,15 @@ describe('TransactionsResource', () => {
     const queryParams: ListTransactionQueryParameters = {
       after: '2',
       id: ['1234'],
+      'createdAt[GTE]': '2024-09-10T15:38:35.675098Z',
     };
 
     const transactionCollection = transactionsResource.list(queryParams);
     let transactions = await transactionCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/transactions?after=2&id=1234');
+    expect(paddleInstance.get).toBeCalledWith(
+      '/transactions?after=2&id=1234&created_at%5BGTE%5D=2024-09-10T15%3A38%3A35.675098Z',
+    );
     expect(transactions.length).toBe(1);
   });
 
