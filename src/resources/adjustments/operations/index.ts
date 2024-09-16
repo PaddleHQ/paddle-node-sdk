@@ -6,3 +6,4 @@
 
 export * from './list-adjustment-query-parameters';
 export * from './create-adjustment-request-body';
+export * from './get-adjustment-credit-note-query-parameters';

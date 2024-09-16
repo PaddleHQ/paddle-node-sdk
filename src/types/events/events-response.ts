@@ -21,7 +21,7 @@ import {
 
 export interface IEventsResponse<T = object> {
   event_id: string;
-  notification_id: string;
+  notification_id: string | null;
   event_type: string;
   occurred_at: string;
   data: T;

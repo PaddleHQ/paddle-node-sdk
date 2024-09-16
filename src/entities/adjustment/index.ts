@@ -10,3 +10,4 @@ export * from './adjustment-item';
 export * from './adjustment';
 export * from './adjustment-collection';
 export * from './adjustment-item-totals';
+export * from './adjustment-credit-note-pdf';

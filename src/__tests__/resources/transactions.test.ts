@@ -130,7 +130,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const updatedTransaction = await transactionsResource.getInvoicePDF(transactionId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/transactions/${transactionId}/invoice`);
+    expect(paddleInstance.get).toBeCalledWith(`/transactions/${transactionId}/invoice?`);
     expect(updatedTransaction).toBeDefined();
   });
 

@@ -11,3 +11,4 @@ export * from './create-transaction-request-body';
 export * from './get-transaction-query-parameters';
 export * from './update-transaction-request-body';
 export * from './transaction-preview-request-body';
+export * from './get-transaction-invoice-pdf-query-parameters';

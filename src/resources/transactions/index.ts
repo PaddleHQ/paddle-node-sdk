@@ -10,6 +10,7 @@ import { BaseResource, PathParameters, QueryParameters } from '../../internal/ba
 import {
   type CreateTransactionQueryParameters,
   type CreateTransactionRequestBody,
+  type GetTransactionInvoicePdfQueryParameters,
   type GetTransactionQueryParameters,
   type ListTransactionQueryParameters,
   type TransactionPreviewRequestBody,
@@ -87,13 +88,17 @@ export class TransactionsResource extends BaseResource {
     return new Transaction(data);
   }
 
-  public async getInvoicePDF(transactionId: string): Promise<TransactionInvoicePDF> {
+  public async getInvoicePDF(
+    transactionId: string,
+    queryParams?: GetTransactionInvoicePdfQueryParameters,
+  ): Promise<TransactionInvoicePDF> {
+    const queryParameters = new QueryParameters(queryParams);
     const urlWithPathParams = new PathParameters(TransactionPaths.getInvoicePDF, {
       transaction_id: transactionId,
     }).deriveUrl();
 
     const response = await this.client.get<undefined, Response<ITransactionInvoicePDF> | ErrorResponse>(
-      urlWithPathParams,
+      urlWithPathParams + queryParameters.toQueryString(),
     );
 
     const data = this.handleResponse<ITransactionInvoicePDF>(response);
