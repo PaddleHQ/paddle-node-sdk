@@ -16,3 +16,4 @@ export * from './subscription-response';
 export * from './subscription-preview-response';
 export * from './subscription-preview-update-summary';
 export * from './subscription-result-response';
+export * from './subscription-update-non-catalog-price-request';

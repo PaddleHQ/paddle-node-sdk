@@ -4,11 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { BaseResource, PathParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import { type ErrorResponse, type Response } from '../../internal';
 import { NotificationSettings } from '../../entities';
 import { type INotificationSettingsResponse } from '../../types';
-import { type CreateNotificationSettingsRequestBody, type UpdateNotificationSettingsRequestBody } from './operations';
+import {
+  type CreateNotificationSettingsRequestBody,
+  type ListNotificationSettingsQueryParameters,
+  type UpdateNotificationSettingsRequestBody,
+} from './operations';
 
 const NotificationSettingsPaths = {
   list: '/notification-settings',
@@ -21,9 +25,11 @@ const NotificationSettingsPaths = {
 export * from './operations';
 
 export class NotificationSettingsResource extends BaseResource {
-  public async list(): Promise<NotificationSettings[]> {
+  public async list(queryParams?: ListNotificationSettingsQueryParameters): Promise<NotificationSettings[]> {
+    const queryParameters = new QueryParameters(queryParams);
+
     const response = await this.client.get<undefined, Response<INotificationSettingsResponse[]> | ErrorResponse>(
-      NotificationSettingsPaths.list,
+      NotificationSettingsPaths.list + queryParameters.toQueryString(),
     );
 
     const data = this.handleResponse<INotificationSettingsResponse[]>(response);

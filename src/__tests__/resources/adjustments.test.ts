@@ -7,6 +7,7 @@
 import { AdjustmentsResource, ListAdjustmentQueryParameters } from '../../resources';
 import { getPaddleTestClient } from '../helpers/test-client';
 import {
+  AdjustmentMock,
   AdjustmentMockResponse,
   CreateAdjustmentExpectation,
   CreateAdjustmentMock,
@@ -60,5 +61,18 @@ describe('AdjustmentsResource', () => {
     expect(createdAdjustment.id).toBeDefined();
 
     expect(convertToSnakeCase(CreateAdjustmentMock)).toEqual(CreateAdjustmentExpectation);
+  });
+
+  test('should get an link to download credit note PDF for an adjustment', async () => {
+    const adjustmentId = AdjustmentMock.id;
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(AdjustmentMockResponse);
+
+    const adjustmentResponse = new AdjustmentsResource(paddleInstance);
+    const creditNotePDF = await adjustmentResponse.getCreditNotePDF(adjustmentId);
+
+    expect(paddleInstance.get).toBeCalledWith(`/adjustments/${adjustmentId}/credit-note?`);
+    expect(creditNotePDF).toBeDefined();
   });
 });

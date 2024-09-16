@@ -3,8 +3,20 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
+import { type ISubscriptionUpdateItemCreateWithPriceRequest } from './subscription-update-non-catalog-price-request';
 
-export interface ISubscriptionUpdateItem {
-  priceId: string;
-  quantity?: number | null;
+interface ISubscriptionUpdateBaseItem {
+  quantity: number;
 }
+
+interface ISubscriptionUpdateItemFromCatalog extends ISubscriptionUpdateBaseItem {
+  priceId: string;
+  price?: never;
+}
+
+interface ISubscriptionUpdateItemCreateWithPrice extends ISubscriptionUpdateBaseItem {
+  priceId?: never;
+  price: ISubscriptionUpdateItemCreateWithPriceRequest;
+}
+
+export type ISubscriptionUpdateItem = ISubscriptionUpdateItemFromCatalog | ISubscriptionUpdateItemCreateWithPrice;

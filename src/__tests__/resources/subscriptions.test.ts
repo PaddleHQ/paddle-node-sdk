@@ -106,6 +106,21 @@ describe('SubscriptionsResource', () => {
     expect(convertToSnakeCase(UpdateSubscriptionMock)).toEqual(UpdateSubscriptionExpectation);
   });
 
+  test('should update an existing subscription with non-catalog price', async () => {
+    const subscriptionId = SubscriptionMock.id;
+    const subscriptionToBeUpdated: UpdateSubscriptionRequestBody = UpdateSubscriptionMock;
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.patch = jest.fn().mockResolvedValue(SubscriptionMockResponse);
+
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    const updatedSubscription = await subscriptionsResource.update(subscriptionId, subscriptionToBeUpdated);
+
+    expect(paddleInstance.patch).toBeCalledWith(`/subscriptions/${subscriptionId}`, subscriptionToBeUpdated);
+    expect(updatedSubscription).toBeDefined();
+    expect(convertToSnakeCase(UpdateSubscriptionMock)).toEqual(UpdateSubscriptionExpectation);
+  });
+
   test('should preview update an existing subscription', async () => {
     const subscriptionId = SubscriptionMock.id;
     const subscriptionToBeUpdated: UpdateSubscriptionRequestBody = UpdateSubscriptionMock;

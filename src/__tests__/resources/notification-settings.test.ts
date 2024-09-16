@@ -25,7 +25,7 @@ describe('NotificationSettingsResource', () => {
     const notificationsResource = new NotificationSettingsResource(paddleInstance);
     const notifications = await notificationsResource.list();
 
-    expect(paddleInstance.get).toBeCalledWith('/notification-settings');
+    expect(paddleInstance.get).toBeCalledWith('/notification-settings?');
     expect(notifications.length).toBe(1);
   });
 

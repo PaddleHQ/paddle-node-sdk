@@ -12,6 +12,22 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 1.6.0 - 2024-09-16
+
+### Added
+ 
+- Added `adjustments.getCreditNotePDF()` to [get a credit note for an adjustment](https://developer.paddle.com/api-reference/adjustments/get-credit-note-pdf?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `disposition` query parameter to `adjustments.getCreditNotePDF()` and `transactions.getInvoicePDF()` operations, see [related changelog](https://developer.paddle.com/changelog/2024/invoice-pdf-open-in-browser?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added pagination support to `notificationSettings.list()` operation, see [related changelog](https://developer.paddle.com/changelog/2024/notification-settings-pagination?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for Non-catalog products and prices to the `subscriptions.update()` and `subscriptions.previewUpdate()` operations, see [related changelog](https://developer.paddle.com/changelog/2024/add-custom-items-subscription?utm_source=dx&utm_medium=paddle-node-sdk).
+
+### Fixed
+
+- Marked `notification_id` as optional in `IEventsResponse` interface.
+- Fixed a bug where query parameters with false values were not passed correctly to the API.
+
+---
+
 ## 1.5.1 - 2024-09-10
 
 ### Fixed

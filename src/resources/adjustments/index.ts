@@ -4,15 +4,20 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { AdjustmentCollection, Adjustment } from '../../entities';
+import { Adjustment, AdjustmentCollection, AdjustmentCreditNotePDF } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, QueryParameters } from '../../internal/base';
-import { type CreateAdjustmentRequestBody, type ListAdjustmentQueryParameters } from './operations';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import {
+  type CreateAdjustmentRequestBody,
+  type ListAdjustmentQueryParameters,
+  type GetAdjustmentCreditNoteQueryParameters,
+} from './operations';
 import { type IAdjustmentResponse } from '../../types';
 
 const AdjustmentPaths = {
   list: '/adjustments',
   create: '/adjustments',
+  getCreditNotePDF: '/adjustments/{adjustment_id}/credit-note',
 } as const;
 
 export * from './operations';
@@ -32,5 +37,24 @@ export class AdjustmentsResource extends BaseResource {
     const data = this.handleResponse<IAdjustmentResponse>(response);
 
     return new Adjustment(data);
+  }
+
+  public async getCreditNotePDF(
+    adjustmentId: string,
+    queryParams?: GetAdjustmentCreditNoteQueryParameters,
+  ): Promise<AdjustmentCreditNotePDF> {
+    const urlWithPathParams = new PathParameters(AdjustmentPaths.getCreditNotePDF, {
+      adjustment_id: adjustmentId,
+    }).deriveUrl();
+
+    const queryParameters = new QueryParameters(queryParams);
+
+    const response = await this.client.get<undefined, Response<AdjustmentCreditNotePDF> | ErrorResponse>(
+      urlWithPathParams + queryParameters.toQueryString(),
+    );
+
+    const data = this.handleResponse<AdjustmentCreditNotePDF>(response);
+
+    return new AdjustmentCreditNotePDF(data);
   }
 }

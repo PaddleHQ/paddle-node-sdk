@@ -19,3 +19,4 @@ export * from './error-code';
 export * from './payment-type';
 export * from './catalog-type';
 export * from './available-payment-methods';
+export * from './disposition';
