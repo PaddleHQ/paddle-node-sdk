@@ -13,7 +13,7 @@ export interface ITransactionPaymentAttemptResponse {
    * @deprecated use payment_method_id instead
    */
   stored_payment_method_id: string;
-  payment_method_id: string;
+  payment_method_id: string | null;
   amount: string;
   status: PaymentAttemptStatus;
   error_code?: ErrorCode | null;
