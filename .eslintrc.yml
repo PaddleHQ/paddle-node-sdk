@@ -22,3 +22,4 @@ rules:
 ignorePatterns:
   - 'jest.config.js'
   - '**/__tests__/**'
+  - 'index.esm.*.ts'

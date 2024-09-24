@@ -27,13 +27,19 @@ export class Client {
   }
 
   private getHeaders() {
-    const uuid = randomUUID();
+    let uuid;
+    const cryptoProvider = RuntimeProvider.getProvider()?.crypto;
+    if (!cryptoProvider) {
+      Logger.error('Unknown runtime. Cannot generate uuid');
+    } else {
+      uuid = cryptoProvider.randomUUID();
+    }
 
     return {
       Authorization: `bearer ${this.apiKey}`,
       'Content-Type': 'application/json',
       'user-agent': `PaddleSDK/node ${SDK_VERSION}`,
-      'X-Transaction-ID': uuid,
+      'X-Transaction-ID': uuid ?? '',
     };
   }
 
