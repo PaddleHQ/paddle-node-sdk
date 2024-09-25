@@ -23,7 +23,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Changed
 
 - **Breaking change:** Updated the minimum required Node.js version to v18.
-- **Breaking change:** `WebhooksValidator.isValidSignature` now returns a promise. 
+- **Breaking change:** `Webhooks.unmarshal` and `Webhooks.isSignatureValid` now returns a promise.
 - Enabled conditional exports based on runtimes.
 - Switched from `node-fetch` to native `fetch` API.
 
