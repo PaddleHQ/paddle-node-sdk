@@ -29,10 +29,10 @@ export class Client {
   private getHeaders() {
     let uuid;
     const cryptoProvider = RuntimeProvider.getProvider()?.crypto;
-    if (!cryptoProvider) {
-      Logger.error('Unknown runtime. Cannot generate uuid');
-    } else {
+    if (cryptoProvider) {
       uuid = cryptoProvider.randomUUID();
+    } else {
+      Logger.error('Unknown runtime. Cannot generate uuid');
     }
 
     return {
