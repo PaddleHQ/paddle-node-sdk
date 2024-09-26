@@ -29,7 +29,7 @@ describe('Webhooks validator in Node runtime', () => {
       false,
     ],
     [
-      'InValid timestamp',
+      'Invalid timestamp',
       '{"data": ["1", "2"]}',
       'ts=9876;h1=a300428748dce5c70e4da19bffd60769591ea969c99dea3105d0ec9612cf43f9',
       'VALID_SECRET',
