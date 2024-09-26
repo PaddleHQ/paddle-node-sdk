@@ -12,7 +12,7 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
-## 2.0.0-beta.0 - 2024-09-25
+## 2.0.0-rc.0 - 2024-09-26
 
 > **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
 
