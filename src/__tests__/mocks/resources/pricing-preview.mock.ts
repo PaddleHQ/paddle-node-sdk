@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IPricingPreviewResponse } from '../../../types';
-import { Response } from '../../../internal';
-import { PricingPreviewRequestBody } from '../../../resources';
+import { PricingPreviewRequestBody } from '../../../resources/index.js';
+import { IPricingPreviewResponse } from '../../../types/index.js';
+import { Response } from '../../../internal/index.js';
 
 export const PricingPreviewRequest: PricingPreviewRequestBody = {
   currencyCode: 'USD',

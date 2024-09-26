@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentsTimePeriodResponse } from '../../types';
+import { type IAdjustmentsTimePeriodResponse } from '../../types/index.js';
 
 export class AdjustmentTimePeriod {
   public readonly startsAt: string;

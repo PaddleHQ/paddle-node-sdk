@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPriceQuantity } from '../../types';
+import { type IPriceQuantity } from '../../types/index.js';
 
 export class PriceQuantity {
   public readonly minimum: number;

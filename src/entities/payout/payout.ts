@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPayoutResponse } from '../../types';
-import { type CurrencyCode, type PayoutStatus } from '../../enums';
+import { type CurrencyCode, type PayoutStatus } from '../../enums/index.js';
+import { type IPayoutResponse } from '../../types/index.js';
 
 export class Payout {
   public readonly id: string;

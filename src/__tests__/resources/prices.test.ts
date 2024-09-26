@@ -4,8 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ListPriceQueryParameters, PricesResource } from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreatePriceExpectation,
   CreatePriceMock,
@@ -14,8 +13,9 @@ import {
   PriceMockResponse,
   UpdatePriceExpectation,
   UpdatePriceMock,
-} from '../mocks/resources/prices.mock';
-import { convertToSnakeCase } from '../../internal';
+} from '../mocks/resources/prices.mock.js';
+import { ListPriceQueryParameters, PricesResource } from '../../resources/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('PricesResource', () => {
   test('should return a list of prices', async () => {

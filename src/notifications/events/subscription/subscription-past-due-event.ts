@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Event } from '../../../entities/events/event';
-import { SubscriptionNotification } from '../../entities';
-import { EventName } from '../../helpers';
-import { type IEventsResponse } from '../../../types';
-import { type ISubscriptionNotificationResponse } from '../../types';
+import { Event } from '../../../entities/events/event.js';
+import { EventName } from '../../helpers/index.js';
+import { SubscriptionNotification } from '../../entities/index.js';
+import { type IEventsResponse } from '../../../types/index.js';
+import { type ISubscriptionNotificationResponse } from '../../types/index.js';
 
 export class SubscriptionPastDueEvent extends Event {
   public override readonly eventType = EventName.SubscriptionPastDue;

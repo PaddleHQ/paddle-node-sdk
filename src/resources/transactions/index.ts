@@ -4,9 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Transaction, TransactionCollection, TransactionInvoicePDF, TransactionPreview } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreateTransactionQueryParameters,
   type CreateTransactionRequestBody,
@@ -16,8 +14,14 @@ import {
   type TransactionPreviewRequestBody,
   type UpdateTransactionQueryParameters,
   type UpdateTransactionRequestBody,
-} from './operations';
-import { type ITransactionInvoicePDF, type ITransactionPreviewResponse, type ITransactionResponse } from '../../types';
+} from './operations/index.js';
+import { Transaction, TransactionCollection, TransactionInvoicePDF, TransactionPreview } from '../../entities/index.js';
+import {
+  type ITransactionInvoicePDF,
+  type ITransactionPreviewResponse,
+  type ITransactionResponse,
+} from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const TransactionPaths = {
   list: '/transactions',
@@ -28,7 +32,7 @@ const TransactionPaths = {
   preview: '/transactions/preview',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class TransactionsResource extends BaseResource {
   public list(queryParams?: ListTransactionQueryParameters): TransactionCollection {

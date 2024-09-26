@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type INotificationLogResponse, INotificationResponse, type IReplayNotificationResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
-import { EventName } from '../../../notifications';
+import { INotificationLogResponse, INotificationResponse, IReplayNotificationResponse } from '../../../types/index.js';
+import { EventName } from '../../../notifications/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const NotificationMock: INotificationResponse = {
   id: 'ntf_01ghbkd0frb9k95cnhwd1bxpvk',

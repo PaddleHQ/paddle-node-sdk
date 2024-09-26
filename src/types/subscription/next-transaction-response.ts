@@ -4,12 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  type IAdjustmentItemResponse,
-  type ISubscriptionTimePeriodResponse,
-  type ITotalAdjustmentsResponse,
-  type ITransactionDetailsPreviewResponse,
-} from '../index';
+import { type IAdjustmentItemResponse } from '../adjustment/index.js';
+import { type ITotalAdjustmentsResponse, type ITransactionDetailsPreviewResponse } from '../shared/index.js';
+import { type ISubscriptionTimePeriodResponse } from './subscription-time-period-response.js';
 
 export interface AdjustmentPreviewResponse {
   transaction_id: string;

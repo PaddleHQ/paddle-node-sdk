@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { NextTransactionAdjustmentItem } from './next-transaction-adjustment-item';
-import { TotalAdjustments } from '../shared';
-import { type AdjustmentPreviewResponse } from '../../types';
+import { NextTransactionAdjustmentItem } from './next-transaction-adjustment-item.js';
+import { TotalAdjustments } from '../shared/index.js';
+import { type AdjustmentPreviewResponse } from '../../types/index.js';
 
 export class NextTransactionAdjustmentPreview {
   public readonly transactionId: string;

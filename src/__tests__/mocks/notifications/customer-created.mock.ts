@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type ICustomerResponse } from '../../../types';
+import { ICustomerResponse, IEventsResponse } from '../../../types/index.js';
 
 export const CustomerCreatedMock: IEventsResponse<ICustomerResponse> = {
   event_id: 'evt_01h8441jx8x1q971q9ksksqh82',

@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPaymentMethodDetailsNotification } from '../../types';
-import { type PaymentType } from '../../../enums';
-import { PaymentCardNotification } from './payment-card-notification';
+import { type PaymentType } from '../../../enums/index.js';
+import { PaymentCardNotification } from './payment-card-notification.js';
+import { type IPaymentMethodDetailsNotification } from '../../types/index.js';
 
 export class PaymentMethodDetailsNotification {
   public readonly type: PaymentType;

@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode } from '../../enums';
+import { type CurrencyCode } from '../../enums/index.js';
 
 export interface ITransactionTotalsAdjustedResponse {
   subtotal: string;

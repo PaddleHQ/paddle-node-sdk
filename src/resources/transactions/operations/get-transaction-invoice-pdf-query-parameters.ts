@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type Disposition } from '../../../enums';
+import { type Disposition } from '../../../enums/index.js';
 
 export interface GetTransactionInvoicePdfQueryParameters {
   disposition?: Disposition;

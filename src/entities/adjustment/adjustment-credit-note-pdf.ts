@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentCreditNotePDF } from '../../types';
+import { type IAdjustmentCreditNotePDF } from '../../types/index.js';
 
 export class AdjustmentCreditNotePDF {
   public readonly url: string;

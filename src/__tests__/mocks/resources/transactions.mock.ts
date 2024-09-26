@@ -4,13 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ITransactionPreviewResponse, ITransactionResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
 import {
   CreateTransactionRequestBody,
   TransactionPreviewRequestBody,
   UpdateTransactionRequestBody,
-} from '../../../resources';
+} from '../../../resources/index.js';
+import { ITransactionPreviewResponse, ITransactionResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreateTransactionMock: CreateTransactionRequestBody = {
   status: 'draft',

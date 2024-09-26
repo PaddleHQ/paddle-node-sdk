@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionInvoicePDF } from '../../types';
+import { type ITransactionInvoicePDF } from '../../types/index.js';
 
 export class TransactionInvoicePDF {
   public readonly url: string;

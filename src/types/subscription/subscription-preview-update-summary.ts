@@ -4,7 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IMoneyResponse, type ISubscriptionResultResponse } from '../index';
+import { type IMoneyResponse } from '../shared/index.js';
+import { type ISubscriptionResultResponse } from './subscription-result-response.js';
 
 export interface ISubscriptionPreviewUpdateSummary {
   credit: IMoneyResponse;

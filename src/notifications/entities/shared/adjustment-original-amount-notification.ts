@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IAdjustmentOriginalAmountNotificationResponse } from '../../types';
-import { type AdjustmentCurrencyCode } from '../../../enums';
+import { type AdjustmentCurrencyCode } from '../../../enums/index.js';
+import { type IAdjustmentOriginalAmountNotificationResponse } from '../../types/index.js';
 
 export class AdjustmentOriginalAmountNotification {
   public readonly amount: string;

@@ -4,10 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { NotificationSettingsResource } from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
-import { NotificationMock } from '../mocks/resources/notifications.mock';
-import { convertToSnakeCase } from '../../internal';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreateNotificationSettingsExpectation,
   CreateNotificationSettingsMock,
@@ -15,7 +12,10 @@ import {
   NotificationSettingsMockResponse,
   UpdateNotificationSettingsExpectation,
   UpdateNotificationSettingsMock,
-} from '../mocks/resources/notification-settings.mock';
+} from '../mocks/resources/notification-settings.mock.js';
+import { NotificationSettingsResource } from '../../resources/index.js';
+import { NotificationMock } from '../mocks/resources/notifications.mock.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('NotificationSettingsResource', () => {
   test('should return a list of notification settings', async () => {

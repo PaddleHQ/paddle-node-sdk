@@ -3,6 +3,7 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
+
 import { type ISubscriptionUpdateItemCreateWithPriceRequest } from './subscription-update-non-catalog-price-request';
 
 interface ISubscriptionUpdateBaseItem {

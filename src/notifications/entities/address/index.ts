@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './address-notification';
+export * from './address-notification.js';

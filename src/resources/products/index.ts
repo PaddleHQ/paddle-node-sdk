@@ -4,16 +4,16 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Product, ProductCollection } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreateProductRequestBody,
   type GetProductQueryParameters,
   type ListProductQueryParameters,
   type UpdateProductRequestBody,
-} from './operations';
-import { type IProductResponse } from '../../types';
+} from './operations/index.js';
+import { Product, ProductCollection } from '../../entities/index.js';
+import { type IProductResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const ProductPaths = {
   list: '/products',
@@ -22,7 +22,7 @@ const ProductPaths = {
   update: '/products/{product_id}',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class ProductsResource extends BaseResource {
   public list(queryParams?: ListProductQueryParameters): ProductCollection {

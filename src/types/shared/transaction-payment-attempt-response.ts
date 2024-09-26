@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPaymentMethodDetails } from '../index';
-import { type PaymentAttemptStatus, type ErrorCode } from '../../enums';
+import { type ErrorCode, type PaymentAttemptStatus } from '../../enums/index.js';
+import { type IPaymentMethodDetails } from './payment-method-details.js';
 
 export interface ITransactionPaymentAttemptResponse {
   payment_attempt_id: string;

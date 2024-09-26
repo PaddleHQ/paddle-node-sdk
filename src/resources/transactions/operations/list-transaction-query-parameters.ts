@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CollectionMode, type TransactionStatus, type TransactionOrigin } from '../../../enums';
+import { type CollectionMode, type TransactionOrigin, type TransactionStatus } from '../../../enums/index.js';
 
 export interface ListTransactionQueryParameters {
   after?: string;

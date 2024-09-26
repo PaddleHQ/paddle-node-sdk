@@ -3,7 +3,8 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type INonCatalogPriceRequestBody } from '../price';
+
+import { type INonCatalogPriceRequestBody } from '../price/index.js';
 
 export interface ITransactionItemWithPriceId {
   priceId: string;

@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPriceResponse } from '../price';
-import { type ITotals, type IUnitTotals } from '../shared';
-import { type IProductResponse } from '../product';
-import { type IPricingPreviewDiscountsResponse } from './pricing-preview-discounts-response';
+import { type IPriceResponse } from '../price/index.js';
+import { type ITotals, type IUnitTotals } from '../shared/index.js';
+import { type IProductResponse } from '../product/index.js';
+import { type IPricingPreviewDiscountsResponse } from './pricing-preview-discounts-response.js';
 
 export interface IPricingPreviewLineItemResponse {
   price: IPriceResponse;

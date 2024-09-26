@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CustomData, ImportMeta } from '../index';
-import { type Status } from '../../enums';
-import { type ICustomerResponse } from '../../types';
+import { type Status } from '../../enums/index.js';
+import { type CustomData, ImportMeta } from '../index.js';
+import { type ICustomerResponse } from '../../types/index.js';
 
 export class Customer {
   public readonly id: string;

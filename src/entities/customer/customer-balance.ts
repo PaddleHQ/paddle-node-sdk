@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomerBalance } from '../../types';
+import { type ICustomerBalance } from '../../types/index.js';
 
 export class CustomerBalance {
   public readonly available: string;

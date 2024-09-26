@@ -4,10 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ContactsNotification, ImportMetaNotification } from '../index';
-import { type Status } from '../../../enums';
-import { type IBusinessNotificationResponse } from '../../types';
-import { type CustomData } from '../../../entities';
+import { type Status } from '../../../enums/index.js';
+import { ContactsNotification } from './contacts-notification.js';
+import { type CustomData } from '../../../entities/index.js';
+import { ImportMetaNotification } from '../shared/index.js';
+import { type IBusinessNotificationResponse } from '../../types/index.js';
 
 export class BusinessNotification {
   public readonly id: string;

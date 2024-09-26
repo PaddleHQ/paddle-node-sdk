@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IPayoutResponse } from '../../../types';
+import { IEventsResponse, IPayoutResponse } from '../../../types/index.js';
 
 export const PayoutPaidMock: IEventsResponse<IPayoutResponse> = {
   event_id: 'evt_01h2b0tqg1xkgnkfmprsnrjn0s',

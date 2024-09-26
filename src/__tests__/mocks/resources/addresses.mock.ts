@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IAddressResponse } from '../../../types';
-import { Response, ResponsePaginated } from '../../../internal';
-import { CreateAddressRequestBody, UpdateAddressRequestBody } from '../../../resources';
+import { CreateAddressRequestBody, UpdateAddressRequestBody } from '../../../resources/index.js';
+import { IAddressResponse } from '../../../types/index.js';
+import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreateAddressMock: CreateAddressRequestBody = {
   countryCode: 'AD',

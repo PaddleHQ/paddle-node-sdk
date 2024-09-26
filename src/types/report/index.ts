@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './report-filters';
-export * from './report';
-export * from './reports-csv';
+export * from './report-filters.js';
+export * from './report.js';
+export * from './reports-csv.js';

@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IReplayNotificationResponse } from '../../types/notifications';
+import { type IReplayNotificationResponse } from '../../types/index.js';
 
 export class ReplayNotification {
   public readonly notificationId: string;

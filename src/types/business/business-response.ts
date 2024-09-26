@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IBusinessContacts, type ICustomData, type IImportMetaResponse } from '../index';
-import { type Status } from '../../enums';
+import { type IBusinessContacts } from './businesses-contacts.js';
+import { type Status } from '../../enums/index.js';
+import { type ICustomData, type IImportMetaResponse } from '../shared/index.js';
 
 export interface IBusinessResponse {
   id: string;

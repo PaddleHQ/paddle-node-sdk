@@ -4,9 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Subscription, SubscriptionCollection, SubscriptionPreview, Transaction } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CancelSubscription,
   type CreateSubscriptionCharge,
@@ -15,8 +13,14 @@ import {
   type PauseSubscription,
   type ResumeSubscription,
   type UpdateSubscriptionRequestBody,
-} from './operations';
-import { type ISubscriptionPreviewResponse, type ISubscriptionResponse, type ITransactionResponse } from '../../types';
+} from './operations/index.js';
+import { Subscription, SubscriptionCollection, SubscriptionPreview, Transaction } from '../../entities/index.js';
+import {
+  type ISubscriptionPreviewResponse,
+  type ISubscriptionResponse,
+  type ITransactionResponse,
+} from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const SubscriptionPaths = {
   get: '/subscriptions/{subscription_id}',
@@ -32,7 +36,7 @@ const SubscriptionPaths = {
   getTransactionToUpdatePaymentMethod: '/subscriptions/{subscription_id}/update-payment-method-transaction',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class SubscriptionsResource extends BaseResource {
   public async previewUpdate(

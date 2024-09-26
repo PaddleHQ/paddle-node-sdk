@@ -4,16 +4,16 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { CreditBalance, Customer, CustomerCollection } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreateCustomerRequestBody,
   type GetCreditBalanceQueryParameters,
   type ListCustomerQueryParameters,
   type UpdateCustomerRequestBody,
-} from './operations';
-import { type ICreditBalanceResponse, type ICustomerResponse } from '../../types';
+} from './operations/index.js';
+import { CreditBalance, Customer, CustomerCollection } from '../../entities/index.js';
+import { type ICreditBalanceResponse, type ICustomerResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const CustomerPaths = {
   list: '/customers',
@@ -23,7 +23,7 @@ const CustomerPaths = {
   getCustomerBalance: '/customers/{customer_id}/credit-balances',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class CustomersResource extends BaseResource {
   public list(queryParams?: ListCustomerQueryParameters): CustomerCollection {

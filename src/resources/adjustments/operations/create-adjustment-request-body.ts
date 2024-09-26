@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentAction, type AdjustmentType } from '../../../enums';
+import { type AdjustmentAction, type AdjustmentType } from '../../../enums/index.js';
 
 export interface CreateAdjustmentLineItem {
   amount: string | null;

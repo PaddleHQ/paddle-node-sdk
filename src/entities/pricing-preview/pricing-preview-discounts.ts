@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPricingPreviewDiscountsResponse } from '../../types';
-import { Discount } from '../index';
+import { Discount } from '../discount/index.js';
+import { type IPricingPreviewDiscountsResponse } from '../../types/index.js';
 
 export class PricingPreviewDiscounts {
   public readonly discount: Discount;

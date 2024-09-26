@@ -3,5 +3,6 @@
   "compilerOptions": {
     "outDir": "./dist/cjs",
     "module": "commonjs"
-  }
+  },
+  "exclude": ["**/__tests__/**", "./src/index.esm.node.ts", "./src/index.esm.edge.ts"]
 }

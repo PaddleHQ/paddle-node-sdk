@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - v1.x
 
 jobs:
   release_on_push:

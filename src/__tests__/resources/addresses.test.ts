@@ -4,13 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  AddressesResource,
-  CreateAddressRequestBody,
-  ListAddressQueryParameters,
-  UpdateAddressRequestBody,
-} from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   AddressMock,
   AddressMockResponse,
@@ -19,8 +13,14 @@ import {
   ListAddressMockResponse,
   UpdateAddressExpectation,
   UpdateAddressMock,
-} from '../mocks/resources/addresses.mock';
-import { convertToSnakeCase } from '../../internal';
+} from '../mocks/resources/addresses.mock.js';
+import {
+  AddressesResource,
+  CreateAddressRequestBody,
+  ListAddressQueryParameters,
+  UpdateAddressRequestBody,
+} from '../../resources/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('AddressesResource', () => {
   test('should return a list of addresses', async () => {

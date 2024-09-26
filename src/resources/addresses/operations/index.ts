@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-address-query-parameters';
-export * from './create-address-request-body';
-export * from './update-address-request-body';
+export * from './list-address-query-parameters.js';
+export * from './create-address-request-body.js';
+export * from './update-address-request-body.js';

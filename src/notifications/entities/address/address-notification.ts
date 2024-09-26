@@ -3,9 +3,10 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type CountryCode, type Status } from '../../../enums';
-import { type CustomData, ImportMeta } from '../../../entities';
-import { type IAddressNotificationResponse } from '../../types';
+
+import { type CountryCode, type Status } from '../../../enums/index.js';
+import { type CustomData, ImportMeta } from '../../../entities/index.js';
+import { type IAddressNotificationResponse } from '../../types/index.js';
 
 export class AddressNotification {
   public readonly id: string;

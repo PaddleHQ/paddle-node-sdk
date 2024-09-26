@@ -3,7 +3,8 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type DiscountStatus } from '../../../enums';
+
+import { type DiscountStatus } from '../../../enums/index.js';
 
 export interface ListDiscountQueryParameters {
   after?: string;

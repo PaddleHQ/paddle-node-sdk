@@ -4,22 +4,22 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { getPaddleTestClient } from '../helpers/test-client.js';
+import {
+  CreateProductMock,
+  ListProductMockResponse,
+  ProductMock,
+  ProductMockResponse,
+  UpdateProductMock,
+} from '../mocks/resources/products.mock.js';
 import {
   CreateProductRequestBody,
-  UpdateProductRequestBody,
-  ProductsResource,
-  ListProductQueryParameters,
   GetProductQueryParameters,
-} from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
-import {
-  ProductMockResponse,
-  ProductMock,
-  ListProductMockResponse,
-  CreateProductMock,
-  UpdateProductMock,
-} from '../mocks/resources/products.mock';
-import { QueryParameters } from '../../internal/base';
+  ListProductQueryParameters,
+  ProductsResource,
+  UpdateProductRequestBody,
+} from '../../resources/index.js';
+import { QueryParameters } from '../../internal/base/index.js';
 
 describe('ProductsResource', () => {
   test('should return a list of products', async () => {

@@ -1,14 +1,13 @@
-import { API_ENVIRONMENT_TO_BASE_URL_MAP } from './constants';
-import { type QueryParameters } from '../base';
-import fetch from 'node-fetch';
-import { SDK_VERSION } from '../../version';
-import { type PaddleOptions } from '../types/config';
-import { Environment } from './environment';
-import { randomUUID } from 'node:crypto';
-import { Logger } from '../base/logger';
-import { convertToSnakeCase } from './case-helpers';
-import { type ErrorResponse } from '../types/response';
-import { LogLevel } from './log-level';
+import { type PaddleOptions } from '../types/config.js';
+import { Environment } from './environment.js';
+import { API_ENVIRONMENT_TO_BASE_URL_MAP } from './constants.js';
+import { type QueryParameters } from '../base/index.js';
+import { Logger } from '../base/logger.js';
+import { LogLevel } from './log-level.js';
+import { RuntimeProvider } from '../providers/runtime-provider.js';
+import { SDK_VERSION } from '../../version.js';
+import { convertToSnakeCase } from './case-helpers.js';
+import { type ErrorResponse } from '../types/response.js';
 
 export class Client {
   private readonly baseUrl: string;
@@ -28,13 +27,19 @@ export class Client {
   }
 
   private getHeaders() {
-    const uuid = randomUUID();
+    let uuid;
+    const cryptoProvider = RuntimeProvider.getProvider()?.crypto;
+    if (cryptoProvider) {
+      uuid = cryptoProvider.randomUUID();
+    } else {
+      Logger.error('Unknown runtime. Cannot generate uuid');
+    }
 
     return {
       Authorization: `bearer ${this.apiKey}`,
       'Content-Type': 'application/json',
       'user-agent': `PaddleSDK/node ${SDK_VERSION}`,
-      'X-Transaction-ID': uuid,
+      'X-Transaction-ID': uuid ?? '',
     };
   }
 

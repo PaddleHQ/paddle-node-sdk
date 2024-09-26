@@ -1,4 +1,6 @@
-import { type IEvents } from '../../types';
+import { WebhooksValidator } from './webhooks-validator.js';
+import { type IEvents } from '../../types/index.js';
+import { type EventEntity, EventName } from './types.js';
 import {
   AddressCreatedEvent,
   AddressImportedEvent,
@@ -42,14 +44,12 @@ import {
   TransactionPaymentFailedEvent,
   TransactionReadyEvent,
   TransactionUpdatedEvent,
-} from '../events';
-import { type EventEntity, EventName } from './types';
-import { WebhooksValidator } from './webhooks-validator';
-import { Logger } from '../../internal/base/logger';
+} from '../events/index.js';
+import { Logger } from '../../internal/base/logger.js';
 
 export class Webhooks {
-  unmarshal(requestBody: string, secretKey: string, signature: string) {
-    const isSignatureValid = new WebhooksValidator().isValidSignature(requestBody, secretKey, signature);
+  async unmarshal(requestBody: string, secretKey: string, signature: string) {
+    const isSignatureValid = await new WebhooksValidator().isValidSignature(requestBody, secretKey, signature);
 
     if (isSignatureValid) {
       const parsedRequest = JSON.parse(requestBody);
@@ -59,8 +59,8 @@ export class Webhooks {
     }
   }
 
-  isSignatureValid(requestBody: string, secretKey: string, signature: string) {
-    return new WebhooksValidator().isValidSignature(requestBody, secretKey, signature);
+  async isSignatureValid(requestBody: string, secretKey: string, signature: string) {
+    return await new WebhooksValidator().isValidSignature(requestBody, secretKey, signature);
   }
 
   static fromJson(data: IEvents): EventEntity | null {

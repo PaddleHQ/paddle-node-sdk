@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './businesses-contacts-notification';
-export * from './business-notification-response';
+export * from './businesses-contacts-notification.js';
+export * from './business-notification-response.js';

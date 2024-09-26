@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './customer-collection';
-export * from './customer';
-export * from './credit-balance';
-export * from './customer-balance';
+export * from './customer-collection.js';
+export * from './customer.js';
+export * from './credit-balance.js';
+export * from './customer-balance.js';

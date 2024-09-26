@@ -4,15 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionDetailsNotificationResponse } from '../../types';
 import {
   TaxRatesUsedNotification,
-  TransactionTotalsNotification,
-  TransactionTotalsAdjustedNotification,
-  TransactionPayoutTotalsNotification,
   TransactionPayoutTotalsAdjustedNotification,
-  TransactionLineItemNotification,
-} from '../index';
+  TransactionPayoutTotalsNotification,
+  TransactionTotalsAdjustedNotification,
+  TransactionTotalsNotification,
+} from '../shared/index.js';
+import { TransactionLineItemNotification } from './transaction-line-item-notification.js';
+import { type ITransactionDetailsNotificationResponse } from '../../types/index.js';
 
 export class TransactionDetailsNotification {
   public readonly taxRatesUsed: TaxRatesUsedNotification[];

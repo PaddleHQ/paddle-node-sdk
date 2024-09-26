@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CreatePriceRequestBody, type CreateProductRequestBody } from '../../resources';
+import { type CreatePriceRequestBody, type CreateProductRequestBody } from '../../resources/index.js';
 
 interface ISubscriptionUpdateItemCreateWithPriceBaseRequest
   extends Omit<CreatePriceRequestBody, 'type' | 'productId'> {}

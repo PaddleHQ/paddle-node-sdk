@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-report-query-parameters';
-export * from './create-report-request-object';
+export * from './list-report-query-parameters.js';
+export * from './create-report-request-object.js';

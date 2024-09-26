@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './report-filters-notification-response';
-export * from './report-notification-response';
+export * from './report-filters-notification-response.js';
+export * from './report-notification-response.js';

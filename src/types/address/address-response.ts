@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICustomData, type IImportMetaResponse } from '../index';
-import { type CountryCode, type Status } from '../../enums';
+import { type CountryCode, type Status } from '../../enums/index.js';
+import { type ICustomData, type IImportMetaResponse } from '../shared/index.js';
 
 export interface IAddressResponse {
   id: string;

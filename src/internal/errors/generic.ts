@@ -1,4 +1,4 @@
-import { type ErrorDetail, type ErrorField } from '../../internal';
+import { type ErrorDetail, type ErrorField } from '../types/response.js';
 
 export class ApiError extends Error {
   public readonly type: string;

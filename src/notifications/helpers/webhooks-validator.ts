@@ -1,9 +1,11 @@
-import { createHmac } from 'node:crypto';
+import { RuntimeProvider } from '../../internal/providers/runtime-provider.js';
+import { Logger } from '../../internal/base/logger.js';
 
 interface ParsedHeaders {
   ts: number;
   h1: string;
 }
+
 export class WebhooksValidator {
   private static readonly MAX_VALID_TIME_DIFFERENCE = 5;
   private extractHeader(header: string): ParsedHeaders {
@@ -27,7 +29,13 @@ export class WebhooksValidator {
     }
   }
 
-  public isValidSignature(requestBody: string, secretKey: string, signature: string) {
+  public async isValidSignature(requestBody: string, secretKey: string, signature: string) {
+    const cryptoProvider = RuntimeProvider.getProvider()?.crypto;
+    if (!cryptoProvider) {
+      Logger.error('Unknown runtime. Cannot validate webhook signature');
+      return false;
+    }
+
     const headers = this.extractHeader(signature);
     const payloadWithTime = `${headers.ts}:${requestBody}`;
 
@@ -35,10 +43,7 @@ export class WebhooksValidator {
       return false;
     }
 
-    const hmac = createHmac('sha256', secretKey);
-    hmac.update(payloadWithTime);
-
-    const computedHash = hmac.digest('hex');
+    const computedHash = await cryptoProvider.computeHmac(payloadWithTime, secretKey);
     return computedHash === headers.h1;
   }
 }

@@ -4,13 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionLineItemNotificationResponse } from '../../types';
-import {
-  TransactionProrationNotification,
-  UnitTotalsNotification,
-  TotalsNotification,
-  ProductNotification,
-} from '../index';
+import { TransactionProrationNotification } from './transaction-proration-notification.js';
+import { TotalsNotification, UnitTotalsNotification } from '../shared/index.js';
+import { ProductNotification } from '../product/index.js';
+import { type ITransactionLineItemNotificationResponse } from '../../types/index.js';
 
 export class TransactionLineItemNotification {
   public readonly id: string;

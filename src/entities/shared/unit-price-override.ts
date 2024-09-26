@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IUnitPriceOverrideResponse } from '../../types';
-import { Money } from '../index';
-import { type CountryCode } from '../../enums';
+import { type CountryCode } from '../../enums/index.js';
+import { Money } from './money.js';
+import { type IUnitPriceOverrideResponse } from '../../types/index.js';
 
 export class UnitPriceOverride {
   public readonly countryCodes: CountryCode[];

@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IBusinessContacts, type ICustomData } from '../../../types';
-import { type Status } from '../../../enums';
+import { type IBusinessContacts, type ICustomData } from '../../../types/index.js';
+import { type Status } from '../../../enums/index.js';
 
 export interface UpdateBusinessRequestBody {
   name?: string;

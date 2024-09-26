@@ -4,8 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionDetailsPreviewResponse } from '../../types';
-import { TaxRatesUsed, TransactionTotals, TransactionLineItemPreview } from '../index';
+import { TaxRatesUsed, TransactionTotals } from '../shared/index.js';
+import { TransactionLineItemPreview } from './transaction-line-item-preview.js';
+import { type ITransactionDetailsPreviewResponse } from '../../types/index.js';
 
 export class TransactionDetailsPreview {
   public readonly taxRatesUsed: TaxRatesUsed[];

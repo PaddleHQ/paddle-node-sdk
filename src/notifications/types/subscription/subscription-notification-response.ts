@@ -4,17 +4,17 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums/index.js';
+import { type ISubscriptionDiscountNotificationResponse } from './subscription-discount-notification-response.js';
 import {
   type IBillingDetailsNotificationResponse,
   type IImportMetaNotificationResponse,
-  type ISubscriptionDiscountNotificationResponse,
-  type ISubscriptionItemNotificationResponse,
-  type ISubscriptionScheduledChangeNotificationResponse,
-  type ISubscriptionTimePeriodNotificationResponse,
   type ITimePeriodNotification,
-} from '../index';
-import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums';
-import { type ICustomData } from '../../../types';
+} from '../shared/index.js';
+import { type ISubscriptionTimePeriodNotificationResponse } from './subscription-time-period-notification-response.js';
+import { type ISubscriptionScheduledChangeNotificationResponse } from './subscription-scheduled-change-notification-response.js';
+import { type ISubscriptionItemNotificationResponse } from './subscription-item-notification-response.js';
+import { type ICustomData } from '../../../types/index.js';
 
 export interface ISubscriptionNotificationResponse {
   id: string;

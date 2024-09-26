@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Discount } from './discount';
-import { type IDiscountResponse } from '../../types';
-import { Collection } from '../../internal/base';
+import { type IDiscountResponse } from '../../types/index.js';
+import { Collection } from '../../internal/base/index.js';
+import { Discount } from './discount.js';
 
 export class DiscountCollection extends Collection<IDiscountResponse, Discount> {
   override fromJson(data: IDiscountResponse): Discount {

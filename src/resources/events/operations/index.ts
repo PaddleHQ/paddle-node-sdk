@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './list-events-query-parameters';
+export * from './list-events-query-parameters.js';

@@ -1,9 +1,10 @@
-name: Publish to Beta Tag
+name: Publish to latest Tag
 
 on:
   push:
     branches:
-      - release/beta
+      - main
+      - v1.x
 
 jobs:
   run-publish:
@@ -16,10 +17,10 @@ jobs:
 
     steps:
       - name: Check out git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: "yarn"
@@ -35,6 +36,12 @@ jobs:
         run: yarn test
 
       - name: Publish
-        run: yarn publish:beta
+        run: |
+          VERSION=$(node -p "require('./package.json').version" )
+          if [[ "$VERSION" =~ (rc) ]]; then
+            yarn publish:rc
+          else
+            yarn publish:latest
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

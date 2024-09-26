@@ -3,7 +3,8 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type NotificationStatus } from '../../../enums';
+
+import { type NotificationStatus } from '../../../enums/index.js';
 
 export interface ListNotificationQueryParameters {
   after?: string;

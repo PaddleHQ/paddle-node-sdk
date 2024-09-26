@@ -4,16 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import {
-  CancelSubscription,
-  GetSubscriptionQueryParameters,
-  ListSubscriptionQueryParameters,
-  type PauseSubscription,
-  ResumeSubscription,
-  SubscriptionsResource,
-  UpdateSubscriptionRequestBody,
-} from '../../resources';
-import { getPaddleTestClient } from '../helpers/test-client';
+import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreateSubscriptionExpectation,
   CreateSubscriptionMock,
@@ -23,10 +14,19 @@ import {
   SubscriptionPreviewMockResponse,
   UpdateSubscriptionExpectation,
   UpdateSubscriptionMock,
-} from '../mocks/resources/subscriptions.mock';
-import { QueryParameters } from '../../internal/base';
-import { convertToSnakeCase } from '../../internal';
-import { TransactionMockResponse } from '../mocks/resources/transactions.mock';
+} from '../mocks/resources/subscriptions.mock.js';
+import {
+  CancelSubscription,
+  GetSubscriptionQueryParameters,
+  ListSubscriptionQueryParameters,
+  PauseSubscription,
+  ResumeSubscription,
+  SubscriptionsResource,
+  UpdateSubscriptionRequestBody,
+} from '../../resources/index.js';
+import { QueryParameters } from '../../internal/base/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
+import { TransactionMockResponse } from '../mocks/resources/transactions.mock.js';
 
 describe('SubscriptionsResource', () => {
   test('should return a list of subscriptions', async () => {

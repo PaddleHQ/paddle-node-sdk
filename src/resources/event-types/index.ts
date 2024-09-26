@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { BaseResource } from '../../internal/base';
-import { type ErrorResponse, type Response } from '../../internal';
-import { type IEventTypeResponse } from '../../types';
-import { EventType } from '../../entities';
+import { BaseResource } from '../../internal/base/index.js';
+import { EventType } from '../../entities/index.js';
+import { type IEventTypeResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const EventTypesPaths = {
   list: '/event-types',

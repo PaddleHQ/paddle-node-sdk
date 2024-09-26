@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - main
-      - v1.X
+      - v1.x
       - release/beta
   pull_request:
     branches:
       - main
-      - v1.X
+      - v1.x
       - release/beta
 
 concurrency:
@@ -20,19 +20,21 @@ jobs:
   run-build-test:
     name: Run Build & test
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node: [ 18, 20, 22 ]
     permissions:
       contents: read
       actions: write
 
     steps:
       - name: Check out git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node }}
           cache: "yarn"
 
       - name: Install yarn dependencies

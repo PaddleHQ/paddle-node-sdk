@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionsTimePeriodNotificationResponse } from '../index';
+import { type ITransactionsTimePeriodNotificationResponse } from './transactions-time-period-notification-response.js';
 
 export interface ITransactionProrationNotificationResponse {
   rate: string;

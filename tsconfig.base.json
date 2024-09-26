@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2016",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "dom"],
     "module": "NodeNext",
     "rootDir": "./src",
     "moduleResolution": "Node",
@@ -31,5 +31,4 @@
     "skipLibCheck": true
   },
   "include": ["./src"],
-  "exclude": ["**/__tests__/**"]
 }

@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { AdjustmentItem, PayoutTotalsAdjustment, TotalAdjustments } from '../index';
-import { type AdjustmentAction, type AdjustmentStatus, type CurrencyCode } from '../../enums';
-import { type IAdjustmentResponse } from '../../types';
+import { type AdjustmentAction, type AdjustmentStatus, type CurrencyCode } from '../../enums/index.js';
+import { AdjustmentItem } from './adjustment-item.js';
+import { PayoutTotalsAdjustment, TotalAdjustments } from '../shared/index.js';
+import { type IAdjustmentResponse } from '../../types/index.js';
 
 export class Adjustment {
   public readonly id: string;

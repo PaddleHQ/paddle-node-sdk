@@ -4,7 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IPriceResponse, type ITransactionProrationResponse } from '../index';
+import { type IPriceResponse } from '../price/index.js';
+import { type ITransactionProrationResponse } from './transaction-proration-response.js';
 
 export interface ITransactionItemResponse {
   price_id?: string | null;

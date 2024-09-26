@@ -12,6 +12,23 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.0.0-rc.0 - 2024-09-26
+
+> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
+
+### Added
+
+- Added support for edge runtime.
+
+### Changed
+
+- **Breaking change:** Updated the minimum required Node.js version to v18.
+- **Breaking change:** `Webhooks.unmarshal` and `Webhooks.isSignatureValid` now returns a promise.
+- Enabled conditional exports based on runtimes.
+- Switched from `node-fetch` to native `fetch` API.
+
+---
+
 ## 1.7.0 - 2024-09-18
 
 ### Fixed

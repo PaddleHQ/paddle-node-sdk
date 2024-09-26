@@ -4,16 +4,16 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Price, PriceCollection } from '../../entities';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreatePriceRequestBody,
   type GetPriceQueryParameters,
   type ListPriceQueryParameters,
   type UpdatePriceRequestBody,
-} from './operations';
-import { type IPriceResponse } from '../../types';
+} from './operations/index.js';
+import { Price, PriceCollection } from '../../entities/index.js';
+import { type IPriceResponse } from '../../types/index.js';
+import { type Response, type ErrorResponse } from '../../internal/index.js';
 
 const PricePaths = {
   list: '/prices',
@@ -22,7 +22,7 @@ const PricePaths = {
   update: '/prices/{price_id}',
 } as const;
 
-export * from './operations';
+export * from './operations/index.js';
 
 export class PricesResource extends BaseResource {
   public list(queryParams?: ListPriceQueryParameters): PriceCollection {

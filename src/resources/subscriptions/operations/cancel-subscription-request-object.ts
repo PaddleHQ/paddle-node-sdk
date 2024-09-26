@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SubscriptionEffectiveFrom } from '../../../enums';
+import { type SubscriptionEffectiveFrom } from '../../../enums/index.js';
 
 export interface CancelSubscription {
   effectiveFrom?: SubscriptionEffectiveFrom | null;

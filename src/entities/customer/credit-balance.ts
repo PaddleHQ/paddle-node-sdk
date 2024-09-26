@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICreditBalanceResponse } from '../../types';
-import { CustomerBalance } from '../index';
-import { type CurrencyCode } from '../../enums';
+import { type ICreditBalanceResponse } from '../../types/index.js';
+import { type CurrencyCode } from '../../enums/index.js';
+import { CustomerBalance } from './customer-balance.js';
 
 export class CreditBalance {
   public readonly customerId: string | null;

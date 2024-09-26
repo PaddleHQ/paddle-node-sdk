@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './adjustments-time-period-response';
-export * from './adjustments-proration-response';
-export * from './adjustment-item-response';
-export * from './adjustment-response';
-export * from './adjustment-credit-note-pdf';
+export * from './adjustments-time-period-response.js';
+export * from './adjustments-proration-response.js';
+export * from './adjustment-item-response.js';
+export * from './adjustment-response.js';
+export * from './adjustment-credit-note-pdf.js';

@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IProductResponse } from '../../types';
-import { Collection } from '../../internal/base';
-import { Product } from './product';
+import { Collection } from '../../internal/base/index.js';
+import { type IProductResponse } from '../../types/index.js';
+import { Product } from './product.js';
 
 export class ProductCollection extends Collection<IProductResponse, Product> {
   override fromJson(data: IProductResponse): Product {

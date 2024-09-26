@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IReportResponse } from '../../types';
-import { ReportFilters } from '../index';
-import { type ReportStatus, type ReportType } from '../../enums';
+import { type ReportStatus, type ReportType } from '../../enums/index.js';
+import { ReportFilters } from './report-filters.js';
+import { type IReportResponse } from '../../types/index.js';
 
 export class Report {
   public readonly id: string;

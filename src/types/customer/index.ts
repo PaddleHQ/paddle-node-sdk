@@ -4,6 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './customer-response';
-export * from './credit-balance-response';
-export * from './customer-balance';
+export * from './customer-response.js';
+export * from './credit-balance-response.js';
+export * from './customer-balance.js';

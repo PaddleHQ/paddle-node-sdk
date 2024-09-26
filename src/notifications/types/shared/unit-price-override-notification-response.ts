@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IMoneyNotificationResponse } from '../index';
-import { type CountryCode } from '../../../enums';
+import { type CountryCode } from '../../../enums/index.js';
+import { type IMoneyNotificationResponse } from './money-notification-response.js';
 
 export interface IUnitPriceOverrideNotificationResponse {
   country_codes: CountryCode[];

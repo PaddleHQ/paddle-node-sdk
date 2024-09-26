@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './shared';
-export * from './subscription';
-export * from './discount';
-export * from './adjustment';
-export * from './transaction';
-export * from './payout';
-export * from './notification-settings';
-export * from './notification';
-export * from './report';
+export * from './shared/index.js';
+export * from './subscription/index.js';
+export * from './discount/index.js';
+export * from './adjustment/index.js';
+export * from './transaction/index.js';
+export * from './payout/index.js';
+export * from './notification-settings/index.js';
+export * from './notification/index.js';
+export * from './report/index.js';

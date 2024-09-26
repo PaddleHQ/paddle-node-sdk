@@ -4,9 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { Business } from './business';
-import { type IBusinessResponse } from '../../types';
-import { Collection } from '../../internal/base';
+import { type IBusinessResponse } from '../../types/index.js';
+import { Collection } from '../../internal/base/index.js';
+import { Business } from './business.js';
 
 export class BusinessCollection extends Collection<IBusinessResponse, Business> {
   override fromJson(data: IBusinessResponse): Business {

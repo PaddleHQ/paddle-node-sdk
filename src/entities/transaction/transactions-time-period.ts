@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ITransactionsTimePeriodResponse } from '../../types';
+import { type ITransactionsTimePeriodResponse } from '../../types/index.js';
 
 export class TransactionsTimePeriod {
   public readonly startsAt: string;

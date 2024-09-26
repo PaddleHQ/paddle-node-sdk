@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type AvailablePaymentMethod } from '../../enums';
-import { type IAddressPreviewResponse } from '../../resources';
-import { type ITransactionDetailsPreviewResponse } from '../shared';
-import { type IPriceResponse } from '../price';
-import { type ITransactionsTimePeriodResponse } from './transactions-time-period-response';
+import { type ITransactionsTimePeriodResponse } from './transactions-time-period-response.js';
+import { type IPriceResponse } from '../price/index.js';
+import { type AvailablePaymentMethod, type CurrencyCode } from '../../enums/index.js';
+import { type IAddressPreviewResponse } from '../../resources/index.js';
+import { type ITransactionDetailsPreviewResponse } from '../shared/index.js';
 
 export interface IProrationResponse {
   rate: string;

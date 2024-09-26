@@ -1,21 +1,27 @@
 {
   "name": "@paddle/paddle-node-sdk",
-  "version": "1.7.0",
+  "version": "2.0.0-rc.0",
   "description": "A Node.js SDK that you can use to integrate Paddle Billing with applications written in server-side JavaScript.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "dist/cjs/index.cjs.node.js",
+  "module": "dist/esm/index.esm.node.js",
+  "types": "dist/types/index.cjs.node.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "test": "jest",
     "prebuild": "node ./scripts/update-env-vars.js",
-    "build": "yarn clean && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
+    "build": "yarn clean && yarn build-esm && yarn build-cjs && yarn build-types",
+    "build-esm": "tsc -b tsconfig.esm.json && echo '{\"type\":\"module\"}' > ./dist/esm/package.json",
+    "build-cjs": "tsc -b tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > ./dist/cjs/package.json",
+    "build-types": "tsc -b tsconfig.types.json",
     "prettier": "prettier --check ./src",
     "prettier:fix": "prettier --check ./src --write",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "eslint --ext .ts,.tsx ./src --fix",
     "clean": "rm -rf ./dist",
-    "release:beta": "yarn version --prerelease --preid beta --no-git-tag-version --no-commit-hooks",
-    "publish:beta": "yarn publish --tag beta --access public",
+    "release:rc": "yarn version --prerelease --preid rc --no-git-tag-version --no-commit-hooks",
+    "publish:beta": "yarn publish --tag rc --access public",
     "publish:latest": "yarn publish --access public"
   },
   "files": [
@@ -28,6 +34,11 @@
   "author": "paddle.com",
   "license": "Apache-2.0",
   "homepage": "https://developer.paddle.com/api-reference/overview",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaddleHQ/paddle-node-sdk.git"
+  },
+  "bugs": "https://github.com/PaddleHQ/paddle-node-sdk/issues",
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
@@ -35,7 +46,6 @@
     "@types/jest": "^29.5.6",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.6.0",
-    "@types/node-fetch": "^2.6.6",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.3.1",
@@ -49,7 +59,17 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "node-fetch": "^2.7.0"
+    "lodash": "^4.17.21"
+  },
+  "exports": {
+    "types": "./dist/types/index.cjs.node.d.ts",
+    "worker": {
+      "import": "./dist/esm/index.esm.edge.js",
+      "require": "./dist/cjs/index.cjs.edge.js"
+    },
+    "default": {
+      "import": "./dist/esm/index.esm.node.js",
+      "require": "./dist/cjs/index.cjs.node.js"
+    }
   }
 }
