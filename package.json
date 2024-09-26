@@ -21,7 +21,7 @@
     "lint:fix": "eslint --ext .ts,.tsx ./src --fix",
     "clean": "rm -rf ./dist",
     "release:rc": "yarn version --prerelease --preid rc --no-git-tag-version --no-commit-hooks",
-    "publish:beta": "yarn publish --tag rc --access public",
+    "publish:rc": "yarn publish --tag rc --access public",
     "publish:latest": "yarn publish --access public"
   },
   "files": [
