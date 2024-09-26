@@ -1,6 +1,6 @@
 {
   "name": "@paddle/paddle-node-sdk",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-rc.0",
   "description": "A Node.js SDK that you can use to integrate Paddle Billing with applications written in server-side JavaScript.",
   "main": "dist/cjs/index.cjs.node.js",
   "module": "dist/esm/index.esm.node.js",
@@ -20,8 +20,8 @@
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "eslint --ext .ts,.tsx ./src --fix",
     "clean": "rm -rf ./dist",
-    "release:beta": "yarn version --prerelease --preid beta --no-git-tag-version --no-commit-hooks",
-    "publish:beta": "yarn publish --tag beta --access public",
+    "release:rc": "yarn version --prerelease --preid rc --no-git-tag-version --no-commit-hooks",
+    "publish:beta": "yarn publish --tag rc --access public",
     "publish:latest": "yarn publish --access public"
   },
   "files": [

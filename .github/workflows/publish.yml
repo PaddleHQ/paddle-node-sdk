@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - v1.X
+      - v1.x
 
 jobs:
   run-publish:
@@ -38,8 +38,8 @@ jobs:
       - name: Publish
         run: |
           VERSION=$(node -p "require('./package.json').version" )
-          if [[ "$VERSION" =~ (beta) ]]; then
-            yarn publish:beta
+          if [[ "$VERSION" =~ (rc) ]]; then
+            yarn publish:rc
           else
             yarn publish:latest
           fi
