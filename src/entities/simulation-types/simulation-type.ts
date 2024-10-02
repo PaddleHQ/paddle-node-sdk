@@ -4,6 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type SimulationKind } from '../../enums/index.js';
+import { type IEventName } from '../../notifications/index.js';
 import { type ISimulationTypeResponse } from '../../types/index.js';
 
 export class SimulationType {
@@ -11,8 +13,8 @@ export class SimulationType {
   public readonly label: string;
   public readonly description: string;
   public readonly group: string;
-  public readonly type: string;
-  public readonly events: any[];
+  public readonly type: SimulationKind;
+  public readonly events: IEventName[];
 
   constructor(simulationTypeResponse: ISimulationTypeResponse) {
     this.name = simulationTypeResponse.name;

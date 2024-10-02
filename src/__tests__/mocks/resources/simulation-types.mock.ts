@@ -242,22 +242,6 @@ export const SimulationTypesMock: ISimulationTypeResponse[] = [
     events: ['customer.imported'],
   },
   {
-    name: 'payment_method.saved',
-    label: 'payment_method.saved',
-    description: 'Occurs when a customer saves a payment method to their account.',
-    group: 'Payment Method',
-    type: 'single_event',
-    events: ['payment_method.saved'],
-  },
-  {
-    name: 'payment_method.deleted',
-    label: 'payment_method.deleted',
-    description: 'Occurs when a customer removes a payment method from their account.',
-    group: 'Payment Method',
-    type: 'single_event',
-    events: ['payment_method.deleted'],
-  },
-  {
     name: 'discount.created',
     label: 'discount.created',
     description: 'Occurs when a discount is created.',
