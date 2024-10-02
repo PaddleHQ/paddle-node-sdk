@@ -13,3 +13,4 @@ export * from './payout';
 export * from './notification-settings';
 export * from './notification';
 export * from './report';
+export * from './simulation-type';

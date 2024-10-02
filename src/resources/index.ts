@@ -12,3 +12,4 @@ export * from './event-types';
 export * from './notification-settings';
 export * from './notifications';
 export * from './reports';
+export * from './simulation-types';
