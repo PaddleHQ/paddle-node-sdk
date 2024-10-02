@@ -13,3 +13,4 @@ export * from './payout/index.js';
 export * from './notification-settings/index.js';
 export * from './notification/index.js';
 export * from './report/index.js';
+export * from './simulation-type/index.js';

@@ -20,5 +20,6 @@ export * from './event-types/index.js';
 export * from './notification-settings/index.js';
 export * from './notifications/index.js';
 export * from './report/index.js';
+export * from './simulation-types/index.js';
 
 export type CustomData = object;

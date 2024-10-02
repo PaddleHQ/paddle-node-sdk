@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ISubscriptionUpdateItemCreateWithPriceRequest } from './subscription-update-non-catalog-price-request';
+import { type ISubscriptionUpdateItemCreateWithPriceRequest } from './subscription-update-non-catalog-price-request.js';
 
 interface ISubscriptionUpdateBaseItem {
   quantity: number;
