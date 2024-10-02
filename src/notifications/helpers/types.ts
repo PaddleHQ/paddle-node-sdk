@@ -146,8 +146,6 @@ export type IEventName =
   | 'discount.created'
   | 'discount.updated'
   | 'discount.imported'
-  | 'payment_method.saved'
-  | 'payment_method.deleted'
   | 'payout.created'
   | 'payout.updated'
   | 'payout.paid'
