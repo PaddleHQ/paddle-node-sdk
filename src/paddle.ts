@@ -13,6 +13,7 @@ import {
   ProductsResource,
   ReportsResource,
   SimulationTypesResource,
+  SimulationsResource,
   SubscriptionsResource,
   TransactionsResource,
 } from './resources';
@@ -44,6 +45,7 @@ export class Paddle {
   public notifications: NotificationsResource;
   public reports: ReportsResource;
   public simulationTypes: SimulationTypesResource;
+  public simulations: SimulationsResource;
 
   constructor(apiKey: string, options?: PaddleOptions) {
     this.client = new Client(
@@ -68,5 +70,6 @@ export class Paddle {
     this.notifications = new NotificationsResource(this.client);
     this.reports = new ReportsResource(this.client);
     this.simulationTypes = new SimulationTypesResource(this.client);
+    this.simulations = new SimulationsResource(this.client);
   }
 }

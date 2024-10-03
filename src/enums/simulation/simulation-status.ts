@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './simulation-kind';
+export type SimulationStatus = 'active' | 'archived';

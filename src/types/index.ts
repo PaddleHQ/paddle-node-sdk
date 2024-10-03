@@ -22,3 +22,4 @@ export * from './notification-settings';
 export * from './notifications';
 export * from './report';
 export * from './simulation-type';
+export * from './simulation';
