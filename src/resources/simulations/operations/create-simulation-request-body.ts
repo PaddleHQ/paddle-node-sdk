@@ -7,7 +7,7 @@
 import type { SimulationScenarioType } from '../../../enums/index.js';
 import type { IEventName } from '../../../notifications/index.js';
 
-export interface CreateSimulation {
+export interface CreateSimulationRequestBody {
   notificationSettingId: string;
   type: IEventName | SimulationScenarioType;
   name: string;

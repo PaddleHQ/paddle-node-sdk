@@ -9,9 +9,9 @@ import { type ErrorResponse, type Response } from '../../internal/index.js';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import { type ISimulationResponse } from '../../types/index.js';
 import {
-  type CreateSimulation,
+  type CreateSimulationRequestBody,
   type ListSimulationQueryParameters,
-  type UpdateSimulation,
+  type UpdateSimulationRequestBody,
 } from './operations/index.js';
 
 export * from './operations/index.js';
@@ -29,8 +29,8 @@ export class SimulationsResource extends BaseResource {
     return new SimulationCollection(this.client, SimulationPaths.list + queryParameters.toQueryString());
   }
 
-  public async create(createSimulationParameters: CreateSimulation): Promise<Simulation> {
-    const response = await this.client.post<CreateSimulation, Response<ISimulationResponse> | ErrorResponse>(
+  public async create(createSimulationParameters: CreateSimulationRequestBody): Promise<Simulation> {
+    const response = await this.client.post<CreateSimulationRequestBody, Response<ISimulationResponse> | ErrorResponse>(
       SimulationPaths.create,
       createSimulationParameters,
     );
@@ -52,15 +52,15 @@ export class SimulationsResource extends BaseResource {
     return new Simulation(data);
   }
 
-  public async update(simulationId: string, updateSimulation: UpdateSimulation): Promise<Simulation> {
+  public async update(simulationId: string, updateSimulation: UpdateSimulationRequestBody): Promise<Simulation> {
     const urlWithPathParams = new PathParameters(SimulationPaths.update, {
       simulation_id: simulationId,
     }).deriveUrl();
 
-    const response = await this.client.patch<UpdateSimulation, Response<ISimulationResponse> | ErrorResponse>(
-      urlWithPathParams,
-      updateSimulation,
-    );
+    const response = await this.client.patch<
+      UpdateSimulationRequestBody,
+      Response<ISimulationResponse> | ErrorResponse
+    >(urlWithPathParams, updateSimulation);
 
     const data = this.handleResponse<ISimulationResponse>(response);
 

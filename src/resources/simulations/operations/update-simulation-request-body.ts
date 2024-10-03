@@ -4,13 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { SimulationScenarioType, SimulationStatus } from '../../../enums/index.js';
+import type { SimulationScenarioType, Status } from '../../../enums/index.js';
 import type { IEventName } from '../../../notifications/index.js';
 
-export interface UpdateSimulation {
+export interface UpdateSimulationRequestBody {
   notificationSettingId?: string;
   name?: string;
-  status?: SimulationStatus;
+  status?: Status;
   type?: IEventName | SimulationScenarioType;
   payload?: any;
 }
