@@ -5,12 +5,12 @@
  */
 
 import { type ISimulationResponse } from '../../types/index.js';
-import type { SimulationScenarioType, Status } from '../../enums/index.js';
+import type { SimulationScenarioType, SimulationStatus } from '../../enums/index.js';
 import type { IEventName } from '../../notifications/index.js';
 
 export class Simulation {
   public readonly id: string;
-  public readonly status: Status;
+  public readonly status: SimulationStatus;
   public readonly notificationSettingId: string;
   public readonly name: string;
   public readonly type: IEventName | SimulationScenarioType;

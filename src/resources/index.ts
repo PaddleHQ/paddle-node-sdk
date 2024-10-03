@@ -19,3 +19,4 @@ export * from './notification-settings/index.js';
 export * from './notifications/index.js';
 export * from './reports/index.js';
 export * from './simulation-types/index.js';
+export * from './simulations/index.js';
