@@ -8,7 +8,11 @@ import { Simulation, SimulationCollection } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import { type ISimulationResponse } from '../../types';
-import { type CreateSimulation, type ListSimulationQueryParameters, type UpdateSimulation } from './operations';
+import {
+  type CreateSimulationRequestBody,
+  type ListSimulationQueryParameters,
+  type UpdateSimulationRequestBody,
+} from './operations';
 
 export * from './operations';
 
@@ -25,8 +29,8 @@ export class SimulationsResource extends BaseResource {
     return new SimulationCollection(this.client, SimulationPaths.list + queryParameters.toQueryString());
   }
 
-  public async create(createSimulationParameters: CreateSimulation): Promise<Simulation> {
-    const response = await this.client.post<CreateSimulation, Response<ISimulationResponse> | ErrorResponse>(
+  public async create(createSimulationParameters: CreateSimulationRequestBody): Promise<Simulation> {
+    const response = await this.client.post<CreateSimulationRequestBody, Response<ISimulationResponse> | ErrorResponse>(
       SimulationPaths.create,
       createSimulationParameters,
     );
@@ -48,15 +52,15 @@ export class SimulationsResource extends BaseResource {
     return new Simulation(data);
   }
 
-  public async update(simulationId: string, updateSimulation: UpdateSimulation): Promise<Simulation> {
+  public async update(simulationId: string, updateSimulation: UpdateSimulationRequestBody): Promise<Simulation> {
     const urlWithPathParams = new PathParameters(SimulationPaths.update, {
       simulation_id: simulationId,
     }).deriveUrl();
 
-    const response = await this.client.patch<UpdateSimulation, Response<ISimulationResponse> | ErrorResponse>(
-      urlWithPathParams,
-      updateSimulation,
-    );
+    const response = await this.client.patch<
+      UpdateSimulationRequestBody,
+      Response<ISimulationResponse> | ErrorResponse
+    >(urlWithPathParams, updateSimulation);
 
     const data = this.handleResponse<ISimulationResponse>(response);
 

@@ -5,8 +5,8 @@
  */
 
 import {
-  CreateSimulation,
-  UpdateSimulation,
+  CreateSimulationRequestBody,
+  UpdateSimulationRequestBody,
   SimulationsResource,
   ListSimulationQueryParameters,
 } from '../../resources';
@@ -14,6 +14,8 @@ import { getPaddleTestClient } from '../helpers/test-client';
 import {
   SimulationMockResponse,
   SimulationMock,
+  CreateSimulationMock,
+  updateSimulationMock,
   ListSimulationMockResponse,
 } from '../mocks/resources/simulations.mock';
 
@@ -78,7 +80,7 @@ describe('SimulationsResource', () => {
   });
 
   test('should create a new simulation', async () => {
-    const newSimulation: CreateSimulation = SimulationMock;
+    const newSimulation: CreateSimulationRequestBody = CreateSimulationMock;
     const paddleInstance = getPaddleTestClient();
 
     paddleInstance.post = jest.fn().mockResolvedValue(SimulationMockResponse);
@@ -93,9 +95,7 @@ describe('SimulationsResource', () => {
 
   test('should update an existing simulation', async () => {
     const simulationId = SimulationMock.id;
-    const simulationToBeUpdated: UpdateSimulation = {
-      name: 'Updated Simulation',
-    };
+    const simulationToBeUpdated: UpdateSimulationRequestBody = updateSimulationMock;
 
     const paddleInstance = getPaddleTestClient();
     paddleInstance.patch = jest.fn().mockResolvedValue(SimulationMockResponse);

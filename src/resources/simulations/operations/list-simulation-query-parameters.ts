@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SimulationStatus } from '../../../enums';
+import { type Status } from '../../../enums';
 
 export interface ListSimulationQueryParameters {
   after?: string;
@@ -12,5 +12,5 @@ export interface ListSimulationQueryParameters {
   orderBy?: string;
   perPage?: number;
   id?: string[];
-  status?: SimulationStatus[];
+  status?: Status[];
 }
