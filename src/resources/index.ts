@@ -14,3 +14,4 @@ export * from './notifications';
 export * from './reports';
 export * from './simulation-types';
 export * from './simulations';
+export * from './simulation-runs';

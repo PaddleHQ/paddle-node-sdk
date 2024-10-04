@@ -14,6 +14,7 @@ import {
   ReportsResource,
   SimulationTypesResource,
   SimulationsResource,
+  SimulationRunsResource,
   SubscriptionsResource,
   TransactionsResource,
 } from './resources';
@@ -46,6 +47,7 @@ export class Paddle {
   public reports: ReportsResource;
   public simulationTypes: SimulationTypesResource;
   public simulations: SimulationsResource;
+  public simulationRuns: SimulationRunsResource;
 
   constructor(apiKey: string, options?: PaddleOptions) {
     this.client = new Client(
@@ -71,5 +73,6 @@ export class Paddle {
     this.reports = new ReportsResource(this.client);
     this.simulationTypes = new SimulationTypesResource(this.client);
     this.simulations = new SimulationsResource(this.client);
+    this.simulationRuns = new SimulationRunsResource(this.client);
   }
 }

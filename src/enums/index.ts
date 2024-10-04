@@ -15,3 +15,4 @@ export * from './notification';
 export * from './report';
 export * from './simulation-type';
 export * from './simulation';
+export * from './simulation-run';
