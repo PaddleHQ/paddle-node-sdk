@@ -15,3 +15,4 @@ export * from './notification/index.js';
 export * from './report/index.js';
 export * from './simulation-type/index.js';
 export * from './simulation/index.js';
+export * from './simulation-run/index.js';
