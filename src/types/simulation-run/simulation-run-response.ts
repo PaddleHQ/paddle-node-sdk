@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { ISimulationRunEvent } from './simulation-run-event';
+import type { ISimulationRunEventResponse } from '..';
 import type { SimulationRunStatus, SimulationScenarioType } from '../../enums';
 import type { IEventName } from '../../notifications';
 
@@ -14,5 +14,5 @@ export interface ISimulationRunResponse {
   created_at: string;
   updated_at: string;
   type: IEventName | SimulationScenarioType;
-  events?: ISimulationRunEvent[];
+  events?: ISimulationRunEventResponse[];
 }

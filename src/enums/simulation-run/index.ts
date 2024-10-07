@@ -4,5 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './simulation-run-events-status';
 export * from './simulation-run-status';

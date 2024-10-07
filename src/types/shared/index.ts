@@ -33,3 +33,5 @@ export * from './billing-details-create';
 export * from './billing-details-update';
 export * from './custom-data';
 export * from './import-meta-response';
+export * from './simulation-event-request';
+export * from './simulation-event-response';

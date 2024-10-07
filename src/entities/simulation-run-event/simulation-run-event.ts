@@ -4,34 +4,32 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { SimulationRunEventsStatus, SimulationScenarioType } from '../../enums';
+import type { SimulationRunEventStatus, SimulationScenarioType } from '../../enums';
 import type { IEventName } from '../../notifications';
-import { type ISimulationRunEvent } from '../../types';
+import type { ISimulationRunEventResponse } from '../../types';
+import { SimulationEventRequest, SimulationEventResponse } from '../shared';
 
 export class SimulationRunEvent {
   public readonly id: string;
-  public readonly status: SimulationRunEventsStatus;
+  public readonly status: SimulationRunEventStatus;
   public readonly eventType: IEventName | SimulationScenarioType;
   public readonly payload: any;
-  public readonly request: {
-    body: string;
-  } | null;
-
-  public readonly response: {
-    body: string;
-    status_code: number;
-  } | null;
-
+  public readonly request: SimulationEventRequest | null;
+  public readonly response: SimulationEventResponse | null;
   public readonly createdAt: string;
   public readonly updatedAt: string;
 
-  constructor(simulationRunEventResponse: ISimulationRunEvent) {
+  constructor(simulationRunEventResponse: ISimulationRunEventResponse) {
     this.id = simulationRunEventResponse.id;
     this.status = simulationRunEventResponse.status;
     this.eventType = simulationRunEventResponse.event_type;
     this.payload = simulationRunEventResponse.payload;
-    this.request = simulationRunEventResponse.request ?? null;
-    this.response = simulationRunEventResponse.response ?? null;
+    this.request = simulationRunEventResponse.request
+      ? new SimulationEventRequest(simulationRunEventResponse.request)
+      : null;
+    this.response = simulationRunEventResponse.response
+      ? new SimulationEventResponse(simulationRunEventResponse.response)
+      : null;
     this.createdAt = simulationRunEventResponse.created_at;
     this.updatedAt = simulationRunEventResponse.updated_at;
   }

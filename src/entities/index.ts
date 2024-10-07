@@ -23,5 +23,6 @@ export * from './report';
 export * from './simulation-types';
 export * from './simulation';
 export * from './simulation-run';
+export * from './simulation-run-event';
 
 export type CustomData = object;

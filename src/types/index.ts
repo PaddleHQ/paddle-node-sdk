@@ -24,3 +24,4 @@ export * from './report';
 export * from './simulation-type';
 export * from './simulation';
 export * from './simulation-run';
+export * from './simulation-run-event';

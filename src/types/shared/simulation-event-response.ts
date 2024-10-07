@@ -4,4 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './simulation-run-response';
+export interface ISimulationEventResponse {
+  body: string;
+  status_code: number;
+}
