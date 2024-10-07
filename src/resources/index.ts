@@ -21,3 +21,4 @@ export * from './reports/index.js';
 export * from './simulation-types/index.js';
 export * from './simulations/index.js';
 export * from './simulation-runs/index.js';
+export * from './simulation-run-events/index.js';

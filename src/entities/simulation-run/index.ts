@@ -6,4 +6,3 @@
 
 export * from './simulation-run.js';
 export * from './simulation-run-collection.js';
-export * from './simulation-run-event.js';

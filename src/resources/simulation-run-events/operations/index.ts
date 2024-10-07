@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './simulation-run-response.js';
+export * from './list-simulation-run-events-query-parameters.js';

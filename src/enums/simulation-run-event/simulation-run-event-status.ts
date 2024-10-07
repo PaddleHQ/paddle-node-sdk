@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type SimulationRunEventsStatus = 'pending' | 'success' | 'failed' | 'aborted';
+export type SimulationRunEventStatus = 'pending' | 'success' | 'failed' | 'aborted';
