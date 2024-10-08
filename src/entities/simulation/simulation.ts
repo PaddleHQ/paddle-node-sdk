@@ -6,20 +6,20 @@
 
 import { type ISimulationResponse } from '../../types';
 import type { SimulationScenarioType, Status } from '../../enums';
-import type { IEventName } from '../../notifications';
+import type { EventMap, IEventName } from '../../notifications';
 
-export class Simulation {
+export class Simulation<T extends IEventName | SimulationScenarioType> {
   public readonly id: string;
   public readonly status: Status;
   public readonly notificationSettingId: string;
   public readonly name: string;
-  public readonly type: IEventName | SimulationScenarioType;
-  public readonly payload: any;
+  public readonly type: T;
+  public readonly payload: (T extends IEventName ? EventMap[T] : null) | null;
   public readonly lastRunAt: string | null;
   public readonly createdAt: string;
   public readonly updatedAt: string;
 
-  constructor(simulationResponse: ISimulationResponse) {
+  constructor(simulationResponse: ISimulationResponse<T>) {
     this.id = simulationResponse.id;
     this.status = simulationResponse.status;
     this.notificationSettingId = simulationResponse.notification_setting_id;

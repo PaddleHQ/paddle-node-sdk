@@ -5,11 +5,11 @@
  */
 
 import type { SimulationScenarioType } from '../../../enums';
-import type { IEventName } from '../../../notifications';
+import type { EventMap, IEventName } from '../../../notifications';
 
-export interface CreateSimulationRequestBody {
+export interface CreateSimulationRequestBody<T extends IEventName | SimulationScenarioType> {
   notificationSettingId: string;
-  type: IEventName | SimulationScenarioType;
+  type: T;
   name: string;
-  payload?: any;
+  payload?: (T extends IEventName ? EventMap[T] : null) | null;
 }

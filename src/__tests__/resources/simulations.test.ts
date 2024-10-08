@@ -80,7 +80,7 @@ describe('SimulationsResource', () => {
   });
 
   test('should create a new simulation', async () => {
-    const newSimulation: CreateSimulationRequestBody = CreateSimulationMock;
+    const newSimulation: CreateSimulationRequestBody<'address.created'> = CreateSimulationMock;
     const paddleInstance = getPaddleTestClient();
 
     paddleInstance.post = jest.fn().mockResolvedValue(SimulationMockResponse);

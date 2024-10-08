@@ -7,9 +7,14 @@
 import { Simulation } from '../../entities';
 import { type ISimulationResponse } from '../../types';
 import { Collection } from '../../internal/base';
+import type { IEventName } from '../../notifications';
+import type { SimulationScenarioType } from '../../enums';
 
-export class SimulationCollection extends Collection<ISimulationResponse, Simulation> {
-  override fromJson(data: ISimulationResponse): Simulation {
+export class SimulationCollection<T extends IEventName | SimulationScenarioType> extends Collection<
+  ISimulationResponse<T>,
+  Simulation<T>
+> {
+  override fromJson(data: ISimulationResponse<T>): Simulation<T> {
     return new Simulation(data);
   }
 }

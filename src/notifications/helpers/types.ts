@@ -131,6 +131,7 @@ export enum EventName {
   ReportCreated = 'report.created',
   ReportUpdated = 'report.updated',
 }
+
 export type IEventName =
   | 'address.created'
   | 'address.updated'
@@ -175,3 +176,51 @@ export type IEventName =
   | 'transaction.updated'
   | 'report.created'
   | 'report.updated';
+
+export interface EventDataMap extends Record<IEventName, EventEntity> {
+  'address.created': AddressCreatedEvent;
+  'address.updated': AddressUpdatedEvent;
+  'address.imported': AddressImportedEvent;
+  'adjustment.created': AdjustmentCreatedEvent;
+  'adjustment.updated': AdjustmentUpdatedEvent;
+  'business.created': BusinessCreatedEvent;
+  'business.updated': BusinessUpdatedEvent;
+  'business.imported': BusinessImportedEvent;
+  'customer.created': CustomerCreatedEvent;
+  'customer.updated': CustomerUpdatedEvent;
+  'customer.imported': CustomerImportedEvent;
+  'discount.created': DiscountCreatedEvent;
+  'discount.updated': DiscountUpdatedEvent;
+  'discount.imported': DiscountImportedEvent;
+  'payout.created': PayoutCreatedEvent;
+  'payout.paid': PayoutPaidEvent;
+  'price.created': PriceCreatedEvent;
+  'price.updated': PriceUpdatedEvent;
+  'price.imported': PriceImportedEvent;
+  'product.created': ProductCreatedEvent;
+  'product.updated': ProductUpdatedEvent;
+  'product.imported': ProductImportedEvent;
+  'subscription.created': SubscriptionCreatedEvent;
+  'subscription.activated': SubscriptionActivatedEvent;
+  'subscription.canceled': SubscriptionCanceledEvent;
+  'subscription.imported': SubscriptionImportedEvent;
+  'subscription.paused': SubscriptionPausedEvent;
+  'subscription.resumed': SubscriptionResumedEvent;
+  'subscription.trialing': SubscriptionTrialingEvent;
+  'subscription.updated': SubscriptionUpdatedEvent;
+  'transaction.billed': TransactionBilledEvent;
+  'transaction.canceled': TransactionCanceledEvent;
+  'transaction.completed': TransactionCompletedEvent;
+  'transaction.created': TransactionCreatedEvent;
+  'transaction.paid': TransactionPaidEvent;
+  'transaction.past_due': TransactionPastDueEvent;
+  'transaction.payment_failed': TransactionPaymentFailedEvent;
+  'transaction.ready': TransactionReadyEvent;
+  'transaction.updated': TransactionUpdatedEvent;
+  'report.created': ReportCreatedEvent;
+  'report.updated': ReportUpdatedEvent;
+}
+
+export type EventMap = {
+  [K in keyof EventDataMap]: EventDataMap[K] extends { data: infer D } ? Partial<D> : never;
+};

@@ -8,7 +8,7 @@ import { ISimulationResponse } from '../../../types';
 import { Response, ResponsePaginated } from '../../../internal';
 import { CreateSimulationRequestBody, UpdateSimulationRequestBody } from '../../../resources';
 
-export const CreateSimulationMock: CreateSimulationRequestBody = {
+export const CreateSimulationMock: CreateSimulationRequestBody<'address.created'> = {
   notificationSettingId: 'ntfset_01gt21c5pdx9q1e4mh1xrsjjn6',
   type: 'address.created',
   name: 'New address created',
@@ -18,7 +18,7 @@ export const updateSimulationMock: UpdateSimulationRequestBody = {
   name: 'New UK address created',
 };
 
-export const SimulationMock: ISimulationResponse = {
+export const SimulationMock: ISimulationResponse<'address.created'> = {
   id: 'ntfsim_01ghbkd0frb9k95cnhwd1bxpvk',
   status: 'active',
   notification_setting_id: 'ntfset_01gt21c5pdx9q1e4mh1xrsjjn6',
@@ -30,14 +30,14 @@ export const SimulationMock: ISimulationResponse = {
   updated_at: '2024-10-13T07:20:50.52Z',
 };
 
-export const SimulationMockResponse: Response<ISimulationResponse> = {
+export const SimulationMockResponse: Response<ISimulationResponse<'address.created'>> = {
   data: SimulationMock,
   meta: {
     request_id: '',
   },
 };
 
-export const ListSimulationMockResponse: ResponsePaginated<ISimulationResponse> = {
+export const ListSimulationMockResponse: ResponsePaginated<ISimulationResponse<'address.created'>> = {
   data: [SimulationMock],
   meta: {
     request_id: '',
