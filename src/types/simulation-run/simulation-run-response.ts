@@ -5,14 +5,13 @@
  */
 
 import type { ISimulationRunEventResponse } from '..';
-import type { SimulationRunStatus, SimulationScenarioType } from '../../enums';
-import type { IEventName } from '../../notifications';
+import type { SimulationRunStatus, SimulationEventType } from '../../enums';
 
 export interface ISimulationRunResponse {
   id: string;
   status: SimulationRunStatus;
   created_at: string;
   updated_at: string;
-  type: IEventName | SimulationScenarioType;
+  type: SimulationEventType;
   events?: ISimulationRunEventResponse[];
 }

@@ -4,4 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+export * from './simulation-type';
 export * from './simulation-scenario-type';

@@ -4,15 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { SimulationRunEventStatus, SimulationScenarioType } from '../../enums';
-import type { IEventName } from '../../notifications';
+import type { SimulationRunEventStatus, SimulationEventType } from '../../enums';
 import type { ISimulationRunEventResponse } from '../../types';
 import { SimulationEventRequest, SimulationEventResponse } from '../shared';
 
 export class SimulationRunEvent {
   public readonly id: string;
   public readonly status: SimulationRunEventStatus;
-  public readonly eventType: IEventName | SimulationScenarioType;
+  public readonly eventType: SimulationEventType;
   public readonly payload: any;
   public readonly request: SimulationEventRequest | null;
   public readonly response: SimulationEventResponse | null;

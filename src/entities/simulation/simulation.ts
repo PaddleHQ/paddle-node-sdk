@@ -5,10 +5,10 @@
  */
 
 import { type ISimulationResponse } from '../../types';
-import type { SimulationScenarioType, Status } from '../../enums';
+import type { SimulationEventType, Status } from '../../enums';
 import type { EventMap, IEventName } from '../../notifications';
 
-export class Simulation<T extends IEventName | SimulationScenarioType> {
+export class Simulation<T extends SimulationEventType | undefined = undefined> {
   public readonly id: string;
   public readonly status: Status;
   public readonly notificationSettingId: string;

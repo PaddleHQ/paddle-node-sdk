@@ -5,10 +5,9 @@
  */
 
 import { Simulation, SimulationCollection } from '../../entities';
-import type { SimulationScenarioType } from '../../enums';
+import type { SimulationEventType } from '../../enums';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
-import type { IEventName } from '../../notifications';
 import { type ISimulationResponse } from '../../types';
 import {
   type CreateSimulationRequestBody,
@@ -26,12 +25,12 @@ const SimulationPaths = {
 } as const;
 
 export class SimulationsResource extends BaseResource {
-  public list(queryParams?: ListSimulationQueryParameters): SimulationCollection<IEventName | SimulationScenarioType> {
+  public list(queryParams?: ListSimulationQueryParameters): SimulationCollection {
     const queryParameters = new QueryParameters(queryParams);
     return new SimulationCollection(this.client, SimulationPaths.list + queryParameters.toQueryString());
   }
 
-  public async create<T extends IEventName | SimulationScenarioType>(
+  public async create<T extends SimulationEventType>(
     createSimulationParameters: CreateSimulationRequestBody<T>,
   ): Promise<Simulation<T>> {
     const response = await this.client.post<
@@ -44,7 +43,7 @@ export class SimulationsResource extends BaseResource {
     return new Simulation(data);
   }
 
-  public async get<T extends IEventName | SimulationScenarioType>(simulationId: string): Promise<Simulation<T>> {
+  public async get<T extends SimulationEventType>(simulationId: string): Promise<Simulation<T>> {
     const urlWithPathParams = new PathParameters(SimulationPaths.get, {
       simulation_id: simulationId,
     }).deriveUrl();
@@ -58,7 +57,7 @@ export class SimulationsResource extends BaseResource {
     return new Simulation(data);
   }
 
-  public async update<T extends IEventName | SimulationScenarioType>(
+  public async update<T extends SimulationEventType | undefined = undefined>(
     simulationId: string,
     updateSimulation: UpdateSimulationRequestBody<T>,
   ): Promise<Simulation<T>> {

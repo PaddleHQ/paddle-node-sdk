@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { SimulationScenarioType, Status } from '../../enums';
+import type { SimulationEventType, Status } from '../../enums';
 import type { IEventName, EventMap } from '../../notifications';
 
-export interface ISimulationResponse<T extends IEventName | SimulationScenarioType> {
+export interface ISimulationResponse<T extends SimulationEventType | undefined = undefined> {
   id: string;
   status: Status;
   notification_setting_id: string;

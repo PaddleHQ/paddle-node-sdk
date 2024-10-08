@@ -4,14 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import type { SimulationRunEventStatus, SimulationEventType } from '../../enums';
 import type { ISimulationEventRequest, ISimulationEventResponse } from '../shared';
-import type { SimulationRunEventStatus, SimulationScenarioType } from '../../enums';
-import type { IEventName } from '../../notifications';
 
 export interface ISimulationRunEventResponse {
   id: string;
   status: SimulationRunEventStatus;
-  event_type: IEventName | SimulationScenarioType;
+  event_type: SimulationEventType;
   payload: any;
   request?: ISimulationEventRequest | null;
   response?: ISimulationEventResponse | null;
