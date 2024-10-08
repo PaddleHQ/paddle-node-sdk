@@ -6,16 +6,11 @@
 
 import { SimulationRunEventsResource, type ListSimulationRunEventsQueryParameters } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
-import {
-  SimulationRunEventMockResponse,
-  SimulationRunEventMock,
-  ListSimulationRunEventMockResponse,
-} from '../mocks/resources/simulation-run-events.mock.js';
-import { QueryParameters } from '../../internal/base/index.js';
+import { ListSimulationRunEventMockResponse } from '../mocks/resources/simulation-run-events.mock.js';
+import { SimulationRunEventMock, SimulationRunEventMockResponse } from '../mocks/resources/simulation-run-events.mock';
 
 const simulationId = 'ntfsim_123';
 const simulationRunId = 'ntfsimrun_123';
-const simulationRunEventId = 'ntfsimevent_123';
 
 describe('SimulationRunEventsResource', () => {
   test('should return a list of simulationRunEvents', async () => {
