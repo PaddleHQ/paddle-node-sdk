@@ -26,9 +26,7 @@ const SimulationPaths = {
 } as const;
 
 export class SimulationsResource extends BaseResource {
-  public list<T extends IEventName | SimulationScenarioType>(
-    queryParams?: ListSimulationQueryParameters,
-  ): SimulationCollection<T> {
+  public list(queryParams?: ListSimulationQueryParameters): SimulationCollection<IEventName | SimulationScenarioType> {
     const queryParameters = new QueryParameters(queryParams);
     return new SimulationCollection(this.client, SimulationPaths.list + queryParameters.toQueryString());
   }
@@ -62,14 +60,14 @@ export class SimulationsResource extends BaseResource {
 
   public async update<T extends IEventName | SimulationScenarioType>(
     simulationId: string,
-    updateSimulation: UpdateSimulationRequestBody,
+    updateSimulation: UpdateSimulationRequestBody<T>,
   ): Promise<Simulation<T>> {
     const urlWithPathParams = new PathParameters(SimulationPaths.update, {
       simulation_id: simulationId,
     }).deriveUrl();
 
     const response = await this.client.patch<
-      UpdateSimulationRequestBody,
+      UpdateSimulationRequestBody<T>,
       Response<ISimulationResponse<T>> | ErrorResponse
     >(urlWithPathParams, updateSimulation);
 
