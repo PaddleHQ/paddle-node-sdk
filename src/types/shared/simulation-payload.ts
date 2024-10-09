@@ -1,3 +1,4 @@
+import type { IEventName } from '../../notifications';
 import {
   type AddressCreatedEvent,
   type AddressImportedEvent,
@@ -86,11 +87,16 @@ interface SimulationEventPayloadMap {
   'transaction.updated': TransactionUpdatedEvent;
   'report.created': ReportCreatedEvent;
   'report.updated': ReportUpdatedEvent;
+  subscription_creation: never;
+  subscription_renewal: never;
+  subscription_pause: never;
+  subscription_resume: never;
+  subscription_cancellation: never;
 }
 
 export type DiscriminatedEventResponse<Base> = {
   [K in keyof SimulationEventPayloadMap]: Base & {
     type: K;
-    payload?: Partial<SimulationEventPayloadMap[K]['data']> | null;
+    payload?: K extends IEventName ? Partial<SimulationEventPayloadMap[K]['data']> | null : null;
   };
 }[keyof SimulationEventPayloadMap];
