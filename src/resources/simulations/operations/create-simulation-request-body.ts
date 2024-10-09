@@ -6,10 +6,11 @@
 
 import type { SimulationScenarioType } from '../../../enums/index.js';
 import type { IEventName } from '../../../notifications/index.js';
-
-export interface CreateSimulationRequestBody {
+import type { DiscriminatedSimulationEventResponse } from '../../../types/index.js';
+interface BaseCreateSimulationRequestBody {
   notificationSettingId: string;
-  type: IEventName | SimulationScenarioType;
   name: string;
-  payload?: any;
+  type: IEventName | SimulationScenarioType;
 }
+
+export type CreateSimulationRequestBody = DiscriminatedSimulationEventResponse<BaseCreateSimulationRequestBody>;
