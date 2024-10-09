@@ -35,3 +35,4 @@ export * from './custom-data';
 export * from './import-meta-response';
 export * from './simulation-event-request';
 export * from './simulation-event-response';
+export * from './simulation-payload';
