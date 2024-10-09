@@ -94,7 +94,7 @@ interface SimulationEventPayloadMap {
   subscription_cancellation: never;
 }
 
-export type DiscriminatedEventResponse<Base> = {
+export type DiscriminatedSimulationEventResponse<Base> = {
   [K in keyof SimulationEventPayloadMap]: Base & {
     type: K;
     payload?: K extends IEventName ? Partial<SimulationEventPayloadMap[K]['data']> | null : null;

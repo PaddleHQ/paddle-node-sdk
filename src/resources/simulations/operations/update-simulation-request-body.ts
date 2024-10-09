@@ -1,5 +1,5 @@
 import type { Status } from '../../../enums';
-import type { DiscriminatedEventResponse } from '../../../types';
+import type { DiscriminatedSimulationEventResponse } from '../../../types';
 
 interface BaseUpdateSimulationRequestBody {
   notificationSettingId?: string;
@@ -7,7 +7,7 @@ interface BaseUpdateSimulationRequestBody {
   status?: Status;
 }
 
-type RawUpdateSimulationRequestBody = DiscriminatedEventResponse<BaseUpdateSimulationRequestBody>;
+type RawUpdateSimulationRequestBody = DiscriminatedSimulationEventResponse<BaseUpdateSimulationRequestBody>;
 
 // Map all properties to be optional
 export type UpdateSimulationRequestBody = {

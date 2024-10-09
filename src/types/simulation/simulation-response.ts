@@ -1,7 +1,7 @@
 import type { Status } from '../../enums';
-import type { DiscriminatedEventResponse } from '../shared/simulation-payload';
+import type { DiscriminatedSimulationEventResponse } from '../shared/simulation-payload';
 
-export type ISimulationResponse = DiscriminatedEventResponse<BaseSimulationResponse>;
+export type ISimulationResponse = DiscriminatedSimulationEventResponse<BaseSimulationResponse>;
 
 interface BaseSimulationResponse {
   id: string;
