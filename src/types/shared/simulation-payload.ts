@@ -43,7 +43,7 @@ import {
   type TransactionUpdatedEvent,
 } from '../../notifications/events';
 
-export interface EventPayloadMap {
+interface SimulationEventPayloadMap {
   'address.created': AddressCreatedEvent;
   'address.updated': AddressUpdatedEvent;
   'address.imported': AddressImportedEvent;
@@ -89,5 +89,8 @@ export interface EventPayloadMap {
 }
 
 export type DiscriminatedEventResponse<Base> = {
-  [K in keyof EventPayloadMap]: Base & { type: K; payload?: Partial<EventPayloadMap[K]['data']> | null };
-}[keyof EventPayloadMap];
+  [K in keyof SimulationEventPayloadMap]: Base & {
+    type: K;
+    payload?: Partial<SimulationEventPayloadMap[K]['data']> | null;
+  };
+}[keyof SimulationEventPayloadMap];
