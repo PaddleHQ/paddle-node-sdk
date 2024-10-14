@@ -24,3 +24,5 @@ export * from './transaction-checkout';
 export * from './total-adjustments';
 export * from './payout-totals-adjustment';
 export * from './import-meta';
+export * from './simulation-event-request';
+export * from './simulation-event-response';
