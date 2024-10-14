@@ -12,6 +12,17 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.0.0-rc.1 - 2024-10-08
+
+### Added
+
+- Added `simulationTypes` resources
+- Added `simulations` resources
+- Added `simulationRuns` resources
+- Added `simulationRunEvents` resources
+
+---
+
 ## 2.0.0-rc.0 - 2024-09-26
 
 > **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
@@ -40,7 +51,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ## 1.6.0 - 2024-09-16
 
 ### Added
- 
+
 - Added `adjustments.getCreditNotePDF()` to [get a credit note for an adjustment](https://developer.paddle.com/api-reference/adjustments/get-credit-note-pdf?utm_source=dx&utm_medium=paddle-node-sdk)
 - Added `disposition` query parameter to `adjustments.getCreditNotePDF()` and `transactions.getInvoicePDF()` operations, see [related changelog](https://developer.paddle.com/changelog/2024/invoice-pdf-open-in-browser?utm_source=dx&utm_medium=paddle-node-sdk).
 - Added pagination support to `notificationSettings.list()` operation, see [related changelog](https://developer.paddle.com/changelog/2024/notification-settings-pagination?utm_source=dx&utm_medium=paddle-node-sdk).
@@ -170,7 +181,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Removed
 
 - **Breaking change:** Removed `*Includes` entity in favour of standard entities.
-  
+
   - Use `Price` instead of `PriceWithIncludes`
   - Use `Product` instead of `ProductWithIncludes`
   - Use `Subscription` instead of `SubscriptionIncludes`
@@ -230,7 +241,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Fixed
 
-- Marked `unitPriceOverrides` as optional in Price entity. 
+- Marked `unitPriceOverrides` as optional in Price entity.
 
 ---
 
@@ -290,7 +301,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 - Added `notificationSettings.get()` to [get a notification settings](https://developer.paddle.com/api-reference/notification-settings/get-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
 - Added `notificationSettings.update()` to [update a notification settings](https://developer.paddle.com/api-reference/notification-settings/update-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
 - Added `notificationSettings.delete()` to [delete a notification settings](https://developer.paddle.com/api-reference/notification-settings/delete-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notifications.list()` to [list all notifications](https://developer.paddle.com/api-reference/notifications/list-notifications?utm_source=dx&utm_medium=paddle-node-sdk) 
+- Added `notifications.list()` to [list all notifications](https://developer.paddle.com/api-reference/notifications/list-notifications?utm_source=dx&utm_medium=paddle-node-sdk)
 - Added `notifications.get()` to [get a notification](https://developer.paddle.com/api-reference/notifications/get-notification?utm_source=dx&utm_medium=paddle-node-sdk)
 - Added `notifications.replay()` to [replay a notification](https://developer.paddle.com/api-reference/notifications/replay-notification?utm_source=dx&utm_medium=paddle-node-sdk)
 - Added `notifications.getLogs()` to [get all logs for a notification](https://developer.paddle.com/api-reference/notification-logs/list-notification-logs?utm_source=dx&utm_medium=paddle-node-sdk)
@@ -315,7 +326,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Added
 
 - Added helper function to archive supported entities
-- Added `pricingPreview.preview()` to [preview calculations for one or more prices](https://developer.paddle.com/api-reference/pricing-preview/preview-prices?utm_source=dx&utm_medium=paddle-node-sdk) 
+- Added `pricingPreview.preview()` to [preview calculations for one or more prices](https://developer.paddle.com/api-reference/pricing-preview/preview-prices?utm_source=dx&utm_medium=paddle-node-sdk)
 
 ### Changed
 
@@ -363,7 +374,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 - Added changelog.
 
---- 
+---
 
 ## 0.1.6 - 2023-11-22
 
@@ -371,7 +382,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 - Fixed optional management URL object in subscription entities.
 
---- 
+---
 
 ## 0.1.5 - 2023-11-14
 
