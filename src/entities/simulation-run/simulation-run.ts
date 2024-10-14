@@ -7,7 +7,7 @@
 import type { SimulationRunStatus, SimulationScenarioType } from '../../enums/index.js';
 import type { IEventName } from '../../notifications/index.js';
 import type { ISimulationRunResponse } from '../../types/index.js';
-import { SimulationRunEvent } from './simulation-run-event.js';
+import { SimulationRunEvent } from '../index.js';
 
 export class SimulationRun {
   public readonly id: string;
