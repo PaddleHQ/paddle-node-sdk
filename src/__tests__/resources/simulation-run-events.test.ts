@@ -7,7 +7,10 @@
 import { SimulationRunEventsResource, type ListSimulationRunEventsQueryParameters } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import { ListSimulationRunEventMockResponse } from '../mocks/resources/simulation-run-events.mock.js';
-import { SimulationRunEventMock, SimulationRunEventMockResponse } from '../mocks/resources/simulation-run-events.mock';
+import {
+  SimulationRunEventMock,
+  SimulationRunEventMockResponse,
+} from '../mocks/resources/simulation-run-events.mock.js';
 
 const simulationId = 'ntfsim_123';
 const simulationRunId = 'ntfsimrun_123';
