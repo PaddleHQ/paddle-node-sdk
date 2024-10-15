@@ -13,6 +13,10 @@ import {
   PricingPreviewResource,
   ProductsResource,
   ReportsResource,
+  SimulationTypesResource,
+  SimulationsResource,
+  SimulationRunsResource,
+  SimulationRunEventsResource,
   SubscriptionsResource,
   TransactionsResource,
 } from './resources/index.js';
@@ -42,6 +46,10 @@ export class Paddle {
   public notificationSettings: NotificationSettingsResource;
   public notifications: NotificationsResource;
   public reports: ReportsResource;
+  public simulationTypes: SimulationTypesResource;
+  public simulations: SimulationsResource;
+  public simulationRuns: SimulationRunsResource;
+  public simulationRunEvents: SimulationRunEventsResource;
 
   constructor(apiKey: string, options?: PaddleOptions) {
     this.client = new Client(
@@ -65,5 +73,9 @@ export class Paddle {
     this.notificationSettings = new NotificationSettingsResource(this.client);
     this.notifications = new NotificationsResource(this.client);
     this.reports = new ReportsResource(this.client);
+    this.simulationTypes = new SimulationTypesResource(this.client);
+    this.simulations = new SimulationsResource(this.client);
+    this.simulationRuns = new SimulationRunsResource(this.client);
+    this.simulationRunEvents = new SimulationRunEventsResource(this.client);
   }
 }

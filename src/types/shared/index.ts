@@ -33,3 +33,6 @@ export * from './billing-details-create.js';
 export * from './billing-details-update.js';
 export * from './custom-data.js';
 export * from './import-meta-response.js';
+export * from './simulation-event-request.js';
+export * from './simulation-event-response.js';
+export * from './simulation-payload.js';

@@ -24,3 +24,5 @@ export * from './transaction-checkout.js';
 export * from './total-adjustments.js';
 export * from './payout-totals-adjustment.js';
 export * from './import-meta.js';
+export * from './simulation-event-request.js';
+export * from './simulation-event-response.js';
