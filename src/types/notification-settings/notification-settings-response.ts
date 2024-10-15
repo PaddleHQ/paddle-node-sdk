@@ -3,7 +3,7 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
-import { type NotificationSettingsType } from '../../enums';
+import { type TrafficSource, type NotificationSettingsType } from '../../enums';
 import { type IEventTypeResponse } from '../event-types';
 
 export interface INotificationSettingsResponse {
@@ -14,6 +14,7 @@ export interface INotificationSettingsResponse {
   active: boolean;
   api_version: number;
   include_sensitive_fields: boolean;
+  traffic_source: TrafficSource;
   subscribed_events: IEventTypeResponse[];
   endpoint_secret_key: string;
 }
