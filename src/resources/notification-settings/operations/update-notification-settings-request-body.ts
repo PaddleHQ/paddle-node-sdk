@@ -3,6 +3,7 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
+import { type TrafficSource } from '../../../enums';
 import { type IEventName } from '../../../notifications';
 
 export interface UpdateNotificationSettingsRequestBody {
@@ -12,4 +13,5 @@ export interface UpdateNotificationSettingsRequestBody {
   apiVersion?: number;
   includeSensitiveFields?: boolean;
   subscribedEvents?: IEventName[];
+  trafficSource?: TrafficSource;
 }
