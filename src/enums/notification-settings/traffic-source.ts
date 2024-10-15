@@ -4,5 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './notification-settings-type.js';
-export * from './traffic-source.js';
+export type TrafficSource = 'platform' | 'simulation' | 'all';
