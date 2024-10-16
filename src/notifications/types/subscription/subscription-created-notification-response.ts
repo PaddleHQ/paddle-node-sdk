@@ -16,9 +16,10 @@ import {
 import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums';
 import { type ICustomData } from '../../../types';
 
-export interface ISubscriptionNotificationResponse {
+export interface ISubscriptionCreatedNotificationResponse {
   id: string;
   status: SubscriptionStatus;
+  transaction_id: string;
   customer_id: string;
   address_id: string;
   business_id?: string | null;

@@ -15,6 +15,7 @@ import {
   type IPriceNotificationResponse,
   type IProductNotificationResponse,
   type IReportNotificationResponse,
+  type ISubscriptionCreatedNotificationResponse,
   type ISubscriptionNotificationResponse,
   type ITransactionNotificationResponse,
 } from '../../notifications';
@@ -123,7 +124,7 @@ interface ISubscriptionCanceled extends IEventsResponse<ISubscriptionNotificatio
   event_type: EventName.SubscriptionCanceled;
 }
 
-interface ISubscriptionCreated extends IEventsResponse<ISubscriptionNotificationResponse> {
+interface ISubscriptionCreated extends IEventsResponse<ISubscriptionCreatedNotificationResponse> {
   event_type: EventName.SubscriptionCreated;
 }
 

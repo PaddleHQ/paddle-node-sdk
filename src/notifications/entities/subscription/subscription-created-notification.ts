@@ -14,12 +14,13 @@ import {
   TimePeriodNotification,
 } from '../index';
 import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums';
-import { type ISubscriptionNotificationResponse } from '../../types';
+import { type ISubscriptionCreatedNotificationResponse } from '../../types';
 import { type CustomData } from '../../../entities';
 
-export class SubscriptionNotification {
+export class SubscriptionCreatedNotification {
   public readonly id: string;
   public readonly status: SubscriptionStatus;
+  public readonly transactionId: string;
   public readonly customerId: string;
   public readonly addressId: string;
   public readonly businessId: string | null;
@@ -41,9 +42,10 @@ export class SubscriptionNotification {
   public readonly customData: CustomData | null;
   public readonly importMeta: ImportMetaNotification | null;
 
-  constructor(subscription: ISubscriptionNotificationResponse) {
+  constructor(subscription: ISubscriptionCreatedNotificationResponse) {
     this.id = subscription.id;
     this.status = subscription.status;
+    this.transactionId = subscription.transaction_id;
     this.customerId = subscription.customer_id;
     this.addressId = subscription.address_id;
     this.businessId = subscription.business_id ? subscription.business_id : null;

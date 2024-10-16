@@ -5,17 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { SubscriptionNotification } from '../../entities';
+import { SubscriptionCreatedNotification } from '../../entities';
 import { EventName } from '../../helpers';
 import { type IEventsResponse } from '../../../types';
-import { type ISubscriptionNotificationResponse } from '../../types';
+import { type ISubscriptionCreatedNotificationResponse } from '../../types';
 
 export class SubscriptionCreatedEvent extends Event {
   public override readonly eventType = EventName.SubscriptionCreated;
-  public override readonly data: SubscriptionNotification;
+  public override readonly data: SubscriptionCreatedNotification;
 
-  constructor(response: IEventsResponse<ISubscriptionNotificationResponse>) {
+  constructor(response: IEventsResponse<ISubscriptionCreatedNotificationResponse>) {
     super(response);
-    this.data = new SubscriptionNotification(response.data);
+    this.data = new SubscriptionCreatedNotification(response.data);
   }
 }

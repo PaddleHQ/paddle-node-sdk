@@ -296,7 +296,6 @@ export const SubscriptionCanceledMockExpectation = {
     scheduledChange: null,
     startedAt: '2023-08-11T08:07:35.449123Z',
     status: 'canceled',
-    transactionId: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     updatedAt: '2024-01-11T08:34:01.798065409Z',
   },
   eventId: 'evt_01h7jk37p1ezj1k5b4kt83t35j',
