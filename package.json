@@ -59,5 +59,8 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

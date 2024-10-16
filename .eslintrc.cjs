@@ -46,22 +46,6 @@ module.exports = {
     '@typescript-eslint/no-extraneous-class': 'off',
     '@typescript-eslint/no-explicit-any': 'off'
   },
-  overrides: [
-    {
-      files: ['**/src/**'],
-      excludedFiles: ['**/__tests__/**', '**/*.test.ts?(x)'],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          {
-            devDependencies: false,
-            optionalDependencies: false,
-            peerDependencies: true,
-          },
-        ],
-      },
-    },
-  ]
 };
 
 
