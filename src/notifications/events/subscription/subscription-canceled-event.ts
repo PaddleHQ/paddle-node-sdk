@@ -12,7 +12,7 @@ import { type ISubscriptionNotificationResponse } from '../../types';
 
 export class SubscriptionCanceledEvent extends Event {
   public override readonly eventType = EventName.SubscriptionCanceled;
-  public override readonly data: Omit<SubscriptionNotification, 'transactionId'>;
+  public override readonly data: SubscriptionNotification;
 
   constructor(response: IEventsResponse<ISubscriptionNotificationResponse>) {
     super(response);
