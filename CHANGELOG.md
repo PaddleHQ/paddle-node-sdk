@@ -16,7 +16,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Fixed
 
-- Updated `transactionId` in `SubscriptionNotification` to be a non-nullable field.
+- Omitted the `transactionId` completely from `SubscriptionNotification` and created a separate `SubscriptionCreatedNotification` with the non-null `transactionId`
 
 ---
 
