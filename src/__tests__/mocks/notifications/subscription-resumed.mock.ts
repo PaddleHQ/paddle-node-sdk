@@ -223,7 +223,6 @@ export const SubscriptionResumedMockExpectation = {
     scheduledChange: null,
     startedAt: '2023-08-11T08:07:35.449123Z',
     status: 'active',
-    transactionId: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     updatedAt: '2023-11-11T08:33:04.453253Z',
   },
   eventId: 'evt_01h7je74dkvjc4b2pt8sgsfm7f',
