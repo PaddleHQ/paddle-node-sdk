@@ -29,9 +29,8 @@
     "prettier:fix": "prettier --check ./src --write",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "eslint --ext .ts,.tsx ./src --fix",
-    "release:beta": "yarn version --prerelease --preid beta --no-git-tag-version --no-commit-hooks",
-    "publish:beta": "yarn publish --tag beta --access public",
-    "publish:latest": "yarn publish --access public"
+    "publish:beta": "bun publish --tag beta --access public",
+    "publish:latest": "bun publish --access public"
   },
   "files": [
     "dist"
