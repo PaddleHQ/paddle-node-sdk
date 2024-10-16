@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "./dist/types",
-    "declaration": true,
-    "moduleResolution": "NodeNext",
-    "emitDeclarationOnly": true
-  }
-}

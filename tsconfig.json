@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es2016",
     "lib": ["ESNext"],
-    "module": "NodeNext",
-    "rootDir": "./src",
-    "moduleResolution": "Node",
-    "baseUrl": "./src",
-    "declaration": false,
-    "outDir": "./dist",
+
+    "allowJs": true,
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "target": "ESNext",
+
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "verbatimModuleSyntax": true,
+
     "removeComments": true,
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -28,8 +30,8 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": true,
   },
-  "include": ["./src"],
-  "exclude": ["**/__tests__/**"]
+  "exclude": ["**/__tests__/**/*"],
 }
