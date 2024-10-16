@@ -20,7 +20,7 @@ import { type CustomData } from '../../../entities';
 export class SubscriptionNotification {
   public readonly id: string;
   public readonly status: SubscriptionStatus;
-  public readonly transactionId: string | null;
+  public readonly transactionId: string;
   public readonly customerId: string;
   public readonly addressId: string;
   public readonly businessId: string | null;
@@ -45,7 +45,7 @@ export class SubscriptionNotification {
   constructor(subscription: ISubscriptionNotificationResponse) {
     this.id = subscription.id;
     this.status = subscription.status;
-    this.transactionId = subscription.transaction_id ? subscription.transaction_id : null;
+    this.transactionId = subscription.transaction_id;
     this.customerId = subscription.customer_id;
     this.addressId = subscription.address_id;
     this.businessId = subscription.business_id ? subscription.business_id : null;
