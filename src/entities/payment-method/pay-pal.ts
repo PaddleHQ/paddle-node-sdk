@@ -11,7 +11,7 @@ export class PayPal {
   public readonly reference: string;
 
   constructor(payPalResponse: IPayPalResponse) {
-      this.email = payPalResponse.email;
-      this.reference = payPalResponse.reference;
+    this.email = payPalResponse.email;
+    this.reference = payPalResponse.reference;
   }
 }

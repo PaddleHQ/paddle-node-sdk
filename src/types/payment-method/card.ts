@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { SavedPaymentMethodType } from '../../enums';
+import { type SavedPaymentMethodType } from '../../enums';
 
 export interface ICardResponse {
   type: SavedPaymentMethodType;

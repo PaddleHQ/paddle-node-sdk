@@ -4,5 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './type'
-export * from './origin'
+export * from './type';
+export * from './origin';

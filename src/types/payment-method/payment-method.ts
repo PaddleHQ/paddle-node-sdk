@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ICardResponse, IPayPalResponse } from './';
-import { SavedPaymentOrigin } from '../../enums';
+import { type ICardResponse, type IPayPalResponse } from './';
+import { type SavedPaymentOrigin } from '../../enums';
 
 export interface IPaymentMethodResponse {
   id: string;

@@ -4,8 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-
 export interface IPayPalResponse {
-    email: string;
-    reference: string;
+  email: string;
+  reference: string;
 }
