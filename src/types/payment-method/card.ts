@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SavedPaymentMethodType } from '../../enums';
+import { type SavedPaymentMethodCardType } from '../../enums';
 
 export interface ICardResponse {
-  type: SavedPaymentMethodType;
+  type: SavedPaymentMethodCardType;
   last4: string;
   expiry_month: number;
   expiry_year: number;

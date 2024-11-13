@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { SavedPaymentOrigin } from '../../enums';
+import type { SavedPaymentMethodType, SavedPaymentOrigin } from '../../enums';
 import type { IPaymentMethodResponse } from '../../types';
 import { Card, PayPal } from './';
 
@@ -12,7 +12,7 @@ export class PaymentMethod {
   public readonly id: string;
   public readonly customerId: string;
   public readonly addressId: string;
-  public readonly type: string;
+  public readonly type: SavedPaymentMethodType;
   public readonly card: Card | null;
   public readonly paypal: PayPal | null;
   public readonly origin: SavedPaymentOrigin;

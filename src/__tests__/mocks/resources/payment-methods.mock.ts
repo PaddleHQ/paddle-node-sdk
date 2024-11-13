@@ -13,7 +13,7 @@ export const PaymentMethodMock: IPaymentMethodResponse = {
   address_id: 'add_123',
   type: 'card',
   card: {
-    type: 'card',
+    type: 'visa',
     last4: '1234',
     expiry_month: 1,
     expiry_year: 2025,

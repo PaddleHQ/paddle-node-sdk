@@ -4,11 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { SavedPaymentMethodType } from '../../enums';
+import type { SavedPaymentMethodCardType } from '../../enums';
 import type { ICardResponse } from '../../types';
 
 export class Card {
-  public readonly type: SavedPaymentMethodType;
+  public readonly type: SavedPaymentMethodCardType;
   public readonly last4: string;
   public readonly expiryMonth: number;
   public readonly expiryYear: number;

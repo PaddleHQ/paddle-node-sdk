@@ -5,13 +5,13 @@
  */
 
 import { type ICardResponse, type IPayPalResponse } from './';
-import { type SavedPaymentOrigin } from '../../enums';
+import { type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../enums';
 
 export interface IPaymentMethodResponse {
   id: string;
   customer_id: string;
   address_id: string;
-  type: string;
+  type: SavedPaymentMethodType;
   card?: ICardResponse | null;
   paypal?: IPayPalResponse | null;
   origin: SavedPaymentOrigin;
