@@ -47,7 +47,7 @@ function decamelizeKeys(obj: any): ObjectWithData {
     output = {};
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        output[snakeCase(key)] = decamelizeKeys((obj as any)[key]);
+        output[snakeCase(key)] = decamelizeKeys(obj[key]);
       }
     }
   }
