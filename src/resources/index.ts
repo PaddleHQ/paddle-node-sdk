@@ -7,6 +7,7 @@ export * from './prices';
 export * from './products';
 export * from './subscriptions';
 export * from './transactions';
+export * from './payment-methods';
 export * from './pricing-preview';
 export * from './event-types';
 export * from './notification-settings';

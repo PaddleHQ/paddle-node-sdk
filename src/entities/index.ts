@@ -15,6 +15,7 @@ export * from './subscription';
 export * from './address';
 export * from './discount';
 export * from './events';
+export * from './payment-method';
 export * from './payout';
 export * from './event-types';
 export * from './notification-settings';

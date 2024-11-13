@@ -14,6 +14,7 @@ export * from './business';
 export * from './subscription';
 export * from './address';
 export * from './discount';
+export * from './payment-method';
 export * from './pricing-preview';
 export * from './events';
 export * from './payout';
