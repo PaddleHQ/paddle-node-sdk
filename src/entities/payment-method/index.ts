@@ -5,6 +5,6 @@
  */
 
 export * from './card';
-export * from './pay-pal';
+export * from './paypal';
 export * from './payment-method';
 export * from './payment-method-collection';

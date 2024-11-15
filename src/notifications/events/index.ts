@@ -9,6 +9,7 @@ export * from './adjustment';
 export * from './business';
 export * from './customer';
 export * from './discount';
+export * from './payment-method';
 export * from './payout';
 export * from './price';
 export * from './product';
