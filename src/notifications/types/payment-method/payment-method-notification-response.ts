@@ -10,13 +10,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../../enums';
+import { type SavedPaymentDeletionReason, type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../../enums';
 
 export interface IPaymentMethodNotificationResponse {
   id: string;
   customer_id: string;
   address_id: string;
-  deletion_reason: string;
+  deletion_reason: SavedPaymentDeletionReason;
   type: SavedPaymentMethodType;
   origin: SavedPaymentOrigin;
   saved_at: string;

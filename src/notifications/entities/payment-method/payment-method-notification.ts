@@ -5,13 +5,13 @@
  */
 
 import { type IPaymentMethodNotificationResponse } from '../../types';
-import { type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../../enums';
+import { type SavedPaymentMethodType, type SavedPaymentOrigin, type SavedPaymentDeletionReason } from '../../../enums';
 
 export class PaymentMethodNotification {
   public readonly id: string;
   public readonly customerId: string;
   public readonly addressId: string;
-  public readonly deletionReason: string;
+  public readonly deletionReason: SavedPaymentDeletionReason;
   public readonly type: SavedPaymentMethodType;
   public readonly origin: SavedPaymentOrigin;
   public readonly savedAt: string;
