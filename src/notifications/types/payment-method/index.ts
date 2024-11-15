@@ -4,4 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+export * from './payment-method-deleted-notification-response';
 export * from './payment-method-notification-response';

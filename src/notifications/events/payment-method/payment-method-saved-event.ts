@@ -12,7 +12,7 @@ import { type IPaymentMethodNotificationResponse } from '../../types';
 
 export class PaymentMethodSavedEvent extends Event {
   public override readonly eventType = EventName.PaymentMethodSaved;
-  public override readonly data: Omit<PaymentMethodNotification, 'deletionReason'>;
+  public override readonly data: PaymentMethodNotification;
 
   constructor(response: IEventsResponse<IPaymentMethodNotificationResponse>) {
     super(response);

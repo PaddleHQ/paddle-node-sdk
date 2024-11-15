@@ -4,22 +4,24 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../../enums';
-import { type IPaymentMethodNotificationResponse } from '../../types';
+import { type IPaymentMethodDeletedNotificationResponse } from '../../types';
+import { type SavedPaymentMethodType, type SavedPaymentOrigin, type SavedPaymentDeletionReason } from '../../../enums';
 
-export class PaymentMethodNotification {
+export class PaymentMethodDeletedNotification {
   public readonly id: string;
   public readonly customerId: string;
   public readonly addressId: string;
+  public readonly deletionReason: SavedPaymentDeletionReason;
   public readonly type: SavedPaymentMethodType;
   public readonly origin: SavedPaymentOrigin;
   public readonly savedAt: string;
   public readonly updatedAt: string;
 
-  constructor(paymentMethod: IPaymentMethodNotificationResponse) {
+  constructor(paymentMethod: IPaymentMethodDeletedNotificationResponse) {
     this.id = paymentMethod.id;
     this.customerId = paymentMethod.customer_id;
     this.addressId = paymentMethod.address_id;
+    this.deletionReason = paymentMethod.deletion_reason;
     this.type = paymentMethod.type;
     this.origin = paymentMethod.origin;
     this.savedAt = paymentMethod.saved_at;

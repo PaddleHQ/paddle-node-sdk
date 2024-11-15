@@ -12,6 +12,7 @@ import {
   type ICustomerNotificationResponse,
   type IDiscountNotificationResponse,
   type IPaymentMethodNotificationResponse,
+  type IPaymentMethodDeletedNotificationResponse,
   type IPayoutNotificationResponse,
   type IPriceNotificationResponse,
   type IProductNotificationResponse,
@@ -85,7 +86,7 @@ interface IDiscountImported extends IEventsResponse<IDiscountNotificationRespons
   event_type: EventName.DiscountImported;
 }
 
-interface IPaymentMethodDeleted extends IEventsResponse<IPaymentMethodNotificationResponse> {
+interface IPaymentMethodDeleted extends IEventsResponse<IPaymentMethodDeletedNotificationResponse> {
   event_type: EventName.PaymentMethodDeleted;
 }
 

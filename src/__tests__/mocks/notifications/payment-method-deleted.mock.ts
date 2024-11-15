@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IPaymentMethodNotificationResponse } from '../../../notifications';
+import { IPaymentMethodDeletedNotificationResponse } from '../../../notifications';
 import { type IEventsResponse } from '../../../types';
 
-export const PaymentMethodDeletedMock: IEventsResponse<IPaymentMethodNotificationResponse> = {
+export const PaymentMethodDeletedMock: IEventsResponse<IPaymentMethodDeletedNotificationResponse> = {
   event_id: 'evt_01hwz6k64a210xcvsdbg3y4vmr',
   event_type: 'payment_method.deleted',
   occurred_at: '2024-05-03T12:24:18.826338Z',

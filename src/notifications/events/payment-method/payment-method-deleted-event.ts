@@ -5,17 +5,17 @@
  */
 
 import { Event } from '../../../entities/events/event';
-import { PaymentMethodNotification } from '../../entities';
+import { PaymentMethodDeletedNotification } from '../../entities';
 import { EventName } from '../../helpers';
 import { type IEventsResponse } from '../../../types';
-import { type IPaymentMethodNotificationResponse } from '../../types';
+import { type IPaymentMethodDeletedNotificationResponse } from '../../types';
 
 export class PaymentMethodDeletedEvent extends Event {
   public override readonly eventType = EventName.PaymentMethodDeleted;
-  public override readonly data: PaymentMethodNotification;
+  public override readonly data: PaymentMethodDeletedNotification;
 
-  constructor(response: IEventsResponse<IPaymentMethodNotificationResponse>) {
+  constructor(response: IEventsResponse<IPaymentMethodDeletedNotificationResponse>) {
     super(response);
-    this.data = new PaymentMethodNotification(response.data);
+    this.data = new PaymentMethodDeletedNotification(response.data);
   }
 }
