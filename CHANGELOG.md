@@ -17,6 +17,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Added
 
 - Added `paymentMethods` resources
+- Added `generateAuthToken` for customer
 
 ---
 
