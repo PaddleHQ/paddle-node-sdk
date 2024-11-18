@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { CreditBalance, Customer, CustomerCollection } from '../../entities';
+import { CreditBalance, Customer, CustomerCollection, AuthToken } from '../../entities';
 import { type ErrorResponse, type Response } from '../../internal';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base';
 import {
@@ -13,7 +13,7 @@ import {
   type ListCustomerQueryParameters,
   type UpdateCustomerRequestBody,
 } from './operations';
-import { type ICreditBalanceResponse, type ICustomerResponse } from '../../types';
+import { type ICreditBalanceResponse, type ICustomerResponse, type IAuthTokenResponse } from '../../types';
 
 const CustomerPaths = {
   list: '/customers',
@@ -21,6 +21,7 @@ const CustomerPaths = {
   get: '/customers/{customer_id}',
   update: '/customers/{customer_id}',
   getCustomerBalance: '/customers/{customer_id}/credit-balances',
+  generate: '/customers/{customer_id}/auth-token',
 } as const;
 
 export * from './operations';
@@ -90,5 +91,20 @@ export class CustomersResource extends BaseResource {
 
   public async archive(customerId: string) {
     return await this.update(customerId, { status: 'archived' });
+  }
+
+  public async generateAuthToken(customerId: string): Promise<AuthToken> {
+    const urlWithPathParams = new PathParameters(CustomerPaths.generate, {
+      customer_id: customerId,
+    }).deriveUrl();
+
+    const response = await this.client.post<undefined, Response<IAuthTokenResponse> | ErrorResponse>(
+      urlWithPathParams,
+      undefined,
+    );
+
+    const data = this.handleResponse<IAuthTokenResponse>(response);
+
+    return new AuthToken(data);
   }
 }
