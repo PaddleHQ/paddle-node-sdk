@@ -4,6 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './card';
-export * from './paypal';
 export * from './payment-method';

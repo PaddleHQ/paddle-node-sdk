@@ -6,14 +6,14 @@
 
 import type { SavedPaymentMethodType, SavedPaymentOrigin } from '../../enums';
 import type { IPaymentMethodResponse } from '../../types';
-import { Card, PayPal } from './';
+import { PaymentCard, PayPal } from '../shared';
 
 export class PaymentMethod {
   public readonly id: string;
   public readonly customerId: string;
   public readonly addressId: string;
   public readonly type: SavedPaymentMethodType;
-  public readonly card: Card | null;
+  public readonly card: PaymentCard | null;
   public readonly paypal: PayPal | null;
   public readonly origin: SavedPaymentOrigin;
   public readonly savedAt: string;
@@ -24,7 +24,7 @@ export class PaymentMethod {
     this.customerId = paymentMethodResponse.customer_id;
     this.addressId = paymentMethodResponse.address_id;
     this.type = paymentMethodResponse.type;
-    this.card = paymentMethodResponse.card ? new Card(paymentMethodResponse.card) : null;
+    this.card = paymentMethodResponse.card ? new PaymentCard(paymentMethodResponse.card) : null;
     this.paypal = paymentMethodResponse.paypal ? new PayPal(paymentMethodResponse.paypal) : null;
     this.origin = paymentMethodResponse.origin;
     this.savedAt = paymentMethodResponse.saved_at;

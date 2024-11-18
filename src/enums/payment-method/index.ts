@@ -4,7 +4,6 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './card-type';
 export * from './deletion-reason';
 export * from './type';
 export * from './origin';

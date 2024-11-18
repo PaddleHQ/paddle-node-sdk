@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ICardResponse, type IPayPalResponse } from './';
+import { type IPaymentCardResponse, type IPayPalResponse } from '../';
 import { type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../enums';
 
 export interface IPaymentMethodResponse {
@@ -12,7 +12,7 @@ export interface IPaymentMethodResponse {
   customer_id: string;
   address_id: string;
   type: SavedPaymentMethodType;
-  card?: ICardResponse | null;
+  card?: IPaymentCardResponse | null;
   paypal?: IPayPalResponse | null;
   origin: SavedPaymentOrigin;
   saved_at: string;
