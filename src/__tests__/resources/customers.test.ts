@@ -15,6 +15,7 @@ import {
   CustomerCreditBalanceMockResponse,
   CustomerMock,
   CustomerMockResponse,
+  GenerateAuthTokenMockResponse,
   ListCustomerMockResponse,
   UpdateCustomerExpectation,
   UpdateCustomerMock,
@@ -138,5 +139,17 @@ describe('CustomersResource', () => {
       queryParameters: undefined,
     });
     expect(customer).toBeDefined();
+  });
+
+  test('should generate an auth token for a customer', async () => {
+    const customerId = CustomerMock.id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(GenerateAuthTokenMockResponse);
+
+    const customersResource = new CustomersResource(paddleInstance);
+    const authToken = (await customersResource.generateAuthToken(customerId)).customerAuthToken;
+
+    expect(paddleInstance.post).toBeCalledWith(`/customers/${customerId}/auth-token`, undefined);
+    expect(authToken).toBeDefined();
   });
 });

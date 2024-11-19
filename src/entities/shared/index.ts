@@ -17,6 +17,7 @@ export * from './adjustment-original-amount';
 export * from './chargeback-fee';
 export * from './transaction-payout-totals-adjusted';
 export * from './unit-totals';
+export * from './paypal';
 export * from './payment-card';
 export * from './payment-method-details';
 export * from './transaction-payment-attempt';

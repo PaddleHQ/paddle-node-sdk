@@ -9,6 +9,7 @@ export * from './subscription';
 export * from './discount';
 export * from './adjustment';
 export * from './transaction';
+export * from './payment-method';
 export * from './payout';
 export * from './notification-settings';
 export * from './notification';

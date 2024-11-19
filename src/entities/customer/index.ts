@@ -4,6 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+export * from './auth-token';
 export * from './customer-collection';
 export * from './customer';
 export * from './credit-balance';

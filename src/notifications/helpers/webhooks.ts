@@ -14,6 +14,8 @@ import {
   DiscountCreatedEvent,
   DiscountImportedEvent,
   DiscountUpdatedEvent,
+  PaymentMethodDeletedEvent,
+  PaymentMethodSavedEvent,
   PayoutCreatedEvent,
   PayoutPaidEvent,
   PriceCreatedEvent,
@@ -93,6 +95,10 @@ export class Webhooks {
         return new DiscountImportedEvent(data);
       case EventName.DiscountUpdated:
         return new DiscountUpdatedEvent(data);
+      case EventName.PaymentMethodDeleted:
+        return new PaymentMethodDeletedEvent(data);
+      case EventName.PaymentMethodSaved:
+        return new PaymentMethodSavedEvent(data);
       case EventName.PayoutCreated:
         return new PayoutCreatedEvent(data);
       case EventName.PayoutPaid:
