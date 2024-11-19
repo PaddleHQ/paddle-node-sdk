@@ -6,16 +6,16 @@
 
 import { Event } from '../../../entities/events/event.js';
 import { EventName } from '../../helpers/index.js';
-import { SubscriptionNotification } from '../../entities/index.js';
+import { SubscriptionCreatedNotification } from '../../entities/index.js';
 import { type IEventsResponse } from '../../../types/index.js';
-import { type ISubscriptionNotificationResponse } from '../../types/index.js';
+import { type ISubscriptionCreatedNotificationResponse } from '../../types/index.js';
 
 export class SubscriptionCreatedEvent extends Event {
   public override readonly eventType = EventName.SubscriptionCreated;
-  public override readonly data: SubscriptionNotification;
+  public override readonly data: SubscriptionCreatedNotification;
 
-  constructor(response: IEventsResponse<ISubscriptionNotificationResponse>) {
+  constructor(response: IEventsResponse<ISubscriptionCreatedNotificationResponse>) {
     super(response);
-    this.data = new SubscriptionNotification(response.data);
+    this.data = new SubscriptionCreatedNotification(response.data);
   }
 }

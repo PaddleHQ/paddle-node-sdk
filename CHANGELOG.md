@@ -15,6 +15,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ## 2.0.0-rc.2 - 2024-11-19
 
 - Added the `trafficSource` filter on notification settings
+- Omitted the `transactionId` completely from `SubscriptionNotification` and created a separate `SubscriptionCreatedNotification` with the non-null `transactionId`
 
 ### Added
 

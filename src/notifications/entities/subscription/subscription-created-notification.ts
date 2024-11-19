@@ -4,18 +4,19 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums/index.js';
-import { SubscriptionDiscountNotification } from './subscription-discount-notification.js';
-import { BillingDetailsNotification, ImportMetaNotification, TimePeriodNotification } from '../shared/index.js';
-import { SubscriptionTimePeriodNotification } from './subscription-time-period-notification.js';
-import { SubscriptionScheduledChangeNotification } from './subscription-scheduled-change-notification.js';
-import { SubscriptionItemNotification } from './subscription-item-notification.js';
 import { type CustomData } from '../../../entities/index.js';
-import { type ISubscriptionNotificationResponse } from '../../types/index.js';
+import { type CollectionMode, type CurrencyCode, type SubscriptionStatus } from '../../../enums/index.js';
+import { type ISubscriptionCreatedNotificationResponse } from '../../types/index.js';
+import { BillingDetailsNotification, ImportMetaNotification, TimePeriodNotification } from '../shared/index.js';
+import { SubscriptionDiscountNotification } from './subscription-discount-notification.js';
+import { SubscriptionItemNotification } from './subscription-item-notification.js';
+import { SubscriptionScheduledChangeNotification } from './subscription-scheduled-change-notification.js';
+import { SubscriptionTimePeriodNotification } from './subscription-time-period-notification.js';
 
-export class SubscriptionNotification {
+export class SubscriptionCreatedNotification {
   public readonly id: string;
   public readonly status: SubscriptionStatus;
+  public readonly transactionId: string;
   public readonly customerId: string;
   public readonly addressId: string;
   public readonly businessId: string | null;
@@ -37,9 +38,10 @@ export class SubscriptionNotification {
   public readonly customData: CustomData | null;
   public readonly importMeta: ImportMetaNotification | null;
 
-  constructor(subscription: ISubscriptionNotificationResponse) {
+  constructor(subscription: ISubscriptionCreatedNotificationResponse) {
     this.id = subscription.id;
     this.status = subscription.status;
+    this.transactionId = subscription.transaction_id;
     this.customerId = subscription.customer_id;
     this.addressId = subscription.address_id;
     this.businessId = subscription.business_id ? subscription.business_id : null;

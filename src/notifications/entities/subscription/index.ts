@@ -4,6 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+export * from './subscription-created-notification.js';
 export * from './subscription-discount-notification.js';
 export * from './subscription-time-period-notification.js';
 export * from './subscription-scheduled-change-notification.js';
