@@ -20,6 +20,7 @@ export * from './adjustment-original-amount-response.js';
 export * from './chargeback-fee.js';
 export * from './transaction-payout-totals-adjusted-response.js';
 export * from './unit-totals.js';
+export * from './paypal.js';
 export * from './payment-card-response.js';
 export * from './payment-method-details.js';
 export * from './transaction-payment-attempt-response.js';

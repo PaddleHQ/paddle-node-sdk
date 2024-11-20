@@ -13,6 +13,7 @@ export * from './prices/index.js';
 export * from './products/index.js';
 export * from './subscriptions/index.js';
 export * from './transactions/index.js';
+export * from './payment-methods/index.js';
 export * from './pricing-preview/index.js';
 export * from './event-types/index.js';
 export * from './notification-settings/index.js';

@@ -9,6 +9,7 @@ import {
   EventTypesResource,
   NotificationSettingsResource,
   NotificationsResource,
+  PaymentMethodsResource,
   PricesResource,
   PricingPreviewResource,
   ProductsResource,
@@ -39,6 +40,7 @@ export class Paddle {
   public businesses: BusinessesResource;
   public discounts: DiscountsResource;
   public subscriptions: SubscriptionsResource;
+  public paymentMethods: PaymentMethodsResource;
   public pricingPreview: PricingPreviewResource;
   public events: EventsResource;
   public webhooks: Webhooks;
@@ -66,6 +68,7 @@ export class Paddle {
     this.businesses = new BusinessesResource(this.client);
     this.discounts = new DiscountsResource(this.client);
     this.subscriptions = new SubscriptionsResource(this.client);
+    this.paymentMethods = new PaymentMethodsResource(this.client);
     this.pricingPreview = new PricingPreviewResource(this.client);
     this.events = new EventsResource(this.client);
     this.webhooks = new Webhooks();
