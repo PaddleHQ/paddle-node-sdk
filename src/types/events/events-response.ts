@@ -11,10 +11,13 @@ import {
   type IBusinessNotificationResponse,
   type ICustomerNotificationResponse,
   type IDiscountNotificationResponse,
+  type IPaymentMethodNotificationResponse,
+  type IPaymentMethodDeletedNotificationResponse,
   type IPayoutNotificationResponse,
   type IPriceNotificationResponse,
   type IProductNotificationResponse,
   type IReportNotificationResponse,
+  type ISubscriptionCreatedNotificationResponse,
   type ISubscriptionNotificationResponse,
   type ITransactionNotificationResponse,
 } from '../../notifications/index.js';
@@ -83,6 +86,14 @@ interface IDiscountImported extends IEventsResponse<IDiscountNotificationRespons
   event_type: EventName.DiscountImported;
 }
 
+interface IPaymentMethodDeleted extends IEventsResponse<IPaymentMethodDeletedNotificationResponse> {
+  event_type: EventName.PaymentMethodDeleted;
+}
+
+interface IPaymentMethodSaved extends IEventsResponse<IPaymentMethodNotificationResponse> {
+  event_type: EventName.PaymentMethodSaved;
+}
+
 interface IPayoutCreated extends IEventsResponse<IPayoutNotificationResponse> {
   event_type: EventName.PayoutCreated;
 }
@@ -123,7 +134,7 @@ interface ISubscriptionCanceled extends IEventsResponse<ISubscriptionNotificatio
   event_type: EventName.SubscriptionCanceled;
 }
 
-interface ISubscriptionCreated extends IEventsResponse<ISubscriptionNotificationResponse> {
+interface ISubscriptionCreated extends IEventsResponse<ISubscriptionCreatedNotificationResponse> {
   event_type: EventName.SubscriptionCreated;
 }
 
@@ -210,6 +221,8 @@ export type IEvents =
   | IDiscountCreated
   | IDiscountUpdated
   | IDiscountImported
+  | IPaymentMethodDeleted
+  | IPaymentMethodSaved
   | IPayoutCreated
   | IPayoutPaid
   | IPriceCreated

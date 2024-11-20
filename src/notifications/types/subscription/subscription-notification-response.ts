@@ -19,7 +19,6 @@ import { type ICustomData } from '../../../types/index.js';
 export interface ISubscriptionNotificationResponse {
   id: string;
   status: SubscriptionStatus;
-  transaction_id: string;
   customer_id: string;
   address_id: string;
   business_id?: string | null;
