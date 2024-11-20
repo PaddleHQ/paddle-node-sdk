@@ -27,6 +27,14 @@ import {
   DiscountImportedMockExpectation,
 } from '../mocks/notifications/discount-imported.mock.js';
 import { DiscountUpdatedMock, DiscountUpdatedMockExpectation } from '../mocks/notifications/discount-updated.mock.js';
+import {
+  PaymentMethodDeletedMock,
+  PaymentMethodDeletedMockExpectation,
+} from '../mocks/notifications/payment-method-deleted.mock';
+import {
+  PaymentMethodSavedMock,
+  PaymentMethodSavedMockExpectation,
+} from '../mocks/notifications/payment-method-saved.mock';
 import { PayoutCreatedMock, PayoutCreatedMockExpectation } from '../mocks/notifications/payout-created.mock.js';
 import { PayoutPaidMock, PayoutPaidMockExpectation } from '../mocks/notifications/payout-paid.mock.js';
 import { PriceCreatedMock, PriceCreatedMockExpectation } from '../mocks/notifications/price-created.mock.js';
@@ -125,6 +133,8 @@ describe('Notifications Parser', () => {
     [DiscountCreatedMock.event_type, DiscountCreatedMock, DiscountCreatedMockExpectation],
     [DiscountImportedMock.event_type, DiscountImportedMock, DiscountImportedMockExpectation],
     [DiscountUpdatedMock.event_type, DiscountUpdatedMock, DiscountUpdatedMockExpectation],
+    [PaymentMethodDeletedMock.event_type, PaymentMethodDeletedMock, PaymentMethodDeletedMockExpectation],
+    [PaymentMethodSavedMock.event_type, PaymentMethodSavedMock, PaymentMethodSavedMockExpectation],
     [PayoutCreatedMock.event_type, PayoutCreatedMock, PayoutCreatedMockExpectation],
     [PayoutPaidMock.event_type, PayoutPaidMock, PayoutPaidMockExpectation],
     [PriceCreatedMock.event_type, PriceCreatedMock, PriceCreatedMockExpectation],

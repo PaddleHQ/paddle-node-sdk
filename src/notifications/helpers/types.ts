@@ -13,6 +13,8 @@ import {
   type DiscountCreatedEvent,
   type DiscountImportedEvent,
   type DiscountUpdatedEvent,
+  type PaymentMethodDeletedEvent,
+  type PaymentMethodSavedEvent,
   type PayoutCreatedEvent,
   type PayoutPaidEvent,
   type PriceCreatedEvent,
@@ -58,6 +60,8 @@ export type EventEntity =
   | DiscountCreatedEvent
   | DiscountUpdatedEvent
   | DiscountImportedEvent
+  | PaymentMethodDeletedEvent
+  | PaymentMethodSavedEvent
   | PayoutCreatedEvent
   | PayoutPaidEvent
   | PriceCreatedEvent
@@ -102,6 +106,8 @@ export enum EventName {
   DiscountCreated = 'discount.created',
   DiscountUpdated = 'discount.updated',
   DiscountImported = 'discount.imported',
+  PaymentMethodDeleted = 'payment_method.deleted',
+  PaymentMethodSaved = 'payment_method.saved',
   PayoutCreated = 'payout.created',
   PayoutPaid = 'payout.paid',
   PriceCreated = 'price.created',
@@ -146,6 +152,8 @@ export type IEventName =
   | 'discount.created'
   | 'discount.updated'
   | 'discount.imported'
+  | 'payment_method.saved'
+  | 'payment_method.deleted'
   | 'payout.created'
   | 'payout.updated'
   | 'payout.paid'

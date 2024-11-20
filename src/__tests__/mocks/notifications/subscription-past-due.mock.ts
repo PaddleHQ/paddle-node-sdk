@@ -223,7 +223,6 @@ export const SubscriptionPastDueMockExpectation = {
     scheduledChange: null,
     startedAt: '2023-08-11T08:07:35.449123Z',
     status: 'past_due',
-    transactionId: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     updatedAt: '2023-10-11T08:08:04.929417Z',
   },
   eventId: 'evt_01h7jagte1wnq80w5bw5gbmrwk',

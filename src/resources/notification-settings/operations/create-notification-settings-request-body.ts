@@ -5,7 +5,7 @@
  */
 
 import { type IEventName } from '../../../notifications/index.js';
-import { type NotificationSettingsType } from '../../../enums/index.js';
+import { type TrafficSource, type NotificationSettingsType } from '../../../enums/index.js';
 
 export interface CreateNotificationSettingsRequestBody {
   description: string;
@@ -14,4 +14,5 @@ export interface CreateNotificationSettingsRequestBody {
   type: NotificationSettingsType;
   apiVersion?: number | null;
   includeSensitiveFields?: boolean | null;
+  trafficSource?: TrafficSource | null;
 }

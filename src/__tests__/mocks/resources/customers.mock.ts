@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ICreditBalanceResponse, ICustomerResponse } from '../../../types/index.js';
+import { IAuthTokenResponse, ICreditBalanceResponse, ICustomerResponse } from '../../../types/index.js';
 import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const UpdateCustomerMock = {
@@ -34,6 +34,11 @@ export const CustomerMock: ICustomerResponse = {
   created_at: '2024-10-12T07:20:50.52Z',
   updated_at: '2024-10-13T07:20:50.52Z',
   import_meta: { external_id: '9b95b0b8-e10f-441a-862e-1936a6d818ab', imported_from: 'billing_platform' },
+};
+
+export const GenerateAuthTokenMock: IAuthTokenResponse = {
+  customer_auth_token: 'pca_01hwyzq8hmdwed5p4jc4hnv6bh_01hwwggymjn0yhhb2gr4p91276_6xaav4lydudt6bgmuefeaf2xnu3umegx',
+  expires_at: '2024-10-13T07:20:50.52Z',
 };
 
 export const CustomerCreditBalanceMock: ICreditBalanceResponse = {
@@ -70,5 +75,12 @@ export const ListCustomerMockResponse: ResponsePaginated<ICustomerResponse> = {
       next: '/customers?after=1',
       per_page: 10,
     },
+  },
+};
+
+export const GenerateAuthTokenMockResponse: Response<IAuthTokenResponse> = {
+  data: GenerateAuthTokenMock,
+  meta: {
+    request_id: '',
   },
 };

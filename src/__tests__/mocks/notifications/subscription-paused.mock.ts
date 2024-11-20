@@ -220,7 +220,6 @@ export const SubscriptionPausedMockExpectation = {
     scheduledChange: null,
     startedAt: '2023-08-11T08:07:35.449123Z',
     status: 'paused',
-    transactionId: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     updatedAt: '2023-11-11T08:08:19.863737035Z',
   },
   eventId: 'evt_01h7jcst3syp03dk5f0m8h204f',

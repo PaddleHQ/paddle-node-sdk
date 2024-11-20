@@ -129,7 +129,6 @@ export const SubscriptionTrialingMockExpectation = {
     startedAt: '2023-08-18T13:15:46.864158Z',
     status: 'trialing',
     updatedAt: '2023-08-18T13:15:46.864163Z',
-    transactionId: 'txn_01h8bxpvx398a7zbawb77y0kp5',
   },
   eventId: 'evt_01h84cka4p40e737vm1ajb2bc5',
   eventType: 'subscription.trialing',

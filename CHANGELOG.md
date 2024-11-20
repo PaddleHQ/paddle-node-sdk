@@ -12,6 +12,15 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.0.0-rc.2 - 2024-11-19
+
+### Added
+
+- Added the `trafficSource` filter on notification settings
+- Omitted the `transactionId` completely from `SubscriptionNotification` and created a separate `SubscriptionCreatedNotification` with the non-null `transactionId`
+- Added `paymentMethods` resources
+- Added `generateAuthToken` for customer
+
 ## 2.0.0-rc.1 - 2024-10-08
 
 ### Added

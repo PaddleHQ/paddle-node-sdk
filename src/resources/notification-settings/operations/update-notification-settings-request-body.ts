@@ -4,6 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type TrafficSource } from '../../../enums/index.js';
 import { type IEventName } from '../../../notifications/index.js';
 
 export interface UpdateNotificationSettingsRequestBody {
@@ -13,4 +14,5 @@ export interface UpdateNotificationSettingsRequestBody {
   apiVersion?: number;
   includeSensitiveFields?: boolean;
   subscribedEvents?: IEventName[];
+  trafficSource?: TrafficSource;
 }

@@ -25,6 +25,7 @@ export const UpdateNotificationSettingsMock: UpdateNotificationSettingsRequestBo
   apiVersion: 10,
   includeSensitiveFields: true,
   subscribedEvents: ['address.updated'],
+  trafficSource: 'platform',
 };
 
 export const CreateNotificationSettingsExpectation = {
@@ -41,6 +42,7 @@ export const UpdateNotificationSettingsExpectation = {
   api_version: 10,
   include_sensitive_fields: true,
   subscribed_events: ['address.updated'],
+  traffic_source: 'platform',
 };
 
 export const NotificationSettingsMock: INotificationSettingsResponse = {
