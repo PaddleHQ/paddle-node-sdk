@@ -34,4 +34,3 @@ export const CustomerPortalSessionMockResponse: Response<ICustomerPortalSessionR
     request_id: '',
   },
 };
-
