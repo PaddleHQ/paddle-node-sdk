@@ -35,15 +35,3 @@ export const CustomerPortalSessionMockResponse: Response<ICustomerPortalSessionR
   },
 };
 
-export const ListCustomerPortalSessionMockResponse: ResponsePaginated<ICustomerPortalSessionResponse> = {
-  data: [CustomerPortalSessionMock],
-  meta: {
-    request_id: '',
-    pagination: {
-      estimated_total: 10,
-      has_more: true,
-      next: '/customers/ctm_123/portal-sessions?after=1',
-      per_page: 10,
-    },
-  },
-};
