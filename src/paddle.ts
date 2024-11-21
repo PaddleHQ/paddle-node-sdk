@@ -5,6 +5,7 @@ import {
   AdjustmentsResource,
   BusinessesResource,
   CustomersResource,
+  CustomerPortalSessionsResource,
   DiscountsResource,
   EventTypesResource,
   NotificationSettingsResource,
@@ -36,6 +37,7 @@ export class Paddle {
   public transactions: TransactionsResource;
   public adjustments: AdjustmentsResource;
   public customers: CustomersResource;
+  public customerPortalSessions: CustomerPortalSessionsResource;
   public addresses: AddressesResource;
   public businesses: BusinessesResource;
   public discounts: DiscountsResource;
@@ -64,6 +66,7 @@ export class Paddle {
     this.transactions = new TransactionsResource(this.client);
     this.adjustments = new AdjustmentsResource(this.client);
     this.customers = new CustomersResource(this.client);
+    this.customerPortalSessions = new CustomerPortalSessionsResource(this.client);
     this.addresses = new AddressesResource(this.client);
     this.businesses = new BusinessesResource(this.client);
     this.discounts = new DiscountsResource(this.client);
