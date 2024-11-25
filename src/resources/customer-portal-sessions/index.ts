@@ -6,8 +6,8 @@
 
 import { CustomerPortalSession } from '../../entities/index.js';
 import { type ICustomerPortalSessionResponse } from '../../types/index.js';
-import { type ErrorResponse, type Response } from '../../internal';
-import { BaseResource, PathParameters } from '../../internal/base';
+import { type ErrorResponse, type Response } from '../../internal/index.js';
+import { BaseResource, PathParameters } from '../../internal/base/index.js';
 import { type CreateCustomerPortalSessionRequestBody } from './operations/index.js';
 
 const CustomerPortalSessionPaths = {
