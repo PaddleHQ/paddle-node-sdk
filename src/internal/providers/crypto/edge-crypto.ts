@@ -1,5 +1,7 @@
 import { type CryptoProvider } from './crypto-provider.js';
 
+declare const crypto: any;
+
 const byteHexMapping = new Array(256);
 for (let i = 0; i < byteHexMapping.length; i++) {
   byteHexMapping[i] = i.toString(16).padStart(2, '0');
@@ -34,7 +36,6 @@ export class EdgeCrypto implements CryptoProvider {
 
     for (let i = 0; i < signatureBytes.length; i++) {
       if (signatureBytes[i] !== undefined && signatureBytes[i] !== null) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         signatureHexCodes[i] = byteHexMapping[signatureBytes[i]!];
       }
     }

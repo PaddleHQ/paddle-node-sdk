@@ -3,8 +3,7 @@ export abstract class CryptoProvider {
     throw new Error('randomUUID not implemented.');
   }
 
-  // @ts-expect-error - unused params.
-  async computeHmac(payload: string, secret: string): Promise<string> {
+  async computeHmac(_payload: string, _secret: string): Promise<string> {
     throw new Error('computeHmac not implemented.');
   }
 }
