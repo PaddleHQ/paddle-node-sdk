@@ -10,7 +10,7 @@ import { type ErrorResponse, type Response } from '../../internal/index.js';
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import { type ListCustomerPaymentMethodQueryParameters } from './operations/index.js';
 
-export * from './operations';
+export * from './operations/index.js';
 
 const PaymentMethodPaths = {
   list: '/customers/{customer_id}/payment-methods',

@@ -1,3 +1,5 @@
+plugins:
+  - import
 env:
   browser: true
   es2021: true
@@ -19,6 +21,10 @@ rules:
   'generator-star-spacing': 'off'
   '@typescript-eslint/naming-convention': 'off'
   '@typescript-eslint/no-extraneous-class': 'off'
+  'import/extensions':
+    - error
+    - always
+    - js: always
 ignorePatterns:
   - 'jest.config.js'
   - '**/__tests__/**'
