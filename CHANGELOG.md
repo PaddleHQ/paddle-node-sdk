@@ -12,6 +12,16 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.1.2 - 2024-11-26
+
+### Fixed
+
+- Updated payment-methods export to use `.js` extension
+
+### Added
+
+- ESLint rule to ensure `.js` extension is provided
+
 ## 2.1.1 - 2024-11-25
 
 ### Fixed
