@@ -12,6 +12,16 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.1.2 - 2024-11-26
+
+### Fixed
+
+- Updated imports to use `.js` extension
+
+### Changed
+
+- Upgrade to eslint v9 with updated rules
+
 ## 2.1.1 - 2024-11-25
 
 ### Fixed
