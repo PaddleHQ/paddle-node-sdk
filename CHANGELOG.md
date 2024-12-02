@@ -12,6 +12,12 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.1.3 - 2024-11-29
+
+### Changed
+
+- `paddle.webhooks.unmarshal` will now return an event for unhandled event types instead of `null` this is only possible for legacy/no longer supported events or for new events that have not been added to the sdk yet
+
 ## 2.1.2 - 2024-11-26
 
 ### Fixed
