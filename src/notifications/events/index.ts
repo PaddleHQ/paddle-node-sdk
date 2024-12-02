@@ -9,6 +9,7 @@ export * from './adjustment/index.js';
 export * from './business/index.js';
 export * from './customer/index.js';
 export * from './discount/index.js';
+export * from './generic/index.js';
 export * from './payment-method/index.js';
 export * from './payout/index.js';
 export * from './price/index.js';

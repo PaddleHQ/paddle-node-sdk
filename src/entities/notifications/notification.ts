@@ -12,7 +12,7 @@ export class Notification {
   public readonly id: string;
   public readonly type: IEventName;
   public readonly status: NotificationStatus;
-  public readonly payload: EventEntity | null;
+  public readonly payload: EventEntity;
   public readonly occurredAt: string;
   public readonly deliveredAt: null | string;
   public readonly replayedAt: null | string;

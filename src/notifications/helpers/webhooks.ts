@@ -16,6 +16,7 @@ import {
   DiscountCreatedEvent,
   DiscountImportedEvent,
   DiscountUpdatedEvent,
+  GenericEvent,
   PaymentMethodDeletedEvent,
   PaymentMethodSavedEvent,
   PayoutCreatedEvent,
@@ -65,7 +66,7 @@ export class Webhooks {
     return await new WebhooksValidator().isValidSignature(requestBody, secretKey, signature);
   }
 
-  static fromJson(data: IEvents): EventEntity | null {
+  static fromJson(data: IEvents): EventEntity {
     switch (data.event_type) {
       case EventName.AddressCreated:
         return new AddressCreatedEvent(data);
@@ -158,7 +159,7 @@ export class Webhooks {
       default:
         // @ts-expect-error event_type did not match any handled events
         Logger.log(`Unknown event_type ${data.event_type}`);
-        return null;
+        return new GenericEvent(data) as EventEntity;
     }
   }
 }

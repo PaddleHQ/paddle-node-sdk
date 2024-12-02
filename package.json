@@ -1,6 +1,6 @@
 {
   "name": "@paddle/paddle-node-sdk",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "A Node.js SDK that you can use to integrate Paddle Billing with applications written in server-side JavaScript.",
   "main": "dist/cjs/index.cjs.node.js",
   "module": "dist/esm/index.esm.node.js",
@@ -68,5 +68,6 @@
       "import": "./dist/esm/index.esm.node.js",
       "require": "./dist/cjs/index.cjs.node.js"
     }
-  }
+  },
+  "dependencies": {}
 }
