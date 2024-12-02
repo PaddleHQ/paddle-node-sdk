@@ -68,5 +68,6 @@
       "import": "./dist/esm/index.esm.node.js",
       "require": "./dist/cjs/index.cjs.node.js"
     }
-  }
+  },
+  "dependencies": {}
 }
