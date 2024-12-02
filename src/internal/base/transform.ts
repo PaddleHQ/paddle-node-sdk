@@ -2,7 +2,7 @@ function toCamelCase(str: string) {
   return str.toLowerCase().replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
 }
 
-export function convertKeysToCamelCase(obj: object) {
+export function convertKeysToCamelCase(obj: object): object {
   // Handle null or primitive values
   if (obj === null || typeof obj !== 'object') {
     return obj;
@@ -14,7 +14,7 @@ export function convertKeysToCamelCase(obj: object) {
   }
 
   // Handle objects
-  const converted = {};
+  const converted: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(obj)) {
     // Convert the key to camelCase
     const camelCaseKey = toCamelCase(key);
