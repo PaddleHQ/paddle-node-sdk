@@ -3,6 +3,7 @@
  *  Do not make changes to this file.
  *  Changes may be overwritten as part of auto-generation.
  */
+
 export type CurrencyCode =
   | 'USD'
   | 'EUR'
@@ -33,4 +34,5 @@ export type CurrencyCode =
   | 'TRY'
   | 'TWD'
   | 'UAH'
+  | 'VND'
   | 'ZAR';
