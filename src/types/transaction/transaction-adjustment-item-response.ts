@@ -4,14 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentType } from '../../enums/index.js';
+import { type AdjustmentItemType } from '../../enums/index.js';
 import { type ITransactionProrationResponse } from './transaction-proration-response.js';
 import { type IAdjustmentItemTotals } from '../shared/index.js';
 
 export interface ITransactionAdjustmentItemResponse {
   id?: string | null;
   item_id: string;
-  type: AdjustmentType;
+  type: AdjustmentItemType;
   amount?: string | null;
   proration?: ITransactionProrationResponse | null;
   totals?: IAdjustmentItemTotals | null;

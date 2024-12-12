@@ -4,7 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentAction, type AdjustmentStatus, type CurrencyCode } from '../../../enums/index.js';
+import {
+  type AdjustmentType,
+  type AdjustmentAction,
+  type AdjustmentStatus,
+  type CurrencyCode,
+} from '../../../enums/index.js';
 import { AdjustmentItemNotification } from './adjustment-item-notification.js';
 import { PayoutTotalsAdjustmentNotification, TotalAdjustmentsNotification } from '../shared/index.js';
 import { type IAdjustmentNotificationResponse } from '../../types/index.js';
@@ -12,6 +17,7 @@ import { type IAdjustmentNotificationResponse } from '../../types/index.js';
 export class AdjustmentNotification {
   public readonly id: string;
   public readonly action: AdjustmentAction;
+  public readonly type: AdjustmentType;
   public readonly transactionId: string;
   public readonly subscriptionId: string | null;
   public readonly customerId: string;
@@ -28,6 +34,7 @@ export class AdjustmentNotification {
   constructor(adjustment: IAdjustmentNotificationResponse) {
     this.id = adjustment.id;
     this.action = adjustment.action;
+    this.type = adjustment.type;
     this.transactionId = adjustment.transaction_id;
     this.subscriptionId = adjustment.subscription_id ? adjustment.subscription_id : null;
     this.customerId = adjustment.customer_id;

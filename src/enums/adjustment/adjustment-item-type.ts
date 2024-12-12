@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type AdjustmentType = 'full' | 'partial';
+export type AdjustmentItemType = 'full' | 'partial' | 'tax' | 'proration';
