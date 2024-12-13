@@ -4,8 +4,8 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+export * from './adjustment-action-type.js';
 export * from './adjustment-action.js';
 export * from './adjustment-currency-code.js';
-export * from './adjustment-item-type.js';
 export * from './adjustment-status.js';
 export * from './adjustment-type.js';
