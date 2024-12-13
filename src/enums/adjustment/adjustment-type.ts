@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type AdjustmentTransactionType = 'full' | 'partial';
+export type AdjustmentActionType = 'full' | 'partial';

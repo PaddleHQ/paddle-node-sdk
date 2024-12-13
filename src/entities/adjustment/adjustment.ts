@@ -5,7 +5,7 @@
  */
 
 import {
-  type AdjustmentTransactionType,
+  type AdjustmentActionType,
   type AdjustmentAction,
   type AdjustmentStatus,
   type CurrencyCode,
@@ -17,7 +17,7 @@ import { type IAdjustmentResponse } from '../../types/index.js';
 export class Adjustment {
   public readonly id: string;
   public readonly action: AdjustmentAction;
-  public readonly type: AdjustmentTransactionType;
+  public readonly type: AdjustmentActionType;
   public readonly transactionId: string;
   public readonly subscriptionId: string | null;
   public readonly customerId: string;
