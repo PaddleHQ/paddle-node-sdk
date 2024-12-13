@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentItemType } from '../../enums/index.js';
+import { type AdjustmentType } from '../../enums/index.js';
 import { TransactionProration } from './transaction-proration.js';
 import { AdjustmentItemTotals } from '../adjustment/index.js';
 import { type ITransactionAdjustmentItemResponse } from '../../types/index.js';
@@ -12,7 +12,7 @@ import { type ITransactionAdjustmentItemResponse } from '../../types/index.js';
 export class TransactionAdjustmentItem {
   public readonly id: string | null;
   public readonly itemId: string;
-  public readonly type: AdjustmentItemType;
+  public readonly type: AdjustmentType;
   public readonly amount: string | null;
   public readonly proration: TransactionProration | null;
   public readonly totals: AdjustmentItemTotals | null;

@@ -5,7 +5,7 @@
  */
 
 import {
-  type AdjustmentType,
+  type AdjustmentTransactionType,
   type AdjustmentAction,
   type AdjustmentStatus,
   type CurrencyCode,
@@ -19,7 +19,7 @@ import {
 export interface IAdjustmentNotificationResponse {
   id: string;
   action: AdjustmentAction;
-  type: AdjustmentType;
+  type: AdjustmentTransactionType;
   transaction_id: string;
   subscription_id?: string | null;
   customer_id: string;

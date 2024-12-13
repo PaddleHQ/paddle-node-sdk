@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentAction, type AdjustmentItemType } from '../../../enums/index.js';
+import { type AdjustmentAction, type AdjustmentType } from '../../../enums/index.js';
 
 export interface CreateAdjustmentLineItem {
   amount: string | null;
   itemId: string;
-  type: AdjustmentItemType;
+  type: AdjustmentType;
 }
 
 interface CreatePartialAdjustmentRequestBody {
