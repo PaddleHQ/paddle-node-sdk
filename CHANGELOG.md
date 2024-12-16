@@ -16,7 +16,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Fixed
 
-- `starts_at` for subscription discount can now be `null`
+- `discount.startsAt` for Subscriptions can now be `null`
 
 ## 2.2.1 - 2024-12-16
 
