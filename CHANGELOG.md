@@ -12,6 +12,12 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.2.1 - 2024-12-16
+
+### Fixed
+
+- Added `proration` to transaction line items
+
 ## 2.2.0 - 2024-12-12
 
 ### Added
