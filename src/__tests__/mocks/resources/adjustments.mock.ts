@@ -36,6 +36,7 @@ export const CreateAdjustmentExpectation = {
 
 export const AdjustmentMock: IAdjustmentResponse = {
   action: 'credit',
+  type: 'partial',
   items: [
     {
       amount: '1000',

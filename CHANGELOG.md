@@ -12,6 +12,13 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.2.0 - 2024-12-12
+
+### Added
+
+- `VND` (Vietnamese dong) as new currency
+- Added `adjustment.type` which is either `partial` which should include `items` or `full` where `items` are not required
+
 ## 2.1.3 - 2024-11-29
 
 ### Changed

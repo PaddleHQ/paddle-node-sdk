@@ -24,6 +24,7 @@ export const AdjustmentCreatedMock: IEventsResponse<IAdjustmentResponse> = {
       },
     ],
     action: 'refund',
+    type: 'partial',
     reason: 'error',
     status: 'pending_approval',
     totals: { fee: '5', tax: '8', total: '100', earnings: '87', subtotal: '92', currency_code: 'USD' },
@@ -41,6 +42,7 @@ export const AdjustmentCreatedMock: IEventsResponse<IAdjustmentResponse> = {
 export const AdjustmentCreatedMockExpectation = {
   data: {
     action: 'refund',
+    type: 'partial',
     createdAt: '2023-08-21T14:08:43.297512Z',
     creditAppliedToBalance: true,
     currencyCode: 'USD',

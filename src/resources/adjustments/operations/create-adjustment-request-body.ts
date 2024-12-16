@@ -12,9 +12,19 @@ export interface CreateAdjustmentLineItem {
   type: AdjustmentType;
 }
 
-export interface CreateAdjustmentRequestBody {
+interface CreatePartialAdjustmentRequestBody {
   action: AdjustmentAction;
   items: CreateAdjustmentLineItem[];
   reason: string;
   transactionId: string;
+  type?: 'partial';
 }
+
+interface CreateFullAdjustmentRequestBody {
+  action: AdjustmentAction;
+  reason: string;
+  transactionId: string;
+  type?: 'full';
+}
+
+export type CreateAdjustmentRequestBody = CreatePartialAdjustmentRequestBody | CreateFullAdjustmentRequestBody;
