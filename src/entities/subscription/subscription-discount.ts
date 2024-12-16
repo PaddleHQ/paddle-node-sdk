@@ -8,12 +8,12 @@ import { type ISubscriptionDiscountResponse } from '../../types/index.js';
 
 export class SubscriptionDiscount {
   public readonly id: string;
-  public readonly startsAt: string;
+  public readonly startsAt: string | null;
   public readonly endsAt: string | null;
 
   constructor(subscriptionDiscount: ISubscriptionDiscountResponse) {
     this.id = subscriptionDiscount.id;
-    this.startsAt = subscriptionDiscount.starts_at;
+    this.startsAt = subscriptionDiscount.starts_at ?? null;
     this.endsAt = subscriptionDiscount.ends_at ?? null;
   }
 }

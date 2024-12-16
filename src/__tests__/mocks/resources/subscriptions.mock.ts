@@ -356,8 +356,8 @@ export const SubscriptionPreviewMock: ISubscriptionPreviewResponse = {
   canceled_at: '2024-10-12T07:20:50.52Z',
   discount: {
     id: 'dsc_01gv5kpg05xp104ek2fmgjwttf',
-    starts_at: '2024-10-12T07:20:50.52Z',
-    ends_at: '2024-10-12T07:20:50.52Z',
+    starts_at: null,
+    ends_at: null,
   },
   collection_mode: 'automatic',
   billing_details: {
