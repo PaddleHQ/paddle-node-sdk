@@ -7,6 +7,7 @@
 import { type IUnitTotals } from './unit-totals.js';
 import { type ITotals } from './totals.js';
 import { type IProductResponse } from '../product/index.js';
+import { type IProrationResponse } from '../index.js';
 
 export interface ITransactionLineItemPreviewResponse {
   price_id: string;
@@ -15,4 +16,5 @@ export interface ITransactionLineItemPreviewResponse {
   unit_totals: IUnitTotals;
   totals: ITotals;
   product: IProductResponse;
+  proration?: IProrationResponse | null;
 }
