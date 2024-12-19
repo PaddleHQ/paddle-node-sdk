@@ -254,7 +254,7 @@ const app = express()
 
 // Create a `POST` endpoint to accept webhooks sent by Paddle.
 // We need `raw` request body to validate the integrity. Use express raw middleware to ensure express doesn't convert the request body to JSON.
-app.post('/webhooks', express.raw({ type: 'application/json' }), (req: Request, res: Response) => {
+app.post('/webhooks', express.raw({ type: 'application/json' }), async (req: Request, res: Response) => {
   const signature = (req.headers['paddle-signature'] as string) || '';
   // req.body should be of type `buffer`, convert to string before passing it to `unmarshal`. 
   // If express returned a JSON, remove any other middleware that might have processed raw request to object
@@ -265,7 +265,7 @@ app.post('/webhooks', express.raw({ type: 'application/json' }), (req: Request, 
   try {
     if (signature && rawRequestBody) {
       // The `unmarshal` function will validate the integrity of the webhook and return an entity
-      const eventData = paddle.webhooks.unmarshal(rawRequestBody, secretKey, signature);
+      const eventData = await paddle.webhooks.unmarshal(rawRequestBody, secretKey, signature);
       switch (eventData.eventType) {
         case EventName.ProductUpdated:
           console.log(`Product ${eventData.data.id} was updated`);
