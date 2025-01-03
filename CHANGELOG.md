@@ -12,6 +12,12 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.3.0 - 2025-01-03
+
+### Added
+
+- Added `onResume` property to subscription resume and pause operations
+
 ## 2.2.2 - 2024-12-16
 
 ### Fixed
