@@ -44,7 +44,7 @@ describe('DiscountsResource', () => {
     };
 
     const discountCollection = discountsResource.list(queryParams);
-    let discounts = await discountCollection.next();
+    const discounts = await discountCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/discounts?after=2&id=1234');
     expect(discounts.length).toBe(1);

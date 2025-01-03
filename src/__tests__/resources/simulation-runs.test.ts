@@ -47,7 +47,7 @@ describe('SimulationRunsResource', () => {
     };
 
     const simulationRunCollection = simulationRunsResource.list(simulationId, queryParams);
-    let simulationRuns = await simulationRunCollection.next();
+    const simulationRuns = await simulationRunCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}/runs?after=2&id=1234&include=price`);
     expect(simulationRuns.length).toBe(1);

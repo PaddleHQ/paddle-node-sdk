@@ -14,8 +14,7 @@ export class Urls {
 
   constructor(urlsResponse: IUrlsResponse) {
     this.general = new General(urlsResponse.general);
-    this.subscriptions = urlsResponse.subscriptions?.map(
-      (subscription) => new CustomerPortalSubscriptionUrl(subscription) ?? [],
-    );
+    this.subscriptions =
+      urlsResponse.subscriptions?.map((subscription) => new CustomerPortalSubscriptionUrl(subscription)) ?? [];
   }
 }

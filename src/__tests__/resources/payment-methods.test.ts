@@ -43,7 +43,7 @@ describe('PaymentMethodsResource', () => {
     };
 
     const paymentMethodCollection = paymentMethodsResource.list(customerId, queryParams);
-    let paymentMethods = await paymentMethodCollection.next();
+    const paymentMethods = await paymentMethodCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}/payment-methods?after=2&address_id=adr_123`);
     expect(paymentMethods.length).toBe(1);

@@ -13,6 +13,7 @@ export class SimulationRunEvent {
   public readonly id: string;
   public readonly status: SimulationRunEventStatus;
   public readonly eventType: IEventName | SimulationScenarioType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Payload is a generic object that can be any type
   public readonly payload: any;
   public readonly request: SimulationEventRequest | null;
   public readonly response: SimulationEventResponse | null;

@@ -12,6 +12,7 @@ export interface ISimulationRunEventResponse {
   id: string;
   status: SimulationRunEventStatus;
   event_type: IEventName | SimulationScenarioType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Payload is a generic object that can be any type
   payload: any;
   request?: ISimulationEventRequest | null;
   response?: ISimulationEventResponse | null;

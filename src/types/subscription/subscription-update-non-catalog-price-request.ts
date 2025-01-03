@@ -6,6 +6,7 @@
 
 import { type CreatePriceRequestBody, type CreateProductRequestBody } from '../../resources/index.js';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface ISubscriptionUpdateItemCreateWithPriceBaseRequest
   extends Omit<CreatePriceRequestBody, 'type' | 'productId'> {}
 

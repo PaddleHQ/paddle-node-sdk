@@ -42,7 +42,7 @@ describe('AdjustmentsResource', () => {
     };
 
     const adjustmentCollection = adjustmentsResource.list(queryParams);
-    let adjustments = await adjustmentCollection.next();
+    const adjustments = await adjustmentCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/adjustments?after=2&id=1234');
     expect(adjustments.length).toBe(1);

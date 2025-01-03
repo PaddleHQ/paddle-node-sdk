@@ -6,6 +6,7 @@ interface ObjectWithData {
   data: Record<string, unknown>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isTopLevelCustomDataCamel(input: any): input is CustomData {
   return 'customData' in input;
 }
@@ -23,6 +24,7 @@ function snakeCase(input: string): string {
     .toLowerCase();
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function decamelizeKeys(obj: any): ObjectWithData {
   if (
     !isObject(obj) ||
@@ -34,6 +36,7 @@ function decamelizeKeys(obj: any): ObjectWithData {
     return obj;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let output: any;
   let i = 0;
   let l = 0;

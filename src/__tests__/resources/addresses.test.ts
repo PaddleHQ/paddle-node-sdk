@@ -49,7 +49,7 @@ describe('AddressesResource', () => {
     };
 
     const addressCollection = addressesResource.list('ctm_1234', queryParams);
-    let addresses = await addressCollection.next();
+    const addresses = await addressCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/addresses?after=2&id=1234');
     expect(addresses.length).toBe(1);

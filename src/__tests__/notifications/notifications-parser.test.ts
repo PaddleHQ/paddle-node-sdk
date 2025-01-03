@@ -166,7 +166,7 @@ describe('Notifications Parser', () => {
     [TransactionUpdatedMock.event_type, TransactionUpdatedMock, TransactionUpdatedMockExpectation],
     // Generic Event
     [InvoicePaidMock.event_type, InvoicePaidMock, InvoicePaidMockExpectation],
-  ])('validate %s ', (_eventType: string, eventMock: IEventsResponse, expectedValue: any = {}) => {
+  ])('validate %s ', (_eventType: string, eventMock: IEventsResponse, expectedValue: unknown = {}) => {
     expect(Webhooks.fromJson(eventMock as IEvents)).toEqual(expectedValue);
   });
 });

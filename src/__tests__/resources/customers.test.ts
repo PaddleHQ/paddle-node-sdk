@@ -49,7 +49,7 @@ describe('CustomersResource', () => {
     };
 
     const customerCollection = customersResource.list(queryParams);
-    let customers = await customerCollection.next();
+    const customers = await customerCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/customers?after=2&id=1234');
     expect(customers.length).toBe(1);
