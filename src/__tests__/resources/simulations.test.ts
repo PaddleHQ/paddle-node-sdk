@@ -15,8 +15,10 @@ import {
   SimulationMockResponse,
   SimulationMock,
   CreateSimulationMock,
-  updateSimulationMock,
+  UpdateSimulationMock,
   ListSimulationMockResponse,
+  CreateSimulationPartialMock,
+  SimulationPartialMockResponse,
 } from '../mocks/resources/simulations.mock.js';
 
 describe('SimulationsResource', () => {
@@ -93,9 +95,23 @@ describe('SimulationsResource', () => {
     expect(createdSimulation.name).toBe(newSimulation.name);
   });
 
+  test('should create a new simulation with a partial payload', async () => {
+    const newSimulation: CreateSimulationRequestBody = CreateSimulationPartialMock;
+    const paddleInstance = getPaddleTestClient();
+
+    paddleInstance.post = jest.fn().mockResolvedValue(SimulationPartialMockResponse);
+    const simulationsResource = new SimulationsResource(paddleInstance);
+    const createdSimulation = await simulationsResource.create(newSimulation);
+
+    expect(paddleInstance.post).toBeCalledWith(`/simulations`, newSimulation);
+    expect(createdSimulation).toBeDefined();
+    expect(createdSimulation.id).toBeDefined();
+    expect(createdSimulation.name).toBe(newSimulation.name);
+  });
+
   test('should update an existing simulation', async () => {
     const simulationId = SimulationMock.id;
-    const simulationToBeUpdated: UpdateSimulationRequestBody = updateSimulationMock;
+    const simulationToBeUpdated: UpdateSimulationRequestBody = UpdateSimulationMock;
 
     const paddleInstance = getPaddleTestClient();
     paddleInstance.patch = jest.fn().mockResolvedValue(SimulationMockResponse);

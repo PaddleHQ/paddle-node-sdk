@@ -14,7 +14,16 @@ export const CreateSimulationMock: CreateSimulationRequestBody = {
   name: 'New address created',
 };
 
-export const updateSimulationMock: UpdateSimulationRequestBody = {
+export const CreateSimulationPartialMock: CreateSimulationRequestBody = {
+  notificationSettingId: 'ntfset_01gt21c5pdx9q1e4mh1xrsjjn6',
+  type: 'address.created',
+  name: 'New address created',
+  payload: {
+    firstLine: '123 Billing Drive',
+  },
+};
+
+export const UpdateSimulationMock: UpdateSimulationRequestBody = {
   name: 'New UK address created',
 };
 
@@ -30,8 +39,22 @@ export const SimulationMock: ISimulationResponse = {
   updated_at: '2024-10-13T07:20:50.52Z',
 };
 
+export const SimulationPartialMock: ISimulationResponse = {
+  ...SimulationMock,
+  payload: {
+    firstLine: '123 Billing Drive',
+  },
+};
+
 export const SimulationMockResponse: Response<ISimulationResponse> = {
   data: SimulationMock,
+  meta: {
+    request_id: '',
+  },
+};
+
+export const SimulationPartialMockResponse: Response<ISimulationResponse> = {
+  data: SimulationPartialMock,
   meta: {
     request_id: '',
   },
