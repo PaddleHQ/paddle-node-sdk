@@ -4,6 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type SubscriptionOnResume } from '../../../enums/index.js';
+
 export interface ResumeSubscription {
   effectiveFrom: 'immediately' | string;
+  onResume?: SubscriptionOnResume;
 }
