@@ -5,7 +5,7 @@
  */
 
 import { ICustomerPortalSessionResponse } from '../../../types/index.js';
-import { Response, ResponsePaginated } from '../../../internal/index.js';
+import { Response } from '../../../internal/index.js';
 
 export const CustomerPortalSessionMock: ICustomerPortalSessionResponse = {
   id: 'cpls_01h4ge9r64c22exjsx0fy8b48b',

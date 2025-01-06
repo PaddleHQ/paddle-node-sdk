@@ -41,7 +41,7 @@ describe('NotificationsResource', () => {
     };
 
     const notificationCollection = notificationsResource.list(queryParams);
-    let notifications = await notificationCollection.next();
+    const notifications = await notificationCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/notifications?after=2&notification_setting_id=ntfset_1234');
     expect(notifications.length).toBe(1);

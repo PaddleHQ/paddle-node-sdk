@@ -5,7 +5,7 @@
  */
 
 export interface ListCustomerPaymentMethodQueryParameters {
-  addressId?: any[];
+  addressId?: string[];
   after?: string;
   orderBy?: string;
   perPage?: number;

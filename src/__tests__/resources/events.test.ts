@@ -35,7 +35,7 @@ describe('EventsResource', () => {
     };
 
     const eventCollection = eventsResource.list(queryParams);
-    let events = await eventCollection.next();
+    const events = await eventCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/events?after=2&order_by=id%5BASC%5D');
     expect(events.length).toBe(1);

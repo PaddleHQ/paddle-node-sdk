@@ -47,7 +47,7 @@ describe('BusinessesResource', () => {
     };
 
     const businessCollection = businessesResource.list('ctm_1234', queryParams);
-    let businesses = await businessCollection.next();
+    const businesses = await businessCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/businesses?after=2&id=1234');
     expect(businesses.length).toBe(1);

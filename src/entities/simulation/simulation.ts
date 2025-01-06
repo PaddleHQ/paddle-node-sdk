@@ -14,6 +14,7 @@ export class Simulation {
   public readonly notificationSettingId: string;
   public readonly name: string;
   public readonly type: IEventName | SimulationScenarioType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Payload is a generic object that can be any type
   public readonly payload: any;
   public readonly lastRunAt: string | null;
   public readonly createdAt: string;

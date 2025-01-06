@@ -39,6 +39,7 @@ export abstract class Collection<T, C> implements AsyncIterable<C> {
     return entityResponse;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Abstract method to be implemented by the child class
   abstract fromJson(data: any): C;
 
   async *[Symbol.asyncIterator](): AsyncIterator<C> {

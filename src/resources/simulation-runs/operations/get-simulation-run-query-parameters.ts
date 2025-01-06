@@ -5,5 +5,5 @@
  */
 
 export interface GetSimulationRunQueryParameters {
-  include: any[];
+  include: Array<'events'>;
 }

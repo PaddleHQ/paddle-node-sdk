@@ -6,10 +6,10 @@
 
 import { SimulationRunEventsResource, type ListSimulationRunEventsQueryParameters } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
-import { ListSimulationRunEventMockResponse } from '../mocks/resources/simulation-run-events.mock.js';
 import {
   SimulationRunEventMock,
   SimulationRunEventMockResponse,
+  ListSimulationRunEventMockResponse,
 } from '../mocks/resources/simulation-run-events.mock.js';
 
 const simulationId = 'ntfsim_123';
@@ -42,7 +42,7 @@ describe('SimulationRunEventsResource', () => {
     };
 
     const simulationRunEventCollection = simulationRunEventsResource.list(simulationId, simulationRunId, queryParams);
-    let simulationRunEvents = await simulationRunEventCollection.next();
+    const simulationRunEvents = await simulationRunEventCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith(
       `/simulations/${simulationId}/runs/${simulationRunId}/events?after=2&id=1234`,

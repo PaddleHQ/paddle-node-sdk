@@ -39,7 +39,7 @@ describe('ReportsResource', () => {
     };
 
     const reportCollection = reportsResource.list(queryParams);
-    let reports = await reportCollection.next();
+    const reports = await reportCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/reports?after=2');
     expect(reports.length).toBe(1);

@@ -44,7 +44,7 @@ describe('PricesResource', () => {
     };
 
     const priceCollection = pricesResource.list(queryParams);
-    let prices = await priceCollection.next();
+    const prices = await priceCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/prices?after=2&id=1234');
     expect(prices.length).toBe(1);

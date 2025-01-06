@@ -46,7 +46,7 @@ describe('SimulationsResource', () => {
     };
 
     const simulationCollection = simulationsResource.list(queryParams);
-    let simulations = await simulationCollection.next();
+    const simulations = await simulationCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/simulations?after=2&id=1234');
     expect(simulations.length).toBe(1);

@@ -49,7 +49,7 @@ describe('ProductsResource', () => {
     };
 
     const productCollection = productsResource.list(queryParams);
-    let products = await productCollection.next();
+    const products = await productCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/products?after=2&id=1234&include=price');
     expect(products.length).toBe(1);

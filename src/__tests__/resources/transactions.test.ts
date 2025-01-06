@@ -54,7 +54,7 @@ describe('TransactionsResource', () => {
     };
 
     const transactionCollection = transactionsResource.list(queryParams);
-    let transactions = await transactionCollection.next();
+    const transactions = await transactionCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith(
       '/transactions?after=2&id=1234&created_at%5BGTE%5D=2024-09-10T15%3A38%3A35.675098Z',

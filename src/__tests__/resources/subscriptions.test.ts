@@ -55,7 +55,7 @@ describe('SubscriptionsResource', () => {
     };
 
     const subscriptionCollection = subscriptionsResource.list(queryParams);
-    let subscriptions = await subscriptionCollection.next();
+    const subscriptions = await subscriptionCollection.next();
 
     expect(paddleInstance.get).toBeCalledWith('/subscriptions?after=2&id=1234');
     expect(subscriptions.length).toBe(1);

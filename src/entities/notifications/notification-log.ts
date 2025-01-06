@@ -11,6 +11,7 @@ export class NotificationLog {
   public readonly responseBody: string;
   public readonly attemptedAt: string;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(notificationLogResponse: any) {
     this.id = notificationLogResponse.id;
     this.responseCode = notificationLogResponse.response_code;
