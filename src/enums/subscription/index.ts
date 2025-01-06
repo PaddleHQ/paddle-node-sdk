@@ -10,3 +10,4 @@ export * from './scheduled-change-action.js';
 export * from './subscription-status.js';
 export * from './subscription-item-status.js';
 export * from './subscription-on-payment-failure.js';
+export * from './subscription-on-resume.js';

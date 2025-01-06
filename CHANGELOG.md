@@ -12,11 +12,21 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
-## 2.2.3 - 2025-01-06
+## 2.3.1 - 2025-01-06
 
 ### Fixed
 
 - Dependabot updates
+
+---
+
+## 2.3.0 - 2025-01-06
+
+### Added
+
+- Added `onResume` property to subscription resume and pause operations to [control billing for subscriptions when resuming](https://developer.paddle.com/changelog/2024/resume-subscription-billing-period-options)
+
+---
 
 ## 2.2.2 - 2024-12-16
 
@@ -24,11 +34,15 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 - `discount.startsAt` for Subscriptions can now be `null`
 
+---
+
 ## 2.2.1 - 2024-12-16
 
 ### Fixed
 
 - Added `proration` to transaction line items
+
+---
 
 ## 2.2.0 - 2024-12-12
 
@@ -37,11 +51,15 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 - `VND` (Vietnamese dong) as new currency
 - Added `adjustment.type` which is either `partial` which should include `items` or `full` where `items` are not required
 
+---
+
 ## 2.1.3 - 2024-11-29
 
 ### Changed
 
 - `paddle.webhooks.unmarshal` will now return an event for unhandled event types instead of `null` this is only possible for legacy/no longer supported events or for new events that have not been added to the sdk yet
+
+---
 
 ## 2.1.2 - 2024-11-26
 
@@ -52,6 +70,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Added
 
 - ESLint rule to ensure `.js` extension is provided
+
+---
 
 ## 2.1.1 - 2024-11-25
 
@@ -64,6 +84,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Added
 
 - Added `customerPortalSessions` resources
+
+---
 
 ## 2.0.0 - 2024-11-20
 
