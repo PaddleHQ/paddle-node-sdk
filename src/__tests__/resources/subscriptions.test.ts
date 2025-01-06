@@ -165,7 +165,10 @@ describe('SubscriptionsResource', () => {
 
   test('should resume an existing subscription', async () => {
     const subscriptionId = SubscriptionMock.id;
-    const subscriptionToBeUpdated: ResumeSubscription = { effectiveFrom: 'next_billing_period' };
+    const subscriptionToBeUpdated: ResumeSubscription = {
+      effectiveFrom: 'next_billing_period',
+      onResume: 'continue_existing_billing_period',
+    };
 
     const paddleInstance = getPaddleTestClient();
     paddleInstance.post = jest.fn().mockResolvedValue(SubscriptionMockResponse);

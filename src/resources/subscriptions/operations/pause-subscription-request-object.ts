@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SubscriptionEffectiveFrom } from '../../../enums/index.js';
+import { type SubscriptionOnResume, type SubscriptionEffectiveFrom } from '../../../enums/index.js';
 
 export interface PauseSubscription {
   effectiveFrom?: SubscriptionEffectiveFrom | null;
   resumeAt?: null | string;
+  onResume?: SubscriptionOnResume;
 }
