@@ -12,6 +12,18 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.4.0 - 2025-01-21
+
+### Added
+
+- Added `transactions.revise` operation to revise a transaction and added `revisedAt` to `Transaction` entity, see [related changelog](https://developer.paddle.com/changelog/2024/revise-transaction-customer-information?utm_source=dx&utm_medium=paddle-node-sdk).
+
+### Changed
+
+- Dependabot updates
+
+---
+
 ## 2.3.2 - 2025-01-06
 
 ### Fixed

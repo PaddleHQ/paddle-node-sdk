@@ -50,6 +50,7 @@ export interface ITransactionResponse {
   created_at: string;
   updated_at: string;
   billed_at?: string | null;
+  revised_at?: string | null;
   address?: IAddressResponse | null;
   adjustments?: ITransactionAdjustmentResponse[] | null;
   adjustments_totals?: IAdjustmentTotalsResponse | null;

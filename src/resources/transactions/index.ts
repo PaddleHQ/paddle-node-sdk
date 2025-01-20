@@ -11,6 +11,7 @@ import {
   type GetTransactionInvoicePdfQueryParameters,
   type GetTransactionQueryParameters,
   type ListTransactionQueryParameters,
+  type ReviseTransactionRequestBody,
   type TransactionPreviewRequestBody,
   type UpdateTransactionQueryParameters,
   type UpdateTransactionRequestBody,
@@ -30,6 +31,7 @@ const TransactionPaths = {
   update: '/transactions/{transaction_id}',
   getInvoicePDF: '/transactions/{transaction_id}/invoice',
   preview: '/transactions/preview',
+  revise: '/transactions/{transaction_id}/revise',
 } as const;
 
 export * from './operations/index.js';
@@ -119,5 +121,20 @@ export class TransactionsResource extends BaseResource {
     const data = this.handleResponse<ITransactionPreviewResponse>(response);
 
     return new TransactionPreview(data);
+  }
+
+  public async revise(transactionId: string, reviseTransaction: ReviseTransactionRequestBody): Promise<Transaction> {
+    const urlWithPathParams = new PathParameters(TransactionPaths.revise, {
+      transaction_id: transactionId,
+    }).deriveUrl();
+
+    const response = await this.client.post<
+      ReviseTransactionRequestBody,
+      Response<ITransactionResponse> | ErrorResponse
+    >(urlWithPathParams, reviseTransaction);
+
+    const data = this.handleResponse<ITransactionResponse>(response);
+
+    return new Transaction(data);
   }
 }
