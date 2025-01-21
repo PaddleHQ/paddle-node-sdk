@@ -6,6 +6,7 @@
 
 import {
   CreateTransactionRequestBody,
+  ReviseTransactionRequestBody,
   TransactionPreviewRequestBody,
   UpdateTransactionRequestBody,
 } from '../../../resources/index.js';
@@ -60,6 +61,22 @@ export const UpdateTransactionMock: UpdateTransactionRequestBody = {
     },
   ],
   checkout: { url: 'NO_VALUE' },
+};
+
+export const ReviseTransactionMock: ReviseTransactionRequestBody = {
+  address: {
+    firstLine: '3811 Ditmars Blvd',
+    secondLine: 'Suite 435',
+    city: 'Astoria',
+    region: 'NY',
+  },
+  business: {
+    name: 'Maryjane',
+    taxIdentifier: 'AB0123456789',
+  },
+  customer: {
+    name: 'Maryjane',
+  },
 };
 
 export const CreateTransactionExpectation = {
@@ -269,6 +286,7 @@ export const TransactionMock: ITransactionResponse = {
   created_at: '2024-10-12T07:20:50.52Z',
   updated_at: '2024-10-13T07:20:50.52Z',
   billed_at: '2024-10-12T07:20:50.52Z',
+  revised_at: '2024-10-12T07:20:50.52Z',
   adjustments: [
     {
       action: 'credit',

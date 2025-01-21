@@ -10,6 +10,7 @@ import {
   CreateTransactionMock,
   ListTransactionMockResponse,
   PreviewTransactionMock,
+  ReviseTransactionMock,
   TransactionMock,
   TransactionMockResponse,
   TransactionPreviewMockResponse,
@@ -20,6 +21,7 @@ import {
   CreateTransactionRequestBody,
   GetTransactionQueryParameters,
   ListTransactionQueryParameters,
+  ReviseTransactionRequestBody,
   TransactionsResource,
   UpdateTransactionRequestBody,
 } from '../../resources/index.js';
@@ -143,5 +145,19 @@ describe('TransactionsResource', () => {
 
     expect(paddleInstance.post).toBeCalledWith(`/transactions/preview`, PreviewTransactionMock);
     expect(updatedTransaction).toBeDefined();
+  });
+
+  test('should be able to revise an existing transaction', async () => {
+    const transactionId = TransactionMock.id;
+    const transactionToBeRevised: ReviseTransactionRequestBody = ReviseTransactionMock;
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(TransactionMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    const revisedTransaction = await transactionsResource.revise(transactionId, transactionToBeRevised);
+
+    expect(paddleInstance.post).toBeCalledWith(`/transactions/${transactionId}/revise`, transactionToBeRevised);
+    expect(revisedTransaction).toBeDefined();
   });
 });

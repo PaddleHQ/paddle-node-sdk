@@ -51,6 +51,7 @@ export class Transaction {
   public readonly createdAt: string;
   public readonly updatedAt: string;
   public readonly billedAt: string | null;
+  public readonly revisedAt: string | null;
   public readonly address: Address | null;
   public readonly adjustments: TransactionAdjustment[] | null;
   public readonly adjustmentsTotals: AdjustmentTotals | null;
@@ -82,6 +83,7 @@ export class Transaction {
     this.createdAt = transaction.created_at;
     this.updatedAt = transaction.updated_at;
     this.billedAt = transaction.billed_at ? transaction.billed_at : null;
+    this.revisedAt = transaction.revised_at ? transaction.revised_at : null;
     this.address = transaction.address ? new Address(transaction.address) : null;
     this.adjustments = transaction.adjustments
       ? transaction.adjustments?.map((adjustment) => new TransactionAdjustment(adjustment))
