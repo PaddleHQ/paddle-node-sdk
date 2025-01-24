@@ -191,6 +191,7 @@ export const TransactionUpdatedMockExpectation = {
   data: {
     addressId: 'add_01h848pep46enq8y372x7maj0p',
     billedAt: null,
+    revisedAt: null,
     billingDetails: {
       additionalInformation: null,
       enableCheckout: false,

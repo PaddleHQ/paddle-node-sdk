@@ -13,3 +13,4 @@ export * from './transaction-past-due-event.js';
 export * from './transaction-payment-failed-event.js';
 export * from './transaction-ready-event.js';
 export * from './transaction-updated-event.js';
+export * from './transaction-revised-event.js';

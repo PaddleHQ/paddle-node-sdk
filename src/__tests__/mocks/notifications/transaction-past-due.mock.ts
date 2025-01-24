@@ -165,6 +165,7 @@ export const TransactionPastDueMockExpectation = {
   data: {
     addressId: 'add_01h8e18bzb5av13cd16m5gz214',
     billedAt: '2023-08-22T07:37:01.353611Z',
+    revisedAt: null,
     billingDetails: null,
     billingPeriod: {
       endsAt: '2023-10-22T07:15:43.792797Z',

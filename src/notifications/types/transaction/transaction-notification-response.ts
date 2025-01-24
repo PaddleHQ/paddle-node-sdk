@@ -43,4 +43,5 @@ export interface ITransactionNotificationResponse {
   created_at: string;
   updated_at: string;
   billed_at?: string | null;
+  revised_at?: string | null;
 }

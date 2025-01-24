@@ -197,6 +197,7 @@ export const TransactionPaidMockExpectation = {
   data: {
     addressId: 'add_01gxwxqjh878r4mj3b1ex6xkxt',
     billedAt: null,
+    revisedAt: null,
     billingDetails: null,
     billingPeriod: null,
     businessId: 'biz_01gxwxqjjwmdyd03q13aht3x1h',

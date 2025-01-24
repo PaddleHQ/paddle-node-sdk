@@ -183,6 +183,7 @@ export const TransactionCreatedMockExpectation = {
   data: {
     addressId: null,
     billedAt: null,
+    revisedAt: null,
     billingDetails: null,
     billingPeriod: null,
     businessId: null,

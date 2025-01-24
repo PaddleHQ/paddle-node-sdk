@@ -198,6 +198,10 @@ interface ITransactionUpdated extends IEventsResponse<ITransactionNotificationRe
   event_type: EventName.TransactionUpdated;
 }
 
+interface ITransactionRevised extends IEventsResponse<ITransactionNotificationResponse> {
+  event_type: EventName.TransactionRevised;
+}
+
 interface IReportCreated extends IEventsResponse<IReportNotificationResponse> {
   event_type: EventName.ReportCreated;
 }
@@ -249,5 +253,6 @@ export type IEvents =
   | ITransactionPaymentFailed
   | ITransactionReady
   | ITransactionUpdated
+  | ITransactionRevised
   | IReportCreated
   | IReportUpdated;

@@ -43,6 +43,7 @@ import {
   type TransactionPaymentFailedEvent,
   type TransactionReadyEvent,
   type TransactionUpdatedEvent,
+  type TransactionRevisedEvent,
 } from '../events/index.js';
 
 export type EventEntity =
@@ -88,6 +89,7 @@ export type EventEntity =
   | TransactionPaymentFailedEvent
   | TransactionReadyEvent
   | TransactionUpdatedEvent
+  | TransactionRevisedEvent
   | ReportUpdatedEvent
   | ReportCreatedEvent;
 
@@ -134,6 +136,7 @@ export enum EventName {
   TransactionPaymentFailed = 'transaction.payment_failed',
   TransactionReady = 'transaction.ready',
   TransactionUpdated = 'transaction.updated',
+  TransactionRevised = 'transaction.revised',
   ReportCreated = 'report.created',
   ReportUpdated = 'report.updated',
 }
@@ -181,5 +184,6 @@ export type IEventName =
   | 'transaction.payment_failed'
   | 'transaction.ready'
   | 'transaction.updated'
+  | 'transaction.revised'
   | 'report.created'
   | 'report.updated';

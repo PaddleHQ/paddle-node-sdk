@@ -117,6 +117,10 @@ import {
 import { InvoicePaidMock, InvoicePaidMockExpectation } from '../mocks/notifications/invoice-paid.mock.js';
 import { IEvents, IEventsResponse } from '../../types/index.js';
 import { Webhooks } from '../../notifications/index.js';
+import {
+  TransactionRevisedMock,
+  TransactionRevisedMockExpectation,
+} from '../mocks/notifications/transaction-revised.mock.js';
 
 describe('Notifications Parser', () => {
   test.each([
@@ -164,6 +168,7 @@ describe('Notifications Parser', () => {
     [TransactionPaymentFailedMock.event_type, TransactionPaymentFailedMock, TransactionPaymentFailedMockExpectation],
     [TransactionReadyMock.event_type, TransactionReadyMock, TransactionReadyMockExpectation],
     [TransactionUpdatedMock.event_type, TransactionUpdatedMock, TransactionUpdatedMockExpectation],
+    [TransactionRevisedMock.event_type, TransactionRevisedMock, TransactionRevisedMockExpectation],
     // Generic Event
     [InvoicePaidMock.event_type, InvoicePaidMock, InvoicePaidMockExpectation],
   ])('validate %s ', (_eventType: string, eventMock: IEventsResponse, expectedValue: unknown = {}) => {
