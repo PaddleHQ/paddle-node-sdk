@@ -47,6 +47,7 @@ import {
   TransactionPaymentFailedEvent,
   TransactionReadyEvent,
   TransactionUpdatedEvent,
+  TransactionRevisedEvent,
 } from '../events/index.js';
 import { Logger } from '../../internal/base/logger.js';
 
@@ -152,13 +153,15 @@ export class Webhooks {
         return new TransactionReadyEvent(data);
       case EventName.TransactionUpdated:
         return new TransactionUpdatedEvent(data);
+      case EventName.TransactionRevised:
+        return new TransactionRevisedEvent(data);
       case EventName.ReportCreated:
         return new ReportCreatedEvent(data);
       case EventName.ReportUpdated:
         return new ReportUpdatedEvent(data);
       default:
         // @ts-expect-error event_type did not match any handled events
-        Logger.log(`Unknown event_type ${data.event_type}`);
+        Logger.log(`Unhandled event: ${data.event_type}`);
         return new GenericEvent(data) as EventEntity;
     }
   }

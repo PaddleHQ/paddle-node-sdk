@@ -188,6 +188,7 @@ export const TransactionReadyMockExpectation = {
   data: {
     addressId: 'add_01h8e18bzb5av13cd16m5gz214',
     billedAt: null,
+    revisedAt: null,
     billingDetails: null,
     billingPeriod: null,
     businessId: null,

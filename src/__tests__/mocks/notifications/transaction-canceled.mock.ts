@@ -192,6 +192,7 @@ export const TransactionCanceledMockExpectation = {
   data: {
     addressId: 'add_01h848pep46enq8y372x7maj0p',
     billedAt: '2023-08-22T07:45:54.783994Z',
+    revisedAt: null,
     billingDetails: {
       additionalInformation: null,
       enableCheckout: false,

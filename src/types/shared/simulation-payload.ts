@@ -42,6 +42,7 @@ import {
   type TransactionPaymentFailedEvent,
   type TransactionReadyEvent,
   type TransactionUpdatedEvent,
+  type TransactionRevisedEvent,
 } from '../../notifications/events/index.js';
 
 interface SimulationEventPayloadMap {
@@ -85,6 +86,7 @@ interface SimulationEventPayloadMap {
   'transaction.payment_failed': TransactionPaymentFailedEvent;
   'transaction.ready': TransactionReadyEvent;
   'transaction.updated': TransactionUpdatedEvent;
+  'transaction.revised': TransactionRevisedEvent;
   'report.created': ReportCreatedEvent;
   'report.updated': ReportUpdatedEvent;
   subscription_creation: never;
