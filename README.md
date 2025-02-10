@@ -41,7 +41,7 @@ To authenticate, you'll need an API key. You can create and manage API keys in *
 Pass your API key while initializing a new Paddle client.
 
 ``` typescript
-import { Environment, Paddle } from '@paddle/paddle-node-sdk'
+import { Environment, LogLevel, Paddle } from '@paddle/paddle-node-sdk'
 
 const paddle = new Paddle('API_KEY')
 ```
@@ -51,7 +51,7 @@ You can also pass an environment to work with the sandbox:
 ```typescript
 const paddle = new Paddle('API_KEY', {
   environment: Environment.production, // or Environment.sandbox for accessing sandbox API
-  logLevel: 'verbose' // or 'error' for less verbose logging
+  logLevel: LogLevel.verbose // or LogLevel.error for less verbose logging
 })
 ```
 
