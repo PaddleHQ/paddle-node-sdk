@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest",
     "prebuild": "node ./scripts/update-env-vars.js",
-    "build": "yarn clean && yarn build-esm && yarn build-cjs && yarn build-types",
+    "build": "pnpm clean && pnpm build-esm && pnpm build-cjs && pnpm build-types",
     "build-esm": "tsc -b tsconfig.esm.json && echo '{\"type\":\"module\"}' > ./dist/esm/package.json",
     "build-cjs": "tsc -b tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > ./dist/cjs/package.json",
     "build-types": "tsc -b tsconfig.types.json",
@@ -20,9 +20,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "clean": "rm -rf ./dist",
-    "release:rc": "yarn version --prerelease --preid rc --no-git-tag-version --no-commit-hooks",
-    "publish:rc": "yarn publish --tag rc --access public",
-    "publish:latest": "yarn publish --access public"
+    "release:rc": "pnpm version --prerelease --preid rc --no-git-tag-version --no-commit-hooks"
   },
   "files": [
     "dist"
