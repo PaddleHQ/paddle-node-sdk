@@ -37,9 +37,11 @@ jobs:
 
       - name: Check version and publish
         run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
           CURRENT_VERSION=$(node -p "require('./package.json').version")
+
           # Check if version exists in npm registry
-          if npm view "$CURRENT_VERSION" version &>/dev/null; then
+          if npm view "${PACKAGE_NAME}@${CURRENT_VERSION}" version &>/dev/null; then
             echo "Version $CURRENT_VERSION already published, skipping"
             exit 0
           fi
