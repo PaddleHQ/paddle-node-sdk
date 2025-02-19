@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: "yarn"
+          cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install yarn dependencies
@@ -35,10 +35,18 @@ jobs:
       - name: Test
         run: yarn test
 
-      - name: Publish
+      - name: Check version and publish
         run: |
-          VERSION=$(node -p "require('./package.json').version" )
-          if [[ "$VERSION" =~ (rc) ]]; then
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+
+          # Check if version exists in npm registry
+          if npm view "${PACKAGE_NAME}@${CURRENT_VERSION}" version &>/dev/null; then
+            echo "Version $CURRENT_VERSION already published, skipping"
+            exit 0
+          fi
+
+          if [[ "$CURRENT_VERSION" =~ (rc) ]]; then
             yarn publish:rc
           else
             yarn publish:latest
