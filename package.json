@@ -20,9 +20,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "clean": "rm -rf ./dist",
-    "release:rc": "pnpm version --prerelease --preid rc --no-git-tag-version --no-commit-hooks",
-    "publish:rc": "pnpm publish --tag rc --access public",
-    "publish:latest": "pnpm publish --access public"
+    "release:rc": "pnpm version --prerelease --preid rc --no-git-tag-version --no-commit-hooks"
   },
   "files": [
     "dist"
