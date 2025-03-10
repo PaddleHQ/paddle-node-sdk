@@ -27,6 +27,7 @@ export default [
       '@stylistic/brace-style': 'off',
       '@stylistic/arrow-parens': 'off',
       '@stylistic/operator-linebreak': 'off',
+      '@stylistic/generator-star-spacing': 'off',
       'import/no-unresolved': 'off',
       'import/extensions': [
         'error',
