@@ -44,6 +44,14 @@ import {
   type TransactionUpdatedEvent,
   type TransactionRevisedEvent,
 } from '../../notifications/events/index.js';
+import type { SimulationScenarioType } from '../../enums/index.js';
+import type {
+  SimulationSubscriptionCancellationConfig,
+  SimulationSubscriptionCreationConfig,
+  SimulationSubscriptionPauseConfig,
+  SimulationSubscriptionRenewalConfig,
+  SimulationSubscriptionResumeConfig,
+} from '../simulation/simulation-scenario-config.js';
 
 interface SimulationEventPayloadMap {
   'address.created': AddressCreatedEvent;
@@ -96,9 +104,18 @@ interface SimulationEventPayloadMap {
   subscription_cancellation: never;
 }
 
+interface SimulationScenarioConfigMap {
+  subscription_creation: SimulationSubscriptionCreationConfig;
+  subscription_renewal: SimulationSubscriptionRenewalConfig;
+  subscription_pause: SimulationSubscriptionPauseConfig;
+  subscription_resume: SimulationSubscriptionResumeConfig;
+  subscription_cancellation: SimulationSubscriptionCancellationConfig;
+}
+
 export type DiscriminatedSimulationEventResponse<Base> = {
   [K in keyof SimulationEventPayloadMap]: Base & {
     type: K;
     payload?: K extends IEventName ? Partial<SimulationEventPayloadMap[K]['data']> | null : null;
+    config?: K extends SimulationScenarioType ? Record<K, SimulationScenarioConfigMap[K]> : null;
   };
 }[keyof SimulationEventPayloadMap];
