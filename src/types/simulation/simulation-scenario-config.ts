@@ -5,7 +5,7 @@
  */
 
 interface BaseSimulationScenarioConfig {
-  entities: {
+  entities?: {
     subscription_id?: string | null;
   };
 }
@@ -16,7 +16,7 @@ interface SimulationSubscriptionCreationItemsEntities {
   business_id?: string | null;
   payment_method_id?: string | null;
   discount_id?: string | null;
-  items: Array<{
+  items?: Array<{
     price_id: string;
     quantity: number;
   }>;
@@ -32,13 +32,13 @@ interface SimulationSubscriptionCreationTransactionEntities {
 }
 
 interface SimulationDunningFailedOptions {
-  payment_outcome: 'failed';
-  dunning_exhausted_action: 'subscription_paused' | 'subscription_canceled';
+  payment_outcome?: 'failed';
+  dunning_exhausted_action?: 'subscription_paused' | 'subscription_canceled';
 }
 
 interface SimulationDunningSuccessOptions {
-  payment_outcome: 'success' | 'recovered_existing_payment_method' | 'recovered_updated_payment_method';
-  dunning_exhausted_action: null;
+  payment_outcome?: 'success' | 'recovered_existing_payment_method' | 'recovered_updated_payment_method';
+  dunning_exhausted_action?: null;
 }
 
 type SimulationDunningOptions = SimulationDunningFailedOptions | SimulationDunningSuccessOptions;
@@ -51,7 +51,7 @@ export interface SimulationSubscriptionCancellationConfig extends BaseSimulation
 }
 
 export interface SimulationSubscriptionCreationConfig {
-  entities: SimulationSubscriptionCreationItemsEntities | SimulationSubscriptionCreationTransactionEntities;
+  entities?: SimulationSubscriptionCreationItemsEntities | SimulationSubscriptionCreationTransactionEntities;
   options?: {
     customer_simulated_as?: 'new' | 'existing_email_matched' | 'existing_details_prefilled';
     business_simulated_as?: 'not_provided' | 'new' | 'existing_details_prefilled';
@@ -73,11 +73,3 @@ export interface SimulationSubscriptionRenewalConfig extends BaseSimulationScena
 export interface SimulationSubscriptionResumeConfig extends BaseSimulationScenarioConfig {
   options?: SimulationDunningOptions;
 }
-
-export type SimulationScenarioConfig =
-  | SimulationSubscriptionCancellationConfig
-  | SimulationSubscriptionCreationConfig
-  | SimulationSubscriptionPauseConfig
-  | SimulationSubscriptionRenewalConfig
-  | SimulationSubscriptionResumeConfig
-  | null;

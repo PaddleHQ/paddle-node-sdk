@@ -104,13 +104,17 @@ interface SimulationEventPayloadMap {
   subscription_cancellation: never;
 }
 
-interface SimulationScenarioConfigMap {
+export interface SimulationScenarioConfigMap {
   subscription_creation: SimulationSubscriptionCreationConfig;
   subscription_renewal: SimulationSubscriptionRenewalConfig;
   subscription_pause: SimulationSubscriptionPauseConfig;
   subscription_resume: SimulationSubscriptionResumeConfig;
   subscription_cancellation: SimulationSubscriptionCancellationConfig;
 }
+
+export type SimulationScenarioConfig = {
+  [K in keyof SimulationScenarioConfigMap]?: SimulationScenarioConfigMap[K] | null;
+};
 
 export type DiscriminatedSimulationEventResponse<Base> = {
   [K in keyof SimulationEventPayloadMap]: Base & {
