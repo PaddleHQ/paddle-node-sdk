@@ -12,5 +12,5 @@ interface BaseSimulationResponse {
   last_run_at?: string | null;
   created_at: string;
   updated_at: string;
-  config: ISimulationScenarioConfigResponse;
+  config?: ISimulationScenarioConfigResponse | null;
 }

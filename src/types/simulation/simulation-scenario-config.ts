@@ -36,6 +36,7 @@ interface SimulationSubscriptionCreationTransactionEntities {
   payment_method_id?: string | null;
   discount_id?: string | null;
   transaction_id?: string | null;
+  items?: null;
 }
 
 interface SimulationDunningFailedOptions {

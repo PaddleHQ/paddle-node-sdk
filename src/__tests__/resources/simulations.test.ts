@@ -17,6 +17,8 @@ import {
   CreateSimulationMock,
   updateSimulationMock,
   ListSimulationMockResponse,
+  CreateSimulationScenarioMock,
+  CreateSimulationScenarioMockResponse,
 } from '../mocks/resources/simulations.mock.js';
 
 describe('SimulationsResource', () => {
@@ -105,5 +107,19 @@ describe('SimulationsResource', () => {
 
     expect(paddleInstance.patch).toBeCalledWith(`/simulations/${simulationId}`, simulationToBeUpdated);
     expect(updatedSimulation).toBeDefined();
+  });
+
+  test('should create a new simulation scenario', async () => {
+    const newSimulationScenario: CreateSimulationRequestBody = CreateSimulationScenarioMock;
+    const paddleInstance = getPaddleTestClient();
+
+    paddleInstance.post = jest.fn().mockResolvedValue(CreateSimulationScenarioMockResponse);
+    const simulationsResource = new SimulationsResource(paddleInstance);
+    const createdSimulation = await simulationsResource.create(newSimulationScenario);
+
+    expect(paddleInstance.post).toBeCalledWith(`/simulations`, newSimulationScenario);
+    expect(createdSimulation).toBeDefined();
+    expect(createdSimulation.id).toBeDefined();
+    expect(createdSimulation.name).toBe(newSimulationScenario.name);
   });
 });
