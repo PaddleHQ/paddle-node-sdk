@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type SimulationScenarioConfig, type ISimulationResponse } from '../../types/index.js';
+import { type ISimulationResponse } from '../../types/index.js';
 import type { SimulationScenarioType, Status } from '../../enums/index.js';
 import type { IEventName } from '../../notifications/index.js';
+import { SimulationScenarioConfig } from '../index.js';
 
 export class Simulation {
   public readonly id: string;
@@ -31,6 +32,6 @@ export class Simulation {
     this.lastRunAt = simulationResponse.last_run_at ?? null;
     this.createdAt = simulationResponse.created_at;
     this.updatedAt = simulationResponse.updated_at;
-    this.config = simulationResponse.config ?? null;
+    this.config = simulationResponse.config ? new SimulationScenarioConfig(simulationResponse.config) : null;
   }
 }

@@ -44,14 +44,15 @@ import {
   type TransactionUpdatedEvent,
   type TransactionRevisedEvent,
 } from '../../notifications/events/index.js';
-import type { SimulationScenarioType } from '../../enums/index.js';
-import type {
-  SimulationSubscriptionCancellationConfig,
-  SimulationSubscriptionCreationConfig,
-  SimulationSubscriptionPauseConfig,
-  SimulationSubscriptionRenewalConfig,
-  SimulationSubscriptionResumeConfig,
-} from '../simulation/simulation-scenario-config.js';
+
+import { SimulationScenarioType } from '../../enums/index.js';
+import {
+  SubscriptionCancellationDetails,
+  SubscriptionCreationDetails,
+  SubscriptionPauseDetails,
+  SubscriptionRenewalDetails,
+  SubscriptionResumeDetails,
+} from '../../entities/index.js';
 
 interface SimulationEventPayloadMap {
   'address.created': AddressCreatedEvent;
@@ -104,22 +105,18 @@ interface SimulationEventPayloadMap {
   subscription_cancellation: never;
 }
 
-export interface SimulationScenarioConfigMap {
-  subscription_creation: SimulationSubscriptionCreationConfig;
-  subscription_renewal: SimulationSubscriptionRenewalConfig;
-  subscription_pause: SimulationSubscriptionPauseConfig;
-  subscription_resume: SimulationSubscriptionResumeConfig;
-  subscription_cancellation: SimulationSubscriptionCancellationConfig;
-}
-
-export type SimulationScenarioConfig = {
-  [K in keyof SimulationScenarioConfigMap]?: SimulationScenarioConfigMap[K] | null;
-};
-
 export type DiscriminatedSimulationEventResponse<Base> = {
   [K in keyof SimulationEventPayloadMap]: Base & {
     type: K;
     payload?: K extends IEventName ? Partial<SimulationEventPayloadMap[K]['data']> | null : null;
-    config?: K extends SimulationScenarioType ? Record<K, SimulationScenarioConfigMap[K]> : null;
+    config?: K extends SimulationScenarioType
+      ? {
+          subscriptionCreation?: K extends 'subscription_creation' ? SubscriptionCreationDetails : null;
+          subscriptionRenewal?: K extends 'subscription_renewal' ? SubscriptionRenewalDetails : null;
+          subscriptionPause?: K extends 'subscription_pause' ? SubscriptionPauseDetails : null;
+          subscriptionResume?: K extends 'subscription_resume' ? SubscriptionResumeDetails : null;
+          subscriptionCancellation?: K extends 'subscription_cancellation' ? SubscriptionCancellationDetails : null;
+        }
+      : null;
   };
 }[keyof SimulationEventPayloadMap];

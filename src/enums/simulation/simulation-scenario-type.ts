@@ -10,3 +10,19 @@ export type SimulationScenarioType =
   | 'subscription_pause'
   | 'subscription_resume'
   | 'subscription_cancellation';
+
+export type EffectiveFromType = 'next_billing_period' | 'immediately';
+
+export type CustomerSimulatedAsType = 'new' | 'existing_email_matched' | 'existing_details_prefilled';
+
+export type BusinessSimulatedAsType = 'not_provided' | 'new' | 'existing_details_prefilled';
+
+export type DiscountSimulatedAsType = 'not_provided' | 'prefilled' | 'entered_by_customer';
+
+export type PaymentOutcomeType =
+  | 'failed'
+  | 'success'
+  | 'recovered_existing_payment_method'
+  | 'recovered_updated_payment_method';
+
+export type DunningExhaustedActionType = 'subscription_paused' | 'subscription_canceled';
