@@ -2,8 +2,8 @@ import { type SimulationSubscriptionCancellationConfig } from '../../../types/in
 import { type EffectiveFromType } from '../../../enums/index.js';
 
 export class SubscriptionCancellationOptions {
-  public readonly effectiveFrom?: EffectiveFromType;
-  public readonly hasPastDueTransaction?: boolean;
+  public readonly effectiveFrom?: EffectiveFromType | undefined;
+  public readonly hasPastDueTransaction?: boolean | undefined;
 
   constructor(options: SimulationSubscriptionCancellationConfig['options']) {
     this.effectiveFrom = options?.effective_from;

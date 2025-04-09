@@ -2,8 +2,8 @@ import { type SimulationSubscriptionResumeConfig } from '../../../types/index.js
 import { type PaymentOutcomeType, type DunningExhaustedActionType } from '../../../enums/index.js';
 
 export class SubscriptionResumeOptions {
-  public readonly paymentOutcome?: PaymentOutcomeType;
-  public readonly dunningExhaustedAction?: DunningExhaustedActionType;
+  public readonly paymentOutcome?: PaymentOutcomeType | undefined;
+  public readonly dunningExhaustedAction?: DunningExhaustedActionType | undefined;
 
   constructor(options: SimulationSubscriptionResumeConfig['options']) {
     this.paymentOutcome = options?.payment_outcome;

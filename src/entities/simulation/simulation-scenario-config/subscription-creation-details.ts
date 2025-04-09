@@ -3,8 +3,8 @@ import { SubscriptionCreationEntities } from './subscription-creation-entities.j
 import { SubscriptionCreationOptions } from './subscription-creation-options.js';
 
 export class SubscriptionCreationDetails {
-  public readonly entities?: SubscriptionCreationEntities;
-  public readonly options?: SubscriptionCreationOptions;
+  public readonly entities?: SubscriptionCreationEntities | undefined;
+  public readonly options?: SubscriptionCreationOptions | undefined;
 
   constructor(config: SimulationSubscriptionCreationConfig) {
     this.entities = config.entities ? new SubscriptionCreationEntities(config.entities) : undefined;

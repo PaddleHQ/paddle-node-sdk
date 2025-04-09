@@ -6,9 +6,9 @@ import {
 } from '../../../enums/index.js';
 
 export class SubscriptionCreationOptions {
-  public readonly customerSimulatedAs?: CustomerSimulatedAsType;
-  public readonly businessSimulatedAs?: BusinessSimulatedAsType;
-  public readonly discountSimulatedAs?: DiscountSimulatedAsType;
+  public readonly customerSimulatedAs?: CustomerSimulatedAsType | undefined;
+  public readonly businessSimulatedAs?: BusinessSimulatedAsType | undefined;
+  public readonly discountSimulatedAs?: DiscountSimulatedAsType | undefined;
 
   constructor(options: SimulationSubscriptionCreationConfig['options']) {
     this.customerSimulatedAs = options?.customer_simulated_as;

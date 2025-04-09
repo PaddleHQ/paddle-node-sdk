@@ -3,8 +3,8 @@ import { SubscriptionCancellationEntities } from './subscription-cancellation-en
 import { SubscriptionCancellationOptions } from './subscription-cancellation-options.js';
 
 export class SubscriptionCancellationDetails {
-  public readonly entities?: SubscriptionCancellationEntities;
-  public readonly options?: SubscriptionCancellationOptions;
+  public readonly entities?: SubscriptionCancellationEntities | undefined;
+  public readonly options?: SubscriptionCancellationOptions | undefined;
 
   constructor(config: SimulationSubscriptionCancellationConfig) {
     this.entities = config.entities ? new SubscriptionCancellationEntities(config.entities) : undefined;
