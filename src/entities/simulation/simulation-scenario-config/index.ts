@@ -4,6 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './simulation.js';
-export * from './simulation-collection.js';
-export * from './simulation-scenario-config/index.js';
+export * from './simulation-scenario-config.js';

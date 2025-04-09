@@ -11,7 +11,7 @@ import type {
   DiscountSimulatedAsType,
 } from '../../enums/index.js';
 
-interface BaseSimulationScenarioConfig {
+interface SubscriptionSimulationScenarioConfig {
   entities?: {
     subscription_id?: string | null;
   };
@@ -23,6 +23,7 @@ interface SimulationSubscriptionCreationItemsEntities {
   business_id?: string | null;
   payment_method_id?: string | null;
   discount_id?: string | null;
+  transaction_id?: null;
   items?: Array<{
     price_id: string;
     quantity: number;
@@ -51,7 +52,7 @@ interface SimulationDunningSuccessOptions {
 
 type SimulationDunningOptions = SimulationDunningFailedOptions | SimulationDunningSuccessOptions;
 
-export interface SimulationSubscriptionCancellationConfig extends BaseSimulationScenarioConfig {
+export interface SimulationSubscriptionCancellationConfig extends SubscriptionSimulationScenarioConfig {
   options?: {
     effective_from?: EffectiveFromType;
     has_past_due_transaction?: boolean;
@@ -67,18 +68,18 @@ export interface SimulationSubscriptionCreationConfig {
   };
 }
 
-export interface SimulationSubscriptionPauseConfig extends BaseSimulationScenarioConfig {
+export interface SimulationSubscriptionPauseConfig extends SubscriptionSimulationScenarioConfig {
   options?: {
     effective_from?: EffectiveFromType;
     has_past_due_transaction?: boolean;
   };
 }
 
-export interface SimulationSubscriptionRenewalConfig extends BaseSimulationScenarioConfig {
+export interface SimulationSubscriptionRenewalConfig extends SubscriptionSimulationScenarioConfig {
   options?: SimulationDunningOptions;
 }
 
-export interface SimulationSubscriptionResumeConfig extends BaseSimulationScenarioConfig {
+export interface SimulationSubscriptionResumeConfig extends SubscriptionSimulationScenarioConfig {
   options?: SimulationDunningOptions;
 }
 
