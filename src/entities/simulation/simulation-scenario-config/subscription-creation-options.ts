@@ -6,13 +6,13 @@ import {
 } from '../../../enums/index.js';
 
 export class SubscriptionCreationOptions {
-  public readonly customerSimulatedAs?: CustomerSimulatedAsType | undefined;
-  public readonly businessSimulatedAs?: BusinessSimulatedAsType | undefined;
-  public readonly discountSimulatedAs?: DiscountSimulatedAsType | undefined;
+  public readonly customerSimulatedAs?: CustomerSimulatedAsType | null;
+  public readonly businessSimulatedAs?: BusinessSimulatedAsType | null;
+  public readonly discountSimulatedAs?: DiscountSimulatedAsType | null;
 
   constructor(options: SimulationSubscriptionCreationConfig['options']) {
-    this.customerSimulatedAs = options?.customer_simulated_as;
-    this.businessSimulatedAs = options?.business_simulated_as;
-    this.discountSimulatedAs = options?.discount_simulated_as;
+    this.customerSimulatedAs = options?.customer_simulated_as ?? null;
+    this.businessSimulatedAs = options?.business_simulated_as ?? null;
+    this.discountSimulatedAs = options?.discount_simulated_as ?? null;
   }
 }

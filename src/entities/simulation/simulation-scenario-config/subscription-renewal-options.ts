@@ -2,11 +2,11 @@ import { type SimulationSubscriptionRenewalConfig } from '../../../types/index.j
 import { type PaymentOutcomeType, type DunningExhaustedActionType } from '../../../enums/index.js';
 
 export class SubscriptionRenewalOptions {
-  public readonly paymentOutcome?: PaymentOutcomeType | undefined;
-  public readonly dunningExhaustedAction?: DunningExhaustedActionType | undefined;
+  public readonly paymentOutcome?: PaymentOutcomeType | null;
+  public readonly dunningExhaustedAction?: DunningExhaustedActionType | null;
 
   constructor(options: SimulationSubscriptionRenewalConfig['options']) {
-    this.paymentOutcome = options?.payment_outcome;
-    this.dunningExhaustedAction = options?.dunning_exhausted_action ?? undefined;
+    this.paymentOutcome = options?.payment_outcome ?? null;
+    this.dunningExhaustedAction = options?.dunning_exhausted_action ?? null;
   }
 }

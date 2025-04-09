@@ -3,11 +3,11 @@ import { SubscriptionCreationEntities } from './subscription-creation-entities.j
 import { SubscriptionCreationOptions } from './subscription-creation-options.js';
 
 export class SubscriptionCreationDetails {
-  public readonly entities?: SubscriptionCreationEntities | undefined;
-  public readonly options?: SubscriptionCreationOptions | undefined;
+  public readonly entities?: SubscriptionCreationEntities | null;
+  public readonly options?: SubscriptionCreationOptions | null;
 
   constructor(config: SimulationSubscriptionCreationConfig) {
-    this.entities = config.entities ? new SubscriptionCreationEntities(config.entities) : undefined;
-    this.options = config.options ? new SubscriptionCreationOptions(config.options) : undefined;
+    this.entities = config.entities ? new SubscriptionCreationEntities(config.entities) : null;
+    this.options = config.options ? new SubscriptionCreationOptions(config.options) : null;
   }
 }

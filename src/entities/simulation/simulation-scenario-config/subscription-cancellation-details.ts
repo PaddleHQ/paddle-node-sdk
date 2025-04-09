@@ -3,11 +3,11 @@ import { SubscriptionCancellationEntities } from './subscription-cancellation-en
 import { SubscriptionCancellationOptions } from './subscription-cancellation-options.js';
 
 export class SubscriptionCancellationDetails {
-  public readonly entities?: SubscriptionCancellationEntities | undefined;
-  public readonly options?: SubscriptionCancellationOptions | undefined;
+  public readonly entities?: SubscriptionCancellationEntities | null;
+  public readonly options?: SubscriptionCancellationOptions | null;
 
   constructor(config: SimulationSubscriptionCancellationConfig) {
-    this.entities = config.entities ? new SubscriptionCancellationEntities(config.entities) : undefined;
-    this.options = config.options ? new SubscriptionCancellationOptions(config.options) : undefined;
+    this.entities = config.entities ? new SubscriptionCancellationEntities(config.entities) : null;
+    this.options = config.options ? new SubscriptionCancellationOptions(config.options) : null;
   }
 }
