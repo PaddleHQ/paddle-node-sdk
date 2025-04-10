@@ -12,6 +12,22 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.6.0 - 2025-04-10
+
+### Added
+
+- Added `taxMode` property when creating an adjustment, see [related changelog](https://developer.paddle.com/changelog/2025/tax-exclusive-refunds?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `config` to configure simulation scenarios, see [related changelog](https://developer.paddle.com/changelog/2025/webhook-simulator-scenario-configuration?utm_source=dx&utm_medium=paddle-node-sdk)
+
+---
+
+## 2.5.1 - 2025-03-06
+
+### Added
+
+- Added exports for bun, deno and cloudflare workers
+
+---
 ## 2.5.0 - 2025-01-24
 
 ### Added

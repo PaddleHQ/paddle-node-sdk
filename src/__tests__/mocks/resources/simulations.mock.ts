@@ -28,6 +28,7 @@ export const SimulationMock: ISimulationResponse = {
   last_run_at: '2024-10-12T07:20:50.52Z',
   created_at: '2024-10-12T07:20:50.52Z',
   updated_at: '2024-10-13T07:20:50.52Z',
+  config: null,
 };
 
 export const SimulationMockResponse: Response<ISimulationResponse> = {
@@ -47,5 +48,62 @@ export const ListSimulationMockResponse: ResponsePaginated<ISimulationResponse> 
       next: '/simulations?after=1',
       per_page: 10,
     },
+  },
+};
+
+export const CreateSimulationScenarioMock: CreateSimulationRequestBody = {
+  notificationSettingId: 'ntfset_123',
+  type: 'subscription_creation',
+  name: 'New subscription created',
+  config: {
+    subscriptionCreation: {
+      entities: {
+        customerId: 'ctm_123',
+      },
+      options: {
+        customerSimulatedAs: 'existing_email_matched',
+      },
+    },
+  },
+};
+
+export const SimulationScenarioMock: ISimulationResponse = {
+  id: 'ntfsim_123',
+  status: 'active',
+  notification_setting_id: 'ntfset_123',
+  name: 'New subscription created',
+  type: 'subscription_creation',
+  payload: null,
+  last_run_at: null,
+  created_at: '2025-04-08T14:32:18.193033Z',
+  updated_at: '2025-04-08T14:32:18.193033Z',
+  config: {
+    subscription_cancellation: null,
+    subscription_creation: {
+      entities: {
+        customer_id: 'ctm_01j91fa47z7fx1zayjvntk0yps',
+        address_id: null,
+        business_id: null,
+        payment_method_id: null,
+        discount_id: null,
+        transaction_id: null,
+        items: null,
+      },
+      options: {
+        customer_simulated_as: 'existing_email_matched',
+        business_simulated_as: 'not_provided',
+        discount_simulated_as: 'not_provided',
+      },
+    },
+    subscription_pause: null,
+    subscription_renewal: null,
+    subscription_resume: null,
+  },
+};
+
+export const CreateSimulationScenarioMockResponse: Response<ISimulationResponse> = {
+  data: SimulationScenarioMock,
+  meta: {
+    request_id: '',
   },
 };
