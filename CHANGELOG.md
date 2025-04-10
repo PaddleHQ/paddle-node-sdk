@@ -16,8 +16,10 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `taxMode` property when creating an adjustment, see [related changelog](https://developer.paddle.com/changelog/2025/tax-exclusive-refunds)
-- Added `config` to simulation scenarios, see [related changelog](https://developer.paddle.com/changelog/2025/webhook-simulator-scenario-configuration)
+- Added `taxMode` property when creating an adjustment, see [related changelog](https://developer.paddle.com/changelog/2025/tax-exclusive-refunds?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `config` to configure simulation scenarios, see [related changelog](https://developer.paddle.com/changelog/2025/webhook-simulator-scenario-configuration?utm_source=dx&utm_medium=paddle-node-sdk)
+
+---
 
 ## 2.5.1 - 2025-03-06
 
@@ -25,6 +27,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 - Added exports for bun, deno and cloudflare workers
 
+---
 ## 2.5.0 - 2025-01-24
 
 ### Added
