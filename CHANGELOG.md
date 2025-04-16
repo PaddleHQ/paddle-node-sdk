@@ -16,7 +16,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added support to pass custom header to the API
+- Added support to pass custom headers to the API
 
 ---
 
