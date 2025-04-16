@@ -12,6 +12,14 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.7.0 - 2025-04-16
+
+### Added
+
+- Added support to pass custom headers to the API
+
+---
+
 ## 2.6.0 - 2025-04-10
 
 ### Added
