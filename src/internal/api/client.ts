@@ -40,6 +40,7 @@ export class Client {
       'Content-Type': 'application/json',
       'user-agent': `PaddleSDK/node ${SDK_VERSION}`,
       'X-Transaction-ID': uuid ?? '',
+      ...this.options.customHeaders,
     };
   }
 

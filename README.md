@@ -51,7 +51,10 @@ You can also pass an environment to work with the sandbox:
 ```typescript
 const paddle = new Paddle('API_KEY', {
   environment: Environment.production, // or Environment.sandbox for accessing sandbox API
-  logLevel: LogLevel.verbose // or LogLevel.error for less verbose logging
+  logLevel: LogLevel.verbose, // or LogLevel.error for less verbose logging
+  customHeaders: {
+    'X-Custom-Header': 'value' // Optional custom headers
+  }
 })
 ```
 
