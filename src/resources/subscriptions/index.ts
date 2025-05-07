@@ -142,15 +142,15 @@ export class SubscriptionsResource extends BaseResource {
     return new Subscription(data);
   }
 
-  public async cancel(subscriptionId: string, requestBody: CancelSubscription): Promise<Subscription> {
+  public async cancel(subscriptionId: string, requestBody?: CancelSubscription): Promise<Subscription> {
     const urlWithPathParams = new PathParameters(SubscriptionPaths.cancel, {
       subscription_id: subscriptionId,
     }).deriveUrl();
 
-    const response = await this.client.post<CancelSubscription, Response<ISubscriptionResponse> | ErrorResponse>(
-      urlWithPathParams,
-      requestBody,
-    );
+    const response = await this.client.post<
+      CancelSubscription | undefined,
+      Response<ISubscriptionResponse> | ErrorResponse
+    >(urlWithPathParams, requestBody);
 
     const data = this.handleResponse<ISubscriptionResponse>(response);
 
