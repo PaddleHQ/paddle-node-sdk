@@ -12,6 +12,14 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.7.1 - 2025-05-07
+
+### Changed
+
+- `subscriptions.cancel` requestBody is now optional
+
+---
+
 ## 2.7.0 - 2025-04-16
 
 ### Added
@@ -36,6 +44,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 - Added exports for bun, deno and cloudflare workers
 
 ---
+
 ## 2.5.0 - 2025-01-24
 
 ### Added
