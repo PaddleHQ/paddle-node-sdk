@@ -12,6 +12,14 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.7.2 - 2025-05-20
+
+### Added
+
+- Added support for `exchangeRate` and `feeRate` in transaction completed webhook event's `details.payoutTotals`
+
+---
+
 ## 2.7.1 - 2025-05-07
 
 ### Changed
