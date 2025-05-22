@@ -159,6 +159,8 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         subtotal: '59900',
         grand_total: '65215',
         currency_code: 'USD',
+        exchange_rate: '1',
+        fee_rate: '0.05',
       },
       tax_rates_used: [
         { totals: { tax: '5315', total: '65215', discount: '0', subtotal: '59900' }, tax_rate: '0.08875' },
@@ -382,6 +384,8 @@ export const TransactionCompletedMockExpectation = {
         subtotal: '59900',
         tax: '5315',
         total: '65215',
+        exchangeRate: '1',
+        feeRate: '0.05',
       },
       taxRatesUsed: [
         {
