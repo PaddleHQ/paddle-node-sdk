@@ -19,6 +19,8 @@ export class TransactionPayoutTotalsNotification {
   public readonly fee: string;
   public readonly earnings: string;
   public readonly currencyCode: PayoutCurrencyCode;
+  public readonly exchangeRate: string;
+  public readonly feeRate: string;
 
   constructor(transactionPayoutTotals: ITransactionPayoutTotalsNotificationResponse) {
     this.subtotal = transactionPayoutTotals.subtotal;
@@ -32,5 +34,7 @@ export class TransactionPayoutTotalsNotification {
     this.fee = transactionPayoutTotals.fee;
     this.earnings = transactionPayoutTotals.earnings;
     this.currencyCode = transactionPayoutTotals.currency_code;
+    this.exchangeRate = transactionPayoutTotals.exchange_rate;
+    this.feeRate = transactionPayoutTotals.fee_rate;
   }
 }
