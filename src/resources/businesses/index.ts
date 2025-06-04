@@ -80,7 +80,7 @@ export class BusinessesResource extends BaseResource {
     return new Business(data);
   }
 
-  public async archive(customerId: string, addressId: string) {
-    return await this.update(customerId, addressId, { status: 'archived' });
+  public async archive(customerId: string, businessId: string) {
+    return await this.update(customerId, businessId, { status: 'archived' });
   }
 }
