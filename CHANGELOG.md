@@ -12,6 +12,16 @@ When we make [non-breaking changes](https://developer.paddle.com/api-reference/a
 
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
 
+## 2.7.3 - 2025-06-05
+
+### Fixed
+
+- Added PR labels to dependabot config.
+- Dependabot updates
+- Fixed a typo `paddle.businesses.archive` operation.
+
+---
+
 ## 2.7.2 - 2025-05-22
 
 ### Fixed

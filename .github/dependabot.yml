@@ -2,6 +2,10 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: /
+    labels:
+      - dependencies
+      - javascript
+      - norelease
     schedule:
       interval: "weekly"
       day: "monday"
