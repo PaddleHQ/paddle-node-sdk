@@ -18,6 +18,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 - Added PR labels to dependabot config.
 - Dependabot updates
+- Fixed a typo `paddle.businesses.archive` operation.
 
 ---
 
