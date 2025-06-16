@@ -31,11 +31,11 @@ describe('AddressesResource', () => {
     const addressCollection = addressesResource.list('ctm_1234');
 
     let addresses = await addressCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/addresses?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers/ctm_1234/addresses?');
     expect(addresses.length).toBe(1);
 
     addresses = await addressCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/addresses?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers/ctm_1234/addresses?');
     expect(addresses.length).toBe(1);
   });
 
@@ -51,7 +51,7 @@ describe('AddressesResource', () => {
     const addressCollection = addressesResource.list('ctm_1234', queryParams);
     const addresses = await addressCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/addresses?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers/ctm_1234/addresses?after=2&id=1234');
     expect(addresses.length).toBe(1);
   });
 
@@ -63,7 +63,7 @@ describe('AddressesResource', () => {
     const addressesResource = new AddressesResource(paddleInstance);
     const address = await addressesResource.get('ctm_1234', addressId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/customers/ctm_1234/addresses/${addressId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/ctm_1234/addresses/${addressId}`);
     expect(address).toBeDefined();
     expect(address.id).toBe(addressId);
   });
@@ -78,7 +78,7 @@ describe('AddressesResource', () => {
     const address = await addressesResource.get('ctm_1234', addressId);
 
     expect(address).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/customers/ctm_1234/addresses/${addressId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/ctm_1234/addresses/${addressId}`);
     expect(address.id).toBe(addressId);
   });
 
@@ -90,7 +90,7 @@ describe('AddressesResource', () => {
     const addressesResource = new AddressesResource(paddleInstance);
     const createdAddress = await addressesResource.create('ctm_1234', newAddress);
 
-    expect(paddleInstance.post).toBeCalledWith(`/customers/ctm_1234/addresses`, CreateAddressMock);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/customers/ctm_1234/addresses`, CreateAddressMock);
     expect(createdAddress).toBeDefined();
     expect(createdAddress.id).toBeDefined();
 
@@ -107,7 +107,7 @@ describe('AddressesResource', () => {
     const addressesResource = new AddressesResource(paddleInstance);
     const updatedAddress = await addressesResource.update('ctm_1234', addressId, addressToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/customers/ctm_1234/addresses/${addressId}`, UpdateAddressMock);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/customers/ctm_1234/addresses/${addressId}`, UpdateAddressMock);
     expect(updatedAddress).toBeDefined();
 
     expect(convertToSnakeCase(addressToBeUpdated)).toEqual(UpdateAddressExpectation);
@@ -122,7 +122,9 @@ describe('AddressesResource', () => {
     const addressesResource = new AddressesResource(paddleInstance);
     const updatedAddress = await addressesResource.archive('ctm_1234', addressId);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/customers/ctm_1234/addresses/${addressId}`, { status: 'archived' });
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/customers/ctm_1234/addresses/${addressId}`, {
+      status: 'archived',
+    });
     expect(updatedAddress).toBeDefined();
   });
 });

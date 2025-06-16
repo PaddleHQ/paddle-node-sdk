@@ -16,7 +16,7 @@ describe('simulationTypesResource', () => {
     const simulationsResource = new SimulationTypesResource(paddleInstance);
     const simulationTypes = await simulationsResource.list();
 
-    expect(paddleInstance.get).toBeCalledWith('/simulation-types');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/simulation-types');
     expect(simulationTypes.length).toBe(47);
   });
 });

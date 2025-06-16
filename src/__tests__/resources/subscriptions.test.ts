@@ -37,11 +37,11 @@ describe('SubscriptionsResource', () => {
     const subscriptionCollection = subscriptionsResource.list();
 
     let subscriptions = await subscriptionCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/subscriptions?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/subscriptions?');
     expect(subscriptions.length).toBe(1);
 
     subscriptions = await subscriptionCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/subscriptions?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/subscriptions?after=1');
     expect(subscriptions.length).toBe(1);
   });
 
@@ -57,7 +57,7 @@ describe('SubscriptionsResource', () => {
     const subscriptionCollection = subscriptionsResource.list(queryParams);
     const subscriptions = await subscriptionCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/subscriptions?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/subscriptions?after=2&id=1234');
     expect(subscriptions.length).toBe(1);
   });
 
@@ -69,7 +69,7 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const subscription = await subscriptionsResource.get(subscriptionId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/subscriptions/${subscriptionId}`, { queryParams: undefined });
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}`, { queryParams: undefined });
     expect(subscription).toBeDefined();
     expect(subscription.id).toBe(subscriptionId);
   });
@@ -87,7 +87,10 @@ describe('SubscriptionsResource', () => {
     const subscription = await subscriptionsResource.get(subscriptionId, queryParams);
 
     expect(subscription).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/subscriptions/${subscriptionId}`, new QueryParameters(queryParams));
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      `/subscriptions/${subscriptionId}`,
+      new QueryParameters(queryParams),
+    );
     expect(subscription.id).toBe(subscriptionId);
   });
 
@@ -101,7 +104,7 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const updatedSubscription = await subscriptionsResource.update(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/subscriptions/${subscriptionId}`, subscriptionToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}`, subscriptionToBeUpdated);
     expect(updatedSubscription).toBeDefined();
     expect(convertToSnakeCase(UpdateSubscriptionMock)).toEqual(UpdateSubscriptionExpectation);
   });
@@ -116,7 +119,7 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const updatedSubscription = await subscriptionsResource.update(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/subscriptions/${subscriptionId}`, subscriptionToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}`, subscriptionToBeUpdated);
     expect(updatedSubscription).toBeDefined();
     expect(convertToSnakeCase(UpdateSubscriptionMock)).toEqual(UpdateSubscriptionExpectation);
   });
@@ -131,7 +134,10 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const updatedSubscription = await subscriptionsResource.previewUpdate(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/subscriptions/${subscriptionId}/preview`, subscriptionToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(
+      `/subscriptions/${subscriptionId}/preview`,
+      subscriptionToBeUpdated,
+    );
     expect(updatedSubscription).toBeDefined();
     expect(convertToSnakeCase(UpdateSubscriptionMock)).toEqual(UpdateSubscriptionExpectation);
   });
@@ -145,7 +151,7 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const updatedSubscription = await subscriptionsResource.activate(subscriptionId);
 
-    expect(paddleInstance.post).toBeCalledWith(`/subscriptions/${subscriptionId}/activate`, undefined);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/activate`, undefined);
     expect(updatedSubscription).toBeDefined();
   });
 
@@ -159,7 +165,7 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const updatedSubscription = await subscriptionsResource.pause(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.post).toBeCalledWith(`/subscriptions/${subscriptionId}/pause`, subscriptionToBeUpdated);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/pause`, subscriptionToBeUpdated);
     expect(updatedSubscription).toBeDefined();
   });
 
@@ -176,7 +182,10 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const updatedSubscription = await subscriptionsResource.resume(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.post).toBeCalledWith(`/subscriptions/${subscriptionId}/resume`, subscriptionToBeUpdated);
+    expect(paddleInstance.post).toHaveBeenCalledWith(
+      `/subscriptions/${subscriptionId}/resume`,
+      subscriptionToBeUpdated,
+    );
     expect(updatedSubscription).toBeDefined();
   });
 
@@ -190,7 +199,10 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const updatedSubscription = await subscriptionsResource.cancel(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.post).toBeCalledWith(`/subscriptions/${subscriptionId}/cancel`, subscriptionToBeUpdated);
+    expect(paddleInstance.post).toHaveBeenCalledWith(
+      `/subscriptions/${subscriptionId}/cancel`,
+      subscriptionToBeUpdated,
+    );
     expect(updatedSubscription).toBeDefined();
   });
 
@@ -203,7 +215,9 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const subscription = await subscriptionsResource.getPaymentMethodChangeTransaction(subscriptionId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/subscriptions/${subscriptionId}/update-payment-method-transaction`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      `/subscriptions/${subscriptionId}/update-payment-method-transaction`,
+    );
     expect(subscription).toBeDefined();
   });
 
@@ -217,7 +231,7 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const subscription = await subscriptionsResource.previewOneTimeCharge(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.post).toBeCalledWith(
+    expect(paddleInstance.post).toHaveBeenCalledWith(
       `/subscriptions/${subscriptionId}/charge/preview`,
       subscriptionToBeUpdated,
     );
@@ -234,7 +248,10 @@ describe('SubscriptionsResource', () => {
     const subscriptionsResource = new SubscriptionsResource(paddleInstance);
     const subscription = await subscriptionsResource.createOneTimeCharge(subscriptionId, subscriptionToBeUpdated);
 
-    expect(paddleInstance.post).toBeCalledWith(`/subscriptions/${subscriptionId}/charge`, subscriptionToBeUpdated);
+    expect(paddleInstance.post).toHaveBeenCalledWith(
+      `/subscriptions/${subscriptionId}/charge`,
+      subscriptionToBeUpdated,
+    );
     expect(subscription).toBeDefined();
     expect(convertToSnakeCase(CreateSubscriptionMock)).toEqual(CreateSubscriptionExpectation);
   });

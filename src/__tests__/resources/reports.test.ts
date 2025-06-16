@@ -22,11 +22,11 @@ describe('ReportsResource', () => {
     const reportCollection = reportsResource.list();
 
     let reports = await reportCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/reports?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/reports?');
     expect(reports.length).toBe(1);
 
     reports = await reportCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/reports?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/reports?after=1');
     expect(reports.length).toBe(1);
   });
 
@@ -41,7 +41,7 @@ describe('ReportsResource', () => {
     const reportCollection = reportsResource.list(queryParams);
     const reports = await reportCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/reports?after=2');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/reports?after=2');
     expect(reports.length).toBe(1);
   });
 
@@ -53,7 +53,7 @@ describe('ReportsResource', () => {
     const reportsResource = new ReportsResource(paddleInstance);
     const report = await reportsResource.get(reportId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/reports/${reportId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/reports/${reportId}`);
     expect(report).toBeDefined();
     expect(report.id).toBe(reportId);
   });
@@ -68,7 +68,7 @@ describe('ReportsResource', () => {
     const report = await reportsResource.get(reportId);
 
     expect(report).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/reports/${reportId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/reports/${reportId}`);
     expect(report.id).toBe(reportId);
   });
 
@@ -80,7 +80,7 @@ describe('ReportsResource', () => {
     const reportsResource = new ReportsResource(paddleInstance);
     const createdReport = await reportsResource.create(newReport);
 
-    expect(paddleInstance.post).toBeCalledWith(`/reports`, newReport);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/reports`, newReport);
     expect(createdReport).toBeDefined();
     expect(createdReport.id).toBeDefined();
   });
@@ -92,7 +92,7 @@ describe('ReportsResource', () => {
     const reportsResource = new ReportsResource(paddleInstance);
     const createdReport = await reportsResource.getReportCsv(ReportMock.id);
 
-    expect(paddleInstance.get).toBeCalledWith(`/reports/${ReportMock.id}/download-url`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/reports/${ReportMock.id}/download-url`);
     expect(createdReport).toBeDefined();
   });
 });

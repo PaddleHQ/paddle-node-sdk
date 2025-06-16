@@ -7,8 +7,8 @@
 import { CustomerPortalSessionsResource } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
-  CustomerPortalSessionMockResponse,
   CustomerPortalSessionMock,
+  CustomerPortalSessionMockResponse,
 } from '../mocks/resources/customer-portal-sessions.mock.js';
 
 describe('CustomerPortalSessionsResource', () => {
@@ -21,7 +21,7 @@ describe('CustomerPortalSessionsResource', () => {
     const customerPortalSessionsResource = new CustomerPortalSessionsResource(paddleInstance);
     const createdCustomerPortalSession = await customerPortalSessionsResource.create(customerId, subscriptionIds);
 
-    expect(paddleInstance.post).toBeCalledWith(`/customers/${customerId}/portal-sessions`, {
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/customers/${customerId}/portal-sessions`, {
       subscriptionIds,
     });
     expect(createdCustomerPortalSession).toBeDefined();

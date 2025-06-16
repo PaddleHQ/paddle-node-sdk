@@ -16,7 +16,7 @@ describe('EventTypesResource', () => {
     const eventsResource = new EventTypesResource(paddleInstance);
     const eventTypes = await eventsResource.list();
 
-    expect(paddleInstance.get).toBeCalledWith('/event-types');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/event-types');
     expect(eventTypes.length).toBe(31);
   });
 });

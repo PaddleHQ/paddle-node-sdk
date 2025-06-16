@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 20, 22]
+        node: [ 18, 20, 22, 24 ]
     permissions:
       contents: read
       actions: write

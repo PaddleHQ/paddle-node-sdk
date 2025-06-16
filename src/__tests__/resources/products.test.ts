@@ -30,11 +30,11 @@ describe('ProductsResource', () => {
     const productCollection = productsResource.list();
 
     let products = await productCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/products?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/products?');
     expect(products.length).toBe(1);
 
     products = await productCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/products?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/products?after=1');
     expect(products.length).toBe(1);
   });
 
@@ -51,7 +51,7 @@ describe('ProductsResource', () => {
     const productCollection = productsResource.list(queryParams);
     const products = await productCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/products?after=2&id=1234&include=price');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/products?after=2&id=1234&include=price');
     expect(products.length).toBe(1);
   });
 
@@ -63,7 +63,7 @@ describe('ProductsResource', () => {
     const productsResource = new ProductsResource(paddleInstance);
     const product = await productsResource.get(productId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/products/${productId}`, { queryParams: undefined });
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/products/${productId}`, { queryParams: undefined });
     expect(product).toBeDefined();
     expect(product.id).toBe(productId);
   });
@@ -81,7 +81,7 @@ describe('ProductsResource', () => {
     const product = await productsResource.get(productId, queryParams);
 
     expect(product).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/products/${productId}`, new QueryParameters(queryParams));
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/products/${productId}`, new QueryParameters(queryParams));
     expect(product.id).toBe(productId);
   });
 
@@ -93,7 +93,7 @@ describe('ProductsResource', () => {
     const productsResource = new ProductsResource(paddleInstance);
     const createdProduct = await productsResource.create(newProduct);
 
-    expect(paddleInstance.post).toBeCalledWith(`/products`, newProduct);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/products`, newProduct);
     expect(createdProduct).toBeDefined();
     expect(createdProduct.id).toBeDefined();
   });
@@ -108,7 +108,7 @@ describe('ProductsResource', () => {
     const productsResource = new ProductsResource(paddleInstance);
     const updatedProduct = await productsResource.update(productId, productToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/products/${productId}`, productToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/products/${productId}`, productToBeUpdated);
     expect(updatedProduct).toBeDefined();
   });
 
@@ -121,7 +121,7 @@ describe('ProductsResource', () => {
     const productsResource = new ProductsResource(paddleInstance);
     const updatedProduct = await productsResource.archive(productId);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/products/${productId}`, { status: 'archived' });
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/products/${productId}`, { status: 'archived' });
     expect(updatedProduct).toBeDefined();
   });
 });

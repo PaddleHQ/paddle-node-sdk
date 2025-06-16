@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { SimulationRunEventsResource, type ListSimulationRunEventsQueryParameters } from '../../resources/index.js';
+import { type ListSimulationRunEventsQueryParameters, SimulationRunEventsResource } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
+  ListSimulationRunEventMockResponse,
   SimulationRunEventMock,
   SimulationRunEventMockResponse,
-  ListSimulationRunEventMockResponse,
 } from '../mocks/resources/simulation-run-events.mock.js';
 
 const simulationId = 'ntfsim_123';
@@ -24,11 +24,13 @@ describe('SimulationRunEventsResource', () => {
     const simulationRunEventCollection = simulationRunEventsResource.list(simulationId, simulationRunId);
 
     let simulationRunEvents = await simulationRunEventCollection.next();
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}/runs/${simulationRunId}/events?`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}/runs/${simulationRunId}/events?`);
     expect(simulationRunEvents.length).toBe(1);
 
     simulationRunEvents = await simulationRunEventCollection.next();
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}/runs/${simulationRunId}/events?after=1`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      `/simulations/${simulationId}/runs/${simulationRunId}/events?after=1`,
+    );
     expect(simulationRunEvents.length).toBe(1);
   });
 
@@ -44,7 +46,7 @@ describe('SimulationRunEventsResource', () => {
     const simulationRunEventCollection = simulationRunEventsResource.list(simulationId, simulationRunId, queryParams);
     const simulationRunEvents = await simulationRunEventCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith(
+    expect(paddleInstance.get).toHaveBeenCalledWith(
       `/simulations/${simulationId}/runs/${simulationRunId}/events?after=2&id=1234`,
     );
     expect(simulationRunEvents.length).toBe(1);
@@ -62,7 +64,7 @@ describe('SimulationRunEventsResource', () => {
       simulationRunEventId,
     );
 
-    expect(paddleInstance.get).toBeCalledWith(
+    expect(paddleInstance.get).toHaveBeenCalledWith(
       `/simulations/${simulationId}/runs/${simulationRunId}/events/${simulationRunEventId}`,
     );
     expect(simulationRunEvent).toBeDefined();
@@ -82,7 +84,7 @@ describe('SimulationRunEventsResource', () => {
       simulationRunEventId,
     );
 
-    expect(paddleInstance.post).toBeCalledWith(
+    expect(paddleInstance.post).toHaveBeenCalledWith(
       `/simulations/${simulationId}/runs/${simulationRunId}/events/${simulationRunEventId}/replay`,
       undefined,
     );

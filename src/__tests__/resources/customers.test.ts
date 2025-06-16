@@ -31,11 +31,11 @@ describe('CustomersResource', () => {
     const customerCollection = customersResource.list();
 
     let customers = await customerCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/customers?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers?');
     expect(customers.length).toBe(1);
 
     customers = await customerCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/customers?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers?after=1');
     expect(customers.length).toBe(1);
   });
 
@@ -51,7 +51,7 @@ describe('CustomersResource', () => {
     const customerCollection = customersResource.list(queryParams);
     const customers = await customerCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/customers?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers?after=2&id=1234');
     expect(customers.length).toBe(1);
   });
 
@@ -63,7 +63,7 @@ describe('CustomersResource', () => {
     const customersResource = new CustomersResource(paddleInstance);
     const customer = await customersResource.get(customerId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/${customerId}`);
     expect(customer).toBeDefined();
     expect(customer.id).toBe(customerId);
   });
@@ -78,7 +78,7 @@ describe('CustomersResource', () => {
     const customer = await customersResource.get(customerId);
 
     expect(customer).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/${customerId}`);
     expect(customer.id).toBe(customerId);
   });
 
@@ -90,7 +90,7 @@ describe('CustomersResource', () => {
     const customersResource = new CustomersResource(paddleInstance);
     const createdCustomer = await customersResource.create(newCustomer);
 
-    expect(paddleInstance.post).toBeCalledWith(`/customers`, newCustomer);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/customers`, newCustomer);
     expect(createdCustomer).toBeDefined();
     expect(createdCustomer.id).toBeDefined();
     expect(createdCustomer.name).toBe(newCustomer.name);
@@ -108,7 +108,7 @@ describe('CustomersResource', () => {
     const customersResource = new CustomersResource(paddleInstance);
     const updatedCustomer = await customersResource.update(customerId, customerToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/customers/${customerId}`, customerToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/customers/${customerId}`, customerToBeUpdated);
     expect(updatedCustomer).toBeDefined();
 
     expect(convertToSnakeCase(UpdateCustomerMock)).toEqual(UpdateCustomerExpectation);
@@ -123,7 +123,7 @@ describe('CustomersResource', () => {
     const customersResource = new CustomersResource(paddleInstance);
     const updatedCustomer = await customersResource.archive(customerId);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/customers/${customerId}`, { status: 'archived' });
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/customers/${customerId}`, { status: 'archived' });
     expect(updatedCustomer).toBeDefined();
   });
 
@@ -135,7 +135,7 @@ describe('CustomersResource', () => {
     const customersResource = new CustomersResource(paddleInstance);
     const customer = await customersResource.getCreditBalance(customerId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}/credit-balances`, {
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/${customerId}/credit-balances`, {
       queryParameters: undefined,
     });
     expect(customer).toBeDefined();
@@ -149,7 +149,7 @@ describe('CustomersResource', () => {
     const customersResource = new CustomersResource(paddleInstance);
     const authToken = (await customersResource.generateAuthToken(customerId)).customerAuthToken;
 
-    expect(paddleInstance.post).toBeCalledWith(`/customers/${customerId}/auth-token`, undefined);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/customers/${customerId}/auth-token`, undefined);
     expect(authToken).toBeDefined();
   });
 });

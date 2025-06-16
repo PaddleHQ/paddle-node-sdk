@@ -37,11 +37,11 @@ describe('TransactionsResource', () => {
     const transactionCollection = transactionsResource.list();
 
     let transactions = await transactionCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/transactions?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/transactions?');
     expect(transactions.length).toBe(1);
 
     transactions = await transactionCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/transactions?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/transactions?after=1');
     expect(transactions.length).toBe(1);
   });
 
@@ -58,7 +58,7 @@ describe('TransactionsResource', () => {
     const transactionCollection = transactionsResource.list(queryParams);
     const transactions = await transactionCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith(
+    expect(paddleInstance.get).toHaveBeenCalledWith(
       '/transactions?after=2&id=1234&created_at%5BGTE%5D=2024-09-10T15%3A38%3A35.675098Z',
     );
     expect(transactions.length).toBe(1);
@@ -72,7 +72,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const transaction = await transactionsResource.get(transactionId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/transactions/${transactionId}`, { queryParams: undefined });
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/transactions/${transactionId}`, { queryParams: undefined });
     expect(transaction).toBeDefined();
     expect(transaction.id).toBe(transactionId);
   });
@@ -90,7 +90,7 @@ describe('TransactionsResource', () => {
     const transaction = await transactionsResource.get(transactionId, queryParams);
 
     expect(transaction).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/transactions/${transactionId}`, new QueryParameters(queryParams));
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/transactions/${transactionId}`, new QueryParameters(queryParams));
     expect(transaction.id).toBe(transactionId);
   });
 
@@ -102,7 +102,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const createdTransaction = await transactionsResource.create(newTransaction);
 
-    expect(paddleInstance.post).toBeCalledWith(`/transactions?`, newTransaction);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions?`, newTransaction);
     expect(createdTransaction).toBeDefined();
     expect(createdTransaction.id).toBeDefined();
     expect(convertToSnakeCase(CreateTransactionMock)).toEqual(CreateTransactionExpectation);
@@ -118,7 +118,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const updatedTransaction = await transactionsResource.update(transactionId, transactionToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/transactions/${transactionId}?`, transactionToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/transactions/${transactionId}?`, transactionToBeUpdated);
     expect(updatedTransaction).toBeDefined();
     expect(convertToSnakeCase(UpdateTransactionMock)).toEqual(UpdateTransactionExpectation);
   });
@@ -132,7 +132,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const updatedTransaction = await transactionsResource.getInvoicePDF(transactionId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/transactions/${transactionId}/invoice?`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/transactions/${transactionId}/invoice?`);
     expect(updatedTransaction).toBeDefined();
   });
 
@@ -143,7 +143,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const updatedTransaction = await transactionsResource.preview(PreviewTransactionMock);
 
-    expect(paddleInstance.post).toBeCalledWith(`/transactions/preview`, PreviewTransactionMock);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions/preview`, PreviewTransactionMock);
     expect(updatedTransaction).toBeDefined();
   });
 
@@ -157,7 +157,7 @@ describe('TransactionsResource', () => {
     const transactionsResource = new TransactionsResource(paddleInstance);
     const revisedTransaction = await transactionsResource.revise(transactionId, transactionToBeRevised);
 
-    expect(paddleInstance.post).toBeCalledWith(`/transactions/${transactionId}/revise`, transactionToBeRevised);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions/${transactionId}/revise`, transactionToBeRevised);
     expect(revisedTransaction).toBeDefined();
   });
 });

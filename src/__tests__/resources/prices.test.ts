@@ -26,11 +26,11 @@ describe('PricesResource', () => {
     const priceCollection = pricesResource.list();
 
     let prices = await priceCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/prices?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/prices?');
     expect(prices.length).toBe(1);
 
     prices = await priceCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/prices?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/prices?after=1');
     expect(prices.length).toBe(1);
   });
 
@@ -46,7 +46,7 @@ describe('PricesResource', () => {
     const priceCollection = pricesResource.list(queryParams);
     const prices = await priceCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/prices?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/prices?after=2&id=1234');
     expect(prices.length).toBe(1);
   });
 
@@ -58,7 +58,7 @@ describe('PricesResource', () => {
     const pricesResource = new PricesResource(paddleInstance);
     const price = await pricesResource.get(priceId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/prices/${priceId}`, { queryParams: undefined });
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/prices/${priceId}`, { queryParams: undefined });
     expect(price).toBeDefined();
     expect(price.id).toBe(priceId);
   });
@@ -73,7 +73,7 @@ describe('PricesResource', () => {
     const price = await pricesResource.get(priceId);
 
     expect(price).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/prices/${priceId}`, { queryParameters: undefined });
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/prices/${priceId}`, { queryParameters: undefined });
     expect(price.id).toBe(priceId);
   });
 
@@ -85,7 +85,7 @@ describe('PricesResource', () => {
     const pricesResource = new PricesResource(paddleInstance);
     const createdPrice = await pricesResource.create(newPrice);
 
-    expect(paddleInstance.post).toBeCalledWith(`/prices`, newPrice);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/prices`, newPrice);
     expect(createdPrice).toBeDefined();
     expect(createdPrice.id).toBeDefined();
     expect(convertToSnakeCase(CreatePriceMock)).toEqual(CreatePriceExpectation);
@@ -100,7 +100,7 @@ describe('PricesResource', () => {
     const pricesResource = new PricesResource(paddleInstance);
     const updatedPrice = await pricesResource.update(priceId, UpdatePriceMock);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/prices/${priceId}`, UpdatePriceMock);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/prices/${priceId}`, UpdatePriceMock);
     expect(updatedPrice).toBeDefined();
     expect(convertToSnakeCase(UpdatePriceMock)).toEqual(UpdatePriceExpectation);
   });
@@ -114,7 +114,7 @@ describe('PricesResource', () => {
     const pricesResource = new PricesResource(paddleInstance);
     const updatedPrice = await pricesResource.archive(priceId);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/prices/${priceId}`, { status: 'archived' });
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/prices/${priceId}`, { status: 'archived' });
     expect(updatedPrice).toBeDefined();
   });
 });

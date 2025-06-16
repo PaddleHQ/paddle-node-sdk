@@ -17,11 +17,11 @@ describe('EventsResource', () => {
     const eventCollection = eventsResource.list();
 
     let events = await eventCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/events?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/events?');
     expect(events.length).toBe(1);
 
     events = await eventCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/events?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/events?after=1');
     expect(events.length).toBe(1);
   });
 
@@ -37,7 +37,7 @@ describe('EventsResource', () => {
     const eventCollection = eventsResource.list(queryParams);
     const events = await eventCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/events?after=2&order_by=id%5BASC%5D');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/events?after=2&order_by=id%5BASC%5D');
     expect(events.length).toBe(1);
   });
 });
