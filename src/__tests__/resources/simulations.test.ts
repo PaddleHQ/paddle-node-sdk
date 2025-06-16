@@ -6,19 +6,19 @@
 
 import {
   CreateSimulationRequestBody,
-  UpdateSimulationRequestBody,
-  SimulationsResource,
   ListSimulationQueryParameters,
+  SimulationsResource,
+  UpdateSimulationRequestBody,
 } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
-  SimulationMockResponse,
-  SimulationMock,
   CreateSimulationMock,
-  updateSimulationMock,
-  ListSimulationMockResponse,
   CreateSimulationScenarioMock,
   CreateSimulationScenarioMockResponse,
+  ListSimulationMockResponse,
+  SimulationMock,
+  SimulationMockResponse,
+  updateSimulationMock,
 } from '../mocks/resources/simulations.mock.js';
 
 describe('SimulationsResource', () => {
@@ -30,11 +30,11 @@ describe('SimulationsResource', () => {
     const simulationCollection = simulationsResource.list();
 
     let simulations = await simulationCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/simulations?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/simulations?');
     expect(simulations.length).toBe(1);
 
     simulations = await simulationCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/simulations?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/simulations?after=1');
     expect(simulations.length).toBe(1);
   });
 
@@ -50,7 +50,7 @@ describe('SimulationsResource', () => {
     const simulationCollection = simulationsResource.list(queryParams);
     const simulations = await simulationCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/simulations?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/simulations?after=2&id=1234');
     expect(simulations.length).toBe(1);
   });
 
@@ -62,7 +62,7 @@ describe('SimulationsResource', () => {
     const simulationsResource = new SimulationsResource(paddleInstance);
     const simulation = await simulationsResource.get(simulationId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}`);
     expect(simulation).toBeDefined();
     expect(simulation.id).toBe(simulationId);
   });
@@ -77,7 +77,7 @@ describe('SimulationsResource', () => {
     const simulation = await simulationsResource.get(simulationId);
 
     expect(simulation).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}`);
     expect(simulation.id).toBe(simulationId);
   });
 
@@ -89,7 +89,7 @@ describe('SimulationsResource', () => {
     const simulationsResource = new SimulationsResource(paddleInstance);
     const createdSimulation = await simulationsResource.create(newSimulation);
 
-    expect(paddleInstance.post).toBeCalledWith(`/simulations`, newSimulation);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/simulations`, newSimulation);
     expect(createdSimulation).toBeDefined();
     expect(createdSimulation.id).toBeDefined();
     expect(createdSimulation.name).toBe(newSimulation.name);
@@ -105,7 +105,7 @@ describe('SimulationsResource', () => {
     const simulationsResource = new SimulationsResource(paddleInstance);
     const updatedSimulation = await simulationsResource.update(simulationId, simulationToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/simulations/${simulationId}`, simulationToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/simulations/${simulationId}`, simulationToBeUpdated);
     expect(updatedSimulation).toBeDefined();
   });
 
@@ -117,7 +117,7 @@ describe('SimulationsResource', () => {
     const simulationsResource = new SimulationsResource(paddleInstance);
     const createdSimulation = await simulationsResource.create(newSimulationScenario);
 
-    expect(paddleInstance.post).toBeCalledWith(`/simulations`, newSimulationScenario);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/simulations`, newSimulationScenario);
     expect(createdSimulation).toBeDefined();
     expect(createdSimulation.id).toBeDefined();
     expect(createdSimulation.name).toBe(newSimulationScenario.name);

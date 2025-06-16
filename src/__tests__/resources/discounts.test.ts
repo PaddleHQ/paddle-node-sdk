@@ -26,11 +26,11 @@ describe('DiscountsResource', () => {
     const discountCollection = discountsResource.list();
 
     let discounts = await discountCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/discounts?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/discounts?');
     expect(discounts.length).toBe(1);
 
     discounts = await discountCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/discounts?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/discounts?after=1');
     expect(discounts.length).toBe(1);
   });
 
@@ -46,7 +46,7 @@ describe('DiscountsResource', () => {
     const discountCollection = discountsResource.list(queryParams);
     const discounts = await discountCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/discounts?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/discounts?after=2&id=1234');
     expect(discounts.length).toBe(1);
   });
 
@@ -58,7 +58,7 @@ describe('DiscountsResource', () => {
     const discountsResource = new DiscountsResource(paddleInstance);
     const discount = await discountsResource.get(discountId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/discounts/${discountId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/discounts/${discountId}`);
     expect(discount).toBeDefined();
     expect(discount.id).toBe(discountId);
   });
@@ -73,7 +73,7 @@ describe('DiscountsResource', () => {
     const discount = await discountsResource.get(discountId);
 
     expect(discount).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/discounts/${discountId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/discounts/${discountId}`);
     expect(discount.id).toBe(discountId);
   });
 
@@ -85,7 +85,7 @@ describe('DiscountsResource', () => {
     const discountsResource = new DiscountsResource(paddleInstance);
     const createdDiscount = await discountsResource.create(newDiscount);
 
-    expect(paddleInstance.post).toBeCalledWith(`/discounts`, newDiscount);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/discounts`, newDiscount);
     expect(createdDiscount).toBeDefined();
     expect(createdDiscount.id).toBeDefined();
 
@@ -101,7 +101,7 @@ describe('DiscountsResource', () => {
     const discountsResource = new DiscountsResource(paddleInstance);
     const updatedDiscount = await discountsResource.update(discountId, UpdateDiscountMock);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/discounts/${discountId}`, UpdateDiscountMock);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/discounts/${discountId}`, UpdateDiscountMock);
     expect(updatedDiscount).toBeDefined();
 
     expect(convertToSnakeCase(UpdateDiscountMock)).toEqual(UpdateDiscountExpectation);
@@ -116,7 +116,7 @@ describe('DiscountsResource', () => {
     const discountsResource = new DiscountsResource(paddleInstance);
     const updatedDiscount = await discountsResource.archive(discountId);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/discounts/${discountId}`, { status: 'archived' });
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/discounts/${discountId}`, { status: 'archived' });
     expect(updatedDiscount).toBeDefined();
 
     expect(convertToSnakeCase(UpdateDiscountMock)).toEqual(UpdateDiscountExpectation);

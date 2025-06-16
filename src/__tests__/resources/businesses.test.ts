@@ -29,11 +29,11 @@ describe('BusinessesResource', () => {
     const businessCollection = businessesResource.list('ctm_1234');
 
     let businesses = await businessCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/businesses?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers/ctm_1234/businesses?');
     expect(businesses.length).toBe(1);
 
     businesses = await businessCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/businesses?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers/ctm_1234/businesses?');
     expect(businesses.length).toBe(1);
   });
 
@@ -49,7 +49,7 @@ describe('BusinessesResource', () => {
     const businessCollection = businessesResource.list('ctm_1234', queryParams);
     const businesses = await businessCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/customers/ctm_1234/businesses?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/customers/ctm_1234/businesses?after=2&id=1234');
     expect(businesses.length).toBe(1);
   });
 
@@ -61,7 +61,7 @@ describe('BusinessesResource', () => {
     const businessesResource = new BusinessesResource(paddleInstance);
     const business = await businessesResource.get('ctm_1234', businessId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/customers/ctm_1234/businesses/${businessId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/ctm_1234/businesses/${businessId}`);
     expect(business).toBeDefined();
     expect(business.id).toBe(businessId);
   });
@@ -76,7 +76,7 @@ describe('BusinessesResource', () => {
     const business = await businessesResource.get('ctm_1234', businessId);
 
     expect(business).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(`/customers/ctm_1234/businesses/${businessId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/ctm_1234/businesses/${businessId}`);
     expect(business.id).toBe(businessId);
   });
 
@@ -88,7 +88,7 @@ describe('BusinessesResource', () => {
     const businessesResource = new BusinessesResource(paddleInstance);
     const createdBusiness = await businessesResource.create('ctm_1234', newBusiness);
 
-    expect(paddleInstance.post).toBeCalledWith(`/customers/ctm_1234/businesses`, newBusiness);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/customers/ctm_1234/businesses`, newBusiness);
     expect(createdBusiness).toBeDefined();
     expect(createdBusiness.id).toBeDefined();
     expect(createdBusiness.name).toBe(newBusiness.name);
@@ -106,7 +106,10 @@ describe('BusinessesResource', () => {
     const businessesResource = new BusinessesResource(paddleInstance);
     const updatedBusiness = await businessesResource.update('ctm_1234', businessId, businessToBeUpdated);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/customers/ctm_1234/businesses/${businessId}`, businessToBeUpdated);
+    expect(paddleInstance.patch).toHaveBeenCalledWith(
+      `/customers/ctm_1234/businesses/${businessId}`,
+      businessToBeUpdated,
+    );
     expect(updatedBusiness).toBeDefined();
 
     expect(convertToSnakeCase(UpdateBusinessMock)).toEqual(UpdateBusinessExpectation);
@@ -121,7 +124,9 @@ describe('BusinessesResource', () => {
     const businessesResource = new BusinessesResource(paddleInstance);
     const updatedBusiness = await businessesResource.archive('ctm_1234', businessId);
 
-    expect(paddleInstance.patch).toBeCalledWith(`/customers/ctm_1234/businesses/${businessId}`, { status: 'archived' });
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/customers/ctm_1234/businesses/${businessId}`, {
+      status: 'archived',
+    });
     expect(updatedBusiness).toBeDefined();
   });
 });

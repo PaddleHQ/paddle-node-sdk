@@ -65,7 +65,7 @@ describe('Webhooks validator in edge runtime', () => {
   ])('validate header - %s', async (_, header: string) => {
     await expect(
       new WebhooksValidator().isValidSignature('{"data": ["1", "2"]}', 'VALID_SECRET', header),
-    ).rejects.toThrowError('[Paddle] Invalid webhook signature');
+    ).rejects.toThrow('[Paddle] Invalid webhook signature');
   });
 
   test.each([

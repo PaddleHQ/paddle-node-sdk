@@ -24,11 +24,11 @@ describe('AdjustmentsResource', () => {
     const adjustmentCollection = adjustmentsResource.list();
 
     let adjustments = await adjustmentCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/adjustments?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/adjustments?');
     expect(adjustments.length).toBe(1);
 
     adjustments = await adjustmentCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/adjustments?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/adjustments?after=1');
     expect(adjustments.length).toBe(1);
   });
 
@@ -44,7 +44,7 @@ describe('AdjustmentsResource', () => {
     const adjustmentCollection = adjustmentsResource.list(queryParams);
     const adjustments = await adjustmentCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/adjustments?after=2&id=1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/adjustments?after=2&id=1234');
     expect(adjustments.length).toBe(1);
   });
 
@@ -56,7 +56,7 @@ describe('AdjustmentsResource', () => {
     const adjustmentsResource = new AdjustmentsResource(paddleInstance);
     const createdAdjustment = await adjustmentsResource.create(newAdjustment);
 
-    expect(paddleInstance.post).toBeCalledWith(`/adjustments`, newAdjustment);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/adjustments`, newAdjustment);
     expect(createdAdjustment).toBeDefined();
     expect(createdAdjustment.id).toBeDefined();
 
@@ -72,7 +72,7 @@ describe('AdjustmentsResource', () => {
     const adjustmentResponse = new AdjustmentsResource(paddleInstance);
     const creditNotePDF = await adjustmentResponse.getCreditNotePDF(adjustmentId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/adjustments/${adjustmentId}/credit-note?`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/adjustments/${adjustmentId}/credit-note?`);
     expect(creditNotePDF).toBeDefined();
   });
 });

@@ -4,12 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { PaymentMethodsResource, type ListCustomerPaymentMethodQueryParameters } from '../../resources/index.js';
+import { type ListCustomerPaymentMethodQueryParameters, PaymentMethodsResource } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
-  PaymentMethodMockResponse,
-  PaymentMethodMock,
   ListPaymentMethodMockResponse,
+  PaymentMethodMock,
+  PaymentMethodMockResponse,
 } from '../mocks/resources/payment-methods.mock.js';
 
 describe('PaymentMethodsResource', () => {
@@ -23,11 +23,11 @@ describe('PaymentMethodsResource', () => {
     const paymentMethodCollection = paymentMethodsResource.list(customerId);
 
     let paymentMethods = await paymentMethodCollection.next();
-    expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}/payment-methods?`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/${customerId}/payment-methods?`);
     expect(paymentMethods.length).toBe(1);
 
     paymentMethods = await paymentMethodCollection.next();
-    expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}/payment-methods?after=1`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/${customerId}/payment-methods?after=1`);
     expect(paymentMethods.length).toBe(1);
   });
 
@@ -45,7 +45,9 @@ describe('PaymentMethodsResource', () => {
     const paymentMethodCollection = paymentMethodsResource.list(customerId, queryParams);
     const paymentMethods = await paymentMethodCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}/payment-methods?after=2&address_id=adr_123`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      `/customers/${customerId}/payment-methods?after=2&address_id=adr_123`,
+    );
     expect(paymentMethods.length).toBe(1);
   });
 
@@ -59,7 +61,7 @@ describe('PaymentMethodsResource', () => {
     const paymentMethodsResource = new PaymentMethodsResource(paddleInstance);
     const paymentMethod = await paymentMethodsResource.get(customerId, paymentMethodId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/customers/${customerId}/payment-methods/${paymentMethodId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/${customerId}/payment-methods/${paymentMethodId}`);
     expect(paymentMethod).toBeDefined();
     expect(paymentMethod.id).toBe(paymentMethodId);
   });
@@ -74,7 +76,7 @@ describe('PaymentMethodsResource', () => {
     const paymentMethodsResource = new PaymentMethodsResource(paddleInstance);
     const updatedPaymentMethod = await paymentMethodsResource.delete(customerId, paymentMethodId);
 
-    expect(paddleInstance.delete).toBeCalledWith(`/customers/${customerId}/payment-methods/${paymentMethodId}`);
+    expect(paddleInstance.delete).toHaveBeenCalledWith(`/customers/${customerId}/payment-methods/${paymentMethodId}`);
     expect(updatedPaymentMethod).toBeUndefined();
   });
 });

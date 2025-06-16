@@ -16,7 +16,7 @@ describe('PricingPreviewResource', () => {
     const pricingPreviewResource = new PricingPreviewResource(paddleInstance);
     const pricingPreview = await pricingPreviewResource.preview(PricingPreviewRequest);
 
-    expect(paddleInstance.post).toBeCalledWith(`/pricing-preview`, PricingPreviewRequest);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/pricing-preview`, PricingPreviewRequest);
     expect(pricingPreview).toBeDefined();
   });
 });

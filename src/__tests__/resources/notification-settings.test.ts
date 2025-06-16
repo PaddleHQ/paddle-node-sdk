@@ -25,7 +25,7 @@ describe('NotificationSettingsResource', () => {
     const notificationsResource = new NotificationSettingsResource(paddleInstance);
     const notifications = await notificationsResource.list();
 
-    expect(paddleInstance.get).toBeCalledWith('/notification-settings?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/notification-settings?');
     expect(notifications.length).toBe(1);
   });
 
@@ -37,7 +37,7 @@ describe('NotificationSettingsResource', () => {
     const notificationsResource = new NotificationSettingsResource(paddleInstance);
     const notification = await notificationsResource.get(notificationId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/notification-settings/${notificationId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/notification-settings/${notificationId}`);
     expect(notification).toBeDefined();
   });
 
@@ -49,7 +49,7 @@ describe('NotificationSettingsResource', () => {
     const notificationsResource = new NotificationSettingsResource(paddleInstance);
     const notificationSettings = await notificationsResource.create(newNotificationSettings);
 
-    expect(paddleInstance.post).toBeCalledWith(`/notification-settings`, newNotificationSettings);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/notification-settings`, newNotificationSettings);
     expect(notificationSettings).toBeDefined();
     expect(notificationSettings.id).toBeDefined();
     expect(convertToSnakeCase(CreateNotificationSettingsMock)).toEqual(CreateNotificationSettingsExpectation);
@@ -65,7 +65,7 @@ describe('NotificationSettingsResource', () => {
     const notificationsResource = new NotificationSettingsResource(paddleInstance);
     const notificationSettings = await notificationsResource.update(notificationSettingsId, notificationSettingsBody);
 
-    expect(paddleInstance.patch).toBeCalledWith(
+    expect(paddleInstance.patch).toHaveBeenCalledWith(
       `/notification-settings/${notificationSettingsId}`,
       notificationSettingsBody,
     );
@@ -83,7 +83,7 @@ describe('NotificationSettingsResource', () => {
     const notificationsResource = new NotificationSettingsResource(paddleInstance);
     const notificationSettings = await notificationsResource.delete(notificationSettingsId);
 
-    expect(paddleInstance.delete).toBeCalledWith(`/notification-settings/${notificationSettingsId}`);
+    expect(paddleInstance.delete).toHaveBeenCalledWith(`/notification-settings/${notificationSettingsId}`);
     expect(notificationSettings).toBeUndefined();
   });
 });

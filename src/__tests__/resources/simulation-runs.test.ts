@@ -5,15 +5,15 @@
  */
 
 import {
-  SimulationRunsResource,
-  type ListSimulationRunQueryParameters,
   type GetSimulationRunQueryParameters,
+  type ListSimulationRunQueryParameters,
+  SimulationRunsResource,
 } from '../../resources/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
-  SimulationRunMockResponse,
-  SimulationRunMock,
   ListSimulationRunMockResponse,
+  SimulationRunMock,
+  SimulationRunMockResponse,
 } from '../mocks/resources/simulation-runs.mock.js';
 import { QueryParameters } from '../../internal/base/index.js';
 
@@ -28,11 +28,11 @@ describe('SimulationRunsResource', () => {
     const simulationRunCollection = simulationRunsResource.list(simulationId);
 
     let simulationRuns = await simulationRunCollection.next();
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}/runs?`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}/runs?`);
     expect(simulationRuns.length).toBe(1);
 
     simulationRuns = await simulationRunCollection.next();
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}/runs?after=1`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}/runs?after=1`);
     expect(simulationRuns.length).toBe(1);
   });
 
@@ -49,7 +49,7 @@ describe('SimulationRunsResource', () => {
     const simulationRunCollection = simulationRunsResource.list(simulationId, queryParams);
     const simulationRuns = await simulationRunCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}/runs?after=2&id=1234&include=price`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}/runs?after=2&id=1234&include=price`);
     expect(simulationRuns.length).toBe(1);
   });
 
@@ -61,7 +61,7 @@ describe('SimulationRunsResource', () => {
     const simulationRunsResource = new SimulationRunsResource(paddleInstance);
     const simulationRun = await simulationRunsResource.get(simulationId, simulationRunId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/simulations/${simulationId}/runs/${simulationRunId}`, {
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}/runs/${simulationRunId}`, {
       queryParams: undefined,
     });
     expect(simulationRun).toBeDefined();
@@ -81,7 +81,7 @@ describe('SimulationRunsResource', () => {
     const simulationRun = await simulationRunsResource.get(simulationId, simulationRunId, queryParams);
 
     expect(simulationRun).toBeDefined();
-    expect(paddleInstance.get).toBeCalledWith(
+    expect(paddleInstance.get).toHaveBeenCalledWith(
       `/simulations/${simulationId}/runs/${simulationRunId}`,
       new QueryParameters(queryParams),
     );

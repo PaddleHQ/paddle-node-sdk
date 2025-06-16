@@ -23,11 +23,11 @@ describe('NotificationsResource', () => {
     const notificationCollection = notificationsResource.list();
 
     let notifications = await notificationCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/notifications?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/notifications?');
     expect(notifications.length).toBe(1);
 
     notifications = await notificationCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/notifications?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/notifications?after=1');
     expect(notifications.length).toBe(1);
   });
 
@@ -43,7 +43,7 @@ describe('NotificationsResource', () => {
     const notificationCollection = notificationsResource.list(queryParams);
     const notifications = await notificationCollection.next();
 
-    expect(paddleInstance.get).toBeCalledWith('/notifications?after=2&notification_setting_id=ntfset_1234');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/notifications?after=2&notification_setting_id=ntfset_1234');
     expect(notifications.length).toBe(1);
   });
 
@@ -55,7 +55,7 @@ describe('NotificationsResource', () => {
     const notificationsResource = new NotificationsResource(paddleInstance);
     const notification = await notificationsResource.get(notificationId);
 
-    expect(paddleInstance.get).toBeCalledWith(`/notifications/${notificationId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/notifications/${notificationId}`);
     expect(notification).toBeDefined();
     expect(notification.id).toBe(notificationId);
   });
@@ -68,7 +68,7 @@ describe('NotificationsResource', () => {
     const notificationsResource = new NotificationsResource(paddleInstance);
     const notification = await notificationsResource.replay(notificationId);
 
-    expect(paddleInstance.post).toBeCalledWith(`/notifications/${notificationId}/replay`, undefined);
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/notifications/${notificationId}/replay`, undefined);
     expect(notification).toBeDefined();
   });
 
@@ -80,11 +80,11 @@ describe('NotificationsResource', () => {
     const notificationCollection = notificationsResource.getLogs('ntf_1234');
 
     let notifications = await notificationCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/notifications/ntf_1234/logs?');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/notifications/ntf_1234/logs?');
     expect(notifications.length).toBe(3);
 
     notifications = await notificationCollection.next();
-    expect(paddleInstance.get).toBeCalledWith('/notifications/ntf_1234/logs?after=1');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/notifications/ntf_1234/logs?after=1');
     expect(notifications.length).toBe(3);
   });
 });
