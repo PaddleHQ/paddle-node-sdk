@@ -4,8 +4,9 @@ import {
   AddressesResource,
   AdjustmentsResource,
   BusinessesResource,
-  CustomersResource,
   CustomerPortalSessionsResource,
+  CustomersResource,
+  DiscountGroupsResource,
   DiscountsResource,
   EventTypesResource,
   NotificationSettingsResource,
@@ -15,10 +16,10 @@ import {
   PricingPreviewResource,
   ProductsResource,
   ReportsResource,
-  SimulationTypesResource,
-  SimulationsResource,
-  SimulationRunsResource,
   SimulationRunEventsResource,
+  SimulationRunsResource,
+  SimulationsResource,
+  SimulationTypesResource,
   SubscriptionsResource,
   TransactionsResource,
 } from './resources/index.js';
@@ -41,6 +42,7 @@ export class Paddle {
   public addresses: AddressesResource;
   public businesses: BusinessesResource;
   public discounts: DiscountsResource;
+  public discountGroups: DiscountGroupsResource;
   public subscriptions: SubscriptionsResource;
   public paymentMethods: PaymentMethodsResource;
   public pricingPreview: PricingPreviewResource;
@@ -70,6 +72,7 @@ export class Paddle {
     this.addresses = new AddressesResource(this.client);
     this.businesses = new BusinessesResource(this.client);
     this.discounts = new DiscountsResource(this.client);
+    this.discountGroups = new DiscountGroupsResource(this.client);
     this.subscriptions = new SubscriptionsResource(this.client);
     this.paymentMethods = new PaymentMethodsResource(this.client);
     this.pricingPreview = new PricingPreviewResource(this.client);

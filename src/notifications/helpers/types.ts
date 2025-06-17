@@ -11,6 +11,7 @@ import {
   type CustomerImportedEvent,
   type CustomerUpdatedEvent,
   type DiscountCreatedEvent,
+  type DiscountGroupCreatedEvent,
   type DiscountImportedEvent,
   type DiscountUpdatedEvent,
   type PaymentMethodDeletedEvent,
@@ -42,8 +43,8 @@ import {
   type TransactionPastDueEvent,
   type TransactionPaymentFailedEvent,
   type TransactionReadyEvent,
-  type TransactionUpdatedEvent,
   type TransactionRevisedEvent,
+  type TransactionUpdatedEvent,
 } from '../events/index.js';
 
 export type EventEntity =
@@ -61,6 +62,7 @@ export type EventEntity =
   | DiscountCreatedEvent
   | DiscountUpdatedEvent
   | DiscountImportedEvent
+  | DiscountGroupCreatedEvent
   | PaymentMethodDeletedEvent
   | PaymentMethodSavedEvent
   | PayoutCreatedEvent
@@ -108,6 +110,7 @@ export enum EventName {
   DiscountCreated = 'discount.created',
   DiscountUpdated = 'discount.updated',
   DiscountImported = 'discount.imported',
+  DiscountGroupCreated = 'discount_group.created',
   PaymentMethodDeleted = 'payment_method.deleted',
   PaymentMethodSaved = 'payment_method.saved',
   PayoutCreated = 'payout.created',
@@ -140,6 +143,7 @@ export enum EventName {
   ReportCreated = 'report.created',
   ReportUpdated = 'report.updated',
 }
+
 export type IEventName =
   | 'address.created'
   | 'address.updated'
@@ -155,6 +159,7 @@ export type IEventName =
   | 'discount.created'
   | 'discount.updated'
   | 'discount.imported'
+  | 'discount_group.created'
   | 'payment_method.saved'
   | 'payment_method.deleted'
   | 'payout.created'

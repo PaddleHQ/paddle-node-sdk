@@ -14,6 +14,7 @@ import {
   CustomerImportedEvent,
   CustomerUpdatedEvent,
   DiscountCreatedEvent,
+  DiscountGroupCreatedEvent,
   DiscountImportedEvent,
   DiscountUpdatedEvent,
   GenericEvent,
@@ -97,6 +98,8 @@ export class Webhooks {
         return new DiscountImportedEvent(data);
       case EventName.DiscountUpdated:
         return new DiscountUpdatedEvent(data);
+      case EventName.DiscountGroupCreated:
+        return new DiscountGroupCreatedEvent(data);
       case EventName.PaymentMethodDeleted:
         return new PaymentMethodDeletedEvent(data);
       case EventName.PaymentMethodSaved:
