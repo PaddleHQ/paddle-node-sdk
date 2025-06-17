@@ -7,13 +7,18 @@
 import { type PaymentType } from '../../../enums/index.js';
 import { PaymentCardNotification } from './payment-card-notification.js';
 import { type IPaymentMethodDetailsNotification } from '../../types/index.js';
+import { PaymentMethodUnderlyingDetailsNotification } from './payment-method-underlying-details-notification.js';
 
 export class PaymentMethodDetailsNotification {
   public readonly type: PaymentType;
   public readonly card: PaymentCardNotification | null;
+  public readonly underlyingDetails: PaymentMethodUnderlyingDetailsNotification | null;
 
   constructor(paymentMethodDetails: IPaymentMethodDetailsNotification) {
     this.type = paymentMethodDetails.type;
     this.card = paymentMethodDetails.card ? new PaymentCardNotification(paymentMethodDetails.card) : null;
+    this.underlyingDetails = paymentMethodDetails.underlying_details
+      ? new PaymentMethodUnderlyingDetailsNotification(paymentMethodDetails.underlying_details)
+      : null;
   }
 }

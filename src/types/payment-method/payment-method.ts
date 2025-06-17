@@ -6,14 +6,16 @@
 
 import { type IPaymentCardResponse, type IPayPalResponse } from '../index.js';
 import { type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../enums/index.js';
+import { IPaymentMethodUnderlyingDetails } from '../shared/index.js';
 
 export interface IPaymentMethodResponse {
   id: string;
   customer_id: string;
   address_id: string;
   type: SavedPaymentMethodType;
-  card?: IPaymentCardResponse | null;
-  paypal?: IPayPalResponse | null;
+  card: IPaymentCardResponse | null;
+  paypal: IPayPalResponse | null;
+  underlying_details: IPaymentMethodUnderlyingDetails | null;
   origin: SavedPaymentOrigin;
   saved_at: string;
   updated_at: string;

@@ -11,6 +11,7 @@ export type PaymentType =
   | 'card'
   | 'google_pay'
   | 'ideal'
+  | 'korea_local'
   | 'offline'
   | 'paypal'
   | 'unknown'

@@ -24,3 +24,5 @@ export * from './transaction-checkout-notification.js';
 export * from './total-adjustments-notification.js';
 export * from './payout-totals-adjustment-notification.js';
 export * from './import-meta-notification.js';
+export * from './korean-market-underlying-details-notification.js';
+export * from './payment-method-underlying-details-notification.js';

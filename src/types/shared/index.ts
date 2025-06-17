@@ -37,3 +37,5 @@ export * from './import-meta-response.js';
 export * from './simulation-event-request.js';
 export * from './simulation-event-response.js';
 export * from './simulation-payload.js';
+export * from './payment-method-underlying-details.js';
+export * from './korean-market-underlying-details.js';

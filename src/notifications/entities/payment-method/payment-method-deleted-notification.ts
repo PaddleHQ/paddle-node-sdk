@@ -6,9 +6,9 @@
 
 import { type IPaymentMethodDeletedNotificationResponse } from '../../types/index.js';
 import {
+  type SavedPaymentDeletionReason,
   type SavedPaymentMethodType,
   type SavedPaymentOrigin,
-  type SavedPaymentDeletionReason,
 } from '../../../enums/index.js';
 
 export class PaymentMethodDeletedNotification {

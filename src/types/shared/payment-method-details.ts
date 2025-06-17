@@ -6,8 +6,10 @@
 
 import { type PaymentType } from '../../enums/index.js';
 import { type IPaymentCardResponse } from './payment-card-response.js';
+import { IPaymentMethodUnderlyingDetails } from './payment-method-underlying-details.js';
 
 export interface IPaymentMethodDetails {
   type: PaymentType;
-  card?: IPaymentCardResponse | null;
+  card: IPaymentCardResponse | null;
+  underlying_details: IPaymentMethodUnderlyingDetails;
 }
