@@ -138,6 +138,7 @@ export const TransactionPastDueMock: IEventsResponse<ITransactionNotificationRes
         method_details: {
           card: { type: 'visa', last4: '3184', expiry_year: 2025, expiry_month: 1, cardholder_name: 'Jo Williams' },
           type: 'card',
+          underlying_details: null,
         },
         payment_attempt_id: 'b9032892-96e8-4658-a822-c8177c94147e',
         stored_payment_method_id: '37bb3dd6-aba6-4eb4-8bf0-e1079a3df543',
@@ -385,6 +386,7 @@ export const TransactionPastDueMockExpectation = {
             type: 'visa',
           },
           type: 'card',
+          underlyingDetails: null,
         },
         paymentAttemptId: 'b9032892-96e8-4658-a822-c8177c94147e',
         paymentMethodId: null,

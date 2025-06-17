@@ -197,6 +197,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         method_details: {
           card: { type: 'visa', last4: '4242', expiry_year: 2025, expiry_month: 12, cardholder_name: 'Joe Bloggs' },
           type: 'card',
+          underlying_details: null,
         },
         payment_attempt_id: '72d47ad6-d938-4e70-8743-b8678b4ae1b6',
         stored_payment_method_id: '7330719b-627c-4bb2-9f83-f34d07ce7d2f',
@@ -210,6 +211,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         method_details: {
           card: { type: 'visa', last4: '0000', expiry_year: 2025, expiry_month: 12, cardholder_name: 'Joe Bloggs' },
           type: 'card',
+          underlying_details: null,
         },
         payment_attempt_id: '3e575fab-e1f2-4168-9ef7-3dd724f450a0',
         stored_payment_method_id: '6fd9d503-085a-4af1-a562-f05d7217cdd2',
@@ -548,6 +550,7 @@ export const TransactionCompletedMockExpectation = {
             type: 'visa',
           },
           type: 'card',
+          underlyingDetails: null,
         },
         paymentAttemptId: '72d47ad6-d938-4e70-8743-b8678b4ae1b6',
         paymentMethodId: null,
@@ -568,6 +571,7 @@ export const TransactionCompletedMockExpectation = {
             type: 'visa',
           },
           type: 'card',
+          underlyingDetails: null,
         },
         paymentAttemptId: '3e575fab-e1f2-4168-9ef7-3dd724f450a0',
         paymentMethodId: null,

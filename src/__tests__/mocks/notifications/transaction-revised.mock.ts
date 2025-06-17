@@ -244,6 +244,8 @@ export const TransactionRevisedMock: IEventsResponse<ITransactionNotificationRes
         grand_total: '65215',
         currency_code: 'USD',
         credit_to_balance: '0',
+        exchange_rate: '0',
+        fee_rate: '0',
       },
       tax_rates_used: [
         {
@@ -285,6 +287,7 @@ export const TransactionRevisedMock: IEventsResponse<ITransactionNotificationRes
             cardholder_name: 'Michael McGovern',
           },
           type: 'card',
+          underlying_details: null,
         },
         payment_method_id: 'paymtd_01hv8x1tpjfnttxddw73xnqx6s',
         payment_attempt_id: '937640dd-e3dc-40df-a16c-bb75aafd8f71',
@@ -305,6 +308,7 @@ export const TransactionRevisedMock: IEventsResponse<ITransactionNotificationRes
             cardholder_name: 'Michael McGovern',
           },
           type: 'card',
+          underlying_details: null,
         },
         payment_method_id: 'paymtd_01hv8wx2mka7dfsqjjsxh1ne7z',
         payment_attempt_id: '8f72cfa6-26b4-4a57-91dc-8f2708f7822d',
@@ -487,6 +491,8 @@ export const TransactionRevisedMockExpectation = {
         subtotal: '59900',
         tax: '5315',
         total: '65215',
+        exchangeRate: '0',
+        feeRate: '0',
       },
       taxRatesUsed: [
         {
@@ -625,6 +631,7 @@ export const TransactionRevisedMockExpectation = {
             type: 'visa',
           },
           type: 'card',
+          underlyingDetails: null,
         },
         paymentAttemptId: '937640dd-e3dc-40df-a16c-bb75aafd8f71',
         paymentMethodId: 'paymtd_01hv8x1tpjfnttxddw73xnqx6s',
@@ -645,6 +652,7 @@ export const TransactionRevisedMockExpectation = {
             type: 'visa',
           },
           type: 'card',
+          underlyingDetails: null,
         },
         paymentAttemptId: '8f72cfa6-26b4-4a57-91dc-8f2708f7822d',
         paymentMethodId: 'paymtd_01hv8wx2mka7dfsqjjsxh1ne7z',
