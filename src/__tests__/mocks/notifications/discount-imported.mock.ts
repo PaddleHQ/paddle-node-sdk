@@ -17,6 +17,7 @@ export const DiscountImportedMock: IEventsResponse<IDiscountResponse> = {
     description: 'Legacy customer discount',
     enabled_for_checkout: true,
     code: 'ZJFYC3K9KT',
+    mode: null,
     type: 'flat',
     amount: '1000',
     currency_code: 'USD',
@@ -37,6 +38,7 @@ export const DiscountImportedMockExpectation = {
   data: {
     amount: '1000',
     code: 'ZJFYC3K9KT',
+    mode: null,
     createdAt: '2023-03-10T08:13:06.655Z',
     currencyCode: 'USD',
     customData: null,
