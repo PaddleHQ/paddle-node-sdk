@@ -10,4 +10,5 @@ export type ReportType =
   | 'transactions'
   | 'transaction_line_items'
   | 'discounts'
-  | 'products_prices';
+  | 'products_prices'
+  | 'balance';

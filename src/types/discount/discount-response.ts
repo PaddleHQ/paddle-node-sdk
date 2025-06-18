@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../enums/index.js';
+import { type CurrencyCode, type DiscountMode, type DiscountStatus, type DiscountType } from '../../enums/index.js';
 import { type ICustomData, type IImportMetaResponse } from '../shared/index.js';
 
 export interface IDiscountResponse {
@@ -13,6 +13,7 @@ export interface IDiscountResponse {
   description: string;
   enabled_for_checkout: boolean;
   code?: string | null;
+  mode: DiscountMode;
   type: DiscountType;
   amount: string;
   currency_code?: CurrencyCode | null;

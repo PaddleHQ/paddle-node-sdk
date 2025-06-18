@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type DiscountStatus } from '../../../enums/index.js';
+import { type DiscountMode, type DiscountStatus } from '../../../enums/index.js';
 
 export interface ListDiscountQueryParameters {
   after?: string;
@@ -13,4 +13,5 @@ export interface ListDiscountQueryParameters {
   orderBy?: string;
   perPage?: number;
   status?: DiscountStatus[];
+  mode?: DiscountMode;
 }
