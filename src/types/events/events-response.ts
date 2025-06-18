@@ -11,6 +11,7 @@ import {
   type IApiKeyNotificationResponse,
   type IBusinessNotificationResponse,
   type ICustomerNotificationResponse,
+  type IDiscountGroupNotificationResponse,
   type IDiscountNotificationResponse,
   type IPaymentMethodDeletedNotificationResponse,
   type IPaymentMethodNotificationResponse,
@@ -105,6 +106,10 @@ interface IDiscountUpdated extends IEventsResponse<IDiscountNotificationResponse
 
 interface IDiscountImported extends IEventsResponse<IDiscountNotificationResponse> {
   event_type: EventName.DiscountImported;
+}
+
+interface IDiscountGroupCreated extends IEventsResponse<IDiscountGroupNotificationResponse> {
+  event_type: EventName.DiscountGroupCreated;
 }
 
 interface IPaymentMethodDeleted extends IEventsResponse<IPaymentMethodDeletedNotificationResponse> {
@@ -251,6 +256,7 @@ export type IEvents =
   | IDiscountCreated
   | IDiscountUpdated
   | IDiscountImported
+  | IDiscountGroupCreated
   | IPaymentMethodDeleted
   | IPaymentMethodSaved
   | IPayoutCreated
