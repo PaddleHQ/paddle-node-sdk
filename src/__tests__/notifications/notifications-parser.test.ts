@@ -9,6 +9,11 @@ import {
   AdjustmentUpdatedMock,
   AdjustmentUpdatedMockExpectation,
 } from '../mocks/notifications/adjustment-updated.mock.js';
+import { ApiKeyCreatedMock, ApiKeyCreatedMockExpectation } from '../mocks/notifications/api-key-created.mock.js';
+import { ApiKeyExpiredMock, ApiKeyExpiredMockExpectation } from '../mocks/notifications/api-key-expired.mock.js';
+import { ApiKeyRevokedMock, ApiKeyRevokedMockExpectation } from '../mocks/notifications/api-key-revoked.mock.js';
+import { ApiKeyExpiringMock, ApiKeyExpiringMockExpectation } from '../mocks/notifications/api-key-expiring.mock.js';
+import { ApiKeyUpdatedMock, ApiKeyUpdatedMockExpectation } from '../mocks/notifications/api-key-updated.mock.js';
 import { BusinessCreatedMock, BusinessCreatedMockExpectation } from '../mocks/notifications/business-created.mock.js';
 import { BusinessUpdatedMock, BusinessUpdatedMockExpectation } from '../mocks/notifications/business-updated.mock.js';
 import {
@@ -129,6 +134,11 @@ describe('Notifications Parser', () => {
     [AddressImportedMock.event_type, AddressImportedMock, AddressImportedMockExpectation],
     [AdjustmentCreatedMock.event_type, AdjustmentCreatedMock, AdjustmentCreatedMockExpectation],
     [AdjustmentUpdatedMock.event_type, AdjustmentUpdatedMock, AdjustmentUpdatedMockExpectation],
+    [ApiKeyCreatedMock.event_type, ApiKeyCreatedMock, ApiKeyCreatedMockExpectation],
+    [ApiKeyExpiredMock.event_type, ApiKeyExpiredMock, ApiKeyExpiredMockExpectation],
+    [ApiKeyExpiringMock.event_type, ApiKeyExpiringMock, ApiKeyExpiringMockExpectation],
+    [ApiKeyRevokedMock.event_type, ApiKeyRevokedMock, ApiKeyRevokedMockExpectation],
+    [ApiKeyUpdatedMock.event_type, ApiKeyUpdatedMock, ApiKeyUpdatedMockExpectation],
     [BusinessCreatedMock.event_type, BusinessCreatedMock, BusinessCreatedMockExpectation],
     [BusinessUpdatedMock.event_type, BusinessUpdatedMock, BusinessUpdatedMockExpectation],
     [BusinessImportedMock.event_type, BusinessImportedMock, BusinessImportedMockExpectation],

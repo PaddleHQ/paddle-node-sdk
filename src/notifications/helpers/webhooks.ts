@@ -7,6 +7,11 @@ import {
   AddressUpdatedEvent,
   AdjustmentCreatedEvent,
   AdjustmentUpdatedEvent,
+  ApiKeyCreatedEvent,
+  ApiKeyExpiredEvent,
+  ApiKeyExpiringEvent,
+  ApiKeyRevokedEvent,
+  ApiKeyUpdatedEvent,
   BusinessCreatedEvent,
   BusinessImportedEvent,
   BusinessUpdatedEvent,
@@ -79,6 +84,16 @@ export class Webhooks {
         return new AdjustmentCreatedEvent(data);
       case EventName.AdjustmentUpdated:
         return new AdjustmentUpdatedEvent(data);
+      case EventName.ApiKeyCreated:
+        return new ApiKeyCreatedEvent(data);
+      case EventName.ApiKeyExpired:
+        return new ApiKeyExpiredEvent(data);
+      case EventName.ApiKeyExpiring:
+        return new ApiKeyExpiringEvent(data);
+      case EventName.ApiKeyRevoked:
+        return new ApiKeyRevokedEvent(data);
+      case EventName.ApiKeyUpdated:
+        return new ApiKeyUpdatedEvent(data);
       case EventName.BusinessCreated:
         return new BusinessCreatedEvent(data);
       case EventName.BusinessUpdated:
