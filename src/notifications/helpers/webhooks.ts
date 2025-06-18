@@ -7,6 +7,11 @@ import {
   AddressUpdatedEvent,
   AdjustmentCreatedEvent,
   AdjustmentUpdatedEvent,
+  ApiKeyCreatedEvent,
+  ApiKeyExpiredEvent,
+  ApiKeyExpiringEvent,
+  ApiKeyRevokedEvent,
+  ApiKeyUpdatedEvent,
   BusinessCreatedEvent,
   BusinessImportedEvent,
   BusinessUpdatedEvent,
@@ -14,6 +19,7 @@ import {
   CustomerImportedEvent,
   CustomerUpdatedEvent,
   DiscountCreatedEvent,
+  DiscountGroupCreatedEvent,
   DiscountImportedEvent,
   DiscountUpdatedEvent,
   GenericEvent,
@@ -46,8 +52,8 @@ import {
   TransactionPastDueEvent,
   TransactionPaymentFailedEvent,
   TransactionReadyEvent,
-  TransactionUpdatedEvent,
   TransactionRevisedEvent,
+  TransactionUpdatedEvent,
 } from '../events/index.js';
 import { Logger } from '../../internal/base/logger.js';
 
@@ -79,6 +85,16 @@ export class Webhooks {
         return new AdjustmentCreatedEvent(data);
       case EventName.AdjustmentUpdated:
         return new AdjustmentUpdatedEvent(data);
+      case EventName.ApiKeyCreated:
+        return new ApiKeyCreatedEvent(data);
+      case EventName.ApiKeyExpired:
+        return new ApiKeyExpiredEvent(data);
+      case EventName.ApiKeyExpiring:
+        return new ApiKeyExpiringEvent(data);
+      case EventName.ApiKeyRevoked:
+        return new ApiKeyRevokedEvent(data);
+      case EventName.ApiKeyUpdated:
+        return new ApiKeyUpdatedEvent(data);
       case EventName.BusinessCreated:
         return new BusinessCreatedEvent(data);
       case EventName.BusinessUpdated:
@@ -97,6 +113,8 @@ export class Webhooks {
         return new DiscountImportedEvent(data);
       case EventName.DiscountUpdated:
         return new DiscountUpdatedEvent(data);
+      case EventName.DiscountGroupCreated:
+        return new DiscountGroupCreatedEvent(data);
       case EventName.PaymentMethodDeleted:
         return new PaymentMethodDeletedEvent(data);
       case EventName.PaymentMethodSaved:

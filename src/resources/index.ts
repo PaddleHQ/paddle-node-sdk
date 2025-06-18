@@ -10,6 +10,7 @@ export * from './businesses/index.js';
 export * from './customers/index.js';
 export * from './customer-portal-sessions/index.js';
 export * from './discounts/index.js';
+export * from './discount-groups/index.js';
 export * from './prices/index.js';
 export * from './products/index.js';
 export * from './subscriptions/index.js';

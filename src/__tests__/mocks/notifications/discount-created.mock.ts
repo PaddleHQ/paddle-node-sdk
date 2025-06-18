@@ -18,6 +18,7 @@ export const DiscountCreatedMock: IEventsResponse<IDiscountResponse> = {
     enabled_for_checkout: true,
     code: 'SG6JNMJQ3D',
     type: 'flat',
+    mode: 'standard',
     amount: '5000',
     currency_code: 'USD',
     recur: false,
@@ -37,6 +38,7 @@ export const DiscountCreatedMockExpectation = {
   data: {
     amount: '5000',
     code: 'SG6JNMJQ3D',
+    mode: 'standard',
     createdAt: '2023-08-18T10:46:18.792Z',
     currencyCode: 'USD',
     customData: null,

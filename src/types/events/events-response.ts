@@ -8,11 +8,13 @@ import {
   type EventName,
   type IAddressNotificationResponse,
   type IAdjustmentNotificationResponse,
+  type IApiKeyNotificationResponse,
   type IBusinessNotificationResponse,
   type ICustomerNotificationResponse,
+  type IDiscountGroupNotificationResponse,
   type IDiscountNotificationResponse,
-  type IPaymentMethodNotificationResponse,
   type IPaymentMethodDeletedNotificationResponse,
+  type IPaymentMethodNotificationResponse,
   type IPayoutNotificationResponse,
   type IPriceNotificationResponse,
   type IProductNotificationResponse,
@@ -50,6 +52,26 @@ interface IAdjustmentUpdated extends IEventsResponse<IAdjustmentNotificationResp
   event_type: EventName.AdjustmentUpdated;
 }
 
+interface IApiKeyCreated extends IEventsResponse<IApiKeyNotificationResponse> {
+  event_type: EventName.ApiKeyCreated;
+}
+
+interface IApiKeyExpired extends IEventsResponse<IApiKeyNotificationResponse> {
+  event_type: EventName.ApiKeyExpired;
+}
+
+interface IApiKeyExpiring extends IEventsResponse<IApiKeyNotificationResponse> {
+  event_type: EventName.ApiKeyExpiring;
+}
+
+interface IApiKeyRevoked extends IEventsResponse<IApiKeyNotificationResponse> {
+  event_type: EventName.ApiKeyRevoked;
+}
+
+interface IApiKeyUpdated extends IEventsResponse<IApiKeyNotificationResponse> {
+  event_type: EventName.ApiKeyUpdated;
+}
+
 interface IBusinessCreated extends IEventsResponse<IBusinessNotificationResponse> {
   event_type: EventName.BusinessCreated;
 }
@@ -84,6 +106,10 @@ interface IDiscountUpdated extends IEventsResponse<IDiscountNotificationResponse
 
 interface IDiscountImported extends IEventsResponse<IDiscountNotificationResponse> {
   event_type: EventName.DiscountImported;
+}
+
+interface IDiscountGroupCreated extends IEventsResponse<IDiscountGroupNotificationResponse> {
+  event_type: EventName.DiscountGroupCreated;
 }
 
 interface IPaymentMethodDeleted extends IEventsResponse<IPaymentMethodDeletedNotificationResponse> {
@@ -216,6 +242,11 @@ export type IEvents =
   | IAddressImported
   | IAdjustmentCreated
   | IAdjustmentUpdated
+  | IApiKeyCreated
+  | IApiKeyExpired
+  | IApiKeyExpiring
+  | IApiKeyRevoked
+  | IApiKeyUpdated
   | IBusinessCreated
   | IBusinessUpdated
   | IBusinessImported
@@ -225,6 +256,7 @@ export type IEvents =
   | IDiscountCreated
   | IDiscountUpdated
   | IDiscountImported
+  | IDiscountGroupCreated
   | IPaymentMethodDeleted
   | IPaymentMethodSaved
   | IPayoutCreated
