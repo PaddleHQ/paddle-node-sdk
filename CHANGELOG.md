@@ -2,15 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres
+to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
+Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) for
+information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
 ### Versioning
 
-When we make [non-breaking changes](https://developer.paddle.com/api-reference/about/versioning?utm_source=dx&utm_medium=paddle-node-sdk#non-breaking-change) to the Paddle API, we'll only release a new major version of the Node.js SDK when it causes problems at runtime. We won't release a new version of the SDK when we weaken TypeScript types in a way that doesn't cause existing implementations to break or malfunction. For example, if we add a new field to a request or an allowed value for a field in a response, this weakens the Typescript type but does not cause existing usages to stop working.
+When we
+make [non-breaking changes](https://developer.paddle.com/api-reference/about/versioning?utm_source=dx&utm_medium=paddle-node-sdk#non-breaking-change)
+to the Paddle API, we'll only release a new major version of the Node.js SDK when it causes problems at runtime. We
+won't release a new version of the SDK when we weaken TypeScript types in a way that doesn't cause existing
+implementations to break or malfunction. For example, if we add a new field to a request or an allowed value for a field
+in a response, this weakens the Typescript type but does not cause existing usages to stop working.
 
-This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by adding additional type guards.
+This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
+adding additional type guards.
+
+## 2.8.0 - 2025-06-18
+
+### Added
+
+- Added support for discount mode.
+- Updated `AdjustmentAction` enum to include `chargeback_warning_reverse`.
+- Added support for discount group resources,
+  see [related changelog](https://developer.paddle.com/changelog/2025/discount-groups?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for `balance` reports,
+  see [related changelog](https://developer.paddle.com/changelog/2025/balance-reports?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for Korean local payment methods,
+  see [related changelog](https://developer.paddle.com/changelog/2024/korean-payment-methods?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for API key events,
+  see [related changelog](https://developer.paddle.com/changelog/2025/api-key-improvements?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ## 2.7.3 - 2025-06-05
 
@@ -18,7 +41,7 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 - Added PR labels to dependabot config.
 - Dependabot updates
-- Fixed a typo `paddle.businesses.archive` operation.
+- Fixed a typo in `paddle.businesses.archive` operation.
 
 ---
 
@@ -50,8 +73,10 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `taxMode` property when creating an adjustment, see [related changelog](https://developer.paddle.com/changelog/2025/tax-exclusive-refunds?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `config` to configure simulation scenarios, see [related changelog](https://developer.paddle.com/changelog/2025/webhook-simulator-scenario-configuration?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `taxMode` property when creating an adjustment,
+  see [related changelog](https://developer.paddle.com/changelog/2025/tax-exclusive-refunds?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `config` to configure simulation scenarios,
+  see [related changelog](https://developer.paddle.com/changelog/2025/webhook-simulator-scenario-configuration?utm_source=dx&utm_medium=paddle-node-sdk)
 
 ---
 
@@ -67,7 +92,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added support for `transaction.revised` notification, see [related changelog](https://developer.paddle.com/changelog/2024/revise-transaction-customer-information?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for `transaction.revised` notification,
+  see [related changelog](https://developer.paddle.com/changelog/2024/revise-transaction-customer-information?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
@@ -75,7 +101,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `transactions.revise` operation to revise a transaction and added `revisedAt` to `Transaction` entity, see [related changelog](https://developer.paddle.com/changelog/2024/revise-transaction-customer-information?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `transactions.revise` operation to revise a transaction and added `revisedAt` to `Transaction` entity,
+  see [related changelog](https://developer.paddle.com/changelog/2024/revise-transaction-customer-information?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ### Changed
 
@@ -103,7 +130,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `onResume` property to subscription resume and pause operations to [control billing for subscriptions when resuming](https://developer.paddle.com/changelog/2024/resume-subscription-billing-period-options)
+- Added `onResume` property to subscription resume and pause operations
+  to [control billing for subscriptions when resuming](https://developer.paddle.com/changelog/2024/resume-subscription-billing-period-options)
 
 ---
 
@@ -128,7 +156,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Added
 
 - `VND` (Vietnamese dong) as new currency
-- Added `adjustment.type` which is either `partial` which should include `items` or `full` where `items` are not required
+- Added `adjustment.type` which is either `partial` which should include `items` or `full` where `items` are not
+  required
 
 ---
 
@@ -136,7 +165,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Changed
 
-- `paddle.webhooks.unmarshal` will now return an event for unhandled event types instead of `null` this is only possible for legacy/no longer supported events or for new events that have not been added to the sdk yet
+- `paddle.webhooks.unmarshal` will now return an event for unhandled event types instead of `null` this is only possible
+  for legacy/no longer supported events or for new events that have not been added to the sdk yet
 
 ---
 
@@ -168,7 +198,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ## 2.0.0 - 2024-11-20
 
-> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
+> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out
+> below.
 
 ### Added
 
@@ -178,7 +209,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 - Added `simulationRuns` resources
 - Added `simulationRunEvents` resources
 - Added the `trafficSource` filter on notification settings
-- Omitted the `transactionId` completely from `SubscriptionNotification` and created a separate `SubscriptionCreatedNotification` with the non-null `transactionId`
+- Omitted the `transactionId` completely from `SubscriptionNotification` and created a separate
+  `SubscriptionCreatedNotification` with the non-null `transactionId`
 - Added `paymentMethods` resources
 - Added `generateAuthToken` for customer
 
@@ -203,10 +235,15 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `adjustments.getCreditNotePDF()` to [get a credit note for an adjustment](https://developer.paddle.com/api-reference/adjustments/get-credit-note-pdf?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `disposition` query parameter to `adjustments.getCreditNotePDF()` and `transactions.getInvoicePDF()` operations, see [related changelog](https://developer.paddle.com/changelog/2024/invoice-pdf-open-in-browser?utm_source=dx&utm_medium=paddle-node-sdk).
-- Added pagination support to `notificationSettings.list()` operation, see [related changelog](https://developer.paddle.com/changelog/2024/notification-settings-pagination?utm_source=dx&utm_medium=paddle-node-sdk).
-- Added support for Non-catalog products and prices to the `subscriptions.update()` and `subscriptions.previewUpdate()` operations, see [related changelog](https://developer.paddle.com/changelog/2024/add-custom-items-subscription?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `adjustments.getCreditNotePDF()`
+  to [get a credit note for an adjustment](https://developer.paddle.com/api-reference/adjustments/get-credit-note-pdf?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `disposition` query parameter to `adjustments.getCreditNotePDF()` and `transactions.getInvoicePDF()` operations,
+  see [related changelog](https://developer.paddle.com/changelog/2024/invoice-pdf-open-in-browser?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added pagination support to `notificationSettings.list()` operation,
+  see [related changelog](https://developer.paddle.com/changelog/2024/notification-settings-pagination?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for Non-catalog products and prices to the `subscriptions.update()` and `subscriptions.previewUpdate()`
+  operations,
+  see [related changelog](https://developer.paddle.com/changelog/2024/add-custom-items-subscription?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ### Fixed
 
@@ -228,7 +265,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Updated subscription items model to include `product`. See [related changelog](https://developer.paddle.com/changelog/2024/subscription-items-product?utm_source=dx&utm_medium=paddle-node-sdk).
+- Updated subscription items model to include `product`.
+  See [related changelog](https://developer.paddle.com/changelog/2024/subscription-items-product?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
@@ -244,7 +282,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added a new option to change the logging level of the SDK. You can now set the logging level to `verbose`, `warn`, `error` or `none`. The default logging level is `verbose`.
+- Added a new option to change the logging level of the SDK. You can now set the logging level to `verbose`, `warn`,
+  `error` or `none`. The default logging level is `verbose`.
 
 ---
 
@@ -285,15 +324,21 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `createdAt` and `updatedAt` to product and price entities, see [related changelog](https://developer.paddle.com/changelog/2024/product-price-dates?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `createdAt` and `updatedAt` to product and price entities,
+  see [related changelog](https://developer.paddle.com/changelog/2024/product-price-dates?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ### Changed
 
-- Updated [report API](https://developer.paddle.com/api-reference/reports/create-report?utm_source=dx&utm_medium=paddle-node-sdk) to support `discounts` and `product_prices` report, see [related changelog](https://developer.paddle.com/changelog/2024/product-prices-discounts-reports?utm_source=dx&utm_medium=paddle-node-sdk).
+-
+
+Updated [report API](https://developer.paddle.com/api-reference/reports/create-report?utm_source=dx&utm_medium=paddle-node-sdk)
+to support `discounts` and `product_prices` report,
+see [related changelog](https://developer.paddle.com/changelog/2024/product-prices-discounts-reports?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ### Removed
 
-- Removed `ISharedProductResponse` and `ISharedPriceResponse` interfaces as they were redundant. Please use `IProductResponse` and `IPriceResponse` instead.
+- Removed `ISharedProductResponse` and `ISharedPriceResponse` interfaces as they were redundant. Please use
+  `IProductResponse` and `IPriceResponse` instead.
 
 ---
 
@@ -305,7 +350,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Changed
 
-- Added `customerId` property to `Address` and `Business` entities, see [related changelog](https://developer.paddle.com/changelog/2024/address-business-webhooks-customer-id?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `customerId` property to `Address` and `Business` entities,
+  see [related changelog](https://developer.paddle.com/changelog/2024/address-business-webhooks-customer-id?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
@@ -327,26 +373,29 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ## 0.6.0 - 2024-02-20
 
-> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
+> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out
+> below.
 
 ### Removed
 
 - **Breaking change:** Removed `*Includes` entity in favour of standard entities.
 
-  - Use `Price` instead of `PriceWithIncludes`
-  - Use `Product` instead of `ProductWithIncludes`
-  - Use `Subscription` instead of `SubscriptionIncludes`
-  - Use `Transaction` instead of `TransactionIncludes`
+    - Use `Price` instead of `PriceWithIncludes`
+    - Use `Product` instead of `ProductWithIncludes`
+    - Use `Subscription` instead of `SubscriptionIncludes`
+    - Use `Transaction` instead of `TransactionIncludes`
 
 ---
 
 ## 0.5.0 - 2024-02-16
 
-> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
+> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out
+> below.
 
 ### Changed
 
-- We removed the shared entities between API and Notification as we foresee them diverging. No Action required for this change
+- We removed the shared entities between API and Notification as we foresee them diverging. No Action required for this
+  change
 
 ---
 
@@ -359,8 +408,10 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Changed
 
-- Filter customers by email address in `customers.list()` operation, see [related changelog](https://developer.paddle.com/changelog/2024/filter-customers-email?utm_source=dx&utm_medium=paddle-node-sdk).
-- New payment method ID field for transaction payments, see [related changelog](https://developer.paddle.com/changelog/2024/payment-method-paddle-id?utm_source=dx&utm_medium=paddle-node-sdk).
+- Filter customers by email address in `customers.list()` operation,
+  see [related changelog](https://developer.paddle.com/changelog/2024/filter-customers-email?utm_source=dx&utm_medium=paddle-node-sdk).
+- New payment method ID field for transaction payments,
+  see [related changelog](https://developer.paddle.com/changelog/2024/payment-method-paddle-id?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ### Fixed
 
@@ -410,14 +461,19 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added support for `address.imported`, `business.imported`, `customer.imported`, `price.imported` and `product.imported` notifications.
+- Added support for `address.imported`, `business.imported`, `customer.imported`, `price.imported` and
+  `product.imported` notifications.
 
 ### Changed
 
-- Added support to get available payment methods when previewing prices or transactions, see [related changelog](https://developer.paddle.com/changelog/2023/available-payment-methods?utm_source=dx&utm_medium=paddle-node-sdk).
-- Added support to bill a one time non-catalog products and prices to subscription, see [related changelog](https://developer.paddle.com/changelog/2023/bill-custom-items-one-time-subscription-charge?utm_source=dx&utm_medium=paddle-node-sdk).
-- Added support for non-catalog products and prices to transaction, see [related changelog](https://developer.paddle.com/changelog/2023/add-custom-items-transaction?utm_source=dx&utm_medium=paddle-node-sdk).
-- Added `subscription.onPaymentFailure` to update subscriptions and preview update subscription operations, see [related changelog](https://developer.paddle.com/changelog/2023/payment-failure-behavior-update-subscription?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support to get available payment methods when previewing prices or transactions,
+  see [related changelog](https://developer.paddle.com/changelog/2023/available-payment-methods?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support to bill a one time non-catalog products and prices to subscription,
+  see [related changelog](https://developer.paddle.com/changelog/2023/bill-custom-items-one-time-subscription-charge?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for non-catalog products and prices to transaction,
+  see [related changelog](https://developer.paddle.com/changelog/2023/add-custom-items-transaction?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `subscription.onPaymentFailure` to update subscriptions and preview update subscription operations,
+  see [related changelog](https://developer.paddle.com/changelog/2023/payment-failure-behavior-update-subscription?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
@@ -425,10 +481,14 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `reports.list()` to [list reports](https://developer.paddle.com/api-reference/reports/list-reports?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `reports.create()` to [create a new report](https://developer.paddle.com/api-reference/reports/create-report?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `reports.get()` to [get a report](https://developer.paddle.com/api-reference/reports/get-report?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `reports.getReportCsv()` to [get a CSV file for a report](https://developer.paddle.com/api-reference/reports/get-report-csv?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `reports.list()`
+  to [list reports](https://developer.paddle.com/api-reference/reports/list-reports?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `reports.create()`
+  to [create a new report](https://developer.paddle.com/api-reference/reports/create-report?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `reports.get()`
+  to [get a report](https://developer.paddle.com/api-reference/reports/get-report?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `reports.getReportCsv()`
+  to [get a CSV file for a report](https://developer.paddle.com/api-reference/reports/get-report-csv?utm_source=dx&utm_medium=paddle-node-sdk)
 
 ---
 
@@ -438,7 +498,8 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 - Added `importMeta` to address, business, customer, discount and subscription entities
 - Added `creditToBalance` to `transaction.details.payoutTotals` and `transaction.details.totals`
-- Added `origin` query parameter to list transactions, see [related changelog](https://developer.paddle.com/changelog/2023/filter-transactions-origin?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `origin` query parameter to list transactions,
+  see [related changelog](https://developer.paddle.com/changelog/2023/filter-transactions-origin?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
@@ -446,16 +507,26 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `eventTypes.list()` to [list all event types](https://developer.paddle.com/api-reference/event-types/list-event-types?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notificationSettings.list()` to [list all notification settings](https://developer.paddle.com/api-reference/notification-settings/list-notification-settings?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notificationSettings.create()` to [create a notification settings](https://developer.paddle.com/api-reference/notification-settings/create-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notificationSettings.get()` to [get a notification settings](https://developer.paddle.com/api-reference/notification-settings/get-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notificationSettings.update()` to [update a notification settings](https://developer.paddle.com/api-reference/notification-settings/update-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notificationSettings.delete()` to [delete a notification settings](https://developer.paddle.com/api-reference/notification-settings/delete-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notifications.list()` to [list all notifications](https://developer.paddle.com/api-reference/notifications/list-notifications?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notifications.get()` to [get a notification](https://developer.paddle.com/api-reference/notifications/get-notification?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notifications.replay()` to [replay a notification](https://developer.paddle.com/api-reference/notifications/replay-notification?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added `notifications.getLogs()` to [get all logs for a notification](https://developer.paddle.com/api-reference/notification-logs/list-notification-logs?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `eventTypes.list()`
+  to [list all event types](https://developer.paddle.com/api-reference/event-types/list-event-types?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notificationSettings.list()`
+  to [list all notification settings](https://developer.paddle.com/api-reference/notification-settings/list-notification-settings?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notificationSettings.create()`
+  to [create a notification settings](https://developer.paddle.com/api-reference/notification-settings/create-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notificationSettings.get()`
+  to [get a notification settings](https://developer.paddle.com/api-reference/notification-settings/get-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notificationSettings.update()`
+  to [update a notification settings](https://developer.paddle.com/api-reference/notification-settings/update-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notificationSettings.delete()`
+  to [delete a notification settings](https://developer.paddle.com/api-reference/notification-settings/delete-notification-setting?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notifications.list()`
+  to [list all notifications](https://developer.paddle.com/api-reference/notifications/list-notifications?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notifications.get()`
+  to [get a notification](https://developer.paddle.com/api-reference/notifications/get-notification?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notifications.replay()`
+  to [replay a notification](https://developer.paddle.com/api-reference/notifications/replay-notification?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `notifications.getLogs()`
+  to [get all logs for a notification](https://developer.paddle.com/api-reference/notification-logs/list-notification-logs?utm_source=dx&utm_medium=paddle-node-sdk)
 
 ### Fixed
 
@@ -467,8 +538,11 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `events.list()` to [list all events](https://developer.paddle.com/api-reference/events/list-events?utm_source=dx&utm_medium=paddle-node-sdk)
-- Added helper function `paddle.webhooks.unmarshal` to [validate](https://developer.paddle.com/webhooks/signature-verification?utm_source=dx&utm_medium=paddle-node-sdk) and parse webhook events
+- Added `events.list()`
+  to [list all events](https://developer.paddle.com/api-reference/events/list-events?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added helper function `paddle.webhooks.unmarshal`
+  to [validate](https://developer.paddle.com/webhooks/signature-verification?utm_source=dx&utm_medium=paddle-node-sdk)
+  and parse webhook events
 
 ---
 
@@ -477,33 +551,43 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 ### Added
 
 - Added helper function to archive supported entities
-- Added `pricingPreview.preview()` to [preview calculations for one or more prices](https://developer.paddle.com/api-reference/pricing-preview/preview-prices?utm_source=dx&utm_medium=paddle-node-sdk)
+- Added `pricingPreview.preview()`
+  to [preview calculations for one or more prices](https://developer.paddle.com/api-reference/pricing-preview/preview-prices?utm_source=dx&utm_medium=paddle-node-sdk)
 
 ### Changed
 
-- **Breaking change:** Converted all `list` operations to be synchronous. They did not have any async operation within them, and it was incorrectly typed to return a `Promise`.
+- **Breaking change:** Converted all `list` operations to be synchronous. They did not have any async operation within
+  them, and it was incorrectly typed to return a `Promise`.
 
 ---
 
 ## 0.2.0 - 2023-11-28
 
-> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out below.
+> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out
+> below.
 
 ### Added
 
 - Added `lodash` as a dependency.
-- Added `customData` to discount entity, see: [related changelog](https://developer.paddle.com/changelog/2023/custom-data-discounts?utm_source=dx&utm_medium=paddle-node-sdk).
-- Added `name` to price entity, see [related changelog](https://developer.paddle.com/changelog/2023/price-name-description?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `customData` to discount entity,
+  see: [related changelog](https://developer.paddle.com/changelog/2023/custom-data-discounts?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `name` to price entity,
+  see [related changelog](https://developer.paddle.com/changelog/2023/price-name-description?utm_source=dx&utm_medium=paddle-node-sdk).
 - Added `importMeta` to product and price entities.
 
 ### Fixed
 
-- Fixed [list credit balances for a customer](https://developer.paddle.com/api-reference/customers/list-credit-balances?utm_source=dx&utm_medium=paddle-node-sdk) response entity.
+-
+
+Fixed [list credit balances for a customer](https://developer.paddle.com/api-reference/customers/list-credit-balances?utm_source=dx&utm_medium=paddle-node-sdk)
+response entity.
+
 - Fixed `adjustments` array in `next_transaction` object in subscription entity.
 
 ### Changed
 
-- **Breaking change:** Converted all properties from `snake_case` to `camelCase`. This matches JavaScript conventions for field names.
+- **Breaking change:** Converted all properties from `snake_case` to `camelCase`. This matches JavaScript conventions
+  for field names.
 
 ### Removed
 
@@ -515,7 +599,9 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `transactions.preview()` to [preview a transaction](https://developer.paddle.com/api-reference/transactions/preview-transaction?utm_source=dx&utm_medium=paddle-node-sdk) operation.
+- Added `transactions.preview()`
+  to [preview a transaction](https://developer.paddle.com/api-reference/transactions/preview-transaction?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
 
 ---
 
@@ -539,7 +625,9 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `transactions.getInvoicePDF()` for the [get a PDF invoice for a transaction](https://developer.paddle.com/api-reference/transactions/get-invoice-pdf?utm_source=dx&utm_medium=paddle-node-sdk) operation.
+- Added `transactions.getInvoicePDF()` for
+  the [get a PDF invoice for a transaction](https://developer.paddle.com/api-reference/transactions/get-invoice-pdf?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
 - Enabled request and response logging.
 
 ---
@@ -556,7 +644,9 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Fixed
 
-- Added missing query parameters for the [list transactions](https://developer.paddle.com/api-reference/transactions/list-transactions?utm_source=dx&utm_medium=paddle-node-sdk) operation.
+- Added missing query parameters for
+  the [list transactions](https://developer.paddle.com/api-reference/transactions/list-transactions?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
 
 ---
 
@@ -572,15 +662,33 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Added `customers.getCreditBalance()` for the [list credit balances for a customer](https://developer.paddle.com/api-reference/customers/list-credit-balances?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.previewUpdate()` for the [preview an update to a subscription](https://developer.paddle.com/api-reference/subscriptions/preview-subscription?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.activate()` for the [activate a trialing subscription](https://developer.paddle.com/api-reference/subscriptions/activate-subscription?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.pause()` for the [pause a subscription](https://developer.paddle.com/api-reference/subscriptions/pause-subscription?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.resume()` for the [resume a paused subscription](https://developer.paddle.com/api-reference/subscriptions/resume-subscription?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.cancel()` for the [cancel a subscription](https://developer.paddle.com/api-reference/subscriptions/cancel-subscription?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.createOneTimeCharge()` for the [create a one-time charge for a subscription](https://developer.paddle.com/api-reference/subscriptions/create-one-time-charge?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.previewOneTimeCharge()` for the [preview a one-time charge for a subscription](https://developer.paddle.com/api-reference/subscriptions/preview-subscription-charge?utm_source=dx&utm_medium=paddle-node-sdk) operation.
-- Added `subscriptions.getPaymentMethodChangeTransaction()` for the [get a transaction to update payment method](https://developer.paddle.com/api-reference/subscriptions/update-payment-method?utm_source=dx&utm_medium=paddle-node-sdk) operation.
+- Added `customers.getCreditBalance()` for
+  the [list credit balances for a customer](https://developer.paddle.com/api-reference/customers/list-credit-balances?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.previewUpdate()` for
+  the [preview an update to a subscription](https://developer.paddle.com/api-reference/subscriptions/preview-subscription?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.activate()` for
+  the [activate a trialing subscription](https://developer.paddle.com/api-reference/subscriptions/activate-subscription?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.pause()` for
+  the [pause a subscription](https://developer.paddle.com/api-reference/subscriptions/pause-subscription?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.resume()` for
+  the [resume a paused subscription](https://developer.paddle.com/api-reference/subscriptions/resume-subscription?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.cancel()` for
+  the [cancel a subscription](https://developer.paddle.com/api-reference/subscriptions/cancel-subscription?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.createOneTimeCharge()` for
+  the [create a one-time charge for a subscription](https://developer.paddle.com/api-reference/subscriptions/create-one-time-charge?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.previewOneTimeCharge()` for
+  the [preview a one-time charge for a subscription](https://developer.paddle.com/api-reference/subscriptions/preview-subscription-charge?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
+- Added `subscriptions.getPaymentMethodChangeTransaction()` for
+  the [get a transaction to update payment method](https://developer.paddle.com/api-reference/subscriptions/update-payment-method?utm_source=dx&utm_medium=paddle-node-sdk)
+  operation.
 
 ---
 
@@ -588,4 +696,5 @@ This means when upgrading minor versions of the SDK, you may notice type errors.
 
 ### Added
 
-- Initial early access release. Added support for the most frequently used Paddle Billing entities and API operations. Check the [README](./README.md) for more information.
+- Initial early access release. Added support for the most frequently used Paddle Billing entities and API operations.
+  Check the [README](./README.md) for more information.
