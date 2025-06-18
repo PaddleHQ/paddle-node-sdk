@@ -27,3 +27,5 @@ export * from './payout-totals-adjustment.js';
 export * from './import-meta.js';
 export * from './simulation-event-request.js';
 export * from './simulation-event-response.js';
+export * from './payment-method-underlying-details.js';
+export * from './korean-market-underlying-details.js';

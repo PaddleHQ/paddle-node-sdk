@@ -4,4 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type AvailablePaymentMethod = 'alipay' | 'apple_pay' | 'bancontact' | 'card' | 'google_pay' | 'ideal' | 'paypal';
+export type AvailablePaymentMethod =
+  | 'alipay'
+  | 'apple_pay'
+  | 'bancontact'
+  | 'card'
+  | 'google_pay'
+  | 'ideal'
+  | 'korea_local'
+  | 'paypal';
