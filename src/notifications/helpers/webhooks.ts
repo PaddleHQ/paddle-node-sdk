@@ -51,8 +51,8 @@ import {
   TransactionPastDueEvent,
   TransactionPaymentFailedEvent,
   TransactionReadyEvent,
-  TransactionUpdatedEvent,
   TransactionRevisedEvent,
+  TransactionUpdatedEvent,
 } from '../events/index.js';
 import { Logger } from '../../internal/base/logger.js';
 
