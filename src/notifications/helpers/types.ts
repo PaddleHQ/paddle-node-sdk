@@ -4,6 +4,11 @@ import {
   type AddressUpdatedEvent,
   type AdjustmentCreatedEvent,
   type AdjustmentUpdatedEvent,
+  type ApiKeyCreatedEvent,
+  type ApiKeyExpiredEvent,
+  type ApiKeyExpiringEvent,
+  type ApiKeyRevokedEvent,
+  type ApiKeyUpdatedEvent,
   type BusinessCreatedEvent,
   type BusinessImportedEvent,
   type BusinessUpdatedEvent,
@@ -53,6 +58,11 @@ export type EventEntity =
   | AddressImportedEvent
   | AdjustmentUpdatedEvent
   | AdjustmentCreatedEvent
+  | ApiKeyCreatedEvent
+  | ApiKeyUpdatedEvent
+  | ApiKeyExpiringEvent
+  | ApiKeyExpiredEvent
+  | ApiKeyRevokedEvent
   | BusinessCreatedEvent
   | BusinessUpdatedEvent
   | BusinessImportedEvent
@@ -101,6 +111,11 @@ export enum EventName {
   AddressImported = 'address.imported',
   AdjustmentCreated = 'adjustment.created',
   AdjustmentUpdated = 'adjustment.updated',
+  ApiKeyCreated = 'api_key.created',
+  ApiKeyUpdated = 'api_key.updated',
+  ApiKeyExpiring = 'api_key.expiring',
+  ApiKeyExpired = 'api_key.expired',
+  ApiKeyRevoked = 'api_key.revoked',
   BusinessCreated = 'business.created',
   BusinessImported = 'business.imported',
   BusinessUpdated = 'business.updated',
@@ -150,6 +165,11 @@ export type IEventName =
   | 'address.imported'
   | 'adjustment.created'
   | 'adjustment.updated'
+  | 'api_key.created'
+  | 'api_key.updated'
+  | 'api_key.expiring'
+  | 'api_key.expired'
+  | 'api_key.revoked'
   | 'business.created'
   | 'business.updated'
   | 'business.imported'

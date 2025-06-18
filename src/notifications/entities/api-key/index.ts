@@ -4,6 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './discount-status.js';
-export * from './discount-type.js';
-export * from './discount-mode.js';
+export * from './api-key-notification.js';

@@ -10,4 +10,5 @@ export type AdjustmentAction =
   | 'refund'
   | 'chargeback'
   | 'chargeback_reverse'
-  | 'chargeback_warning';
+  | 'chargeback_warning'
+  | 'chargeback_warning_reverse';

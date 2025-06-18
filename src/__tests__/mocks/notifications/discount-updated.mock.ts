@@ -17,6 +17,7 @@ export const DiscountUpdatedMock: IEventsResponse<IDiscountResponse> = {
     description: 'New customer discount',
     enabled_for_checkout: true,
     code: 'WELCOME',
+    mode: null,
     type: 'flat',
     amount: '5000',
     currency_code: 'USD',
@@ -37,6 +38,7 @@ export const DiscountUpdatedMockExpectation = {
   data: {
     amount: '5000',
     code: 'WELCOME',
+    mode: null,
     createdAt: '2023-08-18T10:46:18.792Z',
     currencyCode: 'USD',
     customData: null,

@@ -18,3 +18,4 @@ export * from './payment-method/index.js';
 export * from './payout/index.js';
 export * from './report/index.js';
 export * from './shared/index.js';
+export * from './api-key/index.js';

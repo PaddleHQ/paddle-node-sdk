@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode, type DiscountStatus, type DiscountType } from '../../../enums/index.js';
+import { type CurrencyCode, type DiscountMode, type DiscountStatus, type DiscountType } from '../../../enums/index.js';
 import { type CustomData } from '../../../entities/index.js';
 import { ImportMetaNotification } from '../shared/index.js';
 import { type IDiscountNotificationResponse } from '../../types/index.js';
@@ -15,6 +15,7 @@ export class DiscountNotification {
   public readonly description: string;
   public readonly enabledForCheckout: boolean;
   public readonly code: string | null;
+  public readonly mode: DiscountMode | null;
   public readonly type: DiscountType;
   public readonly amount: string;
   public readonly currencyCode: CurrencyCode | null;
@@ -35,6 +36,7 @@ export class DiscountNotification {
     this.description = discount.description;
     this.enabledForCheckout = discount.enabled_for_checkout;
     this.code = discount.code ? discount.code : null;
+    this.mode = discount.mode ? discount.mode : null;
     this.type = discount.type;
     this.amount = discount.amount;
     this.currencyCode = discount.currency_code ? discount.currency_code : null;

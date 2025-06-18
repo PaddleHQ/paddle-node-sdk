@@ -1,7 +1,7 @@
 // This file does not contain any secret keys. All the hashes are generated using `VALID_SECRET` as key
 
 import { WebhooksValidator } from '../../notifications/index.js';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 import { EdgeRuntime } from '../../internal/providers/runtime/edge-runtime.js';
 
 describe('Webhooks validator in edge runtime', () => {
