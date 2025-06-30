@@ -3,8 +3,7 @@ name: Publish to latest Tag
 on:
   push:
     branches:
-      - main
-      - v1.x
+      - v2.x
 
 jobs:
   run-publish:

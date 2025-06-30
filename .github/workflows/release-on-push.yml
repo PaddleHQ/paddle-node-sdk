@@ -3,8 +3,7 @@ name: Release on Push
 on:
   push:
     branches:
-      - main
-      - v1.x
+      - v2.x
 
 jobs:
   release_on_push:
