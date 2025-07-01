@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - main
-      - v1.x
       - release/beta
   pull_request:
     branches:
       - main
-      - v1.x
       - release/beta
 
 concurrency:
@@ -22,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 18, 20, 22, 24 ]
+        node: [ 20, 22, 24 ]
     permissions:
       contents: read
       actions: write
