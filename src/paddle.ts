@@ -30,7 +30,7 @@ export class Paddle {
   private readonly client: Client;
   private readonly defaultPaddleOptions: Partial<PaddleOptions> = {
     environment: Environment.production,
-    logLevel: LogLevel.verbose, // TODO - Change the default to `error` in next major version
+    logLevel: LogLevel.error,
   };
 
   public products: ProductsResource;
