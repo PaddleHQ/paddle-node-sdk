@@ -17,8 +17,7 @@ export class Client {
     private readonly options: PaddleOptions,
   ) {
     this.baseUrl = this.getBaseUrl(this.options.environment);
-    // TODO - Change the default to `error` in next major version
-    Logger.logLevel = this.options.logLevel ?? LogLevel.verbose;
+    Logger.logLevel = this.options.logLevel ?? LogLevel.error;
   }
 
   private getBaseUrl(environment?: Environment): string {

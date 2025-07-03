@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "lib": ["ESNext", "dom"],
+    "target": "es2022",
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
     "module": "NodeNext",
     "rootDir": "./src",
     "moduleResolution": "Node",
@@ -30,5 +33,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "skipLibCheck": true
   },
-  "include": ["./src"],
+  "include": [
+    "./src"
+  ]
 }

@@ -20,6 +20,20 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
+## 3.0.0 - 2025-07-03
+
+> **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out
+> below.
+
+### Changed
+
+- **Breaking change:** Updated the minimum required Node.js version to v20.
+- **Breaking change:** Changed default logging level to `error`. You can change it to `verbose` or `none` in the
+  SDK configuration.
+- Changed the typescript configuration to transpile into ES2022
+
+---
+
 ## 2.8.0 - 2025-06-18
 
 ### Added
