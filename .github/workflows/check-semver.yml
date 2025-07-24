@@ -14,7 +14,12 @@ jobs:
     name: Check labels
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://agilepathway/pull-request-label-checker:v1.6.13
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: docker://agilepathway/pull-request-label-checker:v1.6.13@sha256:4a0bc4b4536934325ab21ea47af7a928b5c18a09b42c40275910945514a9b805
         with:
           one_of: norelease,release:major,release:minor,release:patch
           repo_token: ${{ secrets.GITHUB_TOKEN }}
