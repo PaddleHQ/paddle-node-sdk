@@ -11,6 +11,11 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
       - uses: rymndhng/release-on-push-action@aebba2bbce07a9474bf95e8710e5ee8a9e922fe2 # v0.28.0
         with:
           bump_version_scheme: norelease
