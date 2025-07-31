@@ -5,14 +5,20 @@
  */
 
 import { DiscountGroup, DiscountGroupCollection } from '../../entities/index.js';
-import { BaseResource, QueryParameters } from '../../internal/base/index.js';
-import { CreateDiscountGroupRequestBody, type ListDiscountGroupQueryParameters } from './operations/index.js';
+import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
+import {
+  type CreateDiscountGroupRequestBody,
+  type ListDiscountGroupQueryParameters,
+  type UpdateDiscountGroupRequestBody,
+} from './operations/index.js';
 import type { ErrorResponse, Response } from '../../internal/index.js';
 import type { IDiscountGroupResponse } from '../../types/index.js';
 
 const DiscountGroupPaths = {
   list: '/discount-groups',
   create: '/discount-groups',
+  get: '/discount-groups/{discount_group_id}',
+  update: '/discount-groups/{discount_group_id}',
 } as const;
 
 export * from './operations/index.js';
@@ -32,5 +38,41 @@ export class DiscountGroupsResource extends BaseResource {
     const data = this.handleResponse<IDiscountGroupResponse>(response);
 
     return new DiscountGroup(data);
+  }
+
+  public async get(discountGroupId: string): Promise<DiscountGroup> {
+    const urlWithPathParams = new PathParameters(DiscountGroupPaths.get, {
+      discount_group_id: discountGroupId,
+    }).deriveUrl();
+
+    const response = await this.client.get<undefined, Response<IDiscountGroupResponse> | ErrorResponse>(
+      urlWithPathParams,
+    );
+
+    const data = this.handleResponse<IDiscountGroupResponse>(response);
+
+    return new DiscountGroup(data);
+  }
+
+  public async update(
+    discountGroupId: string,
+    updateDiscountGroup: UpdateDiscountGroupRequestBody,
+  ): Promise<DiscountGroup> {
+    const urlWithPathParams = new PathParameters(DiscountGroupPaths.update, {
+      discount_group_id: discountGroupId,
+    }).deriveUrl();
+
+    const response = await this.client.patch<
+      UpdateDiscountGroupRequestBody,
+      Response<IDiscountGroupResponse> | ErrorResponse
+    >(urlWithPathParams, updateDiscountGroup);
+
+    const data = this.handleResponse<IDiscountGroupResponse>(response);
+
+    return new DiscountGroup(data);
+  }
+
+  public async archive(discountGroupId: string) {
+    return await this.update(discountGroupId, { status: 'archived' });
   }
 }
