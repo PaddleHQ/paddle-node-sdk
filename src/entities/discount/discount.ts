@@ -5,7 +5,7 @@
  */
 
 import { type CurrencyCode, type DiscountMode, type DiscountStatus, type DiscountType } from '../../enums/index.js';
-import { type CustomData, ImportMeta } from '../index.js';
+import { type CustomData, DiscountGroup, ImportMeta } from '../index.js';
 import { type IDiscountResponse } from '../../types/index.js';
 
 export class Discount {
@@ -28,6 +28,8 @@ export class Discount {
   public readonly createdAt: string;
   public readonly updatedAt: string;
   public readonly importMeta: ImportMeta | null;
+  public readonly discountGroupId: string | null;
+  public readonly discountGroup: DiscountGroup | null;
 
   constructor(discount: IDiscountResponse) {
     this.id = discount.id;
@@ -49,5 +51,7 @@ export class Discount {
     this.createdAt = discount.created_at;
     this.updatedAt = discount.updated_at;
     this.importMeta = discount.import_meta ? new ImportMeta(discount.import_meta) : null;
+    this.discountGroupId = discount.discount_group_id ? discount.discount_group_id : null;
+    this.discountGroup = discount.discount_group ? new DiscountGroup(discount.discount_group) : null;
   }
 }

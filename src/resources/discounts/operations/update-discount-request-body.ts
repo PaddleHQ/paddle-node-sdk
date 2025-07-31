@@ -22,4 +22,5 @@ export interface UpdateDiscountRequestBody {
   restrictTo?: string[] | null;
   expiresAt?: string | null;
   customData?: ICustomData | null;
+  discountGroupId?: string | null;
 }

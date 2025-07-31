@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IDiscountResponse, IEventsResponse } from '../../../types/index.js';
+import { IEventsResponse } from '../../../types/index.js';
+import { IDiscountNotificationResponse } from '../../../notifications/index.js';
 
-export const DiscountImportedMock: IEventsResponse<IDiscountResponse> = {
+export const DiscountImportedMock: IEventsResponse<IDiscountNotificationResponse> = {
   event_id: 'evt_01hdnnd4x84s4r5br068y3rm6d',
   event_type: 'discount.imported',
   occurred_at: '2023-10-26T09:35:17.929027Z',
@@ -17,7 +18,7 @@ export const DiscountImportedMock: IEventsResponse<IDiscountResponse> = {
     description: 'Legacy customer discount',
     enabled_for_checkout: true,
     code: 'ZJFYC3K9KT',
-    mode: null,
+    mode: 'standard',
     type: 'flat',
     amount: '1000',
     currency_code: 'USD',
@@ -31,6 +32,7 @@ export const DiscountImportedMock: IEventsResponse<IDiscountResponse> = {
     expires_at: '2023-06-12T09:18:00Z',
     created_at: '2023-03-10T08:13:06.655Z',
     updated_at: '2023-06-05T09:18:46.63Z',
+    discount_group_id: null,
   },
 };
 
@@ -38,7 +40,7 @@ export const DiscountImportedMockExpectation = {
   data: {
     amount: '1000',
     code: 'ZJFYC3K9KT',
-    mode: null,
+    mode: 'standard',
     createdAt: '2023-03-10T08:13:06.655Z',
     currencyCode: 'USD',
     customData: null,
@@ -58,6 +60,7 @@ export const DiscountImportedMockExpectation = {
     type: 'flat',
     updatedAt: '2023-06-05T09:18:46.63Z',
     usageLimit: null,
+    discountGroupId: null,
   },
   eventId: 'evt_01hdnnd4x84s4r5br068y3rm6d',
   eventType: 'discount.imported',

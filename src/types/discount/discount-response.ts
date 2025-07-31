@@ -6,6 +6,7 @@
 
 import { type CurrencyCode, type DiscountMode, type DiscountStatus, type DiscountType } from '../../enums/index.js';
 import { type ICustomData, type IImportMetaResponse } from '../shared/index.js';
+import { IDiscountGroupResponse } from '../discount-group/index.js';
 
 export interface IDiscountResponse {
   id: string;
@@ -26,5 +27,7 @@ export interface IDiscountResponse {
   times_used: number;
   created_at: string;
   updated_at: string;
-  import_meta?: IImportMetaResponse | null;
+  import_meta: IImportMetaResponse | null;
+  discount_group_id: string | null;
+  discount_group: IDiscountGroupResponse | null;
 }

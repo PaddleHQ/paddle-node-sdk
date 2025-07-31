@@ -29,6 +29,7 @@ export class DiscountNotification {
   public readonly createdAt: string;
   public readonly updatedAt: string;
   public readonly importMeta: ImportMetaNotification | null;
+  public readonly discountGroupId: string | null;
 
   constructor(discount: IDiscountNotificationResponse) {
     this.id = discount.id;
@@ -50,5 +51,6 @@ export class DiscountNotification {
     this.createdAt = discount.created_at;
     this.updatedAt = discount.updated_at;
     this.importMeta = discount.import_meta ? new ImportMetaNotification(discount.import_meta) : null;
+    this.discountGroupId = discount.discount_group_id ? discount.discount_group_id : null;
   }
 }
