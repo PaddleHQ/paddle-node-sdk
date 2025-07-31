@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IDiscountResponse, IEventsResponse } from '../../../types/index.js';
+import { IEventsResponse } from '../../../types/index.js';
+import { IDiscountNotificationResponse } from '../../../notifications/index.js';
 
-export const DiscountCreatedMock: IEventsResponse<IDiscountResponse> = {
+export const DiscountCreatedMock: IEventsResponse<IDiscountNotificationResponse> = {
   event_id: 'evt_01h8441jx8x1q971q9ksksqh82',
   event_type: 'discount.created',
   occurred_at: '2023-08-18T10:46:18.792661Z',
@@ -31,7 +32,6 @@ export const DiscountCreatedMock: IEventsResponse<IDiscountResponse> = {
     expires_at: '2024-08-15T00:00:00.000Z',
     created_at: '2023-08-18T10:46:18.792Z',
     updated_at: '2023-08-18T10:46:18.792Z',
-    discount_group: null,
     discount_group_id: null,
   },
 };
