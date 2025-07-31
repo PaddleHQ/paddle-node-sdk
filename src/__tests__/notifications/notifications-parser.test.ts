@@ -130,6 +130,10 @@ import {
   DiscountGroupCreatedMock,
   DiscountGroupCreatedMockExpectation,
 } from '../mocks/notifications/discount-group-created.mock.js';
+import {
+  DiscountGroupUpdatedMock,
+  DiscountGroupUpdatedMockExpectation,
+} from '../mocks/notifications/discount-group-updated.mock.js';
 
 describe('Notifications Parser', () => {
   test.each([
@@ -153,6 +157,7 @@ describe('Notifications Parser', () => {
     [DiscountImportedMock.event_type, DiscountImportedMock, DiscountImportedMockExpectation],
     [DiscountUpdatedMock.event_type, DiscountUpdatedMock, DiscountUpdatedMockExpectation],
     [DiscountGroupCreatedMock.event_type, DiscountGroupCreatedMock, DiscountGroupCreatedMockExpectation],
+    [DiscountGroupUpdatedMock.event_type, DiscountGroupUpdatedMock, DiscountGroupUpdatedMockExpectation],
     [PaymentMethodDeletedMock.event_type, PaymentMethodDeletedMock, PaymentMethodDeletedMockExpectation],
     [PaymentMethodSavedMock.event_type, PaymentMethodSavedMock, PaymentMethodSavedMockExpectation],
     [PayoutCreatedMock.event_type, PayoutCreatedMock, PayoutCreatedMockExpectation],

@@ -6,6 +6,7 @@
 
 import { IDiscountGroupResponse } from '../../../types/index.js';
 import { Response, ResponsePaginated } from '../../../internal/index.js';
+import { UpdateDiscountGroupRequestBody } from '../../../resources/index.js';
 
 export const DiscountGroupMock: IDiscountGroupResponse = {
   id: 'dsg_01gtf15svsqzgp9325ss4ebmwt',
@@ -14,6 +15,16 @@ export const DiscountGroupMock: IDiscountGroupResponse = {
   created_at: '2024-11-28T14:36:14.695Z',
   updated_at: '2024-11-28T14:36:14.695Z',
   import_meta: null,
+};
+
+export const UpdateDiscountGroupRequest: UpdateDiscountGroupRequestBody = {
+  name: 'Black Friday 2025',
+  status: 'active',
+};
+
+export const UpdateDiscountGroupRequestExpectation = {
+  name: 'Black Friday 2025',
+  status: 'active',
 };
 
 export const DiscountGroupMockResponse: Response<IDiscountGroupResponse> = {

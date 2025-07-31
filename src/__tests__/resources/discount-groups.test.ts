@@ -8,6 +8,8 @@ import {
   DiscountGroupMock,
   DiscountGroupMockResponse,
   ListDiscountGroupMockResponse,
+  UpdateDiscountGroupRequest,
+  UpdateDiscountGroupRequestExpectation,
 } from '../mocks/resources/discount-groups.mock.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
@@ -15,6 +17,7 @@ import {
   DiscountGroupsResource,
   ListDiscountGroupQueryParameters,
 } from '../../resources/index.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('DiscountGroupsResource', () => {
   test('should return a list of discountGroups', async () => {
@@ -49,6 +52,19 @@ describe('DiscountGroupsResource', () => {
     expect(discountGroups.length).toBe(1);
   });
 
+  test('should return a single discount-group by ID', async () => {
+    const discountGroupId = DiscountGroupMock.id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(DiscountGroupMockResponse);
+
+    const discountGroupsResource = new DiscountGroupsResource(paddleInstance);
+    const discountGroup = await discountGroupsResource.get(discountGroupId);
+
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/discount-groups/${discountGroupId}`);
+    expect(discountGroup).toBeDefined();
+    expect(discountGroup.id).toBe(discountGroupId);
+  });
+
   test('should create a new discountGroup', async () => {
     const newDiscountGroup: CreateDiscountGroupRequestBody = DiscountGroupMock;
     const paddleInstance = getPaddleTestClient();
@@ -61,5 +77,38 @@ describe('DiscountGroupsResource', () => {
     expect(createdDiscountGroup).toBeDefined();
     expect(createdDiscountGroup.id).toBeDefined();
     expect(createdDiscountGroup.name).toBe(newDiscountGroup.name);
+  });
+
+  test('should update an existing discount-group', async () => {
+    const discountGroupId = DiscountGroupMock.id;
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.patch = jest.fn().mockResolvedValue(DiscountGroupMockResponse);
+
+    const discountGroupsResource = new DiscountGroupsResource(paddleInstance);
+    const updatedDiscountGroup = await discountGroupsResource.update(discountGroupId, UpdateDiscountGroupRequest);
+
+    expect(paddleInstance.patch).toHaveBeenCalledWith(
+      `/discount-groups/${discountGroupId}`,
+      UpdateDiscountGroupRequest,
+    );
+    expect(updatedDiscountGroup).toBeDefined();
+
+    expect(convertToSnakeCase(UpdateDiscountGroupRequest)).toEqual(UpdateDiscountGroupRequestExpectation);
+  });
+
+  test('should archive an existing discount-group', async () => {
+    const discountGroupId = DiscountGroupMock.id;
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.patch = jest.fn().mockResolvedValue(DiscountGroupMockResponse);
+
+    const discountGroupsResource = new DiscountGroupsResource(paddleInstance);
+    const discountGroup = await discountGroupsResource.archive(discountGroupId);
+
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/discount-groups/${discountGroupId}`, { status: 'archived' });
+    expect(discountGroup).toBeDefined();
+
+    expect(convertToSnakeCase(UpdateDiscountGroupRequest)).toEqual(UpdateDiscountGroupRequestExpectation);
   });
 });
