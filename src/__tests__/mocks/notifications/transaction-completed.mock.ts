@@ -182,6 +182,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         subtotal: '59900',
         currency_code: 'USD',
         chargeback_fee: { amount: '0', original: null },
+        exchange_rate: '1',
       },
     },
     checkout: {
@@ -263,6 +264,7 @@ export const TransactionCompletedMockExpectation = {
         subtotal: '59900',
         tax: '5315',
         total: '65215',
+        exchangeRate: '1',
       },
       adjustedTotals: {
         currencyCode: 'USD',
