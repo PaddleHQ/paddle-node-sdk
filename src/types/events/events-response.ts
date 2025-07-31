@@ -112,6 +112,10 @@ interface IDiscountGroupCreated extends IEventsResponse<IDiscountGroupNotificati
   event_type: EventName.DiscountGroupCreated;
 }
 
+interface IDiscountGroupUpdated extends IEventsResponse<IDiscountGroupNotificationResponse> {
+  event_type: EventName.DiscountGroupUpdated;
+}
+
 interface IPaymentMethodDeleted extends IEventsResponse<IPaymentMethodDeletedNotificationResponse> {
   event_type: EventName.PaymentMethodDeleted;
 }
@@ -257,6 +261,7 @@ export type IEvents =
   | IDiscountUpdated
   | IDiscountImported
   | IDiscountGroupCreated
+  | IDiscountGroupUpdated
   | IPaymentMethodDeleted
   | IPaymentMethodSaved
   | IPayoutCreated
