@@ -11,6 +11,8 @@ export type ApiKeyPermission =
   | 'adjustment.write'
   | 'business.read'
   | 'business.write'
+  | 'client_token.read'
+  | 'client_token.write'
   | 'customer.read'
   | 'customer.write'
   | 'customer_auth_token.write'
