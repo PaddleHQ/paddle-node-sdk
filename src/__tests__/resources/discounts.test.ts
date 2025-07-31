@@ -58,7 +58,7 @@ describe('DiscountsResource', () => {
     const discountsResource = new DiscountsResource(paddleInstance);
     const discount = await discountsResource.get(discountId);
 
-    expect(paddleInstance.get).toHaveBeenCalledWith(`/discounts/${discountId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/discounts/${discountId}?`);
     expect(discount).toBeDefined();
     expect(discount.id).toBe(discountId);
   });
@@ -73,7 +73,7 @@ describe('DiscountsResource', () => {
     const discount = await discountsResource.get(discountId);
 
     expect(discount).toBeDefined();
-    expect(paddleInstance.get).toHaveBeenCalledWith(`/discounts/${discountId}`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/discounts/${discountId}?`);
     expect(discount.id).toBe(discountId);
   });
 

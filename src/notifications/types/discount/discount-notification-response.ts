@@ -10,6 +10,7 @@ import { type IImportMetaNotificationResponse } from '../shared/index.js';
 
 export interface IDiscountNotificationResponse {
   id: string;
+  discount_group_id: string | null;
   status: DiscountStatus;
   description: string;
   enabled_for_checkout: boolean;

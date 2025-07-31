@@ -7,12 +7,13 @@
 import { BaseResource, PathParameters, QueryParameters } from '../../internal/base/index.js';
 import {
   type CreateDiscountRequestBody,
+  type GetDiscountQueryParameters,
   type ListDiscountQueryParameters,
   type UpdateDiscountRequestBody,
 } from './operations/index.js';
 import { Discount, DiscountCollection } from '../../entities/index.js';
 import { type IDiscountResponse } from '../../types/index.js';
-import { type Response, type ErrorResponse } from '../../internal/index.js';
+import { type ErrorResponse, type Response } from '../../internal/index.js';
 
 const DiscountPaths = {
   list: '/discounts',
@@ -40,12 +41,15 @@ export class DiscountsResource extends BaseResource {
     return new Discount(data);
   }
 
-  public async get(discountId: string): Promise<Discount> {
+  public async get(discountId: string, queryParams?: GetDiscountQueryParameters): Promise<Discount> {
+    const queryParameters = new QueryParameters(queryParams);
     const urlWithPathParams = new PathParameters(DiscountPaths.get, {
       discount_id: discountId,
     }).deriveUrl();
 
-    const response = await this.client.get<undefined, Response<IDiscountResponse> | ErrorResponse>(urlWithPathParams);
+    const response = await this.client.get<undefined, Response<IDiscountResponse> | ErrorResponse>(
+      urlWithPathParams + queryParameters.toQueryString(),
+    );
 
     const data = this.handleResponse<IDiscountResponse>(response);
 

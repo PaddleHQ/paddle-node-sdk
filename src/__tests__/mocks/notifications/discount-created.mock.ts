@@ -55,6 +55,7 @@ export const DiscountCreatedMockExpectation = {
     type: 'flat',
     updatedAt: '2023-08-18T10:46:18.792Z',
     usageLimit: 100,
+    discountGroupId: null,
   },
   eventId: 'evt_01h8441jx8x1q971q9ksksqh82',
   eventType: 'discount.created',

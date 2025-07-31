@@ -14,4 +14,6 @@ export interface ListDiscountQueryParameters {
   perPage?: number;
   status?: DiscountStatus[];
   mode?: DiscountMode;
+  discountGroupId?: string[];
+  include?: Array<'discount_group'>;
 }
