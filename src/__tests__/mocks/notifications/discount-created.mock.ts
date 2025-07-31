@@ -31,6 +31,8 @@ export const DiscountCreatedMock: IEventsResponse<IDiscountResponse> = {
     expires_at: '2024-08-15T00:00:00.000Z',
     created_at: '2023-08-18T10:46:18.792Z',
     updated_at: '2023-08-18T10:46:18.792Z',
+    discount_group: null,
+    discount_group_id: null,
   },
 };
 

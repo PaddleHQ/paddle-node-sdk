@@ -17,7 +17,7 @@ export const DiscountImportedMock: IEventsResponse<IDiscountResponse> = {
     description: 'Legacy customer discount',
     enabled_for_checkout: true,
     code: 'ZJFYC3K9KT',
-    mode: null,
+    mode: 'standard',
     type: 'flat',
     amount: '1000',
     currency_code: 'USD',
@@ -31,6 +31,8 @@ export const DiscountImportedMock: IEventsResponse<IDiscountResponse> = {
     expires_at: '2023-06-12T09:18:00Z',
     created_at: '2023-03-10T08:13:06.655Z',
     updated_at: '2023-06-05T09:18:46.63Z',
+    discount_group_id: null,
+    discount_group: null,
   },
 };
 
@@ -38,7 +40,7 @@ export const DiscountImportedMockExpectation = {
   data: {
     amount: '1000',
     code: 'ZJFYC3K9KT',
-    mode: null,
+    mode: 'standard',
     createdAt: '2023-03-10T08:13:06.655Z',
     currencyCode: 'USD',
     customData: null,

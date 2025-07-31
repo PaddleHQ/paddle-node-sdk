@@ -27,7 +27,7 @@ export interface IDiscountResponse {
   times_used: number;
   created_at: string;
   updated_at: string;
-  import_meta?: IImportMetaResponse | null;
-  discount_group_id?: string | null;
-  discount_group?: IDiscountGroupResponse | null;
+  import_meta: IImportMetaResponse | null;
+  discount_group_id: string | null;
+  discount_group: IDiscountGroupResponse | null;
 }

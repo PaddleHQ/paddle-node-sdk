@@ -17,7 +17,7 @@ export const DiscountUpdatedMock: IEventsResponse<IDiscountResponse> = {
     description: 'New customer discount',
     enabled_for_checkout: true,
     code: 'WELCOME',
-    mode: null,
+    mode: 'standard',
     type: 'flat',
     amount: '5000',
     currency_code: 'USD',
@@ -31,6 +31,8 @@ export const DiscountUpdatedMock: IEventsResponse<IDiscountResponse> = {
     expires_at: '2024-08-15T00:00:00.000Z',
     created_at: '2023-08-18T10:46:18.792Z',
     updated_at: '2023-08-29T12:52:26.944Z',
+    discount_group: null,
+    discount_group_id: null,
   },
 };
 
@@ -38,7 +40,7 @@ export const DiscountUpdatedMockExpectation = {
   data: {
     amount: '5000',
     code: 'WELCOME',
-    mode: null,
+    mode: 'standard',
     createdAt: '2023-08-18T10:46:18.792Z',
     currencyCode: 'USD',
     customData: null,
