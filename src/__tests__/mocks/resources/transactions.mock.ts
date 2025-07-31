@@ -209,6 +209,8 @@ export const TransactionMock: ITransactionResponse = {
       grand_total: '',
       fee: '',
       earnings: '',
+      exchange_rate: '1',
+      fee_rate: '0.05',
     },
     adjusted_payout_totals: {
       subtotal: '15000',
@@ -218,6 +220,7 @@ export const TransactionMock: ITransactionResponse = {
       chargeback_fee: { amount: '1680', original: { amount: '1500', currency_code: 'USD' } },
       earnings: '15675',
       currency_code: 'AUD',
+      exchange_rate: '1',
     },
     line_items: [
       {

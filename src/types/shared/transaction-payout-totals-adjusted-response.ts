@@ -15,4 +15,5 @@ export interface ITransactionPayoutTotalsAdjustedResponse {
   chargeback_fee?: IChargebackFee | null;
   earnings: string;
   currency_code: PayoutCurrencyCode;
+  exchange_rate: string;
 }

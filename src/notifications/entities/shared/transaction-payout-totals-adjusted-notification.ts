@@ -16,6 +16,7 @@ export class TransactionPayoutTotalsAdjustedNotification {
   public readonly chargebackFee: ChargebackFeeNotification | null;
   public readonly earnings: string;
   public readonly currencyCode: PayoutCurrencyCode;
+  public readonly exchangeRate: string;
 
   constructor(transactionPayoutTotalsAdjusted: ITransactionPayoutTotalsAdjustedNotificationResponse) {
     this.subtotal = transactionPayoutTotalsAdjusted.subtotal;
@@ -27,5 +28,6 @@ export class TransactionPayoutTotalsAdjustedNotification {
       : null;
     this.earnings = transactionPayoutTotalsAdjusted.earnings;
     this.currencyCode = transactionPayoutTotalsAdjusted.currency_code;
+    this.exchangeRate = transactionPayoutTotalsAdjusted.exchange_rate;
   }
 }

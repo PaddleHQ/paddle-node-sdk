@@ -18,4 +18,6 @@ export interface ITransactionPayoutTotalsResponse {
   fee: string;
   earnings: string;
   currency_code: PayoutCurrencyCode;
+  exchange_rate: string;
+  fee_rate: string;
 }
