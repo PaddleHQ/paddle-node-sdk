@@ -20,6 +20,15 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
+## 3.2.0 - 2025-08-01
+
+### Added
+
+- Added support for filtering events by `eventType` in `events.list()` operation,
+  see [related changelog](https://developer.paddle.com/changelog/2025/filter-events-by-type?utm_source=dx&utm_medium=paddle-node-sdk).
+
+---
+
 ## 3.1.0 - 2025-08-01
 
 ### Added
