@@ -20,6 +20,24 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
+## 3.1.0 - 2025-08-01
+
+### Added
+
+- Added support for discount group resources,
+  see [related changelog](https://developer.paddle.com/changelog/2025/discount-groups-new-api-operations?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for `discount_group_id` in discount resource,
+  see [related changelog](https://developer.paddle.com/changelog/2025/discount-groups?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added support for `exchange_rate` and `fee_rate` in transaction payout totals
+- Added support for client token resource,
+  see [related changelog](https://developer.paddle.com/changelog/2025/client-side-token-api?utm_source=dx&utm_medium=paddle-node-sdk).
+
+### Fixed
+
+- Enabled typechecking for tests and fixed type errors.
+
+---
+
 ## 3.0.0 - 2025-07-03
 
 > **Breaking changes:** This version includes major improvements that introduce breaking changes. These are called out
