@@ -134,6 +134,18 @@ import {
   DiscountGroupUpdatedMock,
   DiscountGroupUpdatedMockExpectation,
 } from '../mocks/notifications/discount-group-updated.mock.js';
+import {
+  ClientTokenCreatedMock,
+  ClientTokenCreatedMockExpectation,
+} from '../mocks/notifications/client-token-created.mock.js';
+import {
+  ClientTokenUpdatedMock,
+  ClientTokenUpdatedMockExpectation,
+} from '../mocks/notifications/client-token-updated.mock.js';
+import {
+  ClientTokenRevokedMock,
+  ClientTokenRevokedMockExpectation,
+} from '../mocks/notifications/client-token-revoked.mock.js';
 
 describe('Notifications Parser', () => {
   test.each([
@@ -150,6 +162,9 @@ describe('Notifications Parser', () => {
     [BusinessCreatedMock.event_type, BusinessCreatedMock, BusinessCreatedMockExpectation],
     [BusinessUpdatedMock.event_type, BusinessUpdatedMock, BusinessUpdatedMockExpectation],
     [BusinessImportedMock.event_type, BusinessImportedMock, BusinessImportedMockExpectation],
+    [ClientTokenCreatedMock.event_type, ClientTokenCreatedMock, ClientTokenCreatedMockExpectation],
+    [ClientTokenUpdatedMock.event_type, ClientTokenUpdatedMock, ClientTokenUpdatedMockExpectation],
+    [ClientTokenRevokedMock.event_type, ClientTokenRevokedMock, ClientTokenRevokedMockExpectation],
     [CustomerCreatedMock.event_type, CustomerCreatedMock, CustomerCreatedMockExpectation],
     [CustomerUpdatedMock.event_type, CustomerUpdatedMock, CustomerUpdatedMockExpectation],
     [CustomerImportedMock.event_type, CustomerImportedMock, CustomerImportedMockExpectation],

@@ -12,6 +12,9 @@ import {
   type BusinessCreatedEvent,
   type BusinessImportedEvent,
   type BusinessUpdatedEvent,
+  type ClientTokenCreatedEvent,
+  type ClientTokenRevokedEvent,
+  type ClientTokenUpdatedEvent,
   type CustomerCreatedEvent,
   type CustomerImportedEvent,
   type CustomerUpdatedEvent,
@@ -67,6 +70,9 @@ export type EventEntity =
   | BusinessCreatedEvent
   | BusinessUpdatedEvent
   | BusinessImportedEvent
+  | ClientTokenCreatedEvent
+  | ClientTokenUpdatedEvent
+  | ClientTokenRevokedEvent
   | CustomerCreatedEvent
   | CustomerUpdatedEvent
   | CustomerImportedEvent
@@ -121,6 +127,9 @@ export enum EventName {
   BusinessCreated = 'business.created',
   BusinessImported = 'business.imported',
   BusinessUpdated = 'business.updated',
+  ClientTokenCreated = 'client_token.created',
+  ClientTokenUpdated = 'client_token.updated',
+  ClientTokenRevoked = 'client_token.revoked',
   CustomerCreated = 'customer.created',
   CustomerUpdated = 'customer.updated',
   CustomerImported = 'customer.imported',
