@@ -43,13 +43,13 @@ describe('SimulationRunsResource', () => {
     const queryParams: ListSimulationRunQueryParameters = {
       after: '2',
       id: ['1234'],
-      include: ['price'],
+      include: ['events'],
     };
 
     const simulationRunCollection = simulationRunsResource.list(simulationId, queryParams);
     const simulationRuns = await simulationRunCollection.next();
 
-    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}/runs?after=2&id=1234&include=price`);
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/simulations/${simulationId}/runs?after=2&id=1234&include=events`);
     expect(simulationRuns.length).toBe(1);
   });
 
@@ -76,7 +76,7 @@ describe('SimulationRunsResource', () => {
     const simulationRunsResource = new SimulationRunsResource(paddleInstance);
 
     const queryParams: GetSimulationRunQueryParameters = {
-      include: ['price'],
+      include: ['events'],
     };
     const simulationRun = await simulationRunsResource.get(simulationId, simulationRunId, queryParams);
 

@@ -21,6 +21,7 @@ export const PaymentMethodMock: IPaymentMethodResponse = {
     cardholder_name: 'Sam Miller',
   },
   paypal: null,
+  underlying_details: null,
   origin: 'saved_during_purchase',
   saved_at: '2024-05-03T11:50:23.422Z',
   updated_at: '2024-05-03T11:50:23.422Z',

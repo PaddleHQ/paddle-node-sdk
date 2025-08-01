@@ -1,4 +1,3 @@
-import { type Response } from 'node-fetch';
 import { LogLevel } from '../../internal/index.js';
 import { Logger } from '../../internal/base/logger.js';
 

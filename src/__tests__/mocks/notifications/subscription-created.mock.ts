@@ -4,10 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { ISubscriptionNotificationResponse } from '../../../notifications/index.js';
+import type { ISubscriptionCreatedNotificationResponse } from '../../../notifications/index.js';
 import { IEventsResponse } from '../../../types/index.js';
 
-export const SubscriptionCreatedMock: IEventsResponse<ISubscriptionNotificationResponse> = {
+export const SubscriptionCreatedMock: IEventsResponse<ISubscriptionCreatedNotificationResponse> = {
   event_id: 'evt_01h7ht60jy5hpdv5x8tfsaxje4',
   event_type: 'subscription.created',
   occurred_at: '2023-08-11T08:07:38.334150Z',

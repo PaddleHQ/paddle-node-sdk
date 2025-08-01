@@ -11,5 +11,5 @@ import { IPaymentMethodUnderlyingDetailsNotification } from './payment-method-un
 export interface IPaymentMethodDetailsNotification {
   type: PaymentType;
   card: IPaymentCardNotificationResponse | null;
-  underlying_details: IPaymentMethodUnderlyingDetailsNotification;
+  underlying_details: IPaymentMethodUnderlyingDetailsNotification | null;
 }
