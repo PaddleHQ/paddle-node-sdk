@@ -4,9 +4,10 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IEventsResponse, type IPaymentMethodResponse } from '../../../types/index.js';
+import { type IEventsResponse } from '../../../types/index.js';
+import { IPaymentMethodNotificationResponse } from '../../../notifications/index.js';
 
-export const PaymentMethodSavedMock: IEventsResponse<IPaymentMethodResponse> = {
+export const PaymentMethodSavedMock: IEventsResponse<IPaymentMethodNotificationResponse> = {
   event_id: 'evt_01hwvkmsge7bhq1a31s35784zt',
   event_type: 'payment_method.saved',
   occurred_at: '2024-05-02T02:55:25.198953Z',

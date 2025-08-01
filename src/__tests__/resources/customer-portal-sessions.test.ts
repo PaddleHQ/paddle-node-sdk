@@ -27,6 +27,6 @@ describe('CustomerPortalSessionsResource', () => {
     expect(createdCustomerPortalSession).toBeDefined();
     expect(createdCustomerPortalSession.id).toBeDefined();
     expect(createdCustomerPortalSession.customerId).toBe(customerId);
-    expect(createdCustomerPortalSession.urls.subscriptions[0].id).toBe(subscriptionIds[0]);
+    expect(createdCustomerPortalSession.urls.subscriptions[0]?.id).toBe(subscriptionIds[0]);
   });
 });

@@ -14,7 +14,6 @@ export const SubscriptionPausedMock: IEventsResponse<ISubscriptionNotificationRe
   notification_id: 'ntf_01h7jcst74a4417kz8eedqty0e',
   data: {
     id: 'sub_01h7ht5z5wdg9pz18jx1fagp8k',
-    transaction_id: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     items: [
       {
         price: {

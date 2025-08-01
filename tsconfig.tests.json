@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "esnext"
+  },
+  "exclude": [
+    "./src/index.cjs.edge.ts",
+    "./src/index.esm.node.ts",
+    "./src/index.esm.edge.ts"
+  ]
+}

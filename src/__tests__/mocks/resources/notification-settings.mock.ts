@@ -62,6 +62,7 @@ export const NotificationSettingsMock: INotificationSettingsResponse = {
       name: 'address.updated',
     },
   ],
+  traffic_source: 'platform',
 };
 
 export const NotificationSettingsMockResponse: Response<INotificationSettingsResponse> = {

@@ -15,6 +15,7 @@
     "build-esm": "tsc -b tsconfig.esm.json && echo '{\"type\":\"module\"}' > ./dist/esm/package.json",
     "build-cjs": "tsc -b tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > ./dist/cjs/package.json",
     "build-types": "tsc -b tsconfig.types.json",
+    "typecheck:tests": "tsc -b tsconfig.tests.json",
     "prettier": "prettier --check ./src",
     "prettier:fix": "prettier --check ./src --write",
     "lint": "eslint ./src",

@@ -11,5 +11,5 @@ import { IPaymentMethodUnderlyingDetails } from './payment-method-underlying-det
 export interface IPaymentMethodDetails {
   type: PaymentType;
   card: IPaymentCardResponse | null;
-  underlying_details: IPaymentMethodUnderlyingDetails;
+  underlying_details: IPaymentMethodUnderlyingDetails | null;
 }
