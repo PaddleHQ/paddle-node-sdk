@@ -10,6 +10,7 @@ import {
   type IAdjustmentNotificationResponse,
   type IApiKeyNotificationResponse,
   type IBusinessNotificationResponse,
+  type IClientTokenNotificationResponse,
   type ICustomerNotificationResponse,
   type IDiscountGroupNotificationResponse,
   type IDiscountNotificationResponse,
@@ -82,6 +83,18 @@ interface IBusinessUpdated extends IEventsResponse<IBusinessNotificationResponse
 
 interface IBusinessImported extends IEventsResponse<IBusinessNotificationResponse> {
   event_type: EventName.BusinessImported;
+}
+
+interface IClientTokenCreated extends IEventsResponse<IClientTokenNotificationResponse> {
+  event_type: EventName.ClientTokenCreated;
+}
+
+interface IClientTokenUpdated extends IEventsResponse<IClientTokenNotificationResponse> {
+  event_type: EventName.ClientTokenUpdated;
+}
+
+interface IClientTokenRevoked extends IEventsResponse<IClientTokenNotificationResponse> {
+  event_type: EventName.ClientTokenRevoked;
 }
 
 interface ICustomerCreated extends IEventsResponse<ICustomerNotificationResponse> {
@@ -257,6 +270,9 @@ export type IEvents =
   | ICustomerCreated
   | ICustomerUpdated
   | ICustomerImported
+  | IClientTokenCreated
+  | IClientTokenUpdated
+  | IClientTokenRevoked
   | IDiscountCreated
   | IDiscountUpdated
   | IDiscountImported

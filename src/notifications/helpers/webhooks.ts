@@ -15,6 +15,9 @@ import {
   BusinessCreatedEvent,
   BusinessImportedEvent,
   BusinessUpdatedEvent,
+  ClientTokenCreatedEvent,
+  ClientTokenRevokedEvent,
+  ClientTokenUpdatedEvent,
   CustomerCreatedEvent,
   CustomerImportedEvent,
   CustomerUpdatedEvent,
@@ -102,6 +105,12 @@ export class Webhooks {
         return new BusinessUpdatedEvent(data);
       case EventName.BusinessImported:
         return new BusinessImportedEvent(data);
+      case EventName.ClientTokenCreated:
+        return new ClientTokenCreatedEvent(data);
+      case EventName.ClientTokenUpdated:
+        return new ClientTokenUpdatedEvent(data);
+      case EventName.ClientTokenRevoked:
+        return new ClientTokenRevokedEvent(data);
       case EventName.CustomerCreated:
         return new CustomerCreatedEvent(data);
       case EventName.CustomerUpdated:

@@ -29,11 +29,11 @@ export class ClientTokensResource extends BaseResource {
     return new ClientTokenCollection(this.client, ClientTokenPaths.list + queryParameters.toQueryString());
   }
 
-  public async create(createCustomerParameters: CreateClientTokenRequestBody): Promise<ClientToken> {
+  public async create(createClientTokenRequestBody: CreateClientTokenRequestBody): Promise<ClientToken> {
     const response = await this.client.post<
       CreateClientTokenRequestBody,
       Response<IClientTokenResponse> | ErrorResponse
-    >(ClientTokenPaths.create, createCustomerParameters);
+    >(ClientTokenPaths.create, createClientTokenRequestBody);
 
     const data = this.handleResponse<IClientTokenResponse>(response);
 
