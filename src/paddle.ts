@@ -22,6 +22,7 @@ import {
   SimulationTypesResource,
   SubscriptionsResource,
   TransactionsResource,
+  ClientTokensResource,
 } from './resources/index.js';
 import { EventsResource } from './resources/events/index.js';
 import { Webhooks } from './notifications/index.js';
@@ -56,6 +57,7 @@ export class Paddle {
   public simulations: SimulationsResource;
   public simulationRuns: SimulationRunsResource;
   public simulationRunEvents: SimulationRunEventsResource;
+  public clientTokens: ClientTokensResource;
 
   constructor(apiKey: string, options?: PaddleOptions) {
     this.client = new Client(
@@ -86,5 +88,6 @@ export class Paddle {
     this.simulations = new SimulationsResource(this.client);
     this.simulationRuns = new SimulationRunsResource(this.client);
     this.simulationRunEvents = new SimulationRunEventsResource(this.client);
+    this.clientTokens = new ClientTokensResource(this.client);
   }
 }
