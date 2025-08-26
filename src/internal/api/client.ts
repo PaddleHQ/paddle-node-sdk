@@ -109,6 +109,12 @@ export class Client {
 
     Logger.logResponse('DELETE', logUrl, headers, rawResponse);
 
-    return rawResponse as unknown as ErrorResponse | undefined;
+    if (rawResponse.ok) {
+      // Return undefined for successful delete operations
+      return rawResponse as unknown as undefined;
+    } else {
+      // Return the error response for unsuccessful delete operations
+      return rawResponse.json() as Promise<ErrorResponse>;
+    }
   }
 }

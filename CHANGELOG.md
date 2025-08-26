@@ -20,6 +20,14 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
+## 3.2.1 - 2025-08-26
+
+### Fixed
+
+- Fixed a bug where `delete` operations were not returning failures correctly.
+
+---
+
 ## 3.2.0 - 2025-08-01
 
 ### Added
