@@ -20,6 +20,12 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
+## [Unreleased]
+
+### Changed
+
+- `CustomData` type definition is now `Record<string, any>`
+
 ## 3.2.1 - 2025-08-26
 
 ### Fixed
