@@ -24,6 +24,8 @@ import {
   ReviseTransactionRequestBody,
   TransactionsResource,
   UpdateTransactionRequestBody,
+  NonCatalogDiscount,
+  TransactionPreviewRequestBody,
 } from '../../resources/index.js';
 import { QueryParameters } from '../../internal/base/index.js';
 import { convertToSnakeCase } from '../../internal/index.js';
@@ -108,6 +110,33 @@ describe('TransactionsResource', () => {
     expect(convertToSnakeCase(CreateTransactionMock)).toEqual(CreateTransactionExpectation);
   });
 
+  test('create includes NonCatalogDiscount with custom_data and restrict_to', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(TransactionMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+
+    const discount: NonCatalogDiscount = {
+      amount: '250',
+      description: 'NCD for create',
+      type: 'flat',
+      recur: false,
+      maximum_recurring_intervals: null,
+      custom_data: { internal_reference: 'create_ref' },
+      restrict_to: ['pri_123'],
+    };
+
+    const body: CreateTransactionRequestBody = {
+      ...CreateTransactionMock,
+      discountId: null,
+      discount,
+    };
+
+    await transactionsResource.create(body);
+
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions?`, body);
+  });
+
   test('should update an existing transaction', async () => {
     const transactionId = TransactionMock.id;
     const transactionToBeUpdated: UpdateTransactionRequestBody = UpdateTransactionMock;
@@ -121,6 +150,34 @@ describe('TransactionsResource', () => {
     expect(paddleInstance.patch).toHaveBeenCalledWith(`/transactions/${transactionId}?`, transactionToBeUpdated);
     expect(updatedTransaction).toBeDefined();
     expect(convertToSnakeCase(UpdateTransactionMock)).toEqual(UpdateTransactionExpectation);
+  });
+
+  test('update includes NonCatalogDiscount with custom_data and restrict_to', async () => {
+    const transactionId = TransactionMock.id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.patch = jest.fn().mockResolvedValue(TransactionMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+
+    const discount: NonCatalogDiscount = {
+      amount: '300',
+      description: 'NCD for update',
+      type: 'percentage',
+      recur: true,
+      maximum_recurring_intervals: 5,
+      custom_data: { internal_reference: 'update_ref' },
+      restrict_to: ['pri_456', 'pri_789'],
+    };
+
+    const body: UpdateTransactionRequestBody = {
+      ...UpdateTransactionMock,
+      discountId: null,
+      discount,
+    };
+
+    await transactionsResource.update(transactionId, body);
+
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/transactions/${transactionId}?`, body);
   });
 
   test('should get an link to download invoice PDF for an existing transaction', async () => {
@@ -145,6 +202,32 @@ describe('TransactionsResource', () => {
 
     expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions/preview`, PreviewTransactionMock);
     expect(updatedTransaction).toBeDefined();
+  });
+
+  test('preview accepts NonCatalogDiscount with custom_data and restrict_to', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(TransactionPreviewMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+
+    const discount: NonCatalogDiscount = {
+      amount: '150',
+      description: 'NCD for preview',
+      type: 'flat',
+      recur: false,
+      maximum_recurring_intervals: null,
+      custom_data: { internal_reference: 'preview_ref' },
+      restrict_to: ['pri_123'],
+    };
+
+    const body: TransactionPreviewRequestBody = {
+      ...PreviewTransactionMock,
+      discount,
+    };
+
+    await transactionsResource.preview(body);
+
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions/preview`, body);
   });
 
   test('should be able to revise an existing transaction', async () => {

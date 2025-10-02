@@ -12,6 +12,7 @@ import {
   type ITransactionItemWithNonCatalogPrice,
   type ITransactionsTimePeriod,
 } from '../../../types/index.js';
+import { NonCatalogDiscount } from './non-catalog-discount.js';
 
 export interface UpdateTransactionRequestBody {
   status?: TransactionStatus;
@@ -26,4 +27,5 @@ export interface UpdateTransactionRequestBody {
   billingPeriod?: ITransactionsTimePeriod | null;
   items?: ITransactionItemWithNonCatalogPrice[];
   checkout?: ITransactionCheckout | null;
+  discount?: NonCatalogDiscount | null;
 }
