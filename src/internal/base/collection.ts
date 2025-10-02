@@ -1,5 +1,5 @@
 import { type Client } from '../api/client.js';
-import { type ErrorResponse, type ResponsePaginated } from '../types/response.js';
+import { type ErrorResponse, type ResponsePaginated, responseProperty } from '../types/response.js';
 import { ApiError } from '../errors/generic.js';
 
 export abstract class Collection<T, C> implements AsyncIterable<C> {
@@ -33,7 +33,10 @@ export abstract class Collection<T, C> implements AsyncIterable<C> {
     const error = response as ErrorResponse;
 
     if (error.error) {
-      throw new ApiError(error.error);
+      // Extract Retry-After header if present
+      const retryAfterHeader = error[responseProperty]?.headers.get('Retry-After');
+      const retryAfter = retryAfterHeader ? parseInt(retryAfterHeader, 10) : undefined;
+      throw new ApiError(error.error, retryAfter);
     }
 
     return entityResponse;

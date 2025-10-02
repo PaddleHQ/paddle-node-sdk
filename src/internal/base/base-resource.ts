@@ -6,13 +6,11 @@ export class BaseResource {
   constructor(protected readonly client: Client) {}
 
   protected handleError(error: ErrorResponse): void {
-    if (!error.error) {
-      return;
+    if (error.error) {
+      const retryAfterHeader = error[responseProperty]?.headers.get('Retry-After');
+      const retryAfter = retryAfterHeader ? parseInt(retryAfterHeader, 10) : undefined;
+      throw new ApiError(error.error, retryAfter);
     }
-
-    const retryAfterHeader = error[responseProperty]?.headers.get('Retry-After');
-
-    throw new ApiError(error.error, retryAfterHeader ? parseInt(retryAfterHeader, 10) : undefined);
   }
 
   protected handleResponse<T>(response: Response<T> | ErrorResponse): T {

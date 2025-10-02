@@ -93,6 +93,7 @@ export class Client {
     });
 
     Logger.logResponse('PATCH', logUrl, headers, rawResponse);
+
     return { ...(await rawResponse.json()), [responseProperty]: rawResponse } as R;
   }
 

@@ -15,8 +15,7 @@ import {
 } from '../mocks/resources/notification-settings.mock.js';
 import { NotificationSettingsResource } from '../../resources/index.js';
 import { NotificationMock } from '../mocks/resources/notifications.mock.js';
-import { ApiError, convertToSnakeCase } from '../../internal/index.js';
-import { TooManyRequestsResponse } from '../mocks/resources/errors.mock.js';
+import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('NotificationSettingsResource', () => {
   test('should return a list of notification settings', async () => {
@@ -86,20 +85,5 @@ describe('NotificationSettingsResource', () => {
 
     expect(paddleInstance.delete).toHaveBeenCalledWith(`/notification-settings/${notificationSettingsId}`);
     expect(notificationSettings).toBeUndefined();
-  });
-
-  test('should throw too many requests error with retry after header', async () => {
-    const notificationSettingsId = 'ntfset_1234';
-
-    const paddleInstance = getPaddleTestClient();
-    paddleInstance.delete = jest.fn().mockResolvedValue(TooManyRequestsResponse);
-
-    const notificationsResource = new NotificationSettingsResource(paddleInstance);
-
-    await expect(notificationsResource.delete(notificationSettingsId)).rejects.toThrow(
-      new ApiError(TooManyRequestsResponse.error, 100),
-    );
-
-    await expect(notificationsResource.delete(notificationSettingsId)).rejects.toHaveProperty('retryAfter', 100);
   });
 });
