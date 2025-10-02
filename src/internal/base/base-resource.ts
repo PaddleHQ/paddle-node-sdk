@@ -1,7 +1,6 @@
 import { type Client } from '../api/client.js';
 import { type Response, type ErrorResponse, responseProperty } from '../types/response.js';
 import { ApiError } from '../errors/generic.js';
-import { TooManyRequestsApiError } from '../errors/too-many-requests.js';
 
 export class BaseResource {
   constructor(protected readonly client: Client) {}
@@ -11,14 +10,9 @@ export class BaseResource {
       return;
     }
 
-    if (error.error.code == 'too_many_requests') {
-      throw new TooManyRequestsApiError(
-        error.error,
-        parseInt(error[responseProperty]?.headers.get('Retry-After') ?? '0', 10),
-      );
-    }
+    const retryAfterHeader = error[responseProperty]?.headers.get('Retry-After');
 
-    throw new ApiError(error.error);
+    throw new ApiError(error.error, retryAfterHeader ? parseInt(retryAfterHeader, 10) : undefined);
   }
 
   protected handleResponse<T>(response: Response<T> | ErrorResponse): T {

@@ -15,9 +15,8 @@ import {
 } from '../mocks/resources/notification-settings.mock.js';
 import { NotificationSettingsResource } from '../../resources/index.js';
 import { NotificationMock } from '../mocks/resources/notifications.mock.js';
-import { convertToSnakeCase } from '../../internal/index.js';
+import { ApiError, convertToSnakeCase } from '../../internal/index.js';
 import { TooManyRequestsResponse } from '../mocks/resources/errors.mock.js';
-import { TooManyRequestsApiError } from '../../internal/errors/too-many-requests.js';
 
 describe('NotificationSettingsResource', () => {
   test('should return a list of notification settings', async () => {
@@ -98,7 +97,7 @@ describe('NotificationSettingsResource', () => {
     const notificationsResource = new NotificationSettingsResource(paddleInstance);
 
     await expect(notificationsResource.delete(notificationSettingsId)).rejects.toThrow(
-      new TooManyRequestsApiError(TooManyRequestsResponse.error, 100),
+      new ApiError(TooManyRequestsResponse.error, 100),
     );
 
     await expect(notificationsResource.delete(notificationSettingsId)).rejects.toHaveProperty('retryAfter', 100);
