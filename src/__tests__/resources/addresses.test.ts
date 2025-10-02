@@ -21,6 +21,8 @@ import {
   UpdateAddressRequestBody,
 } from '../../resources/index.js';
 import { convertToSnakeCase } from '../../internal/index.js';
+import { TooManyRequestsResponse } from '../mocks/resources/errors.mock.js';
+import { TooManyRequestsApiError } from '../../internal/errors/too-many-requests.js';
 
 describe('AddressesResource', () => {
   test('should return a list of addresses', async () => {
@@ -66,6 +68,20 @@ describe('AddressesResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/ctm_1234/addresses/${addressId}`);
     expect(address).toBeDefined();
     expect(address.id).toBe(addressId);
+  });
+
+  test('should throw too many requests error with retry after header', async () => {
+    const addressId = AddressMock.id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(TooManyRequestsResponse);
+
+    const addressesResource = new AddressesResource(paddleInstance);
+
+    await expect(addressesResource.get('ctm_1234', addressId)).rejects.toThrow(
+      new TooManyRequestsApiError(TooManyRequestsResponse.error, 100),
+    );
+
+    await expect(addressesResource.get('ctm_1234', addressId)).rejects.toHaveProperty('retryAfter', 100);
   });
 
   test('should accepts query params and return a single address by ID', async () => {

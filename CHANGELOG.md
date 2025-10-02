@@ -31,6 +31,7 @@ adding additional type guards.
 ### Changed
 
 - `CustomData` type definition is now `Record<string, any>`
+- `TooManyRequestsApiError` will be thrown when there have been too many requests to the API, see [related error](https://developer.paddle.com/errors/shared/too_many_requests)
 
 ---
 

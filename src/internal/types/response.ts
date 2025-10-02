@@ -1,3 +1,4 @@
+export const responseProperty = Symbol('response property');
 export interface Pagination {
   per_page: number;
   next: string;
@@ -17,6 +18,7 @@ export interface MetaPaginated {
 export interface Response<T> {
   data: T;
   meta: Meta;
+  [responseProperty]?: globalThis.Response;
 }
 
 export interface ResponsePaginated<T> {
@@ -40,4 +42,5 @@ export interface ErrorDetail {
 export interface ErrorResponse {
   error: ErrorDetail;
   meta: Meta;
+  [responseProperty]?: globalThis.Response;
 }
