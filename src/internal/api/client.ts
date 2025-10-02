@@ -7,7 +7,7 @@ import { LogLevel } from './log-level.js';
 import { RuntimeProvider } from '../providers/runtime-provider.js';
 import { SDK_VERSION } from '../../version.js';
 import { convertToSnakeCase } from './case-helpers.js';
-import { responseProperty, type ErrorResponse } from '../types/response.js';
+import { responseKey, type ErrorResponse } from '../types/response.js';
 
 export class Client {
   private readonly baseUrl: string;
@@ -61,7 +61,7 @@ export class Client {
 
     Logger.logResponse('GET', logUrl, headers, rawResponse);
 
-    return { ...(await rawResponse.json()), [responseProperty]: rawResponse } as R;
+    return { ...(await rawResponse.json()), [responseKey]: rawResponse } as R;
   }
 
   public async post<B, R>(url: string, requestBody: B): Promise<R> {
@@ -77,7 +77,7 @@ export class Client {
     });
     Logger.logResponse('POST', logUrl, headers, rawResponse);
 
-    return { ...(await rawResponse.json()), [responseProperty]: rawResponse } as R;
+    return { ...(await rawResponse.json()), [responseKey]: rawResponse } as R;
   }
 
   public async patch<B, R>(url: string, requestBody: B): Promise<R> {
@@ -94,7 +94,7 @@ export class Client {
 
     Logger.logResponse('PATCH', logUrl, headers, rawResponse);
 
-    return { ...(await rawResponse.json()), [responseProperty]: rawResponse } as R;
+    return { ...(await rawResponse.json()), [responseKey]: rawResponse } as R;
   }
 
   public async delete(url: string): Promise<ErrorResponse | undefined> {
@@ -115,7 +115,7 @@ export class Client {
       return rawResponse as unknown as undefined;
     } else {
       // Return the error response for unsuccessful delete operations
-      return { ...(await rawResponse.json()), [responseProperty]: rawResponse } as Promise<ErrorResponse>;
+      return { ...(await rawResponse.json()), [responseKey]: rawResponse } as Promise<ErrorResponse>;
     }
   }
 }
