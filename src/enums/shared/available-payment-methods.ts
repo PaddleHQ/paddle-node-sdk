@@ -8,8 +8,12 @@ export type AvailablePaymentMethod =
   | 'alipay'
   | 'apple_pay'
   | 'bancontact'
+  | 'blik'
   | 'card'
   | 'google_pay'
   | 'ideal'
   | 'korea_local'
-  | 'paypal';
+  | 'mb_way'
+  | 'paypal'
+  | 'pix'
+  | 'upi';
