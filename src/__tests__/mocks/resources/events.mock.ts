@@ -298,6 +298,7 @@ export const EventMock: IEventsResponse = {
         subtotal: '59900',
         grand_total: '65215',
         currency_code: 'USD',
+        retained_fee: '2',
       },
     },
     payments: [

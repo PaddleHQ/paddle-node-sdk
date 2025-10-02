@@ -16,6 +16,7 @@ export class PayoutTotalsAdjustment {
   public readonly chargebackFee: ChargebackFee | null;
   public readonly earnings: string;
   public readonly currencyCode: PayoutCurrencyCode;
+  public readonly retainedFee: string;
 
   constructor(payoutTotalsAdjustment: IPayoutTotalsAdjustmentResponse) {
     this.subtotal = payoutTotalsAdjustment.subtotal;
@@ -27,5 +28,6 @@ export class PayoutTotalsAdjustment {
       : null;
     this.earnings = payoutTotalsAdjustment.earnings;
     this.currencyCode = payoutTotalsAdjustment.currency_code;
+    this.retainedFee = payoutTotalsAdjustment.retained_fee;
   }
 }

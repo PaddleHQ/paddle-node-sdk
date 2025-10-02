@@ -196,6 +196,7 @@ export const TransactionMock: ITransactionResponse = {
       total: '16500',
       currency_code: 'USD',
       grand_total: '',
+      retained_fee: '2',
     },
     payout_totals: {
       subtotal: '15000',
@@ -221,6 +222,7 @@ export const TransactionMock: ITransactionResponse = {
       earnings: '15675',
       currency_code: 'AUD',
       exchange_rate: '1',
+      retained_fee: '2',
     },
     line_items: [
       {
@@ -326,6 +328,7 @@ export const TransactionMock: ITransactionResponse = {
         fee: '1000',
         earnings: '1000',
         subtotal: '1000',
+        retained_fee: '2',
       },
       reason: 'Refund',
       status: 'approved',
@@ -337,6 +340,7 @@ export const TransactionMock: ITransactionResponse = {
         fee: '1000',
         earnings: '1000',
         subtotal: '1000',
+        retained_fee: '2',
       },
       updated_at: '2024-10-12T07:20:50.52Z',
       transaction_id: 'txn_1234',

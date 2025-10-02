@@ -15,4 +15,5 @@ export interface IPayoutTotalsAdjustmentResponse {
   chargeback_fee?: IChargebackFee | null;
   earnings: string;
   currency_code: PayoutCurrencyCode;
+  retained_fee: string;
 }
