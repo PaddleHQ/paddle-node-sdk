@@ -15,6 +15,7 @@ export class TransactionTotalsAdjustedNotification {
   public readonly fee: string | null;
   public readonly earnings: string | null;
   public readonly currencyCode: CurrencyCode;
+  public readonly retainedFee: string;
 
   constructor(transactionTotalsAdjusted: ITransactionTotalsAdjustedNotificationResponse) {
     this.subtotal = transactionTotalsAdjusted.subtotal;
@@ -24,5 +25,6 @@ export class TransactionTotalsAdjustedNotification {
     this.fee = transactionTotalsAdjusted.fee ? transactionTotalsAdjusted.fee : null;
     this.earnings = transactionTotalsAdjusted.earnings ? transactionTotalsAdjusted.earnings : null;
     this.currencyCode = transactionTotalsAdjusted.currency_code;
+    this.retainedFee = transactionTotalsAdjusted.retained_fee;
   }
 }

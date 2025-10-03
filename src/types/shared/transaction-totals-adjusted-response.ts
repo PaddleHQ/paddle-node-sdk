@@ -14,4 +14,5 @@ export interface ITransactionTotalsAdjustedResponse {
   fee?: string | null;
   earnings?: string | null;
   currency_code: CurrencyCode;
+  retained_fee: string;
 }
