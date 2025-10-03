@@ -12,7 +12,7 @@ export interface NonCatalogDiscount {
   description: string;
   type: DiscountType;
   recur?: boolean;
-  maximum_recurring_intervals?: number | null;
-  custom_data?: ICustomData | null;
-  restrict_to?: string[] | null;
+  maximumRecurringIntervals?: number | null;
+  customData?: ICustomData | null;
+  restrictTo?: string[] | null;
 }

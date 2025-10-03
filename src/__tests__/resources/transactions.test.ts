@@ -121,9 +121,9 @@ describe('TransactionsResource', () => {
       description: 'NCD for create',
       type: 'flat',
       recur: false,
-      maximum_recurring_intervals: null,
-      custom_data: { internal_reference: 'create_ref' },
-      restrict_to: ['pri_123'],
+      maximumRecurringIntervals: null,
+      customData: { internal_reference: 'create_ref' },
+      restrictTo: ['pri_123'],
     };
 
     const body: CreateTransactionRequestBody = {
@@ -164,9 +164,9 @@ describe('TransactionsResource', () => {
       description: 'NCD for update',
       type: 'percentage',
       recur: true,
-      maximum_recurring_intervals: 5,
-      custom_data: { internal_reference: 'update_ref' },
-      restrict_to: ['pri_456', 'pri_789'],
+      maximumRecurringIntervals: 5,
+      customData: { internal_reference: 'update_ref' },
+      restrictTo: ['pri_456', 'pri_789'],
     };
 
     const body: UpdateTransactionRequestBody = {
@@ -215,9 +215,9 @@ describe('TransactionsResource', () => {
       description: 'NCD for preview',
       type: 'flat',
       recur: false,
-      maximum_recurring_intervals: null,
-      custom_data: { internal_reference: 'preview_ref' },
-      restrict_to: ['pri_123'],
+      maximumRecurringIntervals: null,
+      customData: { internal_reference: 'preview_ref' },
+      restrictTo: ['pri_123'],
     };
 
     const body: TransactionPreviewRequestBody = {
