@@ -89,6 +89,7 @@ export const TransactionPaidMock: IEventsResponse<ITransactionNotificationRespon
         earnings: '69226',
         subtotal: '74900',
         currency_code: 'GBP',
+        retained_fee: '2',
       },
       line_items: [
         {
@@ -220,6 +221,7 @@ export const TransactionPaidMockExpectation = {
         subtotal: '74900',
         tax: '14980',
         total: '89880',
+        retainedFee: '2',
       },
       lineItems: [
         {

@@ -122,6 +122,7 @@ export const TransactionPastDueMock: IEventsResponse<ITransactionNotificationRes
         subtotal: '40000',
         grand_total: '43549',
         currency_code: 'USD',
+        retained_fee: '2',
       },
       adjusted_payout_totals: null,
     },
@@ -191,6 +192,7 @@ export const TransactionPastDueMockExpectation = {
         subtotal: '40000',
         tax: '3549',
         total: '43549',
+        retainedFee: '2',
       },
       lineItems: [
         {

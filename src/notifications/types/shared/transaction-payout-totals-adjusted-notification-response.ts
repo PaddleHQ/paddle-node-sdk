@@ -16,4 +16,5 @@ export interface ITransactionPayoutTotalsAdjustedNotificationResponse {
   earnings: string;
   currency_code: PayoutCurrencyCode;
   exchange_rate: string;
+  retained_fee: string;
 }

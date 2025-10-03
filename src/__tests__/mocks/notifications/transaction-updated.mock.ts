@@ -159,6 +159,7 @@ export const TransactionUpdatedMock: IEventsResponse<ITransactionNotificationRes
         subtotal: '2819900',
         grand_total: '3070166',
         currency_code: 'USD',
+        retained_fee: '2',
       },
       adjusted_payout_totals: null,
     },
@@ -224,6 +225,7 @@ export const TransactionUpdatedMockExpectation = {
         subtotal: '2819900',
         tax: '250266',
         total: '3070166',
+        retainedFee: '2',
       },
       lineItems: [
         {

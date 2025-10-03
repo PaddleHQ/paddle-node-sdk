@@ -73,6 +73,7 @@ export const AdjustmentMock: IAdjustmentResponse = {
     fee: '1',
     subtotal: '1',
     tax: '1',
+    retained_fee: '2',
   },
   totals: {
     currency_code: 'USD',
@@ -81,6 +82,7 @@ export const AdjustmentMock: IAdjustmentResponse = {
     fee: '1',
     subtotal: '1',
     tax: '1',
+    retained_fee: '2',
   },
 };
 

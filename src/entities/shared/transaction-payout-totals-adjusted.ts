@@ -17,6 +17,7 @@ export class TransactionPayoutTotalsAdjusted {
   public readonly earnings: string;
   public readonly currencyCode: PayoutCurrencyCode;
   public readonly exchangeRate: string;
+  public readonly retainedFee: string;
 
   constructor(transactionPayoutTotalsAdjusted: ITransactionPayoutTotalsAdjustedResponse) {
     this.subtotal = transactionPayoutTotalsAdjusted.subtotal;
@@ -29,5 +30,6 @@ export class TransactionPayoutTotalsAdjusted {
     this.earnings = transactionPayoutTotalsAdjusted.earnings;
     this.currencyCode = transactionPayoutTotalsAdjusted.currency_code;
     this.exchangeRate = transactionPayoutTotalsAdjusted.exchange_rate;
+    this.retainedFee = transactionPayoutTotalsAdjusted.retained_fee;
   }
 }

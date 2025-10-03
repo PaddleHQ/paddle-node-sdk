@@ -13,4 +13,5 @@ export interface ITotalAdjustmentsNotificationResponse {
   fee: string;
   earnings: string;
   currency_code: CurrencyCode;
+  retained_fee: string;
 }

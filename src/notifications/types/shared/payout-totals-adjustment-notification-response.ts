@@ -15,4 +15,5 @@ export interface IPayoutTotalsAdjustmentNotificationResponse {
   chargeback_fee?: IChargebackFeeNotification | null;
   earnings: string;
   currency_code: PayoutCurrencyCode;
+  retained_fee: string;
 }

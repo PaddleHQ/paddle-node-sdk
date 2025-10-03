@@ -25,6 +25,7 @@ adding additional type guards.
 ### Added
 
 - Added support for new payment methods `blik`, `mb_way`, `pix` and `upi`. See [related changelog](https://developer.paddle.com/changelog/2025/blik-mbway-payment-methods).
+- Support `retained_fee` field on totals objects to show the fees retained by Paddle for the adjustment.
 
 ### Changed
 

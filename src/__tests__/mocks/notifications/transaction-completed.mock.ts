@@ -173,6 +173,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         subtotal: '59900',
         grand_total: '65215',
         currency_code: 'USD',
+        retained_fee: '2',
       },
       adjusted_payout_totals: {
         fee: '3311',
@@ -183,6 +184,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         currency_code: 'USD',
         chargeback_fee: { amount: '0', original: null },
         exchange_rate: '1',
+        retained_fee: '2',
       },
     },
     checkout: {
@@ -265,6 +267,7 @@ export const TransactionCompletedMockExpectation = {
         tax: '5315',
         total: '65215',
         exchangeRate: '1',
+        retainedFee: '2',
       },
       adjustedTotals: {
         currencyCode: 'USD',
@@ -274,6 +277,7 @@ export const TransactionCompletedMockExpectation = {
         subtotal: '59900',
         tax: '5315',
         total: '65215',
+        retainedFee: '2',
       },
       lineItems: [
         {
