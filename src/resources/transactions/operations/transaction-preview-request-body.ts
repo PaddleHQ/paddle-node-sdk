@@ -6,6 +6,7 @@
 
 import { type CountryCode, type CurrencyCode } from '../../../enums/index.js';
 import { type ITransactionItemPreviewRequest } from '../../../types/index.js';
+import { NonCatalogDiscount } from './non-catalog-discount.js';
 
 export interface IAddressPreviewResponse {
   postal_code?: string | null;
@@ -27,4 +28,5 @@ export interface TransactionPreviewRequestBody {
   customerIpAddress?: string | null;
   address?: IAddressPreview | null;
   ignoreTrials?: boolean | null;
+  discount?: NonCatalogDiscount | null;
 }

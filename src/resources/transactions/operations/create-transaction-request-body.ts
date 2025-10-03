@@ -12,6 +12,7 @@ import {
   type ITransactionsTimePeriod,
 } from '../../../types/index.js';
 import { type CollectionMode, type CurrencyCode, type TransactionStatus } from '../../../enums/index.js';
+import { NonCatalogDiscount } from './non-catalog-discount.js';
 
 export interface CreateTransactionRequestBody {
   items: ITransactionItemWithNonCatalogPrice[];
@@ -26,4 +27,5 @@ export interface CreateTransactionRequestBody {
   billingDetails?: IBillingDetailsCreate | null;
   billingPeriod?: ITransactionsTimePeriod | null;
   checkout?: ITransactionCheckout;
+  discount?: NonCatalogDiscount | null;
 }
