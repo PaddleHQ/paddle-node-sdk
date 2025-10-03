@@ -28,4 +28,5 @@ export * from './simulation/index.js';
 export * from './simulation-run/index.js';
 export * from './simulation-run-event/index.js';
 
-export type CustomData = object;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type CustomData = Record<string, any>;

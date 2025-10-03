@@ -26,6 +26,12 @@ adding additional type guards.
 
 - Added support for new payment methods `blik`, `mb_way`, `pix` and `upi`. See [related changelog](https://developer.paddle.com/changelog/2025/blik-mbway-payment-methods).
 
+### Changed
+
+- `CustomData` type definition is now `Record<string, any>`
+
+---
+
 ## 3.2.1 - 2025-08-26
 
 ### Fixed
