@@ -4,4 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type SavedPaymentMethodType = 'alipay' | 'apple_pay' | 'card' | 'google_pay' | 'korea_local' | 'paypal';
+export type SavedPaymentMethodType =
+  | 'alipay'
+  | 'apple_pay'
+  | 'blik'
+  | 'card'
+  | 'google_pay'
+  | 'mb_way'
+  | 'korea_local'
+  | 'paypal'
+  | 'pix'
+  | 'upi';
