@@ -1,3 +1,5 @@
+export const rawResponse = Symbol('raw response');
+
 export interface Pagination {
   per_page: number;
   next: string;
@@ -17,11 +19,13 @@ export interface MetaPaginated {
 export interface Response<T> {
   data: T;
   meta: Meta;
+  [rawResponse]?: globalThis.Response;
 }
 
 export interface ResponsePaginated<T> {
   data: T[];
   meta: MetaPaginated;
+  [rawResponse]?: globalThis.Response;
 }
 
 export interface ErrorField {
@@ -40,4 +44,5 @@ export interface ErrorDetail {
 export interface ErrorResponse {
   error: ErrorDetail;
   meta: Meta;
+  [rawResponse]?: globalThis.Response;
 }

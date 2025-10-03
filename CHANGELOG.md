@@ -27,6 +27,7 @@ adding additional type guards.
 - Added support for new payment methods `blik`, `mb_way`, `pix` and `upi`. See [related changelog](https://developer.paddle.com/changelog/2025/blik-mbway-payment-methods?utm_source=dx&utm_medium=paddle-node-sdk).
 - Non-catalog discounts on Transactions, see [changelog](https://developer.paddle.com/changelog/2025/custom-discounts?utm_source=dx&utm_medium=paddle-node-sdk)
 - Support `retained_fee` field on totals objects to show the fees retained by Paddle for the adjustment.
+- `ApiError` will now have `retryAfter` property set for [too_many_requests](https://developer.paddle.com/errors/shared/too_many_requests) errors
 
 ### Changed
 
