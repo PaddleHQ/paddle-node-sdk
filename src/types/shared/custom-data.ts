@@ -4,4 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type ICustomData = object;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ICustomData = Record<string, any>;
