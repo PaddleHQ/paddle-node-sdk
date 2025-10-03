@@ -1,7 +1,7 @@
 import { NodeRuntime } from '../../index.esm.node.js';
 import { Client } from '../../internal/api/client.js';
 import { Environment } from '../../internal/index.js';
-import { responseKey } from '../../internal/types/response.js';
+import { rawResponse } from '../../internal/types/response.js';
 
 const mockFetch = jest.fn();
 
@@ -37,7 +37,7 @@ describe('Client', () => {
     expect(result).toEqual({
       data: { id: 'test_id' },
       meta: { request_id: 'req_123' },
-      [responseKey]: mockResponse,
+      [rawResponse]: mockResponse,
     });
   });
 
@@ -58,7 +58,7 @@ describe('Client', () => {
     expect(result).toEqual({
       data: { id: 'test_id' },
       meta: { request_id: 'req_123' },
-      [responseKey]: mockResponse,
+      [rawResponse]: mockResponse,
     });
   });
 
@@ -79,7 +79,7 @@ describe('Client', () => {
     expect(result).toEqual({
       data: { id: 'test_id' },
       meta: { request_id: 'req_123' },
-      [responseKey]: mockResponse,
+      [rawResponse]: mockResponse,
     });
   });
 
@@ -100,7 +100,7 @@ describe('Client', () => {
     expect(result).toEqual({
       data: { id: 'test_id' },
       meta: { request_id: 'req_123' },
-      [responseKey]: mockResponse,
+      [rawResponse]: mockResponse,
     });
   });
 });
