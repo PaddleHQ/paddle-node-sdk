@@ -88,7 +88,7 @@ describe('BaseResource', () => {
       expect(e.type).toBe('request_error');
       expect(e.code).toBe('conflict');
       expect(e.detail).toBe('Request conflicts with another change.');
-      expect(e.retryAfter).toBeUndefined();
+      expect(e.retryAfter).toBeNull();
     }
   });
 

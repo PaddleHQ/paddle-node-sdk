@@ -85,7 +85,7 @@ describe('Collection', () => {
       const e = err as ApiError;
       expect(e.type).toBe('request_error');
       expect(e.code).toBe('conflict');
-      expect(e.retryAfter).toBeUndefined();
+      expect(e.retryAfter).toBeNull();
     }
   });
 

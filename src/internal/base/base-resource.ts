@@ -8,7 +8,7 @@ export class BaseResource {
   protected handleError(error: ErrorResponse): void {
     if (error.error) {
       const retryAfterHeader = error[rawResponse]?.headers.get('Retry-After');
-      const retryAfter = retryAfterHeader ? parseInt(retryAfterHeader, 10) : undefined;
+      const retryAfter = retryAfterHeader ? parseInt(retryAfterHeader, 10) : null;
       throw new ApiError(error.error, retryAfter);
     }
   }

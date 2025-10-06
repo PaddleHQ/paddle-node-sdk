@@ -6,9 +6,9 @@ export class ApiError extends Error {
   public readonly detail: string;
   public readonly documentationUrl: string;
   public readonly errors: ErrorField[] | null;
-  public readonly retryAfter?: number | undefined;
+  public readonly retryAfter: number | null;
 
-  constructor(errorDetail: ErrorDetail, retryAfter?: number | undefined) {
+  constructor(errorDetail: ErrorDetail, retryAfter: number | null) {
     super(errorDetail.detail);
 
     this.type = errorDetail.type;
