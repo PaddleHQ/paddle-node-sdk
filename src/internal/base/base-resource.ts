@@ -1,5 +1,5 @@
 import { type Client } from '../api/client.js';
-import { type Response, type ErrorResponse } from '../types/response.js';
+import { type Response, type ErrorResponse, rawResponse } from '../types/response.js';
 import { ApiError } from '../errors/generic.js';
 
 export class BaseResource {
@@ -7,7 +7,9 @@ export class BaseResource {
 
   protected handleError(error: ErrorResponse): void {
     if (error.error) {
-      throw new ApiError(error.error);
+      const retryAfterHeader = error[rawResponse]?.headers.get('Retry-After');
+      const retryAfter = retryAfterHeader ? parseInt(retryAfterHeader, 10) : null;
+      throw new ApiError(error.error, retryAfter);
     }
   }
 
