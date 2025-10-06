@@ -19,6 +19,7 @@ export * from './discount-group/index.js';
 export * from './events/index.js';
 export * from './payment-method/index.js';
 export * from './payout/index.js';
+export * from './pricing-preview/index.js';
 export * from './event-types/index.js';
 export * from './notification-settings/index.js';
 export * from './notifications/index.js';
