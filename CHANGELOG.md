@@ -29,6 +29,10 @@ adding additional type guards.
 - Support `retained_fee` field on totals objects to show the fees retained by Paddle for the adjustment.
 - `ApiError` will now have `retryAfter` property set for [too_many_requests](https://developer.paddle.com/errors/shared/too_many_requests) errors
 
+### Fixed
+
+- `PricingPreview`, `PricingPreviewDiscounts`, `PricingPreviewDetails`, `PricingPreviewLineItem` types are now exported
+
 ### Changed
 
 - `CustomData` type definition is now `Record<string, any>`
