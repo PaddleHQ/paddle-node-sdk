@@ -20,7 +20,7 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
-## [Unreleased]
+## 3.3.0 - 2025-10-07
 
 ### Added
 
