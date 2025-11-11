@@ -199,6 +199,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         captured_at: '2023-08-22T07:15:43.792797Z',
         method_details: {
           card: { type: 'visa', last4: '4242', expiry_year: 2025, expiry_month: 12, cardholder_name: 'Joe Bloggs' },
+          south_korea_local_card: null,
           type: 'card',
           underlying_details: null,
         },
@@ -213,6 +214,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         captured_at: null,
         method_details: {
           card: { type: 'visa', last4: '0000', expiry_year: 2025, expiry_month: 12, cardholder_name: 'Joe Bloggs' },
+          south_korea_local_card: null,
           type: 'card',
           underlying_details: null,
         },
@@ -555,6 +557,7 @@ export const TransactionCompletedMockExpectation = {
             last4: '4242',
             type: 'visa',
           },
+          southKoreaLocalCard: null,
           type: 'card',
           underlyingDetails: null,
         },
@@ -576,6 +579,7 @@ export const TransactionCompletedMockExpectation = {
             last4: '0000',
             type: 'visa',
           },
+          southKoreaLocalCard: null,
           type: 'card',
           underlyingDetails: null,
         },

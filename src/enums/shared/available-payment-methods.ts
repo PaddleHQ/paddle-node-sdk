@@ -4,6 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+/**
+ * @deprecated 'korea_local' is deprecated. Use 'south_korea_local_card', 'kakao_pay', 'naver_pay', 'payco', or 'samsung_pay' instead.
+ */
 export type AvailablePaymentMethod =
   | 'alipay'
   | 'apple_pay'
@@ -12,8 +15,13 @@ export type AvailablePaymentMethod =
   | 'card'
   | 'google_pay'
   | 'ideal'
+  | 'kakao_pay'
   | 'korea_local'
+  | 'south_korea_local_card'
   | 'mb_way'
+  | 'naver_pay'
+  | 'payco'
   | 'paypal'
   | 'pix'
+  | 'samsung_pay'
   | 'upi';

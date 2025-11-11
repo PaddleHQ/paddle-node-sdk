@@ -20,6 +20,12 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
+## 3.4.0 - 2025-11-11
+
+### Added
+
+- Added additional support for local Korean payment methods. See [related changelog](https://developer.paddle.com/changelog/2025/improved-korean-payment-methods?utm_source=dx&utm_medium=paddle-node-sdk)
+
 ## 3.3.0 - 2025-10-07
 
 ### Added
@@ -447,11 +453,10 @@ see [related changelog](https://developer.paddle.com/changelog/2024/product-pric
 ### Removed
 
 - **Breaking change:** Removed `*Includes` entity in favour of standard entities.
-
-    - Use `Price` instead of `PriceWithIncludes`
-    - Use `Product` instead of `ProductWithIncludes`
-    - Use `Subscription` instead of `SubscriptionIncludes`
-    - Use `Transaction` instead of `TransactionIncludes`
+  - Use `Price` instead of `PriceWithIncludes`
+  - Use `Product` instead of `ProductWithIncludes`
+  - Use `Subscription` instead of `SubscriptionIncludes`
+  - Use `Transaction` instead of `TransactionIncludes`
 
 ---
 
