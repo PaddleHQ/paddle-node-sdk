@@ -199,6 +199,7 @@ export const TransactionCompletedMock: IEventsResponse<ITransactionNotificationR
         captured_at: '2023-08-22T07:15:43.792797Z',
         method_details: {
           card: { type: 'visa', last4: '4242', expiry_year: 2025, expiry_month: 12, cardholder_name: 'Joe Bloggs' },
+          south_korea_local_card: null,
           type: 'card',
           underlying_details: null,
         },

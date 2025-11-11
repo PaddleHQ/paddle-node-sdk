@@ -282,6 +282,7 @@ export const TransactionMock: ITransactionResponse = {
           last4: '',
           type: 'american_express',
         },
+        south_korea_local_card: null,
         underlying_details: null,
       },
       created_at: '2024-10-12T07:20:50.52Z',

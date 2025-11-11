@@ -138,6 +138,7 @@ export const TransactionPastDueMock: IEventsResponse<ITransactionNotificationRes
         captured_at: null,
         method_details: {
           card: { type: 'visa', last4: '3184', expiry_year: 2025, expiry_month: 1, cardholder_name: 'Jo Williams' },
+          south_korea_local_card: null,
           type: 'card',
           underlying_details: null,
         },
