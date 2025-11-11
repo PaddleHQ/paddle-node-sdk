@@ -21,3 +21,4 @@ export * from './catalog-type.js';
 export * from './available-payment-methods.js';
 export * from './disposition.js';
 export * from './korean-market-underlying-payment-method-type.js';
+export * from './south-korea-local-card-type.js';

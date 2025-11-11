@@ -6,7 +6,7 @@
 
 import { type IPaymentCardResponse, type IPayPalResponse } from '../index.js';
 import { type SavedPaymentMethodType, type SavedPaymentOrigin } from '../../enums/index.js';
-import { IPaymentMethodUnderlyingDetails } from '../shared/index.js';
+import { IPaymentMethodUnderlyingDetails, type ISouthKoreaLocalCardResponse } from '../shared/index.js';
 
 export interface IPaymentMethodResponse {
   id: string;
@@ -15,6 +15,8 @@ export interface IPaymentMethodResponse {
   type: SavedPaymentMethodType;
   card: IPaymentCardResponse | null;
   paypal: IPayPalResponse | null;
+  south_korea_local_card: ISouthKoreaLocalCardResponse | null;
+  /** @deprecated */
   underlying_details: IPaymentMethodUnderlyingDetails | null;
   origin: SavedPaymentOrigin;
   saved_at: string;

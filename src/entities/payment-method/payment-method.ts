@@ -6,7 +6,7 @@
 
 import type { SavedPaymentMethodType, SavedPaymentOrigin } from '../../enums/index.js';
 import type { IPaymentMethodResponse } from '../../types/index.js';
-import { PaymentCard, PaymentMethodUnderlyingDetails, PayPal } from '../shared/index.js';
+import { PaymentCard, PaymentMethodUnderlyingDetails, PayPal, SouthKoreaLocalCard } from '../shared/index.js';
 
 export class PaymentMethod {
   public readonly id: string;
@@ -15,6 +15,8 @@ export class PaymentMethod {
   public readonly type: SavedPaymentMethodType;
   public readonly card: PaymentCard | null;
   public readonly paypal: PayPal | null;
+  public readonly southKoreaLocalCard: SouthKoreaLocalCard | null;
+  /** @deprecated */
   public readonly underlyingDetails: PaymentMethodUnderlyingDetails | null;
   public readonly origin: SavedPaymentOrigin;
   public readonly savedAt: string;
@@ -27,6 +29,9 @@ export class PaymentMethod {
     this.type = paymentMethodResponse.type;
     this.card = paymentMethodResponse.card ? new PaymentCard(paymentMethodResponse.card) : null;
     this.paypal = paymentMethodResponse.paypal ? new PayPal(paymentMethodResponse.paypal) : null;
+    this.southKoreaLocalCard = paymentMethodResponse.south_korea_local_card
+      ? new SouthKoreaLocalCard(paymentMethodResponse.south_korea_local_card)
+      : null;
     this.underlyingDetails = paymentMethodResponse.underlying_details
       ? new PaymentMethodUnderlyingDetails(paymentMethodResponse.underlying_details)
       : null;

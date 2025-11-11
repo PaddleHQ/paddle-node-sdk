@@ -28,3 +28,4 @@ export * from './payout-totals-adjustment-notification-response.js';
 export * from './import-meta-notification-response.js';
 export * from './korean-market-underlying-details-notification.js';
 export * from './payment-method-underlying-details-notification.js';
+export * from './south-korea-local-card-notification-response.js';

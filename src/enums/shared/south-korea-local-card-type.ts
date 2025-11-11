@@ -4,10 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-/**
- * @deprecated The following values are deprecated: 'kakaopay', 'naverpaycard', 'naverpaypoint', 'payco', 'samsungpay'
- */
-export type KoreanMarketUnderlyingPaymentMethodType =
+export type SouthKoreaLocalCardType =
   | 'bc'
   | 'citi'
   | 'hana'
@@ -15,20 +12,15 @@ export type KoreanMarketUnderlyingPaymentMethodType =
   | 'jeju'
   | 'jeonbuk'
   | 'kakaobank'
-  | 'kakaopay'
   | 'kbank'
   | 'kdbbank'
   | 'kookmin'
   | 'kwangju'
   | 'lotte'
   | 'mg'
-  | 'naverpaycard'
-  | 'naverpaypoint'
   | 'nh'
-  | 'payco'
   | 'post'
   | 'samsung'
-  | 'samsungpay'
   | 'savingsbank'
   | 'shinhan'
   | 'shinhyup'
