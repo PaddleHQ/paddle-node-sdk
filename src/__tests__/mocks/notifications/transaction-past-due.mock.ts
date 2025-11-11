@@ -387,6 +387,7 @@ export const TransactionPastDueMockExpectation = {
             last4: '3184',
             type: 'visa',
           },
+          southKoreaLocalCard: null,
           type: 'card',
           underlyingDetails: null,
         },

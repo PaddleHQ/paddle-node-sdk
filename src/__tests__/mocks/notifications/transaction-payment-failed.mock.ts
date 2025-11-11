@@ -491,6 +491,7 @@ export const TransactionPaymentFailedMockExpectation = {
             last4: '0000',
             type: 'visa',
           },
+          southKoreaLocalCard: null,
           type: 'card',
           underlyingDetails: null,
         },
