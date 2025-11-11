@@ -24,7 +24,7 @@ adding additional type guards.
 
 ### Added
 
-- Added additional support for local Korean payment methods. See [related changelog](https://developer.paddle.com/changelog/2025/improved-korean-payment-methods)
+- Added additional support for local Korean payment methods. See [related changelog](https://developer.paddle.com/changelog/2025/improved-korean-payment-methods?utm_source=dx&utm_medium=paddle-node-sdk)
 
 ## 3.3.0 - 2025-10-07
 
