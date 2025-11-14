@@ -59,6 +59,11 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Configure NPM authentication
+        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN_PADDLE_NODE_SDK}}
+
       - name: Check version and publish
         run: |
           PACKAGE_NAME=$(node -p "require('./package.json').name")
@@ -75,5 +80,3 @@ jobs:
           else
             pnpm publish --access public
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
