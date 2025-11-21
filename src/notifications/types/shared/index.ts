@@ -5,6 +5,8 @@
  */
 
 export * from './time-period-notification.js';
+export * from './trial-period-notification.js';
+export * from './trial-period-notification-response.js';
 export * from './money-notification-response.js';
 export * from './unit-price-override-notification-response.js';
 export * from './shared-price-notification-response.js';

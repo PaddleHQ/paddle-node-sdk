@@ -6,6 +6,7 @@
 
 import { type CatalogType, type Status, type TaxMode } from '../../../enums/index.js';
 import { type ITimePeriodNotification } from './time-period-notification.js';
+import { type ITrialPeriodNotificationResponse } from './trial-period-notification-response.js';
 import { type IMoneyNotificationResponse } from './money-notification-response.js';
 import { type IUnitPriceOverrideNotificationResponse } from './unit-price-override-notification-response.js';
 import { type IPriceQuantityNotification } from '../price/index.js';
@@ -19,7 +20,7 @@ export interface ISharedPriceNotificationResponse {
   type: CatalogType;
   name?: string | null;
   billing_cycle?: ITimePeriodNotification | null;
-  trial_period?: ITimePeriodNotification | null;
+  trial_period?: ITrialPeriodNotificationResponse | null;
   tax_mode: TaxMode;
   unit_price?: IMoneyNotificationResponse | null;
   unit_price_overrides?: IUnitPriceOverrideNotificationResponse[] | null;

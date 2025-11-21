@@ -9,12 +9,14 @@ import { type IPayoutNotificationResponse } from '../../types/index.js';
 
 export class PayoutNotification {
   public readonly id: string;
+  public readonly remittanceReference: string;
   public readonly status: PayoutStatus;
   public readonly amount: string;
   public readonly currencyCode: CurrencyCode;
 
   constructor(payout: IPayoutNotificationResponse) {
     this.id = payout.id;
+    this.remittanceReference = payout.remittance_reference;
     this.status = payout.status;
     this.amount = payout.amount;
     this.currencyCode = payout.currency_code;

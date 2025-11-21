@@ -10,6 +10,7 @@ import {
   type IMoneyNotificationResponse,
   type ISharedProductNotificationResponse,
   type ITimePeriodNotification,
+  type ITrialPeriodNotificationResponse,
   type IUnitPriceOverrideNotificationResponse,
 } from '../shared/index.js';
 import { type IPriceQuantityNotification } from './price-quantity-notification.js';
@@ -22,7 +23,7 @@ export interface IPriceNotificationResponse {
   type?: CatalogType | null;
   name?: string | null;
   billing_cycle?: ITimePeriodNotification | null;
-  trial_period?: ITimePeriodNotification | null;
+  trial_period?: ITrialPeriodNotificationResponse | null;
   tax_mode: TaxMode;
   unit_price: IMoneyNotificationResponse;
   unit_price_overrides: IUnitPriceOverrideNotificationResponse[] | null;

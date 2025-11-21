@@ -4,7 +4,14 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import type { ICustomData, IMoney, IPriceQuantity, ITimePeriod, IUnitPriceOverride } from '../shared/index.js';
+import type {
+  ICustomData,
+  IMoney,
+  IPriceQuantity,
+  ITimePeriod,
+  ITrialPeriod,
+  IUnitPriceOverride,
+} from '../shared/index.js';
 import type { TaxMode } from '../../enums/index.js';
 import type { CreateProductRequestBody } from '../../resources/index.js';
 
@@ -13,7 +20,7 @@ interface INonCatalogBasePriceRequestBody {
   description: string;
   unitPrice: IMoney;
   billingCycle?: ITimePeriod | null;
-  trialPeriod?: ITimePeriod | null;
+  trialPeriod?: ITrialPeriod | null;
   taxMode?: TaxMode;
   unitPriceOverrides?: IUnitPriceOverride[];
   quantity?: IPriceQuantity;

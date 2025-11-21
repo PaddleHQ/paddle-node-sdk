@@ -11,6 +11,7 @@ import {
   type IPriceQuantity,
   type IProductResponse,
   type ITimePeriod,
+  type ITrialPeriodResponse,
   type IUnitPriceOverrideResponse,
 } from '../index.js';
 import { type CatalogType, type Status, type TaxMode } from '../../enums/index.js';
@@ -22,7 +23,7 @@ export interface IPriceResponse {
   type: CatalogType;
   name?: string | null;
   billing_cycle?: ITimePeriod | null;
-  trial_period?: ITimePeriod | null;
+  trial_period?: ITrialPeriodResponse | null;
   tax_mode: TaxMode;
   unit_price: IMoneyResponse;
   unit_price_overrides: IUnitPriceOverrideResponse[] | null;
