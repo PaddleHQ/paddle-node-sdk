@@ -5,7 +5,7 @@
  */
 
 import { type CatalogType, type Status, type TaxMode } from '../../enums/index.js';
-import { ImportMeta, Money, TimePeriod, UnitPriceOverride } from '../shared/index.js';
+import { ImportMeta, Money, TimePeriod, TrialPeriod, UnitPriceOverride } from '../shared/index.js';
 import { PriceQuantity } from './price-quantity.js';
 import { type ICustomData, type IPriceResponse } from '../../types/index.js';
 import { Product } from '../product/index.js';
@@ -17,7 +17,7 @@ export class Price {
   public readonly name: string | null;
   public readonly type: CatalogType;
   public readonly billingCycle: TimePeriod | null;
-  public readonly trialPeriod: TimePeriod | null;
+  public readonly trialPeriod: TrialPeriod | null;
   public readonly taxMode: TaxMode;
   public readonly unitPrice: Money;
   public readonly unitPriceOverrides: UnitPriceOverride[];
@@ -36,7 +36,7 @@ export class Price {
     this.type = price.type;
     this.name = price.name ? price.name : null;
     this.billingCycle = price.billing_cycle ? new TimePeriod(price.billing_cycle) : null;
-    this.trialPeriod = price.trial_period ? new TimePeriod(price.trial_period) : null;
+    this.trialPeriod = price.trial_period ? new TrialPeriod(price.trial_period) : null;
     this.taxMode = price.tax_mode;
     this.unitPrice = new Money(price.unit_price);
     this.unitPriceOverrides =

@@ -5,6 +5,8 @@
  */
 
 export * from './time-period.js';
+export * from './trial-period.js';
+export * from './trial-period-response.js';
 export * from './money.js';
 export * from './money-response.js';
 export * from './unit-price-override.js';

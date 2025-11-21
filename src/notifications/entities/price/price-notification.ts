@@ -9,6 +9,7 @@ import {
   ImportMetaNotification,
   MoneyNotification,
   TimePeriodNotification,
+  TrialPeriodNotification,
   UnitPriceOverrideNotification,
 } from '../shared/index.js';
 import { PriceQuantityNotification } from './price-quantity-notification.js';
@@ -22,7 +23,7 @@ export class PriceNotification {
   public readonly name: string | null;
   public readonly type: CatalogType | null;
   public readonly billingCycle: TimePeriodNotification | null;
-  public readonly trialPeriod: TimePeriodNotification | null;
+  public readonly trialPeriod: TrialPeriodNotification | null;
   public readonly taxMode: TaxMode;
   public readonly unitPrice: MoneyNotification;
   public readonly unitPriceOverrides: UnitPriceOverrideNotification[];
@@ -40,7 +41,7 @@ export class PriceNotification {
     this.type = price.type ? price.type : null;
     this.name = price.name ? price.name : null;
     this.billingCycle = price.billing_cycle ? new TimePeriodNotification(price.billing_cycle) : null;
-    this.trialPeriod = price.trial_period ? new TimePeriodNotification(price.trial_period) : null;
+    this.trialPeriod = price.trial_period ? new TrialPeriodNotification(price.trial_period) : null;
     this.taxMode = price.tax_mode;
     this.unitPrice = new MoneyNotification(price.unit_price);
     this.unitPriceOverrides =
