@@ -1,10 +1,3 @@
-/**
- * Unit tests for v3.5.0 changelog items:
- * - Added new report filter names `remittance_reference` and `transaction_updated_at`
- * - Added `payout_reconciliation` report type
- * - Deprecated `balance` report type in favor of `payout_reconciliation`
- */
-
 import { Report, ReportFilters } from '../../entities/index.js';
 import { type IReportResponse, type IReportFilters } from '../../types/index.js';
 import { type ReportFilterName, type ReportType } from '../../enums/index.js';
@@ -12,7 +5,7 @@ import { getPaddleTestClient } from '../helpers/test-client.js';
 import { ReportsResource } from '../../resources/index.js';
 import { Response } from '../../internal/index.js';
 
-describe('v3.5.0 Changelog - Report Filter Names', () => {
+describe('Report Filter Names', () => {
   describe('remittance_reference filter', () => {
     test('should support remittance_reference as a valid filter name', () => {
       const filterResponse: IReportFilters = {
@@ -131,7 +124,7 @@ describe('v3.5.0 Changelog - Report Filter Names', () => {
   });
 });
 
-describe('v3.5.0 Changelog - payout_reconciliation Report Type', () => {
+describe('payout_reconciliation Report Type', () => {
   test('should support payout_reconciliation as a valid report type', () => {
     const reportResponse: IReportResponse = {
       id: 'rep_01h7mrm9f6s7s5n5d5q5x5y5z5',
@@ -199,7 +192,7 @@ describe('v3.5.0 Changelog - payout_reconciliation Report Type', () => {
   });
 });
 
-describe('v3.5.0 Changelog - Deprecated balance Report Type', () => {
+describe('Deprecated balance Report Type', () => {
   test('should still support deprecated balance report type for backward compatibility', () => {
     const reportResponse: IReportResponse = {
       id: 'rep_01h7mrm9f6s7s5n5d5q5x5y5z5',
@@ -268,7 +261,7 @@ describe('v3.5.0 Changelog - Deprecated balance Report Type', () => {
   });
 });
 
-describe('v3.5.0 Changelog - TypeScript Type Safety', () => {
+describe('TypeScript Type Safety', () => {
   test('new filter names should be valid ReportFilterName type values', () => {
     const newFilterNames: ReportFilterName[] = ['remittance_reference', 'transaction_updated_at'];
 
