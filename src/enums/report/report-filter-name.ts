@@ -17,4 +17,6 @@ export type ReportFilterName =
   | 'product_type'
   | 'price_type'
   | 'product_updated_at'
-  | 'price_updated_at';
+  | 'price_updated_at'
+  | 'remittance_reference'
+  | 'transaction_updated_at';

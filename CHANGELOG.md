@@ -20,13 +20,21 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
-## 3.5.0 - 2025-11-21
+## 3.5.0 - 2025-12-16
 
 ### Added
 
 - Added support for `location` value in `tax_mode` enum to automatically present prices as inclusive or exclusive of tax based on customer location. See [related changelog](https://developer.paddle.com/changelog/2025/default-automatic-tax-setting?utm_source=dx&utm_medium=paddle-node-sdk)
 - Added support for `requiresPaymentMethod` field in trial period to specify whether a payment method is required during trial
 - Added `remittanceReference` field to payout notification entity
+- Added new report filter names `remittance_reference` and `transaction_updated_at`. See [related changelog](https://developer.paddle.com/changelog/2025/payout-reconciliation-report?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `payout_reconciliation` report type. See [related changelog](https://developer.paddle.com/changelog/2025/payout-reconciliation-report?utm_source=dx&utm_medium=paddle-node-sdk).
+
+### Deprecated
+
+- Deprecated `balance` report type in favor of `payout_reconciliation`. See [related changelog](https://developer.paddle.com/changelog/2025/payout-reconciliation-report?utm_source=dx&utm_medium=paddle-node-sdk).
+
+---
 
 ## 3.4.0 - 2025-11-11
 
