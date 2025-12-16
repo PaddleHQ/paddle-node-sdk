@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type TaxMode = 'account_setting' | 'external' | 'internal';
+export type TaxMode = 'account_setting' | 'external' | 'internal' | 'location';
