@@ -20,6 +20,19 @@ in a response, this weakens the Typescript type but does not cause existing usag
 This means when upgrading minor versions of the SDK, you may notice type errors. You can safely ignore these or fix by
 adding additional type guards.
 
+## [unreleased]
+
+### Added
+
+- Added new report filter names `remittance_reference` and `transaction_updated_at`. See [related changelog](https://developer.paddle.com/changelog/2025/payout-reconciliation-report?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `payout_reconciliation` report type. See [related changelog](https://developer.paddle.com/changelog/2025/payout-reconciliation-report?utm_source=dx&utm_medium=paddle-node-sdk).
+
+### Deprecated
+
+- Deprecated `balance` report type in favor of `payout_reconciliation`. See [related changelog](https://developer.paddle.com/changelog/2025/payout-reconciliation-report?utm_source=dx&utm_medium=paddle-node-sdk).
+
+---
+
 ## 3.4.0 - 2025-11-11
 
 ### Added

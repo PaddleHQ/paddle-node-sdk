@@ -11,4 +11,8 @@ export type ReportType =
   | 'transaction_line_items'
   | 'discounts'
   | 'products_prices'
-  | 'balance';
+  /**
+   * @deprecated 'balance' is deprecated. Use 'payout_reconciliation' instead.
+   */
+  | 'balance'
+  | 'payout_reconciliation';
