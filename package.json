@@ -46,7 +46,7 @@
     "@stylistic/eslint-plugin": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.14.202",
-    "@types/node": "^24.0.2",
+    "@types/node": "^25.0.2",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "babel-jest": "^30.0.0",
     "dotenv": "^17.0.0",
