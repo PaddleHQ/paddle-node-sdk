@@ -45,7 +45,7 @@ describe('Report Filter Names', () => {
       const report = new Report(reportResponse);
 
       expect(report.filters).toHaveLength(1);
-      expect(report.filters[0]!.name).toBe('remittance_reference');
+      expect(report.filters[0]?.name).toBe('remittance_reference');
     });
   });
 
@@ -94,10 +94,10 @@ describe('Report Filter Names', () => {
       const report = new Report(reportResponse);
 
       expect(report.filters).toHaveLength(2);
-      expect(report.filters[0]!.name).toBe('transaction_updated_at');
-      expect(report.filters[0]!.operator).toBe('gte');
-      expect(report.filters[1]!.name).toBe('transaction_updated_at');
-      expect(report.filters[1]!.operator).toBe('lt');
+      expect(report.filters[0]?.name).toBe('transaction_updated_at');
+      expect(report.filters[0]?.operator).toBe('gte');
+      expect(report.filters[1]?.name).toBe('transaction_updated_at');
+      expect(report.filters[1]?.operator).toBe('lt');
     });
   });
 
@@ -118,8 +118,8 @@ describe('Report Filter Names', () => {
       const report = new Report(reportResponse);
 
       expect(report.filters).toHaveLength(2);
-      expect(report.filters[0]!.name).toBe('remittance_reference');
-      expect(report.filters[1]!.name).toBe('transaction_updated_at');
+      expect(report.filters[0]?.name).toBe('remittance_reference');
+      expect(report.filters[1]?.name).toBe('transaction_updated_at');
     });
   });
 });
@@ -299,4 +299,3 @@ describe('TypeScript Type Safety', () => {
     expect(report.type).toBe('balance');
   });
 });
-
