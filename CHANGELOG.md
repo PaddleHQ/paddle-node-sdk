@@ -25,6 +25,7 @@ adding additional type guards.
 ### Added
 
 - Added support for `wechat_pay` payment method.
+- Added support for `api_key_exposure.created` event. See [related changelog](https://developer.paddle.com/api-reference/about/api-keys#secret-scanning).
 
 ---
 
