@@ -22,4 +22,5 @@ export type SavedPaymentMethodType =
   | 'paypal'
   | 'pix'
   | 'samsung_pay'
-  | 'upi';
+  | 'upi'
+  | 'wechat_pay';

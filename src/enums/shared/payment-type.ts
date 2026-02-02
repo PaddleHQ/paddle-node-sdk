@@ -27,4 +27,5 @@ export type PaymentType =
   | 'samsung_pay'
   | 'unknown'
   | 'upi'
+  | 'wechat_pay'
   | 'wire_transfer';
