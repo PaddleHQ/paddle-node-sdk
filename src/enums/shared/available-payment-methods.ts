@@ -24,4 +24,5 @@ export type AvailablePaymentMethod =
   | 'paypal'
   | 'pix'
   | 'samsung_pay'
-  | 'upi';
+  | 'upi'
+  | 'wechat_pay';
