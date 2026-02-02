@@ -9,6 +9,7 @@ import {
   type IAddressNotificationResponse,
   type IAdjustmentNotificationResponse,
   type IApiKeyNotificationResponse,
+  type IApiKeyExposureNotificationResponse,
   type IBusinessNotificationResponse,
   type IClientTokenNotificationResponse,
   type ICustomerNotificationResponse,
@@ -71,6 +72,10 @@ interface IApiKeyRevoked extends IEventsResponse<IApiKeyNotificationResponse> {
 
 interface IApiKeyUpdated extends IEventsResponse<IApiKeyNotificationResponse> {
   event_type: EventName.ApiKeyUpdated;
+}
+
+interface IApiKeyExposureCreated extends IEventsResponse<IApiKeyExposureNotificationResponse> {
+  event_type: EventName.ApiKeyExposureCreated;
 }
 
 interface IBusinessCreated extends IEventsResponse<IBusinessNotificationResponse> {
@@ -264,6 +269,7 @@ export type IEvents =
   | IApiKeyExpiring
   | IApiKeyRevoked
   | IApiKeyUpdated
+  | IApiKeyExposureCreated
   | IBusinessCreated
   | IBusinessUpdated
   | IBusinessImported
