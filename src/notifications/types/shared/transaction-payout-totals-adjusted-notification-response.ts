@@ -11,6 +11,7 @@ export interface ITransactionPayoutTotalsAdjustedNotificationResponse {
   subtotal: string;
   tax: string;
   total: string;
+  grand_total_tax: string;
   fee: string;
   chargeback_fee?: IChargebackFeeNotification | null;
   earnings: string;
