@@ -218,7 +218,6 @@ export const TransactionMock: ITransactionResponse = {
       subtotal: '15000',
       tax: '1500',
       total: '16500',
-      grand_total_tax: '1500',
       fee: '825',
       chargeback_fee: { amount: '1680', original: { amount: '1500', currency_code: 'USD' } },
       earnings: '15675',

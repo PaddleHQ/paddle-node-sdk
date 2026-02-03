@@ -11,7 +11,6 @@ export interface ITransactionPayoutTotalsAdjustedResponse {
   subtotal: string;
   tax: string;
   total: string;
-  grand_total_tax: string;
   fee: string;
   chargeback_fee?: IChargebackFee | null;
   earnings: string;

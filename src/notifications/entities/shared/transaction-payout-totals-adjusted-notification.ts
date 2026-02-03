@@ -12,7 +12,6 @@ export class TransactionPayoutTotalsAdjustedNotification {
   public readonly subtotal: string;
   public readonly tax: string;
   public readonly total: string;
-  public readonly grandTotalTax: string;
   public readonly fee: string;
   public readonly chargebackFee: ChargebackFeeNotification | null;
   public readonly earnings: string;
@@ -24,7 +23,6 @@ export class TransactionPayoutTotalsAdjustedNotification {
     this.subtotal = transactionPayoutTotalsAdjusted.subtotal;
     this.tax = transactionPayoutTotalsAdjusted.tax;
     this.total = transactionPayoutTotalsAdjusted.total;
-    this.grandTotalTax = transactionPayoutTotalsAdjusted.grand_total_tax;
     this.fee = transactionPayoutTotalsAdjusted.fee;
     this.chargebackFee = transactionPayoutTotalsAdjusted.chargeback_fee
       ? new ChargebackFeeNotification(transactionPayoutTotalsAdjusted.chargeback_fee)
