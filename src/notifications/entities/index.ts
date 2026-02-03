@@ -19,4 +19,5 @@ export * from './payout/index.js';
 export * from './report/index.js';
 export * from './shared/index.js';
 export * from './api-key/index.js';
+export * from './api-key-exposure/index.js';
 export * from './client-token/index.js';

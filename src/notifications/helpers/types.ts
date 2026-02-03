@@ -9,6 +9,7 @@ import {
   type ApiKeyExpiringEvent,
   type ApiKeyRevokedEvent,
   type ApiKeyUpdatedEvent,
+  type ApiKeyExposureCreatedEvent,
   type BusinessCreatedEvent,
   type BusinessImportedEvent,
   type BusinessUpdatedEvent,
@@ -67,6 +68,7 @@ export type EventEntity =
   | ApiKeyExpiringEvent
   | ApiKeyExpiredEvent
   | ApiKeyRevokedEvent
+  | ApiKeyExposureCreatedEvent
   | BusinessCreatedEvent
   | BusinessUpdatedEvent
   | BusinessImportedEvent
@@ -124,6 +126,7 @@ export enum EventName {
   ApiKeyExpiring = 'api_key.expiring',
   ApiKeyExpired = 'api_key.expired',
   ApiKeyRevoked = 'api_key.revoked',
+  ApiKeyExposureCreated = 'api_key_exposure.created',
   BusinessCreated = 'business.created',
   BusinessImported = 'business.imported',
   BusinessUpdated = 'business.updated',
@@ -182,6 +185,7 @@ export type IEventName =
   | 'api_key.expiring'
   | 'api_key.expired'
   | 'api_key.revoked'
+  | 'api_key_exposure.created'
   | 'business.created'
   | 'business.updated'
   | 'business.imported'

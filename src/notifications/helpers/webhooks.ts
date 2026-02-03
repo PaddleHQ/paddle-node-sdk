@@ -12,6 +12,7 @@ import {
   ApiKeyExpiringEvent,
   ApiKeyRevokedEvent,
   ApiKeyUpdatedEvent,
+  ApiKeyExposureCreatedEvent,
   BusinessCreatedEvent,
   BusinessImportedEvent,
   BusinessUpdatedEvent,
@@ -99,6 +100,8 @@ export class Webhooks {
         return new ApiKeyRevokedEvent(data);
       case EventName.ApiKeyUpdated:
         return new ApiKeyUpdatedEvent(data);
+      case EventName.ApiKeyExposureCreated:
+        return new ApiKeyExposureCreatedEvent(data);
       case EventName.BusinessCreated:
         return new BusinessCreatedEvent(data);
       case EventName.BusinessUpdated:
