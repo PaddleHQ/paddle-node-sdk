@@ -26,6 +26,7 @@ adding additional type guards.
 
 - Added support for `wechat_pay` payment method.
 - Added support for `api_key_exposure.created` event. See [related changelog](https://developer.paddle.com/api-reference/about/api-keys?utm_source=dx&utm_medium=paddle-node-sdk#secret-scanning).
+- Added `grandTotalTax` field to `payout_totals` and `adjusted_payout_totals` on transactions. See [related changelog](https://developer.paddle.com/changelog/2026/grand-total-tax-field?utm_source=dx&utm_medium=paddle-node-sdk).
 
 ---
 
