@@ -12,6 +12,7 @@ export class TransactionTotalsAdjustedNotification {
   public readonly tax: string;
   public readonly total: string;
   public readonly grandTotal: string;
+  public readonly grandTotalTax: string;
   public readonly fee: string | null;
   public readonly earnings: string | null;
   public readonly currencyCode: CurrencyCode;
@@ -22,6 +23,7 @@ export class TransactionTotalsAdjustedNotification {
     this.tax = transactionTotalsAdjusted.tax;
     this.total = transactionTotalsAdjusted.total;
     this.grandTotal = transactionTotalsAdjusted.grand_total;
+    this.grandTotalTax = transactionTotalsAdjusted.grand_total_tax;
     this.fee = transactionTotalsAdjusted.fee ? transactionTotalsAdjusted.fee : null;
     this.earnings = transactionTotalsAdjusted.earnings ? transactionTotalsAdjusted.earnings : null;
     this.currencyCode = transactionTotalsAdjusted.currency_code;
