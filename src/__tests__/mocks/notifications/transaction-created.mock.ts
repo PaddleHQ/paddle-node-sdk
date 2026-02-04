@@ -90,6 +90,7 @@ export const TransactionCreatedMock: IEventsResponse<ITransactionNotificationRes
         earnings: null,
         subtotal: '59900',
         grand_total: '71880',
+        grand_total_tax: '11980',
         currency_code: 'USD',
       },
       line_items: [
@@ -320,6 +321,7 @@ export const TransactionCreatedMockExpectation = {
         earnings: null,
         fee: null,
         grandTotal: '71880',
+        grandTotalTax: '11980',
         subtotal: '59900',
         tax: '11980',
         total: '71880',

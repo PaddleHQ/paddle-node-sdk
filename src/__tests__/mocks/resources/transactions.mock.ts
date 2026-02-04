@@ -405,6 +405,7 @@ export const TransactionPreviewMock: ITransactionPreviewResponse = {
       credit_to_balance: '',
       currency_code: 'USD',
       grand_total: '',
+      grand_total_tax: '1500',
     },
     line_items: [
       {
