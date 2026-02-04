@@ -16,6 +16,7 @@ export class TransactionTotals {
   public readonly creditToBalance: string;
   public readonly balance: string;
   public readonly grandTotal: string;
+  public readonly grandTotalTax: string;
   public readonly fee: string | null;
   public readonly earnings: string | null;
   public readonly currencyCode: CurrencyCode;
@@ -29,6 +30,7 @@ export class TransactionTotals {
     this.creditToBalance = transactionTotals.credit_to_balance;
     this.balance = transactionTotals.balance;
     this.grandTotal = transactionTotals.grand_total;
+    this.grandTotalTax = transactionTotals.grand_total_tax;
     this.fee = transactionTotals.fee ? transactionTotals.fee : null;
     this.earnings = transactionTotals.earnings ? transactionTotals.earnings : null;
     this.currencyCode = transactionTotals.currency_code;

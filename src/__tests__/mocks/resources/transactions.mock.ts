@@ -189,6 +189,7 @@ export const TransactionMock: ITransactionResponse = {
       credit_to_balance: '',
       currency_code: 'USD',
       grand_total: '',
+      grand_total_tax: '1500',
     },
     adjusted_totals: {
       subtotal: '15000',
@@ -196,6 +197,7 @@ export const TransactionMock: ITransactionResponse = {
       total: '16500',
       currency_code: 'USD',
       grand_total: '',
+      grand_total_tax: '1500',
       retained_fee: '2',
     },
     payout_totals: {
@@ -208,6 +210,7 @@ export const TransactionMock: ITransactionResponse = {
       credit_to_balance: '',
       currency_code: 'USD',
       grand_total: '',
+      grand_total_tax: '1500',
       fee: '',
       earnings: '',
       exchange_rate: '1',
@@ -402,6 +405,7 @@ export const TransactionPreviewMock: ITransactionPreviewResponse = {
       credit_to_balance: '',
       currency_code: 'USD',
       grand_total: '',
+      grand_total_tax: '1500',
     },
     line_items: [
       {

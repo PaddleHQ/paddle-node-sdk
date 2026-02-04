@@ -16,6 +16,7 @@ export class TransactionPayoutTotalsNotification {
   public readonly creditToBalance: string;
   public readonly balance: string;
   public readonly grandTotal: string;
+  public readonly grandTotalTax: string;
   public readonly fee: string;
   public readonly earnings: string;
   public readonly currencyCode: PayoutCurrencyCode;
@@ -31,6 +32,7 @@ export class TransactionPayoutTotalsNotification {
     this.creditToBalance = transactionPayoutTotals.credit_to_balance;
     this.balance = transactionPayoutTotals.balance;
     this.grandTotal = transactionPayoutTotals.grand_total;
+    this.grandTotalTax = transactionPayoutTotals.grand_total_tax;
     this.fee = transactionPayoutTotals.fee;
     this.earnings = transactionPayoutTotals.earnings;
     this.currencyCode = transactionPayoutTotals.currency_code;

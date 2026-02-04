@@ -14,6 +14,7 @@ export interface ITransactionPayoutTotalsResponse {
   credit: string;
   balance: string;
   grand_total: string;
+  grand_total_tax: string;
   credit_to_balance: string;
   fee: string;
   earnings: string;
