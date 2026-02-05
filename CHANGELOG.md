@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+---
+
+## 3.6.0 - 2026-02-04
+
 ### Added
 
 - Added support for `wechat_pay` payment method.
