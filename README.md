@@ -6,13 +6,13 @@
 [![GitHub License](https://img.shields.io/github/license/paddlehq/paddle-node-sdk)](https://github.com/PaddleHQ/paddle-node-sdk/blob/main/LICENSE)
 
 
-[Paddle Billing](https://www.paddle.com/billing?utm_source=dx&utm_medium=paddle-node-sdk) is a complete digital product sales and subscription management platform, designed for modern software businesses. It helps you increase your revenue, retain customers, and scale your operations.
+[Paddle Billing](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk) is the developer-first merchant of record, designed for modern SaaS, AI, mobile app, and digital product businesses. We take care of payments, tax, subscriptions, and metrics with one unified API that does it all.
 
 This is a [Node.js](https://nodejs.org/) SDK that you can use to integrate Paddle Billing with applications written in server-side JavaScript.
 
 For working with Paddle in your frontend, use [Paddle.js](https://developer.paddle.com/paddlejs/overview?utm_source=dx&utm_medium=paddle-node-sdk). You can open checkouts, securely collect payment information, build pricing pages, and integrate with Paddle Retain.  
 
-> **Important:** This package works with Paddle Billing. It does not support Paddle Classic. To work with Paddle Classic, see: [Paddle Classic API reference](https://developer.paddle.com/classic/api-reference/1384a288aca7a-api-reference?utm_source=dx&utm_medium=paddle-node-sdk)
+> **Important:** This package works with Paddle Billing. It does not support Paddle Classic. To work with Paddle Classic, see: [Paddle Classic dev docs](https://classic.paddle.com/?utm_source=dx&utm_medium=paddle-node-sdk)
 
 ## Installation
 
