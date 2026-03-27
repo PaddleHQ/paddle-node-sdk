@@ -24,6 +24,12 @@ adding additional type guards.
 
 ---
 
+## 3.6.1 - 2026-03-27
+
+### Added
+
+- `CLP` (Chilean peso) and `PEN` (Peruvian sol) as new currencies
+
 ## 3.6.0 - 2026-02-04
 
 ### Added
