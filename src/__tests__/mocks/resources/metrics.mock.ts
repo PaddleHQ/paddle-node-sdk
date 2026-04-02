@@ -9,6 +9,7 @@ import {
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
   type IMetricsTimeseriesChargebacksResponse,
+  type IMetricsTimeseriesCheckoutConversionResponse,
   type IMetricsTimeseriesRefundsResponse,
   type IMetricsTimeseriesRevenueResponse,
 } from '../../../types/index.js';
@@ -145,6 +146,34 @@ export const ChargebacksMock: IMetricsTimeseriesChargebacksResponse = {
 
 export const ChargebacksMockResponse: Response<IMetricsTimeseriesChargebacksResponse> = {
   data: ChargebacksMock,
+  meta: {
+    request_id: '',
+  },
+};
+
+export const CheckoutConversionMock: IMetricsTimeseriesCheckoutConversionResponse = {
+  ends_at: '2025-01-14T00:00:00Z',
+  interval: 'day',
+  starts_at: '2025-01-01T00:00:00Z',
+  timeseries: [
+    {
+      completed_count: 8,
+      count: 10,
+      rate: '0.8',
+      timestamp: '2025-01-01T00:00:00Z',
+    },
+    {
+      completed_count: 9,
+      count: 12,
+      rate: '0.75',
+      timestamp: '2025-01-02T00:00:00Z',
+    },
+  ],
+  updated_at: '2025-01-14T12:00:00Z',
+};
+
+export const CheckoutConversionMockResponse: Response<IMetricsTimeseriesCheckoutConversionResponse> = {
+  data: CheckoutConversionMock,
   meta: {
     request_id: '',
   },

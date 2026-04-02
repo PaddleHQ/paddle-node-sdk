@@ -8,6 +8,7 @@ import { BaseResource, QueryParameters } from '../../internal/base/index.js';
 import {
   type GetActiveSubscribersQueryParameters,
   type GetChargebacksQueryParameters,
+  type GetCheckoutConversionQueryParameters,
   type GetMonthlyRecurringRevenueChangeQueryParameters,
   type GetMonthlyRecurringRevenueQueryParameters,
   type GetRefundsQueryParameters,
@@ -16,6 +17,7 @@ import {
 import {
   MetricsTimeseriesActiveSubscribers,
   MetricsTimeseriesChargebacks,
+  MetricsTimeseriesCheckoutConversion,
   MetricsTimeseriesMonthlyRecurringRevenue,
   MetricsTimeseriesMonthlyRecurringRevenueChange,
   MetricsTimeseriesRefunds,
@@ -24,6 +26,7 @@ import {
 import {
   type IMetricsTimeseriesActiveSubscribersResponse,
   type IMetricsTimeseriesChargebacksResponse,
+  type IMetricsTimeseriesCheckoutConversionResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
   type IMetricsTimeseriesRefundsResponse,
@@ -38,6 +41,7 @@ const MetricsPaths = {
   revenue: '/metrics/revenue',
   refunds: '/metrics/refunds',
   chargebacks: '/metrics/chargebacks',
+  checkoutConversion: '/metrics/checkout-conversion',
 } as const;
 
 export * from './operations/index.js';
@@ -125,5 +129,20 @@ export class MetricsResource extends BaseResource {
     const data = this.handleResponse<IMetricsTimeseriesChargebacksResponse>(response);
 
     return new MetricsTimeseriesChargebacks(data);
+  }
+
+  public async getCheckoutConversion(
+    queryParams: GetCheckoutConversionQueryParameters,
+  ): Promise<MetricsTimeseriesCheckoutConversion> {
+    const queryParameters = new QueryParameters(queryParams);
+
+    const response = await this.client.get<
+      GetCheckoutConversionQueryParameters,
+      Response<IMetricsTimeseriesCheckoutConversionResponse> | ErrorResponse
+    >(MetricsPaths.checkoutConversion, queryParameters);
+
+    const data = this.handleResponse<IMetricsTimeseriesCheckoutConversionResponse>(response);
+
+    return new MetricsTimeseriesCheckoutConversion(data);
   }
 }

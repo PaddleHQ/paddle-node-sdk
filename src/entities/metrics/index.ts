@@ -15,3 +15,5 @@ export * from './metrics-timeseries-refunds.js';
 export * from './metrics-timeseries-refunds-datapoint.js';
 export * from './metrics-timeseries-chargebacks.js';
 export * from './metrics-timeseries-chargebacks-datapoint.js';
+export * from './metrics-timeseries-checkout-conversion.js';
+export * from './metrics-timeseries-checkout-conversion-datapoint.js';

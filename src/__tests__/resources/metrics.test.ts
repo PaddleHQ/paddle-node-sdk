@@ -13,6 +13,8 @@ import {
   MonthlyRecurringRevenueMockResponse,
   ChargebacksMock,
   ChargebacksMockResponse,
+  CheckoutConversionMock,
+  CheckoutConversionMockResponse,
   RefundsMock,
   RefundsMockResponse,
   RevenueMock,
@@ -21,6 +23,7 @@ import {
 import {
   GetActiveSubscribersQueryParameters,
   GetChargebacksQueryParameters,
+  GetCheckoutConversionQueryParameters,
   GetMonthlyRecurringRevenueChangeQueryParameters,
   GetMonthlyRecurringRevenueQueryParameters,
   GetRefundsQueryParameters,
@@ -253,6 +256,37 @@ describe('MetricsResource', () => {
     expect(result.timeseries[0].count).toBe(1);
     expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
     expect(result.timeseries[1].count).toBe(0);
+    expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
+  });
+
+  test('should return checkout conversion metrics', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(CheckoutConversionMockResponse);
+
+    const metricsResource = new MetricsResource(paddleInstance);
+    const queryParams: GetCheckoutConversionQueryParameters = {
+      from: '2025-01-01',
+      to: '2025-01-14',
+    };
+
+    const result = await metricsResource.getCheckoutConversion(queryParams);
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/checkout-conversion', {
+      queryParameters: queryParams,
+    });
+    expect(result).toBeDefined();
+    expect(result.endsAt).toBe(CheckoutConversionMock.ends_at);
+    expect(result.startsAt).toBe(CheckoutConversionMock.starts_at);
+    expect(result.interval).toBe('day');
+    expect(result.updatedAt).toBe(CheckoutConversionMock.updated_at);
+    expect(result.timeseries).toHaveLength(2);
+    expect(result.timeseries[0].completedCount).toBe(8);
+    expect(result.timeseries[0].count).toBe(10);
+    expect(result.timeseries[0].rate).toBe('0.8');
+    expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(result.timeseries[1].completedCount).toBe(9);
+    expect(result.timeseries[1].count).toBe(12);
+    expect(result.timeseries[1].rate).toBe('0.75');
     expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
   });
 });
