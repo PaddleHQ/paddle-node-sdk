@@ -7,6 +7,7 @@
 import { BaseResource, QueryParameters } from '../../internal/base/index.js';
 import {
   type GetActiveSubscribersQueryParameters,
+  type GetChargebacksQueryParameters,
   type GetMonthlyRecurringRevenueChangeQueryParameters,
   type GetMonthlyRecurringRevenueQueryParameters,
   type GetRefundsQueryParameters,
@@ -14,6 +15,7 @@ import {
 } from './operations/index.js';
 import {
   MetricsTimeseriesActiveSubscribers,
+  MetricsTimeseriesChargebacks,
   MetricsTimeseriesMonthlyRecurringRevenue,
   MetricsTimeseriesMonthlyRecurringRevenueChange,
   MetricsTimeseriesRefunds,
@@ -21,6 +23,7 @@ import {
 } from '../../entities/index.js';
 import {
   type IMetricsTimeseriesActiveSubscribersResponse,
+  type IMetricsTimeseriesChargebacksResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
   type IMetricsTimeseriesRefundsResponse,
@@ -34,6 +37,7 @@ const MetricsPaths = {
   monthlyRecurringRevenueChange: '/metrics/monthly-recurring-revenue-change',
   revenue: '/metrics/revenue',
   refunds: '/metrics/refunds',
+  chargebacks: '/metrics/chargebacks',
 } as const;
 
 export * from './operations/index.js';
@@ -108,5 +112,18 @@ export class MetricsResource extends BaseResource {
     const data = this.handleResponse<IMetricsTimeseriesRefundsResponse>(response);
 
     return new MetricsTimeseriesRefunds(data);
+  }
+
+  public async getChargebacks(queryParams: GetChargebacksQueryParameters): Promise<MetricsTimeseriesChargebacks> {
+    const queryParameters = new QueryParameters(queryParams);
+
+    const response = await this.client.get<
+      GetChargebacksQueryParameters,
+      Response<IMetricsTimeseriesChargebacksResponse> | ErrorResponse
+    >(MetricsPaths.chargebacks, queryParameters);
+
+    const data = this.handleResponse<IMetricsTimeseriesChargebacksResponse>(response);
+
+    return new MetricsTimeseriesChargebacks(data);
   }
 }

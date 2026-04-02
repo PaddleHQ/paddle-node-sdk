@@ -8,6 +8,7 @@ import {
   type IMetricsTimeseriesActiveSubscribersResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
+  type IMetricsTimeseriesChargebacksResponse,
   type IMetricsTimeseriesRefundsResponse,
   type IMetricsTimeseriesRevenueResponse,
 } from '../../../types/index.js';
@@ -120,6 +121,30 @@ export const RefundsMock: IMetricsTimeseriesRefundsResponse = {
 
 export const RefundsMockResponse: Response<IMetricsTimeseriesRefundsResponse> = {
   data: RefundsMock,
+  meta: {
+    request_id: '',
+  },
+};
+
+export const ChargebacksMock: IMetricsTimeseriesChargebacksResponse = {
+  ends_at: '2025-01-14T00:00:00Z',
+  interval: 'day',
+  starts_at: '2025-01-01T00:00:00Z',
+  timeseries: [
+    {
+      count: 1,
+      timestamp: '2025-01-01T00:00:00Z',
+    },
+    {
+      count: 0,
+      timestamp: '2025-01-02T00:00:00Z',
+    },
+  ],
+  updated_at: '2025-01-14T12:00:00Z',
+};
+
+export const ChargebacksMockResponse: Response<IMetricsTimeseriesChargebacksResponse> = {
+  data: ChargebacksMock,
   meta: {
     request_id: '',
   },

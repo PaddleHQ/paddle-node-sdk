@@ -9,3 +9,4 @@ export * from './get-monthly-recurring-revenue-query-parameters.js';
 export * from './get-monthly-recurring-revenue-change-query-parameters.js';
 export * from './get-revenue-query-parameters.js';
 export * from './get-refunds-query-parameters.js';
+export * from './get-chargebacks-query-parameters.js';

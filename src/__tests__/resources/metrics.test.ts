@@ -11,6 +11,8 @@ import {
   MonthlyRecurringRevenueChangeMockResponse,
   MonthlyRecurringRevenueMock,
   MonthlyRecurringRevenueMockResponse,
+  ChargebacksMock,
+  ChargebacksMockResponse,
   RefundsMock,
   RefundsMockResponse,
   RevenueMock,
@@ -18,6 +20,7 @@ import {
 } from '../mocks/resources/metrics.mock.js';
 import {
   GetActiveSubscribersQueryParameters,
+  GetChargebacksQueryParameters,
   GetMonthlyRecurringRevenueChangeQueryParameters,
   GetMonthlyRecurringRevenueQueryParameters,
   GetRefundsQueryParameters,
@@ -223,6 +226,33 @@ describe('MetricsResource', () => {
     expect(result.timeseries[0].amount).toBe('1200');
     expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
     expect(result.timeseries[1].amount).toBe('800');
+    expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
+  });
+
+  test('should return chargebacks metrics', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ChargebacksMockResponse);
+
+    const metricsResource = new MetricsResource(paddleInstance);
+    const queryParams: GetChargebacksQueryParameters = {
+      from: '2025-01-01',
+      to: '2025-01-14',
+    };
+
+    const result = await metricsResource.getChargebacks(queryParams);
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/chargebacks', {
+      queryParameters: queryParams,
+    });
+    expect(result).toBeDefined();
+    expect(result.endsAt).toBe(ChargebacksMock.ends_at);
+    expect(result.startsAt).toBe(ChargebacksMock.starts_at);
+    expect(result.interval).toBe('day');
+    expect(result.updatedAt).toBe(ChargebacksMock.updated_at);
+    expect(result.timeseries).toHaveLength(2);
+    expect(result.timeseries[0].count).toBe(1);
+    expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(result.timeseries[1].count).toBe(0);
     expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
   });
 });
