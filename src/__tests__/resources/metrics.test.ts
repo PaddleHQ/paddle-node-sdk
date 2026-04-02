@@ -31,6 +31,10 @@ import {
   MetricsResource,
 } from '../../resources/index.js';
 
+function expectDefined<T>(value: T | undefined | null): asserts value is T {
+  expect(value).toBeDefined();
+}
+
 describe('MetricsResource', () => {
   test('should return active subscribers metrics', async () => {
     const paddleInstance = getPaddleTestClient();
@@ -53,10 +57,13 @@ describe('MetricsResource', () => {
     expect(result.interval).toBe('day');
     expect(result.updatedAt).toBe(ActiveSubscribersMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
-    expect(result.timeseries[0]!.count).toBe(100);
-    expect(result.timeseries[0]!.timestamp).toBe('2025-01-01T00:00:00Z');
-    expect(result.timeseries[1]!.count).toBe(105);
-    expect(result.timeseries[1]!.timestamp).toBe('2025-01-02T00:00:00Z');
+    const [firstPoint, secondPoint] = result.timeseries;
+    expectDefined(firstPoint);
+    expectDefined(secondPoint);
+    expect(firstPoint.count).toBe(100);
+    expect(firstPoint.timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(secondPoint.count).toBe(105);
+    expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
   });
 
   test('should return empty timeseries when from and to are the same', async () => {
@@ -110,10 +117,13 @@ describe('MetricsResource', () => {
     expect(result.interval).toBe('day');
     expect(result.updatedAt).toBe(MonthlyRecurringRevenueMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
-    expect(result.timeseries[0]!.amount).toBe('10000');
-    expect(result.timeseries[0]!.timestamp).toBe('2025-01-01T00:00:00Z');
-    expect(result.timeseries[1]!.amount).toBe('10500');
-    expect(result.timeseries[1]!.timestamp).toBe('2025-01-02T00:00:00Z');
+    const [firstPoint, secondPoint] = result.timeseries;
+    expectDefined(firstPoint);
+    expectDefined(secondPoint);
+    expect(firstPoint.amount).toBe('10000');
+    expect(firstPoint.timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(secondPoint.amount).toBe('10500');
+    expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
   });
 
   test('should return empty MRR timeseries when from and to are the same', async () => {
@@ -168,10 +178,13 @@ describe('MetricsResource', () => {
     expect(result.interval).toBe('day');
     expect(result.updatedAt).toBe(MonthlyRecurringRevenueMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
-    expect(result.timeseries[0]!.amount).toBe('10000');
-    expect(result.timeseries[0]!.timestamp).toBe('2025-01-01T00:00:00Z');
-    expect(result.timeseries[1]!.amount).toBe('10500');
-    expect(result.timeseries[1]!.timestamp).toBe('2025-01-02T00:00:00Z');
+    const [firstPoint, secondPoint] = result.timeseries;
+    expectDefined(firstPoint);
+    expectDefined(secondPoint);
+    expect(firstPoint.amount).toBe('10000');
+    expect(firstPoint.timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(secondPoint.amount).toBe('10500');
+    expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
   });
 
   test('should return revenue metrics', async () => {
@@ -196,12 +209,15 @@ describe('MetricsResource', () => {
     expect(result.interval).toBe('day');
     expect(result.updatedAt).toBe(RevenueMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
-    expect(result.timeseries[0]!.amount).toBe('5000');
-    expect(result.timeseries[0]!.count).toBe(3);
-    expect(result.timeseries[0]!.timestamp).toBe('2025-01-01T00:00:00Z');
-    expect(result.timeseries[1]!.amount).toBe('7200');
-    expect(result.timeseries[1]!.count).toBe(5);
-    expect(result.timeseries[1]!.timestamp).toBe('2025-01-02T00:00:00Z');
+    const [firstPoint, secondPoint] = result.timeseries;
+    expectDefined(firstPoint);
+    expectDefined(secondPoint);
+    expect(firstPoint.amount).toBe('5000');
+    expect(firstPoint.count).toBe(3);
+    expect(firstPoint.timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(secondPoint.amount).toBe('7200');
+    expect(secondPoint.count).toBe(5);
+    expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
   });
 
   test('should return refunds metrics', async () => {
@@ -226,10 +242,13 @@ describe('MetricsResource', () => {
     expect(result.interval).toBe('day');
     expect(result.updatedAt).toBe(RefundsMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
-    expect(result.timeseries[0]!.amount).toBe('1200');
-    expect(result.timeseries[0]!.timestamp).toBe('2025-01-01T00:00:00Z');
-    expect(result.timeseries[1]!.amount).toBe('800');
-    expect(result.timeseries[1]!.timestamp).toBe('2025-01-02T00:00:00Z');
+    const [firstPoint, secondPoint] = result.timeseries;
+    expectDefined(firstPoint);
+    expectDefined(secondPoint);
+    expect(firstPoint.amount).toBe('1200');
+    expect(firstPoint.timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(secondPoint.amount).toBe('800');
+    expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
   });
 
   test('should return chargebacks metrics', async () => {
@@ -253,10 +272,13 @@ describe('MetricsResource', () => {
     expect(result.interval).toBe('day');
     expect(result.updatedAt).toBe(ChargebacksMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
-    expect(result.timeseries[0]!.count).toBe(1);
-    expect(result.timeseries[0]!.timestamp).toBe('2025-01-01T00:00:00Z');
-    expect(result.timeseries[1]!.count).toBe(0);
-    expect(result.timeseries[1]!.timestamp).toBe('2025-01-02T00:00:00Z');
+    const [firstPoint, secondPoint] = result.timeseries;
+    expectDefined(firstPoint);
+    expectDefined(secondPoint);
+    expect(firstPoint.count).toBe(1);
+    expect(firstPoint.timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(secondPoint.count).toBe(0);
+    expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
   });
 
   test('should return checkout conversion metrics', async () => {
@@ -280,13 +302,16 @@ describe('MetricsResource', () => {
     expect(result.interval).toBe('day');
     expect(result.updatedAt).toBe(CheckoutConversionMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
-    expect(result.timeseries[0]!.completedCount).toBe(8);
-    expect(result.timeseries[0]!.count).toBe(10);
-    expect(result.timeseries[0]!.rate).toBe('0.8');
-    expect(result.timeseries[0]!.timestamp).toBe('2025-01-01T00:00:00Z');
-    expect(result.timeseries[1]!.completedCount).toBe(9);
-    expect(result.timeseries[1]!.count).toBe(12);
-    expect(result.timeseries[1]!.rate).toBe('0.75');
-    expect(result.timeseries[1]!.timestamp).toBe('2025-01-02T00:00:00Z');
+    const [firstPoint, secondPoint] = result.timeseries;
+    expectDefined(firstPoint);
+    expectDefined(secondPoint);
+    expect(firstPoint.completedCount).toBe(8);
+    expect(firstPoint.count).toBe(10);
+    expect(firstPoint.rate).toBe('0.8');
+    expect(firstPoint.timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(secondPoint.completedCount).toBe(9);
+    expect(secondPoint.count).toBe(12);
+    expect(secondPoint.rate).toBe('0.75');
+    expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
   });
 });
