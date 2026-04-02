@@ -11,6 +11,8 @@ import {
   MonthlyRecurringRevenueChangeMockResponse,
   MonthlyRecurringRevenueMock,
   MonthlyRecurringRevenueMockResponse,
+  RefundsMock,
+  RefundsMockResponse,
   RevenueMock,
   RevenueMockResponse,
 } from '../mocks/resources/metrics.mock.js';
@@ -18,6 +20,7 @@ import {
   GetActiveSubscribersQueryParameters,
   GetMonthlyRecurringRevenueChangeQueryParameters,
   GetMonthlyRecurringRevenueQueryParameters,
+  GetRefundsQueryParameters,
   GetRevenueQueryParameters,
   MetricsResource,
 } from '../../resources/index.js';
@@ -48,26 +51,6 @@ describe('MetricsResource', () => {
     expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
     expect(result.timeseries[1].count).toBe(105);
     expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
-  });
-
-  test('should return active subscribers metrics with interval parameter', async () => {
-    const paddleInstance = getPaddleTestClient();
-    paddleInstance.get = jest.fn().mockResolvedValue(ActiveSubscribersMockResponse);
-
-    const metricsResource = new MetricsResource(paddleInstance);
-    const queryParams: GetActiveSubscribersQueryParameters = {
-      from: '2025-01-01',
-      to: '2025-01-14',
-      interval: 'day',
-    };
-
-    const result = await metricsResource.getActiveSubscribers(queryParams);
-
-    expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/active-subscribers', {
-      queryParameters: queryParams,
-    });
-    expect(result).toBeDefined();
-    expect(result.interval).toBe('day');
   });
 
   test('should return empty timeseries when from and to are the same', async () => {
@@ -212,6 +195,34 @@ describe('MetricsResource', () => {
     expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
     expect(result.timeseries[1].amount).toBe('7200');
     expect(result.timeseries[1].count).toBe(5);
+    expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
+  });
+
+  test('should return refunds metrics', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(RefundsMockResponse);
+
+    const metricsResource = new MetricsResource(paddleInstance);
+    const queryParams: GetRefundsQueryParameters = {
+      from: '2025-01-01',
+      to: '2025-01-14',
+    };
+
+    const result = await metricsResource.getRefunds(queryParams);
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/refunds', {
+      queryParameters: queryParams,
+    });
+    expect(result).toBeDefined();
+    expect(result.currencyCode).toBe(RefundsMock.currency_code);
+    expect(result.endsAt).toBe(RefundsMock.ends_at);
+    expect(result.startsAt).toBe(RefundsMock.starts_at);
+    expect(result.interval).toBe('day');
+    expect(result.updatedAt).toBe(RefundsMock.updated_at);
+    expect(result.timeseries).toHaveLength(2);
+    expect(result.timeseries[0].amount).toBe('1200');
+    expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(result.timeseries[1].amount).toBe('800');
     expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
   });
 });

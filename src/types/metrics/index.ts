@@ -11,3 +11,5 @@ export * from './metrics-timeseries-monthly-recurring-revenue-response.js';
 export * from './metrics-timeseries-monthly-recurring-revenue-change-response.js';
 export * from './metrics-timeseries-revenue-datapoint.js';
 export * from './metrics-timeseries-revenue-response.js';
+export * from './metrics-timeseries-refunds-datapoint.js';
+export * from './metrics-timeseries-refunds-response.js';
