@@ -5,10 +5,19 @@
  */
 
 import { BaseResource, QueryParameters } from '../../internal/base/index.js';
-import { type GetActiveSubscribersQueryParameters, type GetMonthlyRecurringRevenueQueryParameters } from './operations/index.js';
-import { MetricsTimeseriesActiveSubscribers, MetricsTimeseriesMonthlyRecurringRevenue } from '../../entities/index.js';
+import {
+  type GetActiveSubscribersQueryParameters,
+  type GetMonthlyRecurringRevenueChangeQueryParameters,
+  type GetMonthlyRecurringRevenueQueryParameters,
+} from './operations/index.js';
+import {
+  MetricsTimeseriesActiveSubscribers,
+  MetricsTimeseriesMonthlyRecurringRevenue,
+  MetricsTimeseriesMonthlyRecurringRevenueChange,
+} from '../../entities/index.js';
 import {
   type IMetricsTimeseriesActiveSubscribersResponse,
+  type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
 } from '../../types/index.js';
 import { type Response, type ErrorResponse } from '../../internal/index.js';
@@ -16,6 +25,7 @@ import { type Response, type ErrorResponse } from '../../internal/index.js';
 const MetricsPaths = {
   activeSubscribers: '/metrics/active-subscribers',
   monthlyRecurringRevenue: '/metrics/monthly-recurring-revenue',
+  monthlyRecurringRevenueChange: '/metrics/monthly-recurring-revenue-change',
 } as const;
 
 export * from './operations/index.js';
@@ -49,5 +59,20 @@ export class MetricsResource extends BaseResource {
     const data = this.handleResponse<IMetricsTimeseriesMonthlyRecurringRevenueResponse>(response);
 
     return new MetricsTimeseriesMonthlyRecurringRevenue(data);
+  }
+
+  public async getMonthlyRecurringRevenueChange(
+    queryParams: GetMonthlyRecurringRevenueChangeQueryParameters,
+  ): Promise<MetricsTimeseriesMonthlyRecurringRevenueChange> {
+    const queryParameters = new QueryParameters(queryParams);
+
+    const response = await this.client.get<
+      GetMonthlyRecurringRevenueChangeQueryParameters,
+      Response<IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse> | ErrorResponse
+    >(MetricsPaths.monthlyRecurringRevenueChange, queryParameters);
+
+    const data = this.handleResponse<IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse>(response);
+
+    return new MetricsTimeseriesMonthlyRecurringRevenueChange(data);
   }
 }

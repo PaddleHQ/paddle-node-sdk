@@ -6,3 +6,4 @@
 
 export * from './get-active-subscribers-query-parameters.js';
 export * from './get-monthly-recurring-revenue-query-parameters.js';
+export * from './get-monthly-recurring-revenue-change-query-parameters.js';

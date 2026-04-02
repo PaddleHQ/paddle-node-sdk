@@ -6,6 +6,7 @@
 
 import {
   type IMetricsTimeseriesActiveSubscribersResponse,
+  type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
 } from '../../../types/index.js';
 import { type Response } from '../../../internal/index.js';
@@ -58,3 +59,14 @@ export const MonthlyRecurringRevenueMockResponse: Response<IMetricsTimeseriesMon
     request_id: '',
   },
 };
+
+export const MonthlyRecurringRevenueChangeMock: IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse =
+  MonthlyRecurringRevenueMock;
+
+export const MonthlyRecurringRevenueChangeMockResponse: Response<IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse> =
+  {
+    data: MonthlyRecurringRevenueChangeMock,
+    meta: {
+      request_id: '',
+    },
+  };

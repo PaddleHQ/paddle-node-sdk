@@ -7,5 +7,4 @@
 export interface GetActiveSubscribersQueryParameters {
   from: string;
   to: string;
-  interval?: 'day';
 }

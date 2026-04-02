@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export interface GetMonthlyRecurringRevenueQueryParameters {
+export interface GetMonthlyRecurringRevenueChangeQueryParameters {
   from: string;
   to: string;
 }

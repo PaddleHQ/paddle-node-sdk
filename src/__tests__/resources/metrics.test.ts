@@ -8,11 +8,13 @@ import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   ActiveSubscribersMock,
   ActiveSubscribersMockResponse,
+  MonthlyRecurringRevenueChangeMockResponse,
   MonthlyRecurringRevenueMock,
   MonthlyRecurringRevenueMockResponse,
 } from '../mocks/resources/metrics.mock.js';
 import {
   GetActiveSubscribersQueryParameters,
+  GetMonthlyRecurringRevenueChangeQueryParameters,
   GetMonthlyRecurringRevenueQueryParameters,
   MetricsResource,
 } from '../../resources/index.js';
@@ -150,5 +152,33 @@ describe('MetricsResource', () => {
 
     expect(result).toBeDefined();
     expect(result.timeseries).toHaveLength(0);
+  });
+
+  test('should return monthly recurring revenue change metrics', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(MonthlyRecurringRevenueChangeMockResponse);
+
+    const metricsResource = new MetricsResource(paddleInstance);
+    const queryParams: GetMonthlyRecurringRevenueChangeQueryParameters = {
+      from: '2025-01-01',
+      to: '2025-01-14',
+    };
+
+    const result = await metricsResource.getMonthlyRecurringRevenueChange(queryParams);
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/monthly-recurring-revenue-change', {
+      queryParameters: queryParams,
+    });
+    expect(result).toBeDefined();
+    expect(result.currencyCode).toBe(MonthlyRecurringRevenueMock.currency_code);
+    expect(result.endsAt).toBe(MonthlyRecurringRevenueMock.ends_at);
+    expect(result.startsAt).toBe(MonthlyRecurringRevenueMock.starts_at);
+    expect(result.interval).toBe('day');
+    expect(result.updatedAt).toBe(MonthlyRecurringRevenueMock.updated_at);
+    expect(result.timeseries).toHaveLength(2);
+    expect(result.timeseries[0].amount).toBe('10000');
+    expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(result.timeseries[1].amount).toBe('10500');
+    expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
   });
 });

@@ -8,3 +8,4 @@ export * from './metrics-timeseries-active-subscribers-datapoint.js';
 export * from './metrics-timeseries-active-subscribers-response.js';
 export * from './metrics-timeseries-monthly-recurring-revenue-datapoint.js';
 export * from './metrics-timeseries-monthly-recurring-revenue-response.js';
+export * from './metrics-timeseries-monthly-recurring-revenue-change-response.js';
