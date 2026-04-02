@@ -9,16 +9,19 @@ import {
   type GetActiveSubscribersQueryParameters,
   type GetMonthlyRecurringRevenueChangeQueryParameters,
   type GetMonthlyRecurringRevenueQueryParameters,
+  type GetRevenueQueryParameters,
 } from './operations/index.js';
 import {
   MetricsTimeseriesActiveSubscribers,
   MetricsTimeseriesMonthlyRecurringRevenue,
   MetricsTimeseriesMonthlyRecurringRevenueChange,
+  MetricsTimeseriesRevenue,
 } from '../../entities/index.js';
 import {
   type IMetricsTimeseriesActiveSubscribersResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
+  type IMetricsTimeseriesRevenueResponse,
 } from '../../types/index.js';
 import { type Response, type ErrorResponse } from '../../internal/index.js';
 
@@ -26,6 +29,7 @@ const MetricsPaths = {
   activeSubscribers: '/metrics/active-subscribers',
   monthlyRecurringRevenue: '/metrics/monthly-recurring-revenue',
   monthlyRecurringRevenueChange: '/metrics/monthly-recurring-revenue-change',
+  revenue: '/metrics/revenue',
 } as const;
 
 export * from './operations/index.js';
@@ -74,5 +78,18 @@ export class MetricsResource extends BaseResource {
     const data = this.handleResponse<IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse>(response);
 
     return new MetricsTimeseriesMonthlyRecurringRevenueChange(data);
+  }
+
+  public async getRevenue(queryParams: GetRevenueQueryParameters): Promise<MetricsTimeseriesRevenue> {
+    const queryParameters = new QueryParameters(queryParams);
+
+    const response = await this.client.get<
+      GetRevenueQueryParameters,
+      Response<IMetricsTimeseriesRevenueResponse> | ErrorResponse
+    >(MetricsPaths.revenue, queryParameters);
+
+    const data = this.handleResponse<IMetricsTimeseriesRevenueResponse>(response);
+
+    return new MetricsTimeseriesRevenue(data);
   }
 }

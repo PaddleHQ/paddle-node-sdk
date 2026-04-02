@@ -8,6 +8,7 @@ import {
   type IMetricsTimeseriesActiveSubscribersResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
+  type IMetricsTimeseriesRevenueResponse,
 } from '../../../types/index.js';
 import { type Response } from '../../../internal/index.js';
 
@@ -70,3 +71,30 @@ export const MonthlyRecurringRevenueChangeMockResponse: Response<IMetricsTimeser
       request_id: '',
     },
   };
+
+export const RevenueMock: IMetricsTimeseriesRevenueResponse = {
+  currency_code: 'USD',
+  ends_at: '2025-01-14T00:00:00Z',
+  interval: 'day',
+  starts_at: '2025-01-01T00:00:00Z',
+  timeseries: [
+    {
+      amount: '5000',
+      count: 3,
+      timestamp: '2025-01-01T00:00:00Z',
+    },
+    {
+      amount: '7200',
+      count: 5,
+      timestamp: '2025-01-02T00:00:00Z',
+    },
+  ],
+  updated_at: '2025-01-14T12:00:00Z',
+};
+
+export const RevenueMockResponse: Response<IMetricsTimeseriesRevenueResponse> = {
+  data: RevenueMock,
+  meta: {
+    request_id: '',
+  },
+};

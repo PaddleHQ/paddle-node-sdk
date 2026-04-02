@@ -11,11 +11,14 @@ import {
   MonthlyRecurringRevenueChangeMockResponse,
   MonthlyRecurringRevenueMock,
   MonthlyRecurringRevenueMockResponse,
+  RevenueMock,
+  RevenueMockResponse,
 } from '../mocks/resources/metrics.mock.js';
 import {
   GetActiveSubscribersQueryParameters,
   GetMonthlyRecurringRevenueChangeQueryParameters,
   GetMonthlyRecurringRevenueQueryParameters,
+  GetRevenueQueryParameters,
   MetricsResource,
 } from '../../resources/index.js';
 
@@ -179,6 +182,36 @@ describe('MetricsResource', () => {
     expect(result.timeseries[0].amount).toBe('10000');
     expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
     expect(result.timeseries[1].amount).toBe('10500');
+    expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
+  });
+
+  test('should return revenue metrics', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(RevenueMockResponse);
+
+    const metricsResource = new MetricsResource(paddleInstance);
+    const queryParams: GetRevenueQueryParameters = {
+      from: '2025-01-01',
+      to: '2025-01-14',
+    };
+
+    const result = await metricsResource.getRevenue(queryParams);
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/revenue', {
+      queryParameters: queryParams,
+    });
+    expect(result).toBeDefined();
+    expect(result.currencyCode).toBe(RevenueMock.currency_code);
+    expect(result.endsAt).toBe(RevenueMock.ends_at);
+    expect(result.startsAt).toBe(RevenueMock.starts_at);
+    expect(result.interval).toBe('day');
+    expect(result.updatedAt).toBe(RevenueMock.updated_at);
+    expect(result.timeseries).toHaveLength(2);
+    expect(result.timeseries[0].amount).toBe('5000');
+    expect(result.timeseries[0].count).toBe(3);
+    expect(result.timeseries[0].timestamp).toBe('2025-01-01T00:00:00Z');
+    expect(result.timeseries[1].amount).toBe('7200');
+    expect(result.timeseries[1].count).toBe(5);
     expect(result.timeseries[1].timestamp).toBe('2025-01-02T00:00:00Z');
   });
 });

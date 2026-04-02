@@ -9,3 +9,5 @@ export * from './metrics-timeseries-active-subscribers-datapoint.js';
 export * from './metrics-timeseries-monthly-recurring-revenue.js';
 export * from './metrics-timeseries-monthly-recurring-revenue-datapoint.js';
 export * from './metrics-timeseries-monthly-recurring-revenue-change.js';
+export * from './metrics-timeseries-revenue.js';
+export * from './metrics-timeseries-revenue-datapoint.js';
