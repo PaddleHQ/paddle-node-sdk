@@ -18,9 +18,7 @@ export class MetricsTimeseriesChargebacks {
     this.endsAt = data.ends_at;
     this.interval = data.interval;
     this.startsAt = data.starts_at;
-    this.timeseries = data.timeseries.map(
-      (datapoint) => new MetricsTimeseriesChargebacksDatapoint(datapoint),
-    );
+    this.timeseries = data.timeseries.map((datapoint) => new MetricsTimeseriesChargebacksDatapoint(datapoint));
     this.updatedAt = data.updated_at;
   }
 }
