@@ -4,12 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type MetricsTimeseriesInterval } from '../../enums/index.js';
 import { type IMetricsTimeseriesChargebacksResponse } from '../../types/index.js';
 import { MetricsTimeseriesChargebacksDatapoint } from './metrics-timeseries-chargebacks-datapoint.js';
 
 export class MetricsTimeseriesChargebacks {
   public readonly endsAt: string;
-  public readonly interval: 'day';
+  public readonly interval: MetricsTimeseriesInterval;
   public readonly startsAt: string;
   public readonly timeseries: MetricsTimeseriesChargebacksDatapoint[];
   public readonly updatedAt: string;

@@ -20,6 +20,7 @@ import {
   RevenueMock,
   RevenueMockResponse,
 } from '../mocks/resources/metrics.mock.js';
+import { MetricsTimeseriesInterval } from '../../enums/index.js';
 import {
   GetActiveSubscribersQueryParameters,
   GetChargebacksQueryParameters,
@@ -54,7 +55,7 @@ describe('MetricsResource', () => {
     expect(result).toBeDefined();
     expect(result.endsAt).toBe(ActiveSubscribersMock.ends_at);
     expect(result.startsAt).toBe(ActiveSubscribersMock.starts_at);
-    expect(result.interval).toBe('day');
+    expect(result.interval).toBe(MetricsTimeseriesInterval.Day);
     expect(result.updatedAt).toBe(ActiveSubscribersMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
     const [firstPoint, secondPoint] = result.timeseries;
@@ -70,7 +71,7 @@ describe('MetricsResource', () => {
     const emptyTimeseriesResponse = {
       data: {
         ends_at: '2025-01-01T00:00:00Z',
-        interval: 'day' as const,
+        interval: MetricsTimeseriesInterval.Day,
         starts_at: '2025-01-01T00:00:00Z',
         timeseries: [],
         updated_at: '2025-01-01T12:00:00Z',
@@ -114,7 +115,7 @@ describe('MetricsResource', () => {
     expect(result.currencyCode).toBe(MonthlyRecurringRevenueMock.currency_code);
     expect(result.endsAt).toBe(MonthlyRecurringRevenueMock.ends_at);
     expect(result.startsAt).toBe(MonthlyRecurringRevenueMock.starts_at);
-    expect(result.interval).toBe('day');
+    expect(result.interval).toBe(MetricsTimeseriesInterval.Day);
     expect(result.updatedAt).toBe(MonthlyRecurringRevenueMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
     const [firstPoint, secondPoint] = result.timeseries;
@@ -131,7 +132,7 @@ describe('MetricsResource', () => {
       data: {
         currency_code: 'USD' as const,
         ends_at: '2025-01-01T00:00:00Z',
-        interval: 'day' as const,
+        interval: MetricsTimeseriesInterval.Day,
         starts_at: '2025-01-01T00:00:00Z',
         timeseries: [],
         updated_at: '2025-01-01T12:00:00Z',
@@ -175,7 +176,7 @@ describe('MetricsResource', () => {
     expect(result.currencyCode).toBe(MonthlyRecurringRevenueMock.currency_code);
     expect(result.endsAt).toBe(MonthlyRecurringRevenueMock.ends_at);
     expect(result.startsAt).toBe(MonthlyRecurringRevenueMock.starts_at);
-    expect(result.interval).toBe('day');
+    expect(result.interval).toBe(MetricsTimeseriesInterval.Day);
     expect(result.updatedAt).toBe(MonthlyRecurringRevenueMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
     const [firstPoint, secondPoint] = result.timeseries;
@@ -206,7 +207,7 @@ describe('MetricsResource', () => {
     expect(result.currencyCode).toBe(RevenueMock.currency_code);
     expect(result.endsAt).toBe(RevenueMock.ends_at);
     expect(result.startsAt).toBe(RevenueMock.starts_at);
-    expect(result.interval).toBe('day');
+    expect(result.interval).toBe(MetricsTimeseriesInterval.Day);
     expect(result.updatedAt).toBe(RevenueMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
     const [firstPoint, secondPoint] = result.timeseries;
@@ -239,7 +240,7 @@ describe('MetricsResource', () => {
     expect(result.currencyCode).toBe(RefundsMock.currency_code);
     expect(result.endsAt).toBe(RefundsMock.ends_at);
     expect(result.startsAt).toBe(RefundsMock.starts_at);
-    expect(result.interval).toBe('day');
+    expect(result.interval).toBe(MetricsTimeseriesInterval.Day);
     expect(result.updatedAt).toBe(RefundsMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
     const [firstPoint, secondPoint] = result.timeseries;
@@ -269,7 +270,7 @@ describe('MetricsResource', () => {
     expect(result).toBeDefined();
     expect(result.endsAt).toBe(ChargebacksMock.ends_at);
     expect(result.startsAt).toBe(ChargebacksMock.starts_at);
-    expect(result.interval).toBe('day');
+    expect(result.interval).toBe(MetricsTimeseriesInterval.Day);
     expect(result.updatedAt).toBe(ChargebacksMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
     const [firstPoint, secondPoint] = result.timeseries;
@@ -299,7 +300,7 @@ describe('MetricsResource', () => {
     expect(result).toBeDefined();
     expect(result.endsAt).toBe(CheckoutConversionMock.ends_at);
     expect(result.startsAt).toBe(CheckoutConversionMock.starts_at);
-    expect(result.interval).toBe('day');
+    expect(result.interval).toBe(MetricsTimeseriesInterval.Day);
     expect(result.updatedAt).toBe(CheckoutConversionMock.updated_at);
     expect(result.timeseries).toHaveLength(2);
     const [firstPoint, secondPoint] = result.timeseries;

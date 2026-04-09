@@ -4,6 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { MetricsTimeseriesInterval } from '../../../enums/index.js';
 import {
   type IMetricsTimeseriesActiveSubscribersResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
@@ -17,7 +18,7 @@ import { type Response } from '../../../internal/index.js';
 
 export const ActiveSubscribersMock: IMetricsTimeseriesActiveSubscribersResponse = {
   ends_at: '2025-01-14T00:00:00Z',
-  interval: 'day',
+  interval: MetricsTimeseriesInterval.Day,
   starts_at: '2025-01-01T00:00:00Z',
   timeseries: [
     {
@@ -42,7 +43,7 @@ export const ActiveSubscribersMockResponse: Response<IMetricsTimeseriesActiveSub
 export const MonthlyRecurringRevenueMock: IMetricsTimeseriesMonthlyRecurringRevenueResponse = {
   currency_code: 'USD',
   ends_at: '2025-01-14T00:00:00Z',
-  interval: 'day',
+  interval: MetricsTimeseriesInterval.Day,
   starts_at: '2025-01-01T00:00:00Z',
   timeseries: [
     {
@@ -78,7 +79,7 @@ export const MonthlyRecurringRevenueChangeMockResponse: Response<IMetricsTimeser
 export const RevenueMock: IMetricsTimeseriesRevenueResponse = {
   currency_code: 'USD',
   ends_at: '2025-01-14T00:00:00Z',
-  interval: 'day',
+  interval: MetricsTimeseriesInterval.Day,
   starts_at: '2025-01-01T00:00:00Z',
   timeseries: [
     {
@@ -105,7 +106,7 @@ export const RevenueMockResponse: Response<IMetricsTimeseriesRevenueResponse> = 
 export const RefundsMock: IMetricsTimeseriesRefundsResponse = {
   currency_code: 'USD',
   ends_at: '2025-01-14T00:00:00Z',
-  interval: 'day',
+  interval: MetricsTimeseriesInterval.Day,
   starts_at: '2025-01-01T00:00:00Z',
   timeseries: [
     {
@@ -129,7 +130,7 @@ export const RefundsMockResponse: Response<IMetricsTimeseriesRefundsResponse> = 
 
 export const ChargebacksMock: IMetricsTimeseriesChargebacksResponse = {
   ends_at: '2025-01-14T00:00:00Z',
-  interval: 'day',
+  interval: MetricsTimeseriesInterval.Day,
   starts_at: '2025-01-01T00:00:00Z',
   timeseries: [
     {
@@ -153,7 +154,7 @@ export const ChargebacksMockResponse: Response<IMetricsTimeseriesChargebacksResp
 
 export const CheckoutConversionMock: IMetricsTimeseriesCheckoutConversionResponse = {
   ends_at: '2025-01-14T00:00:00Z',
-  interval: 'day',
+  interval: MetricsTimeseriesInterval.Day,
   starts_at: '2025-01-01T00:00:00Z',
   timeseries: [
     {

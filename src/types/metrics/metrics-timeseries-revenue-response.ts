@@ -4,13 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CurrencyCode } from '../../enums/index.js';
+import { type CurrencyCode, type MetricsTimeseriesInterval } from '../../enums/index.js';
 import { type IMetricsTimeseriesRevenueDatapoint } from './metrics-timeseries-revenue-datapoint.js';
 
 export interface IMetricsTimeseriesRevenueResponse {
   currency_code: CurrencyCode;
   ends_at: string;
-  interval: 'day';
+  interval: MetricsTimeseriesInterval;
   starts_at: string;
   timeseries: IMetricsTimeseriesRevenueDatapoint[];
   updated_at: string;

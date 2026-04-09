@@ -4,12 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type MetricsTimeseriesInterval } from '../../enums/index.js';
 import { type IMetricsTimeseriesActiveSubscribersResponse } from '../../types/index.js';
 import { MetricsTimeseriesActiveSubscribersDatapoint } from './metrics-timeseries-active-subscribers-datapoint.js';
 
 export class MetricsTimeseriesActiveSubscribers {
   public readonly endsAt: string;
-  public readonly interval: 'day';
+  public readonly interval: MetricsTimeseriesInterval;
   public readonly startsAt: string;
   public readonly timeseries: MetricsTimeseriesActiveSubscribersDatapoint[];
   public readonly updatedAt: string;

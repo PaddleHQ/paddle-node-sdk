@@ -4,11 +4,12 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type MetricsTimeseriesInterval } from '../../enums/index.js';
 import { type IMetricsTimeseriesActiveSubscribersDatapoint } from './metrics-timeseries-active-subscribers-datapoint.js';
 
 export interface IMetricsTimeseriesActiveSubscribersResponse {
   ends_at: string;
-  interval: 'day';
+  interval: MetricsTimeseriesInterval;
   starts_at: string;
   timeseries: IMetricsTimeseriesActiveSubscribersDatapoint[];
   updated_at: string;
