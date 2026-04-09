@@ -714,6 +714,35 @@ async function getAllReports(): Promise<Report[]> {
 </details>
 
 <details>
+<summary style="font-size: 1.1rem;">Metrics (metrics.get*)</summary>
+
+The metrics resource returns timeseries data for your account. Pass a date range with `from` (inclusive) and `to` (exclusive) query parameters. See the [metrics API reference](https://developer.paddle.com/api-reference/metrics/overview?utm_source=dx&utm_medium=paddle-node-sdk) for available metrics and fields.
+
+```typescript
+import { Paddle, MetricsTimeseriesRevenue } from '@paddle/paddle-node-sdk'
+
+const paddle = new Paddle('API_KEY')
+
+async function getRevenueTimeseries(): Promise<MetricsTimeseriesRevenue | undefined> {
+  try {
+    const metrics = await paddle.metrics.getRevenue({
+      from: '2026-01-01',
+      to: '2026-01-31',
+    })
+    return metrics
+  } catch (e) {
+    console.error('Error fetching revenue metrics:', e)
+  }
+}
+
+await getRevenueTimeseries()
+```
+
+Other methods follow the same pattern: `paddle.metrics.getActiveSubscribers`, `getMonthlyRecurringRevenue`, `getMonthlyRecurringRevenueChange`, `getRefunds`, `getChargebacks`, and `getCheckoutConversion`.
+
+</details>
+
+<details>
 <summary style="font-size: 1.1rem;">Simulations (simulations.list())</summary>
 
 ```typescript
