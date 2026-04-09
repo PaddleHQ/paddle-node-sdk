@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+---
+
+## 3.7.0 - 2026-04-09
+
 ### Added
 
 - `metrics` resource for timeseries metrics: `getActiveSubscribers`, `getMonthlyRecurringRevenue`, `getMonthlyRecurringRevenueChange`, `getRevenue`, `getRefunds`, `getChargebacks`, and `getCheckoutConversion`. See [related changelog](https://developer.paddle.com/changelog/2026/metrics-api?utm_source=dx&utm_medium=paddle-node-sdk).
