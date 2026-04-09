@@ -26,3 +26,4 @@ export * from './simulations/index.js';
 export * from './simulation-runs/index.js';
 export * from './simulation-run-events/index.js';
 export * from './client-tokens/index.js';
+export * from './metrics/index.js';

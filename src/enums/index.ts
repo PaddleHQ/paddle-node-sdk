@@ -5,6 +5,7 @@
  */
 
 export * from './shared/index.js';
+export * from './metrics/index.js';
 export * from './subscription/index.js';
 export * from './discount/index.js';
 export * from './adjustment/index.js';
