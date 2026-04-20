@@ -9,10 +9,12 @@ import { PaymentCardNotification } from './payment-card-notification.js';
 import { type IPaymentMethodDetailsNotification } from '../../types/index.js';
 import { PaymentMethodUnderlyingDetailsNotification } from './payment-method-underlying-details-notification.js';
 import { SouthKoreaLocalCardNotification } from './south-korea-local-card-notification.js';
+import { TransactionPayPalNotification } from './transaction-paypal-notification.js';
 
 export class PaymentMethodDetailsNotification {
   public readonly type: PaymentType;
   public readonly card: PaymentCardNotification | null;
+  public readonly paypal: TransactionPayPalNotification | null;
   public readonly southKoreaLocalCard: SouthKoreaLocalCardNotification | null;
   /** @deprecated */
   public readonly underlyingDetails: PaymentMethodUnderlyingDetailsNotification | null;
@@ -20,6 +22,7 @@ export class PaymentMethodDetailsNotification {
   constructor(paymentMethodDetails: IPaymentMethodDetailsNotification) {
     this.type = paymentMethodDetails.type;
     this.card = paymentMethodDetails.card ? new PaymentCardNotification(paymentMethodDetails.card) : null;
+    this.paypal = paymentMethodDetails.paypal ? new TransactionPayPalNotification(paymentMethodDetails.paypal) : null;
     this.southKoreaLocalCard = paymentMethodDetails.south_korea_local_card
       ? new SouthKoreaLocalCardNotification(paymentMethodDetails.south_korea_local_card)
       : null;

@@ -317,6 +317,7 @@ export const EventMock: IEventsResponse = {
             cardholder_name: 'Michael McGovern',
           },
           type: 'card',
+          paypal: null,
         },
         payment_attempt_id: 'b01f1321-289d-4932-b4af-6953e4910564',
         stored_payment_method_id: 'fea52bf9-57dc-4b06-88e2-ca15387a985a',

@@ -285,6 +285,7 @@ export const TransactionMock: ITransactionResponse = {
           last4: '',
           type: 'american_express',
         },
+        paypal: null,
         south_korea_local_card: null,
         underlying_details: null,
       },

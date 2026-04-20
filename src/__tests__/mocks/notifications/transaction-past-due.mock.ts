@@ -140,6 +140,7 @@ export const TransactionPastDueMock: IEventsResponse<ITransactionNotificationRes
         captured_at: null,
         method_details: {
           card: { type: 'visa', last4: '3184', expiry_year: 2025, expiry_month: 1, cardholder_name: 'Jo Williams' },
+          paypal: null,
           south_korea_local_card: null,
           type: 'card',
           underlying_details: null,
@@ -392,6 +393,7 @@ export const TransactionPastDueMockExpectation = {
             last4: '3184',
             type: 'visa',
           },
+          paypal: null,
           southKoreaLocalCard: null,
           type: 'card',
           underlyingDetails: null,

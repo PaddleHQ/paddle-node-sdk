@@ -19,6 +19,7 @@ export * from './chargeback-fee.js';
 export * from './transaction-payout-totals-adjusted.js';
 export * from './unit-totals.js';
 export * from './paypal.js';
+export * from './transaction-paypal.js';
 export * from './payment-card.js';
 export * from './payment-method-details.js';
 export * from './transaction-payment-attempt.js';

@@ -169,6 +169,7 @@ export const TransactionPaidMock: IEventsResponse<ITransactionNotificationRespon
         captured_at: '2023-04-13T09:07:04.730931Z',
         method_details: {
           card: { type: 'visa', last4: '3184', expiry_year: 2024, expiry_month: 1, cardholder_name: 'Jo Williams' },
+          paypal: null,
           south_korea_local_card: null,
           type: 'card',
           underlying_details: null,
@@ -466,6 +467,7 @@ export const TransactionPaidMockExpectation = {
             last4: '3184',
             type: 'visa',
           },
+          paypal: null,
           southKoreaLocalCard: null,
           type: 'card',
           underlyingDetails: null,

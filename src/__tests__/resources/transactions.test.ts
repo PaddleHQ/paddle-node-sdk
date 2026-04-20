@@ -243,4 +243,60 @@ describe('TransactionsResource', () => {
     expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions/${transactionId}/revise`, transactionToBeRevised);
     expect(revisedTransaction).toBeDefined();
   });
+
+  test('should expose paypal payer details on payment_attempts method_details', async () => {
+    const transactionId = TransactionMock.id;
+    const paypalTransactionMockResponse = {
+      data: {
+        ...TransactionMock,
+        payments: [
+          {
+            ...TransactionMock.payments[0],
+            method_details: {
+              type: 'paypal',
+              card: null,
+              paypal: {
+                email: 'buyer@example.com',
+                reference: 'B-1234567890',
+              },
+              south_korea_local_card: null,
+              underlying_details: null,
+            },
+          },
+          {
+            ...TransactionMock.payments[0],
+            method_details: {
+              type: 'paypal',
+              card: null,
+              paypal: {
+                email: 'buyer@example.com',
+                reference: null,
+              },
+              south_korea_local_card: null,
+              underlying_details: null,
+            },
+          },
+        ],
+      },
+      meta: { request_id: '' },
+    };
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(paypalTransactionMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    const transaction = await transactionsResource.get(transactionId);
+
+    expect(transaction.payments).toHaveLength(2);
+
+    const [subscriptionAttempt, oneOffAttempt] = transaction.payments;
+    expect(subscriptionAttempt?.methodDetails).not.toBeNull();
+    expect(subscriptionAttempt?.methodDetails?.type).toBe('paypal');
+    expect(subscriptionAttempt?.methodDetails?.card).toBeNull();
+    expect(subscriptionAttempt?.methodDetails?.paypal).not.toBeNull();
+    expect(subscriptionAttempt?.methodDetails?.paypal?.email).toBe('buyer@example.com');
+    expect(subscriptionAttempt?.methodDetails?.paypal?.reference).toBe('B-1234567890');
+
+    expect(oneOffAttempt?.methodDetails?.paypal?.email).toBe('buyer@example.com');
+    expect(oneOffAttempt?.methodDetails?.paypal?.reference).toBeNull();
+  });
 });

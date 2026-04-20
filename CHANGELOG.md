@@ -24,6 +24,14 @@ adding additional type guards.
 
 ---
 
+## 3.8.0 - 2026-04-20
+
+### Added
+
+- Added `paypal` object to `payment_attempts[].method_details` on transactions and transaction notifications, exposing the PayPal payer `email` and billing agreement `reference`.
+
+---
+
 ## 3.7.0 - 2026-04-09
 
 ### Added
