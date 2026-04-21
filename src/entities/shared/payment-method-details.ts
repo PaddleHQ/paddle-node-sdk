@@ -9,10 +9,12 @@ import { PaymentCard } from './payment-card.js';
 import { type IPaymentMethodDetails } from '../../types/index.js';
 import { PaymentMethodUnderlyingDetails } from './payment-method-underlying-details.js';
 import { SouthKoreaLocalCard } from './south-korea-local-card.js';
+import { TransactionPayPal } from './transaction-paypal.js';
 
 export class PaymentMethodDetails {
   public readonly type: PaymentType;
   public readonly card: PaymentCard | null;
+  public readonly paypal: TransactionPayPal | null;
   public readonly southKoreaLocalCard: SouthKoreaLocalCard | null;
   /** @deprecated */
   public readonly underlyingDetails: PaymentMethodUnderlyingDetails | null;
@@ -20,6 +22,7 @@ export class PaymentMethodDetails {
   constructor(paymentMethodDetails: IPaymentMethodDetails) {
     this.type = paymentMethodDetails.type;
     this.card = paymentMethodDetails.card ? new PaymentCard(paymentMethodDetails.card) : null;
+    this.paypal = paymentMethodDetails.paypal ? new TransactionPayPal(paymentMethodDetails.paypal) : null;
     this.southKoreaLocalCard = paymentMethodDetails.south_korea_local_card
       ? new SouthKoreaLocalCard(paymentMethodDetails.south_korea_local_card)
       : null;

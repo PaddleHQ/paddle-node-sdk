@@ -22,6 +22,7 @@ export * from './chargeback-fee.js';
 export * from './transaction-payout-totals-adjusted-notification-response.js';
 export * from './unit-totals.js';
 export * from './payment-card-notification-response.js';
+export * from './transaction-paypal-notification-response.js';
 export * from './payment-method-details.js';
 export * from './transaction-payment-attempt-notification-response.js';
 export * from './transaction-checkout-notification.js';
