@@ -1,6 +1,7 @@
-name: Label Checker
+name: Ensure SemVer Label is added
 
 on:
+  merge_group:
   pull_request:
     types:
       - opened
@@ -9,17 +10,46 @@ on:
       - labeled
       - unlabeled
 
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+env:
+  VALID_SEMVER_LABELS: norelease,release:major,release:minor,release:patch
+
 jobs:
-  check_labels:
-    name: Check labels
+  check_semver:
+    name: Ensure SemVer Label is added
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - name: Harden the runner (Audit all outbound calls)
         uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with:
           egress-policy: audit
 
-      - uses: docker://agilepathway/pull-request-label-checker:v1.6.13@sha256:4a0bc4b4536934325ab21ea47af7a928b5c18a09b42c40275910945514a9b805
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
-          one_of: norelease,release:major,release:minor,release:patch
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const validLabels = process.env.VALID_SEMVER_LABELS.split(",");
+            const { data: labelResultList } = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const prLabels = labelResultList.map(label => label.name);
+            const semverLabels = prLabels.filter(value => validLabels.includes(value));
+
+            core.info(`Valid labels: ${validLabels.join(" | ")}`);
+            core.info(`PR labels: ${prLabels.join(" | ")}`);
+            core.info(`Semver Labels: ${semverLabels.join(" | ")}`);
+
+            if (semverLabels.length == 0) {
+              core.setFailed(`You must add a SemVer label of one of ${validLabels.join(" | ")} to this PR`);
+            }
+
+            if (semverLabels.length > 1) {
+              core.setFailed("You must only add one SemVer label to this PR");
+            }
