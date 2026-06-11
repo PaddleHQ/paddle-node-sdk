@@ -19,7 +19,27 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: docker://agilepathway/pull-request-label-checker:v1.6.13@sha256:4a0bc4b4536934325ab21ea47af7a928b5c18a09b42c40275910945514a9b805
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
-          one_of: norelease,release:major,release:minor,release:patch
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const validLabels = ["norelease", "release:major", "release:minor", "release:patch"];
+            const { data: labelResultList } = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const prLabels = labelResultList.map(label => label.name);
+            const semverLabels = prLabels.filter(value => validLabels.includes(value));
+
+            core.info(`Valid labels: ${validLabels.join(" | ")}`);
+            core.info(`PR labels: ${prLabels.join(" | ")}`);
+            core.info(`Semver Labels: ${semverLabels.join(" | ")}`);
+
+            if (semverLabels.length == 0) {
+              core.setFailed(`You must add a SemVer label of one of ${validLabels.join(" | ")} to this PR`);
+            }
+
+            if (semverLabels.length > 1) {
+              core.setFailed("You must only add one SemVer label to this PR");
+            }
