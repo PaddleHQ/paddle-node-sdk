@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `rotatable` to API key notifications to indicate whether an API key can be rotated.
+
 ---
 
 ## 3.8.0 - 2026-04-20
