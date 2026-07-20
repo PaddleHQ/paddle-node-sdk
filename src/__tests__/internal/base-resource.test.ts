@@ -93,8 +93,7 @@ describe('BaseResource', () => {
   });
 
   test('passes through transaction revision error details unchanged', async () => {
-    const detail =
-      "You can't revise a transaction that's not in the status of `billed`, `past_due` or `completed`";
+    const detail = "You can't revise a transaction that's not in the status of `billed`, `past_due` or `completed`";
     const mockResponse = {
       status: 400,
       headers: new Map(),
@@ -103,8 +102,7 @@ describe('BaseResource', () => {
           type: 'request_error',
           code: 'transaction_invalid_status_to_revise',
           detail,
-          documentation_url:
-            'https://developer.paddle.com/errors/transactions/transaction_invalid_status_to_revise',
+          documentation_url: 'https://developer.paddle.com/errors/transactions/transaction_invalid_status_to_revise',
         },
         meta: { request_id: 'req_3' },
       }),
