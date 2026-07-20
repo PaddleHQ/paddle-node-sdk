@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+### Changed
+
+- Updated transaction revision error contract coverage to reflect that server guidance lists `past_due` as a revisable status. The SDK continues to pass server error codes and details through unchanged.
+
 ---
 
 ## 3.8.0 - 2026-04-20
