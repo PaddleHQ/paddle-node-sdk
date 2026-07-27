@@ -35,5 +35,6 @@ export type ApiKeyPermission =
   | 'report.write'
   | 'subscription.read'
   | 'subscription.write'
+  | 'subscription_history.read'
   | 'transaction.read'
   | 'transaction.write';
