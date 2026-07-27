@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `subscription_history.read` to the API key permissions accepted by API key webhook notifications.
+
 ---
 
 ## 3.8.0 - 2026-04-20
