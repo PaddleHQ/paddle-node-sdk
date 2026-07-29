@@ -16,6 +16,7 @@ export * from './subscription/index.js';
 export * from './address/index.js';
 export * from './discount/index.js';
 export * from './discount-group/index.js';
+export * from './checkout-domains/index.js';
 export * from './events/index.js';
 export * from './payment-method/index.js';
 export * from './payout/index.js';
