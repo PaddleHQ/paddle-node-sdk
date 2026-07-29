@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added the `checkoutDomains` resource for listing, getting, deleting, and verifying payment methods for checkout domains. Checkout domain path arguments accept legacy IDs.
+
 ---
 
 ## 3.8.0 - 2026-04-20
