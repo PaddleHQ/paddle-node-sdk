@@ -4,4 +4,9 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type CheckoutDomainApprovalStatus = 'pending_review' | 'approved' | 'rejected' | 'in_review';
+export type CheckoutDomainApprovalStatus =
+  | 'pending_review'
+  | 'approved'
+  | 'rejected'
+  | 'in_review'
+  | 'action_required';

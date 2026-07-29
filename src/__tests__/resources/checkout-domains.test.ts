@@ -27,6 +27,7 @@ describe('CheckoutDomainsResource', () => {
     let checkoutDomains = await checkoutDomainCollection.next();
     expect(paddleInstance.get).toHaveBeenCalledWith('/checkout-domains?');
     expect(checkoutDomains).toHaveLength(1);
+    expect(checkoutDomains[0]?.status).toBe('action_required');
     expect(checkoutDomains[0]?.paymentMethodVerification.applePay.status).toBe('verified');
 
     checkoutDomains = await checkoutDomainCollection.next();

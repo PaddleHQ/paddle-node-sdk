@@ -11,7 +11,7 @@ import { type Response, type ResponsePaginated } from '../../../internal/index.j
 export const CheckoutDomainMock: ICheckoutDomainResponse = {
   id: 'chedom_01j2abc3def4ghi5jkl6mno7pq',
   domain: 'app.example.com',
-  status: 'approved',
+  status: 'action_required',
   payment_method_verification: {
     apple_pay: {
       status: 'verified',
