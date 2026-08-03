@@ -22,6 +22,11 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added support for the `notification_setting_cannot_be_duplicate` request error returned when creating or updating
+  notification settings.
+
 ---
 
 ## 3.8.0 - 2026-04-20

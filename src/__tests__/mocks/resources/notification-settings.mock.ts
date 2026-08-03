@@ -9,7 +9,20 @@ import {
   UpdateNotificationSettingsRequestBody,
 } from '../../../resources/index.js';
 import { INotificationSettingsResponse } from '../../../types/index.js';
-import { Response, ResponsePaginated } from '../../../internal/index.js';
+import { ErrorResponse, Response, ResponsePaginated } from '../../../internal/index.js';
+
+export const DuplicateNotificationSettingErrorResponse: ErrorResponse = {
+  error: {
+    type: 'request_error',
+    code: 'notification_setting_cannot_be_duplicate',
+    detail: 'A notification setting with the same destination and configuration already exists.',
+    documentation_url:
+      'https://developer.paddle.com/errors/notifications/notification_setting_cannot_be_duplicate',
+  },
+  meta: {
+    request_id: 'req_duplicate_notification_setting',
+  },
+};
 
 export const CreateNotificationSettingsMock: CreateNotificationSettingsRequestBody = {
   description: 'considero conscendo tenax centum consuasor vehemens tardus cursus uxor vobis',
