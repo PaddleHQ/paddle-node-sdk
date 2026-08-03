@@ -16,8 +16,7 @@ export const DuplicateNotificationSettingErrorResponse: ErrorResponse = {
     type: 'request_error',
     code: 'notification_setting_cannot_be_duplicate',
     detail: 'A notification setting with the same destination and configuration already exists.',
-    documentation_url:
-      'https://developer.paddle.com/errors/notifications/notification_setting_cannot_be_duplicate',
+    documentation_url: 'https://developer.paddle.com/errors/notifications/notification_setting_cannot_be_duplicate',
   },
   meta: {
     request_id: 'req_duplicate_notification_setting',
