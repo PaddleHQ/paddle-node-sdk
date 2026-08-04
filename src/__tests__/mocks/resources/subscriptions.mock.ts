@@ -5,7 +5,11 @@
  */
 
 import { CreateSubscriptionCharge, UpdateSubscriptionRequestBody } from '../../../resources/index.js';
-import { ISubscriptionPreviewResponse, ISubscriptionResponse } from '../../../types/index.js';
+import {
+  ISubscriptionHistoryResponse,
+  ISubscriptionPreviewResponse,
+  ISubscriptionResponse,
+} from '../../../types/index.js';
 import { Response, ResponsePaginated } from '../../../internal/index.js';
 
 export const CreateSubscriptionMock: CreateSubscriptionCharge = {
@@ -591,6 +595,36 @@ export const ListSubscriptionMockResponse: ResponsePaginated<ISubscriptionRespon
       has_more: true,
       next: '/subscriptions?after=1',
       per_page: 10,
+    },
+  },
+};
+
+export const SubscriptionHistoryMock: ISubscriptionHistoryResponse = {
+  id: 'subhis_01k0w2m6p8x9y0z1a2b3c4d5e6',
+  group_id: 'subhisgrp_01k0w2m6p8x9y0z1a2b3c4d5e6',
+  subscription_id: SubscriptionMock.id,
+  occurred_at: '2026-07-04T12:00:00Z',
+  source: 'customer_portal',
+  actor: {
+    type: 'customer',
+    id: 'ctm_01hv8wt8nffez4p2t6typn4a5j',
+  },
+  reason: 'eu_withdrawal',
+  detail: {
+    action: 'subscription_canceled',
+    effective_from: 'immediately',
+  },
+};
+
+export const ListSubscriptionHistoryMockResponse: ResponsePaginated<ISubscriptionHistoryResponse> = {
+  data: [SubscriptionHistoryMock],
+  meta: {
+    request_id: '',
+    pagination: {
+      estimated_total: 1,
+      has_more: false,
+      next: '',
+      per_page: 50,
     },
   },
 };

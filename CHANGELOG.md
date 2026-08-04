@@ -24,6 +24,14 @@ adding additional type guards.
 
 ---
 
+## 3.9.0 - 2026-08-04
+
+### Added
+
+- Added `listHistory` to subscriptions, including filters and typed history entries. Subscription cancellation history now supports the `eu_withdrawal` reason.
+
+---
+
 ## 3.8.0 - 2026-04-20
 
 ### Added
