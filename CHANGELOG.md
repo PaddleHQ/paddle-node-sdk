@@ -25,6 +25,8 @@ adding additional type guards.
 ### Added
 
 - Added `rotatable` to API key notifications to indicate whether an API key can be rotated.
+- Added support for the `notification_setting_cannot_be_duplicate` request error returned when creating or updating
+  notification settings.
 
 ---
 

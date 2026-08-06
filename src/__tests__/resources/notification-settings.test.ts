@@ -8,6 +8,7 @@ import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreateNotificationSettingsExpectation,
   CreateNotificationSettingsMock,
+  DuplicateNotificationSettingErrorResponse,
   ListNotificationSettingsMockResponse,
   NotificationSettingsMockResponse,
   UpdateNotificationSettingsExpectation,
@@ -16,6 +17,7 @@ import {
 import { NotificationSettingsResource } from '../../resources/index.js';
 import { NotificationMock } from '../mocks/resources/notifications.mock.js';
 import { convertToSnakeCase } from '../../internal/index.js';
+import { ApiError } from '../../internal/errors/generic.js';
 
 describe('NotificationSettingsResource', () => {
   test('should return a list of notification settings', async () => {
@@ -55,6 +57,21 @@ describe('NotificationSettingsResource', () => {
     expect(convertToSnakeCase(CreateNotificationSettingsMock)).toEqual(CreateNotificationSettingsExpectation);
   });
 
+  test('should surface a duplicate notification setting error when creating', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(DuplicateNotificationSettingErrorResponse);
+
+    const notificationsResource = new NotificationSettingsResource(paddleInstance);
+    const request = notificationsResource.create(CreateNotificationSettingsMock);
+
+    await expect(request).rejects.toBeInstanceOf(ApiError);
+    await expect(request).rejects.toMatchObject({
+      type: 'request_error',
+      code: 'notification_setting_cannot_be_duplicate',
+      detail: 'A notification setting with the same destination and configuration already exists.',
+    });
+  });
+
   test('should update an existing notification settings', async () => {
     const notificationSettingsId = 'ntfset_1234';
     const notificationSettingsBody = UpdateNotificationSettingsMock;
@@ -72,6 +89,21 @@ describe('NotificationSettingsResource', () => {
     expect(notificationSettings).toBeDefined();
 
     expect(convertToSnakeCase(UpdateNotificationSettingsMock)).toEqual(UpdateNotificationSettingsExpectation);
+  });
+
+  test('should surface a duplicate notification setting error when updating', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.patch = jest.fn().mockResolvedValue(DuplicateNotificationSettingErrorResponse);
+
+    const notificationsResource = new NotificationSettingsResource(paddleInstance);
+    const request = notificationsResource.update('ntfset_1234', UpdateNotificationSettingsMock);
+
+    await expect(request).rejects.toBeInstanceOf(ApiError);
+    await expect(request).rejects.toMatchObject({
+      type: 'request_error',
+      code: 'notification_setting_cannot_be_duplicate',
+      detail: 'A notification setting with the same destination and configuration already exists.',
+    });
   });
 
   test('should delete an existing notification settings', async () => {
