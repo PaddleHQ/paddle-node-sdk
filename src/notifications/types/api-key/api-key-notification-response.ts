@@ -14,6 +14,7 @@ export interface IApiKeyNotificationResponse {
   status: ApiKeyStatus;
   permissions: ApiKeyPermission[];
   expires_at: string | null;
+  rotatable: boolean | null;
   last_used_at: string | null;
   created_at: string;
   updated_at: string;
