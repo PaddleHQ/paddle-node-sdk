@@ -11,3 +11,5 @@ export * from './subscription-status.js';
 export * from './subscription-item-status.js';
 export * from './subscription-on-payment-failure.js';
 export * from './subscription-on-resume.js';
+export * from './subscription-consent-requirement-type.js';
+export * from './subscription-consent-requirement-status.js';

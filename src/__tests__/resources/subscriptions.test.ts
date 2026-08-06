@@ -8,6 +8,7 @@ import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreateSubscriptionExpectation,
   CreateSubscriptionMock,
+  ListSubscriptionHistoryMockResponse,
   ListSubscriptionMockResponse,
   SubscriptionMock,
   SubscriptionMockResponse,
@@ -18,6 +19,7 @@ import {
 import {
   CancelSubscription,
   GetSubscriptionQueryParameters,
+  ListSubscriptionHistoryQueryParameters,
   ListSubscriptionQueryParameters,
   PauseSubscription,
   ResumeSubscription,
@@ -59,6 +61,48 @@ describe('SubscriptionsResource', () => {
 
     expect(paddleInstance.get).toHaveBeenCalledWith('/subscriptions?after=2&id=1234');
     expect(subscriptions.length).toBe(1);
+  });
+
+  test('should filter subscription history by EU withdrawal reason and map the response', async () => {
+    const subscriptionId = SubscriptionMock.id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionHistoryMockResponse);
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    const queryParams: ListSubscriptionHistoryQueryParameters = {
+      reason: ['eu_withdrawal'],
+    };
+
+    const history = await subscriptionsResource.listHistory(subscriptionId, queryParams).next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/history?reason=eu_withdrawal`);
+    expect(history).toHaveLength(1);
+    expect(history[0]?.reason).toBe('eu_withdrawal');
+    expect(history[0]?.detail).toMatchObject({
+      action: 'subscription_canceled',
+      effectiveFrom: 'immediately',
+    });
+  });
+
+  test('should serialize subscription history filters without overriding server ordering', async () => {
+    const subscriptionId = SubscriptionMock.id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionHistoryMockResponse);
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+
+    await subscriptionsResource
+      .listHistory(subscriptionId, {
+        action: ['subscription_canceled'],
+        source: ['customer_portal'],
+        actorType: ['customer'],
+        actorId: ['ctm_01hv8wt8nffez4p2t6typn4a5j'],
+        'occurredAt[GTE]': '2026-07-01T00:00:00Z',
+        orderBy: 'id[DESC]',
+      })
+      .next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      `/subscriptions/${subscriptionId}/history?action=subscription_canceled&source=customer_portal&actor_type=customer&actor_id=ctm_01hv8wt8nffez4p2t6typn4a5j&occurred_at%5BGTE%5D=2026-07-01T00%3A00%3A00Z&order_by=id%5BDESC%5D`,
+    );
   });
 
   test('should return a single subscription by ID', async () => {
