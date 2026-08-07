@@ -22,11 +22,22 @@ adding additional type guards.
 
 ## Unreleased
 
+---
+
+## 3.10.0 - 2026-08-07
+
+### Added
+
+- Added support for the `notification_setting_cannot_be_duplicate` request error returned when creating or updating
+  notification settings.
+
+---
+
+## 3.9.0 - 2026-08-06
+
 ### Added
 
 - Added `rotatable` to API key notifications to indicate whether an API key can be rotated.
-- Added support for the `notification_setting_cannot_be_duplicate` request error returned when creating or updating
-  notification settings.
 
 ---
 
