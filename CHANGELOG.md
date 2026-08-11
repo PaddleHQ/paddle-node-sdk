@@ -22,6 +22,12 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added the `checkoutDomains` resource for listing, getting, deleting, and verifying payment methods for checkout
+  domains.
+- Added `verification_in_progress` as a checkout domain response status and list filter.
+
 ---
 
 ## 3.10.0 - 2026-08-07

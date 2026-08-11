@@ -7,6 +7,7 @@
 export * from './addresses/index.js';
 export * from './adjustments/index.js';
 export * from './businesses/index.js';
+export * from './checkout-domains/index.js';
 export * from './customers/index.js';
 export * from './customer-portal-sessions/index.js';
 export * from './discounts/index.js';
