@@ -14,10 +14,11 @@ jobs:
     name: Check labels
     runs-on: ubuntu-latest
     steps:
-      - name: Harden the runner (Audit all outbound calls)
+      - name: Harden the runner
         uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with:
-          egress-policy: audit
+          use-policy-store: true
+          api-key: ${{ secrets.STEPSECURITY_POLICY_STORE_API_KEY }}
 
       - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
