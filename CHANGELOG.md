@@ -22,6 +22,11 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- `usageEvents` resource for usage-based billing: `create` to send usage events, plus `generateEventKey` and `deterministicEventKey` helpers for creating `event_key` values. Reuse the same `event_key` and `occurred_at` when retrying so usage is only counted once.
+- Added `usage_event.write` to API key permissions.
+
 ---
 
 ## 3.10.0 - 2026-08-07
