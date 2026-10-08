@@ -25,6 +25,8 @@ import {
   ClientTokensResource,
   MetricsResource,
   VerificationsResource,
+  CountriesResource,
+  CurrenciesResource,
 } from './resources/index.js';
 import { EventsResource } from './resources/events/index.js';
 import { Webhooks } from './notifications/index.js';
@@ -62,6 +64,8 @@ export class Paddle {
   public clientTokens: ClientTokensResource;
   public metrics: MetricsResource;
   public verifications: VerificationsResource;
+  public countries: CountriesResource;
+  public currencies: CurrenciesResource;
 
   constructor(apiKey: string, options?: PaddleOptions) {
     this.client = new Client(
@@ -95,5 +99,7 @@ export class Paddle {
     this.clientTokens = new ClientTokensResource(this.client);
     this.metrics = new MetricsResource(this.client);
     this.verifications = new VerificationsResource(this.client);
+    this.countries = new CountriesResource(this.client);
+    this.currencies = new CurrenciesResource(this.client);
   }
 }
