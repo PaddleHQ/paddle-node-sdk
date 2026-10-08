@@ -22,6 +22,11 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `verifications` resource with `list` and `get` operations to check whether an account is ready for live payments and which verification steps are outstanding.
+- Added `verification.read` to `ApiKeyPermission` for `api_key.*` notifications.
+
 ---
 
 ## 3.10.0 - 2026-08-07
