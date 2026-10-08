@@ -8,6 +8,7 @@ export type ErrorCode =
   | 'already_canceled'
   | 'already_refunded'
   | 'authentication_failed'
+  | 'blocked_by_policy'
   | 'blocked_card'
   | 'canceled'
   | 'declined'

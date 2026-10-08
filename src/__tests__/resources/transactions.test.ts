@@ -79,6 +79,16 @@ describe('TransactionsResource', () => {
     expect(transaction.id).toBe(transactionId);
   });
 
+  test('should map payment attempt error codes', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(TransactionMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    const transaction = await transactionsResource.get(TransactionMock.id);
+
+    expect(transaction.payments.map((payment) => payment.errorCode)).toEqual(['already_canceled', 'blocked_by_policy']);
+  });
+
   test('should accepts query params and return a single transaction by ID', async () => {
     const transactionId = TransactionMock.id;
     const paddleInstance = getPaddleTestClient();
