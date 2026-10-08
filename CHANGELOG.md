@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `CountryCodeSupported` and `CountryCodeNonSupported` types. `CountryCode` is now the union of both.
+
 ### Changed
 
 - Widened `CountryCode` to include the country codes Paddle doesn't support sales to (`AF`, `AN`, `AQ`, `BY`, `CD`,
