@@ -15,13 +15,18 @@ import {
   ChargebacksMockResponse,
   CheckoutConversionMock,
   CheckoutConversionMockResponse,
+  MetricEntityDefinitionsMockResponse,
+  MetricsExploreMock,
+  MetricsExploreMockResponse,
   RefundsMock,
   RefundsMockResponse,
   RevenueMock,
   RevenueMockResponse,
 } from '../mocks/resources/metrics.mock.js';
 import { MetricsTimeseriesInterval } from '../../enums/index.js';
+import { ApiError } from '../../internal/errors/generic.js';
 import {
+  ExploreMetricsRequestBody,
   GetActiveSubscribersQueryParameters,
   GetChargebacksQueryParameters,
   GetCheckoutConversionQueryParameters,
@@ -314,5 +319,204 @@ describe('MetricsResource', () => {
     expect(secondPoint.count).toBe(12);
     expect(secondPoint.rate).toBe('0.75');
     expect(secondPoint.timestamp).toBe('2025-01-02T00:00:00Z');
+  });
+
+  describe('explore', () => {
+    const exploreRequestBody: ExploreMetricsRequestBody = {
+      entity: 'transactions.completed',
+      from: '2026-05-01',
+      to: '2026-08-01',
+      interval: 'month',
+      dimensions: ['product'],
+      measures: [{ field: 'gross_revenue', agg: 'sum' }],
+      filters: [{ field: 'country', op: 'in', value: ['US', 'GB'] }],
+      orderBy: [{ field: 'gross_revenue', dir: 'desc' }],
+      perPage: 2,
+    };
+
+    test('should run an explore metrics query', async () => {
+      const paddleInstance = getPaddleTestClient();
+      paddleInstance.post = jest.fn().mockResolvedValue(MetricsExploreMockResponse);
+
+      const metricsResource = new MetricsResource(paddleInstance);
+      const result = await metricsResource.explore(exploreRequestBody);
+
+      expect(paddleInstance.post).toHaveBeenCalledWith('/metrics/explore?', exploreRequestBody);
+      expect(result.entity).toBe(MetricsExploreMock.entity);
+      expect(result.interval).toBe('month');
+      expect(result.currencyCode).toBe('USD');
+      expect(result.startsAt).toBe(MetricsExploreMock.starts_at);
+      expect(result.endsAt).toBe(MetricsExploreMock.ends_at);
+      expect(result.updatedAt).toBe(MetricsExploreMock.updated_at);
+
+      expect(result.fields.dimensions).toEqual([{ name: 'product', type: 'string' }]);
+      const [measureField] = result.fields.measures;
+      expectDefined(measureField);
+      expect(measureField.name).toBe('sum_gross_revenue');
+      expect(measureField.type).toBe('currency');
+      expect(measureField.field).toBe('gross_revenue');
+      expect(measureField.agg).toBe('sum');
+
+      expect(result.series).toHaveLength(2);
+      const [firstSeries] = result.series;
+      expectDefined(firstSeries);
+      expect(firstSeries.dimensions).toEqual({ product: 'pro_01h1vjfevh5etwq3rb416a23h2' });
+      expect(firstSeries.timeseries).toHaveLength(2);
+      const [firstPoint] = firstSeries.timeseries;
+      expectDefined(firstPoint);
+      expect(firstPoint.timestamp).toBe('2026-05-01');
+      expect(firstPoint.measures).toEqual({ sum_gross_revenue: '410500' });
+
+      expect(result.pagination.perPage).toBe(2);
+      expect(result.pagination.next).toBe(MetricsExploreMockResponse.meta.pagination.next);
+      expect(result.pagination.hasMore).toBe(true);
+      expect(result.pagination.estimatedTotal).toBe(42);
+    });
+
+    test('should pass the after cursor as a query parameter', async () => {
+      const paddleInstance = getPaddleTestClient();
+      paddleInstance.post = jest.fn().mockResolvedValue(MetricsExploreMockResponse);
+
+      const metricsResource = new MetricsResource(paddleInstance);
+      await metricsResource.explore(exploreRequestBody, { after: 'eyJ2IjoxfQ' });
+
+      expect(paddleInstance.post).toHaveBeenCalledWith('/metrics/explore?after=eyJ2IjoxfQ', exploreRequestBody);
+    });
+
+    test('should map omitted optional fields to defaults for derived measures', async () => {
+      const paddleInstance = getPaddleTestClient();
+      paddleInstance.post = jest.fn().mockResolvedValue({
+        data: {
+          ...MetricsExploreMock,
+          entity: 'checkouts',
+          currency_code: undefined,
+          fields: {
+            dimensions: [],
+            measures: [{ name: 'checkout_conversion', type: 'decimal' }],
+          },
+          series: [{ dimensions: {}, timeseries: [] }],
+        },
+        meta: {
+          ...MetricsExploreMockResponse.meta,
+          pagination: { ...MetricsExploreMockResponse.meta.pagination, has_more: false },
+        },
+      });
+
+      const metricsResource = new MetricsResource(paddleInstance);
+      const result = await metricsResource.explore({
+        entity: 'checkouts',
+        from: '2026-05-01',
+        to: '2026-08-01',
+        measures: [{ field: 'checkout_conversion' }],
+      });
+
+      expect(result.currencyCode).toBeNull();
+      const [measureField] = result.fields.measures;
+      expectDefined(measureField);
+      expect(measureField.field).toBeNull();
+      expect(measureField.agg).toBeNull();
+      expect(result.series[0]?.dimensions).toEqual({});
+      expect(result.pagination.hasMore).toBe(false);
+    });
+
+    test('should throw an ApiError when the query is rejected', async () => {
+      const paddleInstance = getPaddleTestClient();
+      paddleInstance.post = jest.fn().mockResolvedValue({
+        error: {
+          type: 'request_error',
+          code: 'too_many_datapoints',
+          detail: 'Too many datapoints.',
+          documentation_url: 'https://developer.paddle.com/errors/metrics/too_many_datapoints',
+        },
+        meta: { request_id: '' },
+      });
+
+      const metricsResource = new MetricsResource(paddleInstance);
+      const request = metricsResource.explore(exploreRequestBody);
+
+      await expect(request).rejects.toBeInstanceOf(ApiError);
+      await expect(request).rejects.toMatchObject({ code: 'too_many_datapoints' });
+    });
+
+    test('should send the request body in snake_case', async () => {
+      const originalFetch = global.fetch;
+      const mockFetch = jest.fn().mockResolvedValue({
+        status: 200,
+        headers: new Map(),
+        json: jest.fn().mockResolvedValue(MetricsExploreMockResponse),
+      });
+      global.fetch = mockFetch;
+
+      try {
+        const metricsResource = new MetricsResource(getPaddleTestClient());
+        await metricsResource.explore(exploreRequestBody, { after: 'eyJ2IjoxfQ' });
+
+        const [url, init] = mockFetch.mock.calls[0];
+        expect(url).toBe('https://sandbox-api.paddle.com/metrics/explore?after=eyJ2IjoxfQ');
+        expect(JSON.parse(init.body)).toEqual({
+          entity: 'transactions.completed',
+          from: '2026-05-01',
+          to: '2026-08-01',
+          interval: 'month',
+          dimensions: ['product'],
+          measures: [{ field: 'gross_revenue', agg: 'sum' }],
+          filters: [{ field: 'country', op: 'in', value: ['US', 'GB'] }],
+          order_by: [{ field: 'gross_revenue', dir: 'desc' }],
+          per_page: 2,
+        });
+      } finally {
+        global.fetch = originalFetch;
+      }
+    });
+  });
+
+  describe('listExploreEntities', () => {
+    test('should list explore metric entities', async () => {
+      const paddleInstance = getPaddleTestClient();
+      paddleInstance.get = jest.fn().mockResolvedValue(MetricEntityDefinitionsMockResponse);
+
+      const metricsResource = new MetricsResource(paddleInstance);
+      const result = await metricsResource.listExploreEntities();
+
+      expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/explore/entities', {
+        queryParameters: undefined,
+      });
+      expect(result).toHaveLength(1);
+      const [definition] = result;
+      expectDefined(definition);
+      expect(definition.entity).toBe('checkouts');
+      expect(definition.timeDimension.intervals).toEqual(['day', 'week', 'month']);
+      expect(definition.timeDimension.maxLookbackDays).toBe(1096);
+
+      const [productDimension, countryDimension] = definition.dimensions;
+      expectDefined(productDimension);
+      expectDefined(countryDimension);
+      expect(productDimension.name).toBe('product');
+      expect(productDimension.type).toBe('string');
+      expect(productDimension.filterOps).toEqual(['in']);
+      expect(productDimension.multiValued).toBe(true);
+      expect(countryDimension.multiValued).toBe(false);
+
+      const [idMeasure, conversionMeasure] = definition.measures;
+      expectDefined(idMeasure);
+      expectDefined(conversionMeasure);
+      expect(idMeasure.name).toBe('id');
+      expect(idMeasure.type).toBe('string');
+      expect(idMeasure.aggs).toEqual(['count', 'count_distinct']);
+      expect(conversionMeasure.type).toBe('decimal');
+      expect(conversionMeasure.aggs).toBeNull();
+    });
+
+    test('should filter explore metric entities by entity', async () => {
+      const paddleInstance = getPaddleTestClient();
+      paddleInstance.get = jest.fn().mockResolvedValue(MetricEntityDefinitionsMockResponse);
+
+      const metricsResource = new MetricsResource(paddleInstance);
+      await metricsResource.listExploreEntities({ entity: 'checkouts' });
+
+      expect(paddleInstance.get).toHaveBeenCalledWith('/metrics/explore/entities', {
+        queryParameters: { entity: 'checkouts' },
+      });
+    });
   });
 });

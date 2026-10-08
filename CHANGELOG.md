@@ -59,6 +59,11 @@ adding additional type guards.
 - Added `createdAt` and `updatedAt` to `items[].price` on `subscription.*` notifications.
 - Added `billingCycle.interval` and `billingCycle.frequency` filters to `prices.list()`.
 - Added `exposedAt` to API key notifications to indicate when an API key was first exposed.
+- Added `paddle.metrics.explore()` to run an Explore metrics query against `POST /metrics/explore`. Pagination state is
+  returned on `pagination`; pass the `after` cursor from `pagination.next` with the same request body to get the next
+  page.
+- Added `paddle.metrics.listExploreEntities()` to list queryable Explore metric entities and their dimensions, measures,
+  and allowed aggregations from `GET /metrics/explore/entities`.
 
 ### Changed
 
