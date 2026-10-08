@@ -24,7 +24,8 @@ adding additional type guards.
 
 ### Added
 
-- Added `filter`, `from` and `to` query parameters to `events.list` to filter events by a Paddle ID or email address and by time range.
+- Added `filter`, `from` and `to` query parameters to `events.list()` operation, to filter events by a Paddle ID or
+  email address and by time range.
 
 ---
 
