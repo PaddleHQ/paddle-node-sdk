@@ -24,6 +24,7 @@ import {
   TransactionsResource,
   ClientTokensResource,
   MetricsResource,
+  UsageEventsResource,
 } from './resources/index.js';
 import { EventsResource } from './resources/events/index.js';
 import { Webhooks } from './notifications/index.js';
@@ -60,6 +61,7 @@ export class Paddle {
   public simulationRunEvents: SimulationRunEventsResource;
   public clientTokens: ClientTokensResource;
   public metrics: MetricsResource;
+  public usageEvents: UsageEventsResource;
 
   constructor(apiKey: string, options?: PaddleOptions) {
     this.client = new Client(
@@ -92,5 +94,6 @@ export class Paddle {
     this.simulationRunEvents = new SimulationRunEventsResource(this.client);
     this.clientTokens = new ClientTokensResource(this.client);
     this.metrics = new MetricsResource(this.client);
+    this.usageEvents = new UsageEventsResource(this.client);
   }
 }

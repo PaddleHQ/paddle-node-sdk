@@ -10,6 +10,16 @@ export class EdgeCrypto implements CryptoProvider {
     return crypto.randomUUID();
   }
 
+  getRandomValues(bytes: Uint8Array): Uint8Array {
+    return crypto.getRandomValues(bytes);
+  }
+
+  async sha256(payload: string): Promise<string> {
+    const digestBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(payload));
+
+    return Array.from(new Uint8Array(digestBuffer), (byte) => byteHexMapping[byte]).join('');
+  }
+
   async computeHmac(payload: string, secret: string): Promise<string> {
     const encoder = new TextEncoder();
 

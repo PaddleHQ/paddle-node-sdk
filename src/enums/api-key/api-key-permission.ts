@@ -36,4 +36,5 @@ export type ApiKeyPermission =
   | 'subscription.read'
   | 'subscription.write'
   | 'transaction.read'
-  | 'transaction.write';
+  | 'transaction.write'
+  | 'usage_event.write';
