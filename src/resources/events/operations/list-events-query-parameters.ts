@@ -10,4 +10,7 @@ export interface ListEventsQueryParameters {
   orderBy?: string;
   perPage?: number;
   eventType?: IEventName[];
+  filter?: string;
+  to?: string;
+  from?: string;
 }

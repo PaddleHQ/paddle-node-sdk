@@ -40,4 +40,23 @@ describe('EventsResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith('/events?after=2&order_by=id%5BASC%5D');
     expect(events.length).toBe(1);
   });
+
+  test('should accept filter, from and to query params', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListEventMockResponse);
+    const eventsResource = new EventsResource(paddleInstance);
+    const queryParams: ListEventsQueryParameters = {
+      filter: 'ctm_01hv976dcgq4wmyrp8yq7asfmj',
+      from: '2024-04-01T00:00:00Z',
+      to: '2024-04-30T23:59:59Z',
+    };
+
+    const eventCollection = eventsResource.list(queryParams);
+    const events = await eventCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      '/events?filter=ctm_01hv976dcgq4wmyrp8yq7asfmj&from=2024-04-01T00%3A00%3A00Z&to=2024-04-30T23%3A59%3A59Z',
+    );
+    expect(events.length).toBe(1);
+  });
 });
