@@ -9,11 +9,13 @@ import { type ISubscriptionManagementResponse } from '../../types/index.js';
 export class SubscriptionManagement {
   public readonly updatePaymentMethod: string | null;
   public readonly cancel: string;
+  public readonly viewSubscription: string;
 
   constructor(subscriptionManagement: ISubscriptionManagementResponse) {
     this.updatePaymentMethod = subscriptionManagement.update_payment_method
       ? subscriptionManagement.update_payment_method
       : null;
     this.cancel = subscriptionManagement.cancel;
+    this.viewSubscription = subscriptionManagement.view_subscription;
   }
 }

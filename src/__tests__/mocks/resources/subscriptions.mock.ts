@@ -109,6 +109,8 @@ export const SubscriptionMock: ISubscriptionResponse = {
     update_payment_method:
       'https://buyer-portal.paddle.com/subscriptions/sub_01gtewvbsyeqyhtp2vtc2mctq8/update-payment-method?token=',
     cancel: 'https://buyer-portal.paddle.com/subscriptions/sub_01gtewvbsyeqyhtp2vtc2mctq8/cancel?token=',
+    view_subscription:
+      'https://buyer-portal.paddle.com/subscriptions/sub_01gtewvbsyeqyhtp2vtc2mctq8/view-subscription?token=',
   },
   items: [
     {
@@ -376,6 +378,8 @@ export const SubscriptionPreviewMock: ISubscriptionPreviewResponse = {
     update_payment_method:
       'https://buyer-portal.paddle.com/subscriptions/sub_01gtewvbsyeqyhtp2vtc2mctq8/update-payment-method?token=',
     cancel: 'https://buyer-portal.paddle.com/subscriptions/sub_01gtewvbsyeqyhtp2vtc2mctq8/cancel?token=',
+    view_subscription:
+      'https://buyer-portal.paddle.com/subscriptions/sub_01gtewvbsyeqyhtp2vtc2mctq8/view-subscription?token=',
   },
   items: [
     {
