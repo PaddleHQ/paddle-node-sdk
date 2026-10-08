@@ -22,6 +22,12 @@ adding additional type guards.
 
 ## Unreleased
 
+### Changed
+
+- Widened `CountryCode` to include the country codes Paddle doesn't support sales to (`AF`, `AN`, `AQ`, `BY`, `CD`,
+  `CF`, `CS`, `CU`, `HT`, `IR`, `KP`, `LY`, `ML`, `MM`, `NI`, `RU`, `SD`, `SO`, `SS`, `SY`, `VE`, `YE`, `ZW`), matching
+  the public API spec. This affects addresses, unit price overrides, and related notifications.
+
 ---
 
 ## 3.10.0 - 2026-08-07
