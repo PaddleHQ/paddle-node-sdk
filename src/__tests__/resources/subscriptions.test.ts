@@ -72,6 +72,7 @@ describe('SubscriptionsResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}`, { queryParams: undefined });
     expect(subscription).toBeDefined();
     expect(subscription.id).toBe(subscriptionId);
+    expect(subscription.managementUrls?.viewSubscription).toBe(SubscriptionMock.management_urls?.view_subscription);
   });
 
   test('should accepts query params and return a single subscription by ID', async () => {

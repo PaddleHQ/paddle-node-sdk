@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `viewSubscription` to subscription `managementUrls` and to customer portal session `urls.subscriptions[]`, linking to the subscription page in the customer portal with no form pre-opened.
+
 ---
 
 ## 3.10.0 - 2026-08-07
