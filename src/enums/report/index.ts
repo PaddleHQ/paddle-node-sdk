@@ -8,3 +8,5 @@ export * from './report-status.js';
 export * from './report-type.js';
 export * from './report-filter-name.js';
 export * from './report-filter-operator.js';
+export * from './subscription-status-filter.js';
+export * from './subscription-scheduled-change-action-filter.js';

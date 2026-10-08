@@ -1,9 +1,15 @@
 import { Report, ReportFilters } from '../../entities/index.js';
 import { type IReportResponse, type IReportFilters } from '../../types/index.js';
-import { type ReportFilterName, type ReportType } from '../../enums/index.js';
+import {
+  type ReportFilterName,
+  type ReportType,
+  type SubscriptionScheduledChangeActionFilter,
+  type SubscriptionStatusFilter,
+} from '../../enums/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import { ReportsResource } from '../../resources/index.js';
 import { Response } from '../../internal/index.js';
+import { ReportNotification, type IReportNotificationResponse } from '../../notifications/index.js';
 
 describe('Report Filter Names', () => {
   describe('remittance_reference filter', () => {
@@ -297,5 +303,145 @@ describe('TypeScript Type Safety', () => {
     });
 
     expect(report.type).toBe('balance');
+  });
+});
+
+describe('subscriptions Report Type', () => {
+  const subscriptionsFilters: IReportFilters[] = [
+    { name: 'subscription_status', operator: null, value: ['active', 'past_due'] },
+    { name: 'subscription_scheduled_change_action', operator: null, value: ['cancel', 'none'] },
+    { name: 'customer_country_code', operator: null, value: ['US', 'GB'] },
+    { name: 'subscription_created_at', operator: 'gte', value: '2026-01-01T00:00:00.00Z' },
+    { name: 'subscription_created_at', operator: 'lt', value: '2026-02-01T00:00:00.00Z' },
+  ];
+
+  test('should support subscriptions as a valid report type with subscriptions filters', () => {
+    const reportResponse: IReportResponse = {
+      id: 'rep_01h7mrm9f6s7s5n5d5q5x5y5z5',
+      status: 'ready',
+      rows: 42,
+      type: 'subscriptions',
+      filters: subscriptionsFilters,
+      expires_at: '2026-03-01T00:00:00.00Z',
+      created_at: '2026-02-01T10:30:00.00Z',
+    };
+
+    const report = new Report(reportResponse);
+
+    expect(report.type).toBe('subscriptions');
+    expect(report.rows).toBe(42);
+    expect(report.filters).toHaveLength(5);
+    expect(report.filters[0]).toEqual({ name: 'subscription_status', operator: null, value: ['active', 'past_due'] });
+    expect(report.filters[1]).toEqual({
+      name: 'subscription_scheduled_change_action',
+      operator: null,
+      value: ['cancel', 'none'],
+    });
+    expect(report.filters[2]).toEqual({ name: 'customer_country_code', operator: null, value: ['US', 'GB'] });
+    expect(report.filters[3]).toEqual({
+      name: 'subscription_created_at',
+      operator: 'gte',
+      value: '2026-01-01T00:00:00.00Z',
+    });
+    expect(report.filters[4]?.operator).toBe('lt');
+  });
+
+  test('should create subscriptions report via ReportsResource', async () => {
+    const paddleInstance = getPaddleTestClient();
+    const mockResponse: Response<IReportResponse> = {
+      data: {
+        id: 'rep_01h7mrm9f6s7s5n5d5q5x5y5z5',
+        status: 'pending',
+        rows: null,
+        type: 'subscriptions',
+        filters: subscriptionsFilters,
+        expires_at: null,
+        created_at: '2026-02-01T10:30:00.00Z',
+      },
+      meta: { request_id: 'req_123' },
+    };
+
+    paddleInstance.post = jest.fn().mockResolvedValue(mockResponse);
+    const reportsResource = new ReportsResource(paddleInstance);
+
+    const createdReport = await reportsResource.create({
+      type: 'subscriptions',
+      filters: subscriptionsFilters,
+    });
+
+    expect(paddleInstance.post).toHaveBeenCalledWith('/reports', {
+      type: 'subscriptions',
+      filters: subscriptionsFilters,
+    });
+    expect(createdReport.type).toBe('subscriptions');
+    expect(createdReport.filters).toHaveLength(5);
+  });
+
+  test('should create subscriptions report without filters', async () => {
+    const paddleInstance = getPaddleTestClient();
+    const mockResponse: Response<IReportResponse> = {
+      data: {
+        id: 'rep_01h7mrm9f6s7s5n5d5q5x5y5z5',
+        status: 'pending',
+        type: 'subscriptions',
+        filters: [],
+        created_at: '2026-02-01T10:30:00.00Z',
+      },
+      meta: { request_id: 'req_123' },
+    };
+
+    paddleInstance.post = jest.fn().mockResolvedValue(mockResponse);
+    const reportsResource = new ReportsResource(paddleInstance);
+
+    const createdReport = await reportsResource.create({ type: 'subscriptions' });
+
+    expect(paddleInstance.post).toHaveBeenCalledWith('/reports', { type: 'subscriptions' });
+    expect(createdReport.type).toBe('subscriptions');
+    expect(createdReport.filters).toEqual([]);
+  });
+
+  test('should parse subscriptions report notification', () => {
+    const notificationResponse: IReportNotificationResponse = {
+      id: 'rep_01h7mrm9f6s7s5n5d5q5x5y5z5',
+      status: 'ready',
+      rows: 42,
+      type: 'subscriptions',
+      filters: subscriptionsFilters,
+      expires_at: '2026-03-01T00:00:00.00Z',
+      created_at: '2026-02-01T10:30:00.00Z',
+    };
+
+    const report = new ReportNotification(notificationResponse);
+
+    expect(report.type).toBe('subscriptions');
+    expect(report.filters).toHaveLength(5);
+    expect(report.filters[0]?.name).toBe('subscription_status');
+    expect(report.filters[0]?.value).toEqual(['active', 'past_due']);
+    expect(report.filters[1]?.name).toBe('subscription_scheduled_change_action');
+    expect(report.filters[3]?.operator).toBe('gte');
+  });
+
+  test('subscriptions filter names and values should be valid types', () => {
+    const reportType: ReportType = 'subscriptions';
+    const filterNames: ReportFilterName[] = [
+      'subscription_status',
+      'subscription_created_at',
+      'customer_country_code',
+      'subscription_scheduled_change_action',
+    ];
+    const statuses: SubscriptionStatusFilter[] = ['active', 'canceled', 'past_due', 'paused', 'trialing'];
+    const scheduledChangeActions: SubscriptionScheduledChangeActionFilter[] = ['cancel', 'pause', 'resume', 'none'];
+
+    const statusFilter = new ReportFilters({ name: 'subscription_status', value: statuses });
+    const scheduledChangeFilter = new ReportFilters({
+      name: 'subscription_scheduled_change_action',
+      value: scheduledChangeActions,
+    });
+
+    expect(reportType).toBe('subscriptions');
+    expect(filterNames).toHaveLength(4);
+    expect(statusFilter.value).toEqual(statuses);
+    expect(statusFilter.operator).toBeNull();
+    expect(scheduledChangeFilter.value).toEqual(scheduledChangeActions);
   });
 });
