@@ -4,10 +4,15 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ReportFilterName, type ReportFilterOperator } from '../../../enums/index.js';
+import {
+  type ReportFilterName,
+  type ReportFilterOperator,
+  type SubscriptionScheduledChangeActionFilter,
+  type SubscriptionStatusFilter,
+} from '../../../enums/index.js';
 
 export interface IReportFiltersNotification {
   name: ReportFilterName;
   operator?: null | ReportFilterOperator;
-  value: string[] | string;
+  value: string[] | string | SubscriptionStatusFilter[] | SubscriptionScheduledChangeActionFilter[];
 }

@@ -22,6 +22,14 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `subscriptions` report type, which contains the current state of your subscriptions.
+- Added `subscription_status`, `subscription_created_at`, `customer_country_code` and
+  `subscription_scheduled_change_action` report filter names for use with `subscriptions` reports.
+- Added `SubscriptionStatusFilter` and `SubscriptionScheduledChangeActionFilter` types for `subscriptions` report filter
+  values.
+
 ---
 
 ## 3.10.0 - 2026-08-07

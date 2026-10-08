@@ -4,13 +4,18 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type ReportFilterName, type ReportFilterOperator } from '../../../enums/index.js';
+import {
+  type ReportFilterName,
+  type ReportFilterOperator,
+  type SubscriptionScheduledChangeActionFilter,
+  type SubscriptionStatusFilter,
+} from '../../../enums/index.js';
 import { type IReportFiltersNotification } from '../../types/index.js';
 
 export class ReportFiltersNotification {
   public readonly name: ReportFilterName;
   public readonly operator: null | ReportFilterOperator;
-  public readonly value: string[] | string;
+  public readonly value: string[] | string | SubscriptionStatusFilter[] | SubscriptionScheduledChangeActionFilter[];
 
   constructor(reportFiltersResponse: IReportFiltersNotification) {
     this.name = reportFiltersResponse.name;
