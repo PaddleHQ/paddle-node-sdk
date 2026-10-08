@@ -1,11 +1,6 @@
 import { Report, ReportFilters } from '../../entities/index.js';
 import { type IReportResponse, type IReportFilters } from '../../types/index.js';
-import {
-  type ReportFilterName,
-  type ReportType,
-  type SubscriptionScheduledChangeActionFilter,
-  type SubscriptionStatusFilter,
-} from '../../enums/index.js';
+import { type ReportFilterName, type ReportType } from '../../enums/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import { ReportsResource } from '../../resources/index.js';
 import { Response } from '../../internal/index.js';
@@ -421,7 +416,7 @@ describe('subscriptions Report Type', () => {
     expect(report.filters[3]?.operator).toBe('gte');
   });
 
-  test('subscriptions filter names and values should be valid types', () => {
+  test('subscriptions report type and filter names should be valid types', () => {
     const reportType: ReportType = 'subscriptions';
     const filterNames: ReportFilterName[] = [
       'subscription_status',
@@ -429,8 +424,8 @@ describe('subscriptions Report Type', () => {
       'customer_country_code',
       'subscription_scheduled_change_action',
     ];
-    const statuses: SubscriptionStatusFilter[] = ['active', 'canceled', 'past_due', 'paused', 'trialing'];
-    const scheduledChangeActions: SubscriptionScheduledChangeActionFilter[] = ['cancel', 'pause', 'resume', 'none'];
+    const statuses = ['active', 'canceled', 'past_due', 'paused', 'trialing'];
+    const scheduledChangeActions = ['cancel', 'pause', 'resume', 'none'];
 
     const statusFilter = new ReportFilters({ name: 'subscription_status', value: statuses });
     const scheduledChangeFilter = new ReportFilters({
