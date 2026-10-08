@@ -25,6 +25,14 @@ adding additional type guards.
 ### Added
 
 - Added `CountryCodeSupported` and `CountryCodeNonSupported` types. `CountryCode` is now the union of both.
+- Added `countries` resource with a `list` operation for `GET /countries`, returning `CountryDefinition` entities that
+  describe each country Paddle knows about, including its transaction and payout currencies, whether sales are allowed,
+  and its default tax mode.
+- Added `currencies` resource with a `list` operation for `GET /currencies`, returning `CurrencyDefinition` entities that
+  describe each currency Paddle supports, including decimal places, minimum payment amount, and the countries that use
+  it for automatic price conversion.
+- Added `CountryCodeIso3`, `CountryCodeIso3Supported`, `CountryCodeIso3NonSupported` and `CountryDefinitionTaxMode`
+  types.
 
 ### Changed
 
