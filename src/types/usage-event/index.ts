@@ -4,6 +4,5 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export * from './usage-event-error-response.js';
 export * from './usage-event-result-response.js';
 export * from './usage-events-result-response.js';

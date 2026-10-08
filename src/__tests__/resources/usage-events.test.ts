@@ -18,6 +18,10 @@ describe('UsageEventsResource', () => {
     NodeRuntime.initialize();
   });
 
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   test('should create usage events', async () => {
     const paddleInstance = getPaddleTestClient();
     paddleInstance.post = jest.fn().mockResolvedValue(UsageEventsAcceptedMockResponse);

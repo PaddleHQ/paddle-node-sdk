@@ -44,23 +44,20 @@ export class UsageEventKey {
    * Generate the key once per usage event and reuse it, unchanged, when retrying.
    */
   public static generate(options?: GenerateEventKeyOptions): string {
-    const cryptoProvider = UsageEventKey.getCryptoProvider();
-    const ulid =
-      UsageEventKey.encodeTime(Date.now()) +
-      UsageEventKey.encodeRandom(cryptoProvider.getRandomValues(new Uint8Array(ULID_RANDOM_LENGTH)));
-
-    if (options?.prefix === undefined) {
-      return ulid;
-    }
-
+    const prefix = options?.prefix;
     const maxPrefixLength = EVENT_KEY_MAX_LENGTH - ULID_LENGTH - 1;
-    if (!EVENT_KEY_PATTERN.test(options.prefix) || options.prefix.length > maxPrefixLength) {
+    if (prefix !== undefined && (!EVENT_KEY_PATTERN.test(prefix) || prefix.length > maxPrefixLength)) {
       throw new Error(
         `[Paddle] Invalid event key prefix. Prefix must be 1-${maxPrefixLength} characters of a-z, 0-9, '_' or '-'`,
       );
     }
 
-    return `${options.prefix}_${ulid}`;
+    const cryptoProvider = UsageEventKey.getCryptoProvider();
+    const ulid =
+      UsageEventKey.encodeTime(Date.now()) +
+      UsageEventKey.encodeRandom(cryptoProvider.getRandomValues(new Uint8Array(ULID_RANDOM_LENGTH)));
+
+    return prefix === undefined ? ulid : `${prefix}_${ulid}`;
   }
 
   /**

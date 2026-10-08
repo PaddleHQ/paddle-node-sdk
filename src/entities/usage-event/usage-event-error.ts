@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IUsageEventErrorResponse } from '../../types/index.js';
+import { type ErrorDetail } from '../../internal/index.js';
 import { UsageEventErrorField } from './usage-event-error-field.js';
 
 export class UsageEventError {
@@ -14,7 +14,7 @@ export class UsageEventError {
   public readonly documentationUrl: string;
   public readonly errors: UsageEventErrorField[];
 
-  constructor(error: IUsageEventErrorResponse) {
+  constructor(error: ErrorDetail) {
     this.type = error.type;
     this.code = error.code;
     this.detail = error.detail;

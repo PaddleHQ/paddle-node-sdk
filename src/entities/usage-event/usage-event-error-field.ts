@@ -4,13 +4,13 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type IUsageEventErrorFieldResponse } from '../../types/index.js';
+import { type ErrorField } from '../../internal/index.js';
 
 export class UsageEventErrorField {
   public readonly field: string;
   public readonly message: string;
 
-  constructor(errorField: IUsageEventErrorFieldResponse) {
+  constructor(errorField: ErrorField) {
     this.field = errorField.field;
     this.message = errorField.message;
   }

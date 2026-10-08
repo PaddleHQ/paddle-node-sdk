@@ -5,10 +5,10 @@
  */
 
 import { type UsageEventStatus } from '../../enums/index.js';
-import { type IUsageEventErrorResponse } from './usage-event-error-response.js';
+import { type ErrorDetail } from '../../internal/index.js';
 
 export interface IUsageEventResultResponse {
   event_key: string;
   status: UsageEventStatus;
-  error?: IUsageEventErrorResponse;
+  error?: ErrorDetail;
 }
