@@ -22,6 +22,11 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `blocked_by_policy` to the transaction payment attempt `error_code` values, returned when a payment is blocked by
+  one of the seller's configured policy checks.
+
 ---
 
 ## 3.10.0 - 2026-08-07
