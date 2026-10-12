@@ -22,6 +22,19 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `taxRatesUsed` to adjustments, adjustment notifications, and adjustments included on transactions. It's `null`
+  on adjustment notifications when no tax rates were used.
+- Added `type` to adjustments included on transactions.
+- Added `retainedFee` to `adjustmentsTotals` on transactions.
+
+### Changed
+
+- `creditAppliedToBalance` on adjustments, adjustment notifications, and adjustments included on transactions is now
+  `boolean | null`, matching the API. It's only returned for `credit` adjustments.
+- `amount` is now optional on `CreateAdjustmentLineItem`, as it's only required for `partial` adjustment items.
+
 ---
 
 ## 3.10.0 - 2026-08-07

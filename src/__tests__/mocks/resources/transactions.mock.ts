@@ -301,8 +301,9 @@ export const TransactionMock: ITransactionResponse = {
   adjustments: [
     {
       action: 'credit',
+      type: 'partial',
       created_at: '2024-10-12T07:20:50.52Z',
-      credit_applied_to_balance: true,
+      credit_applied_to_balance: null,
       currency_code: 'USD',
       customer_id: 'ctm_1234',
       id: 'adj_1234',
@@ -347,6 +348,16 @@ export const TransactionMock: ITransactionResponse = {
         subtotal: '1000',
         retained_fee: '2',
       },
+      tax_rates_used: [
+        {
+          tax_rate: '0.5',
+          totals: {
+            subtotal: '100',
+            tax: '50',
+            total: '150',
+          },
+        },
+      ],
       updated_at: '2024-10-12T07:20:50.52Z',
       transaction_id: 'txn_1234',
     },
@@ -360,6 +371,7 @@ export const TransactionMock: ITransactionResponse = {
     currency_code: 'USD',
     earnings: '100',
     fee: '10',
+    retained_fee: '5',
     subtotal: '90',
     tax: '10',
     total: '110',

@@ -11,6 +11,7 @@ import {
   type CurrencyCode,
 } from '../../enums/index.js';
 import { type IAdjustmentItemResponse } from './adjustment-item-response.js';
+import { type IAdjustmentTaxRatesUsedResponse } from './adjustment-tax-rates-used-response.js';
 import { type IPayoutTotalsAdjustmentResponse, type ITotalAdjustmentsResponse } from '../shared/index.js';
 
 export interface IAdjustmentResponse {
@@ -21,12 +22,13 @@ export interface IAdjustmentResponse {
   subscription_id?: string | null;
   customer_id: string;
   reason: string;
-  credit_applied_to_balance: boolean;
+  credit_applied_to_balance: boolean | null;
   currency_code: CurrencyCode;
   status: AdjustmentStatus;
   items: IAdjustmentItemResponse[];
   totals: ITotalAdjustmentsResponse;
   payout_totals?: IPayoutTotalsAdjustmentResponse | null;
+  tax_rates_used: IAdjustmentTaxRatesUsedResponse[];
   created_at: string;
   updated_at: string;
 }

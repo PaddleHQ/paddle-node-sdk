@@ -12,7 +12,11 @@ import {
   CreateAdjustmentMock,
   ListAdjustmentMockResponse,
 } from '../mocks/resources/adjustments.mock.js';
-import { AdjustmentsResource, ListAdjustmentQueryParameters } from '../../resources/index.js';
+import {
+  AdjustmentsResource,
+  type CreateAdjustmentRequestBody,
+  ListAdjustmentQueryParameters,
+} from '../../resources/index.js';
 import { convertToSnakeCase } from '../../internal/index.js';
 
 describe('AdjustmentsResource', () => {
@@ -61,6 +65,34 @@ describe('AdjustmentsResource', () => {
     expect(createdAdjustment.id).toBeDefined();
 
     expect(convertToSnakeCase(CreateAdjustmentMock)).toEqual(CreateAdjustmentExpectation);
+  });
+
+  test('should create an adjustment with line items that omit amount', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(AdjustmentMockResponse);
+    const adjustmentsResource = new AdjustmentsResource(paddleInstance);
+    const requestBody: CreateAdjustmentRequestBody = {
+      action: 'refund',
+      items: [{ itemId: 'txnitm_01gm302t81w94gyjpjpqypkzkf', type: 'full' }],
+      reason: 'error',
+      transactionId: 'txn_01h04vsbhqc62t8hmd4z3b578c',
+    };
+
+    await adjustmentsResource.create(requestBody);
+
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/adjustments`, requestBody);
+  });
+
+  test('should map tax rates used on an adjustment', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(AdjustmentMockResponse);
+    const adjustmentsResource = new AdjustmentsResource(paddleInstance);
+
+    const adjustment = await adjustmentsResource.create(CreateAdjustmentMock);
+
+    expect(adjustment.taxRatesUsed).toEqual([
+      { taxRate: '0.05', totals: { subtotal: '1000', tax: '50', total: '1050' } },
+    ]);
   });
 
   test('should get an link to download credit note PDF for an adjustment', async () => {
