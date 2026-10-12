@@ -16,4 +16,5 @@ export type ReportType =
    */
   | 'balance'
   | 'payout_reconciliation'
-  | 'subscriptions';
+  | 'subscriptions'
+  | 'checkouts';
