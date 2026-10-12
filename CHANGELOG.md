@@ -27,6 +27,12 @@ adding additional type guards.
 - Added `subscriptions` report type, which contains the current state of your subscriptions.
 - Added `subscription_status`, `subscription_created_at`, `customer_country_code` and
   `subscription_scheduled_change_action` report filter names for use with `subscriptions` reports.
+- Added `checkouts` report type, which contains conversion and recovery data for each checkout session.
+- Added `checkout_created_at` report filter name for use with `checkouts` reports, which also support
+  `customer_country_code`.
+- Added `balance_movement_date` and `balance_movement_type` report filter names for use with `payout_reconciliation`
+  reports.
+- Added `updated_at` to reports and report notifications.
 
 ---
 

@@ -22,6 +22,7 @@ export const ReportCreatedMock: IEventsResponse<IReportResponse> = {
       { name: 'collection_mode', value: ['manual'], operator: null },
     ],
     expires_at: null,
+    updated_at: '2023-12-15T16:18:53.92Z',
     created_at: '2023-12-15T16:18:53.92Z',
   },
 };
@@ -51,6 +52,7 @@ export const ReportCreatedMockExpectation = {
     rows: null,
     status: 'pending',
     type: 'transactions',
+    updatedAt: '2023-12-15T16:18:53.92Z',
   },
   eventId: 'evt_01hhq4c3nf0jrz7c46k4d8bc0x',
   eventType: 'report.created',
