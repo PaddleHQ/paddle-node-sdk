@@ -6,11 +6,16 @@
 
 export * from './time-period.js';
 export * from './trial-period.js';
+export * from './trial-period-update.js';
 export * from './trial-period-response.js';
 export * from './money.js';
 export * from './money-response.js';
+export * from './money-optional-currency.js';
+export * from './money-optional-currency-response.js';
 export * from './unit-price-override.js';
 export * from './unit-price-override-response.js';
+export * from './price-trial-unit-price-override.js';
+export * from './price-trial-unit-price-override-response.js';
 export * from './price-quantity.js';
 export * from './billing-details-response.js';
 export * from './totals.js';

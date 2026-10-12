@@ -10,7 +10,7 @@ import {
   type IMoney,
   type IPriceQuantity,
   type ITimePeriod,
-  type ITrialPeriod,
+  type ITrialPeriodUpdate,
   type IUnitPriceOverride,
 } from '../../../types/index.js';
 
@@ -19,7 +19,7 @@ export interface UpdatePriceRequestBody {
   name?: string | null;
   type?: CatalogType | null;
   billingCycle?: ITimePeriod | null;
-  trialPeriod?: ITrialPeriod | null;
+  trialPeriod?: ITrialPeriodUpdate | null;
   taxMode?: TaxMode;
   unitPrice?: IMoney;
   unitPriceOverrides?: IUnitPriceOverride[];

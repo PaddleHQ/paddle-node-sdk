@@ -61,6 +61,22 @@ describe('PricesResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith(`/prices/${priceId}`, { queryParams: undefined });
     expect(price).toBeDefined();
     expect(price.id).toBe(priceId);
+    expect(price.trialPeriod).toEqual({
+      interval: 'day',
+      frequency: 10,
+      requiresPaymentMethod: true,
+      unitPrice: { amount: '100', currencyCode: 'USD' },
+      unitPriceOverrides: [
+        {
+          countryCodes: ['GB'],
+          unitPrice: { amount: '90', currencyCode: 'GBP' },
+        },
+        {
+          countryCodes: ['CA'],
+          unitPrice: { amount: '80', currencyCode: null },
+        },
+      ],
+    });
   });
 
   test('should accepts query params and return a single price by ID', async () => {
