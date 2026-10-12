@@ -115,6 +115,10 @@ export const PriceMock: IPriceResponse = {
         country_codes: ['GB'],
         unit_price: { amount: '90', currency_code: 'GBP' },
       },
+      {
+        country_codes: ['CA'],
+        unit_price: { amount: '80' },
+      },
     ],
   },
   tax_mode: 'account_setting',

@@ -71,6 +71,10 @@ describe('PricesResource', () => {
           countryCodes: ['GB'],
           unitPrice: { amount: '90', currencyCode: 'GBP' },
         },
+        {
+          countryCodes: ['CA'],
+          unitPrice: { amount: '80', currencyCode: null },
+        },
       ],
     });
   });

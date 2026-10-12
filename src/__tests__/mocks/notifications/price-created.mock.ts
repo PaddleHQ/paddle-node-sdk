@@ -28,7 +28,10 @@ export const PriceCreatedMock: IEventsResponse<IPriceNotificationResponse> = {
       frequency: 3,
       requires_payment_method: true,
       unit_price: { amount: '100', currency_code: 'USD' },
-      unit_price_overrides: [{ country_codes: ['GB'], unit_price: { amount: '90', currency_code: 'GBP' } }],
+      unit_price_overrides: [
+        { country_codes: ['GB'], unit_price: { amount: '90', currency_code: 'GBP' } },
+        { country_codes: ['CA'], unit_price: { amount: '80' } },
+      ],
     },
     billing_cycle: { interval: 'month', frequency: 1 },
     unit_price_overrides: [],
@@ -70,6 +73,13 @@ export const PriceCreatedMockExpectation = {
           unitPrice: {
             amount: '90',
             currencyCode: 'GBP',
+          },
+        },
+        {
+          countryCodes: ['CA'],
+          unitPrice: {
+            amount: '80',
+            currencyCode: null,
           },
         },
       ],
