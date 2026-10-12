@@ -63,6 +63,10 @@ adding additional type guards.
   returned on `pagination`; to get the next page, pass the same request body with `{ after: pagination.after }`.
 - Added `paddle.metrics.listExploreEntities()` to list queryable Explore metric entities and their dimensions, measures,
   and allowed aggregations from `GET /metrics/explore/entities`.
+- Added `subscriptions.listHistory(subscriptionId, queryParams?)` to list the history of changes made to a
+  subscription. Each `SubscriptionHistory` entry has a `detail` discriminated on `action`, mapped to a dedicated entity
+  per action (for example `SubscriptionHistoryCreatedDetail`). Filter by `action`, `source`, `actorType`, `actorId`,
+  `reason`, and `occurredAt` (with `[LTE]` and `[GTE]` operators).
 
 ### Changed
 
