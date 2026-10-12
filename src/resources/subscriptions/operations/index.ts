@@ -11,3 +11,4 @@ export * from './pause-subscription-request-object.js';
 export * from './resume-subscription-request-object.js';
 export * from './cancel-subscription-request-object.js';
 export * from './create-subscription-charge-request-object.js';
+export * from './list-subscription-history-query-parameters.js';
