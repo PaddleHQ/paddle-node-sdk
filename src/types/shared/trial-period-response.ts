@@ -5,7 +5,11 @@
  */
 
 import { type ITimePeriod } from './time-period.js';
+import { type IMoneyOptionalCurrencyResponse } from './money-optional-currency-response.js';
+import { type IPriceTrialUnitPriceOverrideResponse } from './price-trial-unit-price-override-response.js';
 
 export interface ITrialPeriodResponse extends ITimePeriod {
   requires_payment_method?: boolean;
+  unit_price?: IMoneyOptionalCurrencyResponse | null;
+  unit_price_overrides?: IPriceTrialUnitPriceOverrideResponse[];
 }

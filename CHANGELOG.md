@@ -22,6 +22,18 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `unitPrice` and `unitPriceOverrides` to price `trialPeriod` in requests, responses and webhook notifications,
+  for paid trials.
+  See [related changelog](https://developer.paddle.com/changelog/2026/paid-trials?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `MoneyOptionalCurrency` and `PriceTrialUnitPriceOverride` entities, where `currencyCode` may be omitted.
+
+### Changed
+
+- `UpdatePriceRequestBody.trialPeriod` now uses `ITrialPeriodUpdate`, so all trial period fields are optional when
+  updating a price.
+
 ---
 
 ## 3.10.0 - 2026-08-07

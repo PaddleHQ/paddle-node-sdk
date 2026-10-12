@@ -103,6 +103,8 @@ export const SubscriptionTrialingMockExpectation = {
           trialPeriod: {
             frequency: 10,
             interval: 'day',
+            unitPrice: null,
+            unitPriceOverrides: [],
           },
           type: null,
           unitPrice: {

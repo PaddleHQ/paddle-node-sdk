@@ -23,7 +23,13 @@ export const PriceUpdatedMock: IEventsResponse<IPriceNotificationResponse> = {
     custom_data: null,
     description: 'Annual (per seat)',
     name: 'Annual (per seat)',
-    trial_period: { interval: 'day', frequency: 30 },
+    trial_period: {
+      interval: 'day',
+      frequency: 30,
+      requires_payment_method: false,
+      unit_price: null,
+      unit_price_overrides: [],
+    },
     billing_cycle: { interval: 'year', frequency: 1 },
     unit_price_overrides: [],
     import_meta: null,
@@ -53,6 +59,9 @@ export const PriceUpdatedMockExpectation = {
     trialPeriod: {
       frequency: 30,
       interval: 'day',
+      requiresPaymentMethod: false,
+      unitPrice: null,
+      unitPriceOverrides: [],
     },
     type: 'standard',
     unitPrice: {
