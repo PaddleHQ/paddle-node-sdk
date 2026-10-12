@@ -127,15 +127,15 @@ export class SubscriptionsResource extends BaseResource {
     return new Subscription(data);
   }
 
-  public async resume(subscriptionId: string, requestBody: ResumeSubscription): Promise<Subscription> {
+  public async resume(subscriptionId: string, requestBody?: ResumeSubscription): Promise<Subscription> {
     const urlWithPathParams = new PathParameters(SubscriptionPaths.resume, {
       subscription_id: subscriptionId,
     }).deriveUrl();
 
-    const response = await this.client.post<ResumeSubscription, Response<ISubscriptionResponse> | ErrorResponse>(
-      urlWithPathParams,
-      requestBody,
-    );
+    const response = await this.client.post<
+      ResumeSubscription | undefined,
+      Response<ISubscriptionResponse> | ErrorResponse
+    >(urlWithPathParams, requestBody);
 
     const data = this.handleResponse<ISubscriptionResponse>(response);
 

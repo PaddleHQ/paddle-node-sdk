@@ -48,6 +48,18 @@ describe('AdjustmentsResource', () => {
     expect(adjustments.length).toBe(1);
   });
 
+  test('should accept a single action or a list of actions as a filter', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListAdjustmentMockResponse);
+    const adjustmentsResource = new AdjustmentsResource(paddleInstance);
+
+    await adjustmentsResource.list({ action: 'refund' }).next();
+    expect(paddleInstance.get).toHaveBeenCalledWith('/adjustments?action=refund');
+
+    await adjustmentsResource.list({ action: ['refund', 'credit'] }).next();
+    expect(paddleInstance.get).toHaveBeenCalledWith('/adjustments?action=refund%2Ccredit');
+  });
+
   test('should create a new adjustment', async () => {
     const newAdjustment = CreateAdjustmentMock;
     const paddleInstance = getPaddleTestClient();

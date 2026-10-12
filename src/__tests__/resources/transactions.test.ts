@@ -13,6 +13,7 @@ import {
   ReviseTransactionMock,
   TransactionMock,
   TransactionMockResponse,
+  TransactionPreviewMock,
   TransactionPreviewMockResponse,
   UpdateTransactionExpectation,
   UpdateTransactionMock,
@@ -96,6 +97,31 @@ describe('TransactionsResource', () => {
     expect(transaction.id).toBe(transactionId);
   });
 
+  test('get accepts adjustments and available_payment_methods includes', async () => {
+    const transactionId = TransactionMock.id;
+    const paddleInstance = getPaddleTestClient();
+
+    paddleInstance.get = jest.fn().mockResolvedValue(TransactionMockResponse);
+    const transactionsResource = new TransactionsResource(paddleInstance);
+
+    const queryParams: GetTransactionQueryParameters = {
+      include: ['adjustments', 'available_payment_methods'],
+    };
+    await transactionsResource.get(transactionId, queryParams);
+
+    expect(new QueryParameters(queryParams).toQueryString()).toBe('?include=adjustments%2Cavailable_payment_methods');
+  });
+
+  test('list accepts adjustments and available_payment_methods includes', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListTransactionMockResponse);
+    const transactionsResource = new TransactionsResource(paddleInstance);
+
+    await transactionsResource.list({ include: ['adjustments', 'available_payment_methods'] }).next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/transactions?include=adjustments%2Cavailable_payment_methods');
+  });
+
   test('should create a new transaction', async () => {
     const newTransaction: CreateTransactionRequestBody = CreateTransactionMock;
     const paddleInstance = getPaddleTestClient();
@@ -152,6 +178,24 @@ describe('TransactionsResource', () => {
     expect(convertToSnakeCase(UpdateTransactionMock)).toEqual(UpdateTransactionExpectation);
   });
 
+  test('update accepts partial billing details', async () => {
+    const transactionId = TransactionMock.id;
+    const transactionToBeUpdated: UpdateTransactionRequestBody = {
+      billingDetails: { purchaseOrderNumber: 'PO-123', additionalInformation: null },
+    };
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.patch = jest.fn().mockResolvedValue(TransactionMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    await transactionsResource.update(transactionId, transactionToBeUpdated);
+
+    expect(paddleInstance.patch).toHaveBeenCalledWith(`/transactions/${transactionId}?`, transactionToBeUpdated);
+    expect(convertToSnakeCase(transactionToBeUpdated)).toEqual({
+      billing_details: { purchase_order_number: 'PO-123', additional_information: null },
+    });
+  });
+
   test('update includes NonCatalogDiscount with custom_data and restrict_to', async () => {
     const transactionId = TransactionMock.id;
     const paddleInstance = getPaddleTestClient();
@@ -202,6 +246,20 @@ describe('TransactionsResource', () => {
 
     expect(paddleInstance.post).toHaveBeenCalledWith(`/transactions/preview`, PreviewTransactionMock);
     expect(updatedTransaction).toBeDefined();
+    expect(updatedTransaction.availablePaymentMethods).toEqual(['card', 'paypal']);
+  });
+
+  test('preview defaults availablePaymentMethods to an empty list when absent', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue({
+      ...TransactionPreviewMockResponse,
+      data: { ...TransactionPreviewMock, available_payment_methods: null },
+    });
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    const preview = await transactionsResource.preview(PreviewTransactionMock);
+
+    expect(preview.availablePaymentMethods).toEqual([]);
   });
 
   test('preview accepts NonCatalogDiscount with custom_data and restrict_to', async () => {

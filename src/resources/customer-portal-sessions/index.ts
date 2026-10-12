@@ -15,7 +15,7 @@ const CustomerPortalSessionPaths = {
 } as const;
 
 export class CustomerPortalSessionsResource extends BaseResource {
-  public async create(customerId: string, subscriptionIds: string[]): Promise<CustomerPortalSession> {
+  public async create(customerId: string, subscriptionIds?: string[]): Promise<CustomerPortalSession> {
     const urlWithPathParams = new PathParameters(CustomerPortalSessionPaths.create, {
       customer_id: customerId,
     }).deriveUrl();
@@ -23,9 +23,7 @@ export class CustomerPortalSessionsResource extends BaseResource {
     const response = await this.client.post<
       CreateCustomerPortalSessionRequestBody,
       Response<ICustomerPortalSessionResponse> | ErrorResponse
-    >(urlWithPathParams, {
-      subscriptionIds,
-    });
+    >(urlWithPathParams, subscriptionIds ? { subscriptionIds } : {});
 
     const data = this.handleResponse<ICustomerPortalSessionResponse>(response);
 

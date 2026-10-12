@@ -33,5 +33,9 @@ export interface ITransactionPreviewResponse {
   ignore_trials?: boolean | null;
   items: ITransactionItemPreviewResponse[];
   details: ITransactionDetailsPreviewResponse;
+  available_payment_methods?: AvailablePaymentMethod[] | null;
+  /**
+   * @deprecated never returned by the API, use available_payment_methods instead
+   */
   available_payment_method?: AvailablePaymentMethod | null;
 }

@@ -5,6 +5,6 @@
  */
 
 export interface ListNotificationLogQueryParameters {
-  after: string;
-  perPage: number;
+  after?: string;
+  perPage?: number;
 }

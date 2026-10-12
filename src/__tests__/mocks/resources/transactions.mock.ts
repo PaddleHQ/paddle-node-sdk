@@ -448,6 +448,7 @@ export const TransactionPreviewMock: ITransactionPreviewResponse = {
       },
     ],
   },
+  available_payment_methods: ['card', 'paypal'],
 };
 
 export const TransactionMockResponse: Response<ITransactionResponse> = {

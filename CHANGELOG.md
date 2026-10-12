@@ -22,6 +22,23 @@ adding additional type guards.
 
 ## Unreleased
 
+### Fixed
+
+- `TransactionPreview.availablePaymentMethods` is now populated from the `available_payment_methods` list returned by
+  the API. It was previously read from a non-existent field and was always `null`.
+- Added `adjustments` as an `include` value when getting, listing, creating, and updating transactions. `adjustment` is
+  deprecated in favor of `adjustments`.
+- Added `available_payment_methods` as an `include` value when getting and listing transactions.
+- `after` and `perPage` are now optional when listing logs for a notification.
+- The request body and `effectiveFrom` are now optional when resuming a subscription, so subscriptions can be resumed
+  immediately without passing options.
+- `subscriptionIds` is now optional when creating a customer portal session.
+- All fields in `billingDetails` are now optional when updating subscriptions and transactions, and
+  `additionalInformation` accepts `null`.
+- `include` is now optional when getting a simulation run.
+- The `action` filter when listing adjustments now accepts a list of actions.
+- `pnpm build` now writes `src/version.ts` with a trailing newline, so `pnpm lint` passes after building.
+
 ---
 
 ## 3.10.0 - 2026-08-07

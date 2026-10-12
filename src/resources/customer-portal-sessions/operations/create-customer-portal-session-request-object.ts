@@ -5,5 +5,5 @@
  */
 
 export interface CreateCustomerPortalSessionRequestBody {
-  subscriptionIds: string[];
+  subscriptionIds?: string[];
 }

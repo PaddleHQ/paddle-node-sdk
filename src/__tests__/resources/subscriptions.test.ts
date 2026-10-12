@@ -189,6 +189,32 @@ describe('SubscriptionsResource', () => {
     expect(updatedSubscription).toBeDefined();
   });
 
+  test('should resume an existing subscription without a request body', async () => {
+    const subscriptionId = SubscriptionMock.id;
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(SubscriptionMockResponse);
+
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    const updatedSubscription = await subscriptionsResource.resume(subscriptionId);
+
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/resume`, undefined);
+    expect(updatedSubscription).toBeDefined();
+  });
+
+  test('should resume an existing subscription without effectiveFrom', async () => {
+    const subscriptionId = SubscriptionMock.id;
+    const resumeSubscription: ResumeSubscription = { onResume: 'start_new_billing_period' };
+
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(SubscriptionMockResponse);
+
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    await subscriptionsResource.resume(subscriptionId, resumeSubscription);
+
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/resume`, resumeSubscription);
+  });
+
   test('should cancel an existing subscription', async () => {
     const subscriptionId = SubscriptionMock.id;
     const subscriptionToBeUpdated: CancelSubscription = { effectiveFrom: 'next_billing_period' };
