@@ -109,6 +109,7 @@ describe('TransactionsResource', () => {
     };
     await transactionsResource.get(transactionId, queryParams);
 
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/transactions/${transactionId}`, new QueryParameters(queryParams));
     expect(new QueryParameters(queryParams).toQueryString()).toBe('?include=adjustments%2Cavailable_payment_methods');
   });
 

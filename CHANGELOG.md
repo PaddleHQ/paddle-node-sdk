@@ -25,7 +25,8 @@ adding additional type guards.
 ### Fixed
 
 - `TransactionPreview.availablePaymentMethods` is now populated from the `available_payment_methods` list returned by
-  the API. It was previously read from a non-existent field and was always `null`.
+  the API, and is typed as `AvailablePaymentMethod[]`. It was previously read from a non-existent field and was always
+  `null`.
 - Added `adjustments` as an `include` value when getting, listing, creating, and updating transactions. `adjustment` is
   deprecated in favor of `adjustments`.
 - Added `available_payment_methods` as an `include` value when getting and listing transactions.
