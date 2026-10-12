@@ -22,3 +22,6 @@ export * from './simulation-run-event/index.js';
 export * from './api-key/index.js';
 export * from './api-key-exposure/index.js';
 export * from './client-tokens/index.js';
+export * from './verification/index.js';
+export * from './country/index.js';
+export * from './checkout-domain/index.js';

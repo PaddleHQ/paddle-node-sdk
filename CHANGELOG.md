@@ -22,6 +22,29 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `verifications` resource with `list` and `get` operations to check whether an account is ready for live
+  payments and which verification steps are outstanding.
+- Added `countries` resource with a `list` operation for `GET /countries`, returning `CountryDefinition` entities that
+  describe each country Paddle knows about, including its transaction and payout currencies, whether sales are allowed,
+  and its default tax mode.
+- Added `currencies` resource with a `list` operation for `GET /currencies`, returning `CurrencyDefinition` entities that
+  describe each currency Paddle supports, including decimal places, minimum payment amount, and the countries that use
+  it for automatic price conversion.
+- Added `checkoutDomains` resource with `list`, `get`, `delete`, and `verifyPaymentMethod` operations for managing
+  checkout domains and verifying them for Apple Pay.
+- Added `ipAddresses` resource with a `get` operation to get Paddle IP addresses, which you can add to your allowlist.
+- Added `CountryCodeSupported`, `CountryCodeNonSupported`, `CountryCodeIso3`, `CountryCodeIso3Supported`,
+  `CountryCodeIso3NonSupported` and `CountryDefinitionTaxMode` types.
+
+### Changed
+
+- Widened `CountryCode` to include the country codes Paddle doesn't support sales to (`AF`, `AN`, `AQ`, `BY`, `CD`,
+  `CF`, `CS`, `CU`, `HT`, `IR`, `KP`, `LY`, `ML`, `MM`, `NI`, `RU`, `SD`, `SO`, `SS`, `SY`, `VE`, `YE`, `ZW`), matching
+  the public API spec. `CountryCode` is now `CountryCodeSupported | CountryCodeNonSupported`. This affects addresses,
+  unit price overrides, and related notifications.
+
 ---
 
 ## 3.10.0 - 2026-08-07

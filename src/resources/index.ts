@@ -27,3 +27,8 @@ export * from './simulation-runs/index.js';
 export * from './simulation-run-events/index.js';
 export * from './client-tokens/index.js';
 export * from './metrics/index.js';
+export * from './verifications/index.js';
+export * from './countries/index.js';
+export * from './currencies/index.js';
+export * from './checkout-domains/index.js';
+export * from './ip-addresses/index.js';

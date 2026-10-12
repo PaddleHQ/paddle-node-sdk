@@ -11,6 +11,7 @@ import {
   ListPriceMockResponse,
   PriceMock,
   PriceMockResponse,
+  PriceWithUnsupportedCountryOverrideMockResponse,
   UpdatePriceExpectation,
   UpdatePriceMock,
 } from '../mocks/resources/prices.mock.js';
@@ -75,6 +76,16 @@ describe('PricesResource', () => {
     expect(price).toBeDefined();
     expect(paddleInstance.get).toHaveBeenCalledWith(`/prices/${priceId}`, { queryParameters: undefined });
     expect(price.id).toBe(priceId);
+  });
+
+  test('should return unit price overrides that include unsupported country codes', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(PriceWithUnsupportedCountryOverrideMockResponse);
+
+    const pricesResource = new PricesResource(paddleInstance);
+    const price = await pricesResource.get(PriceMock.id);
+
+    expect(price.unitPriceOverrides[0]?.countryCodes).toEqual(['GB', 'RU']);
   });
 
   test('should create a new price', async () => {
