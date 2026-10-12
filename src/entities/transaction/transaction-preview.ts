@@ -21,7 +21,7 @@ export class TransactionPreview {
   public readonly ignoreTrials: boolean | null;
   public readonly items: TransactionItemPreview[];
   public readonly details: TransactionDetailsPreview;
-  public readonly availablePaymentMethods: AvailablePaymentMethod | null;
+  public readonly availablePaymentMethods: AvailablePaymentMethod[];
 
   constructor(transactionPreview: ITransactionPreviewResponse) {
     this.customerId = transactionPreview.customer_id ? transactionPreview.customer_id : null;
@@ -34,6 +34,6 @@ export class TransactionPreview {
     this.ignoreTrials = transactionPreview.ignore_trials ? transactionPreview.ignore_trials : null;
     this.items = transactionPreview.items.map((item) => new TransactionItemPreview(item));
     this.details = new TransactionDetailsPreview(transactionPreview.details);
-    this.availablePaymentMethods = transactionPreview.available_payment_method ?? null;
+    this.availablePaymentMethods = transactionPreview.available_payment_methods ?? [];
   }
 }

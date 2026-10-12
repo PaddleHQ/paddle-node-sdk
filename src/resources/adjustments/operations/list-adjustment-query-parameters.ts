@@ -7,7 +7,7 @@
 import { type AdjustmentAction, type AdjustmentStatus } from '../../../enums/index.js';
 
 export interface ListAdjustmentQueryParameters {
-  action?: AdjustmentAction;
+  action?: AdjustmentAction | AdjustmentAction[];
   after?: string;
   customerId?: string[];
   orderBy?: string;
