@@ -18,6 +18,8 @@ export type ErrorCode =
   | 'invalid_payment_details'
   | 'issuer_unavailable'
   | 'not_enough_balance'
+  | 'preferred_network_not_supported'
+  | 'prepaid_card_not_supported'
   | 'psp_error'
   | 'redacted_payment_method'
   | 'system_error'

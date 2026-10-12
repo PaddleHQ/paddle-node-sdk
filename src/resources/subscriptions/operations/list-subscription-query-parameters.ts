@@ -15,6 +15,6 @@ export interface ListSubscriptionQueryParameters {
   orderBy?: string;
   perPage?: number;
   priceId?: string[];
-  scheduledChangeAction?: ScheduledChangeAction[];
+  scheduledChangeAction?: Array<ScheduledChangeAction | 'none'>;
   status?: SubscriptionStatus[];
 }

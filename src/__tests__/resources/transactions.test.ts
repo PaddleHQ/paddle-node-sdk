@@ -66,6 +66,20 @@ describe('TransactionsResource', () => {
     expect(transactions.length).toBe(1);
   });
 
+  test('should accept subscription_import as an origin filter', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListTransactionMockResponse);
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    const queryParams: ListTransactionQueryParameters = {
+      origin: ['subscription_import', 'web'],
+    };
+
+    const transactionCollection = transactionsResource.list(queryParams);
+    await transactionCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/transactions?origin=subscription_import%2Cweb');
+  });
+
   test('should return a single transaction by ID', async () => {
     const transactionId = TransactionMock.id;
     const paddleInstance = getPaddleTestClient();
@@ -77,6 +91,8 @@ describe('TransactionsResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith(`/transactions/${transactionId}`, { queryParams: undefined });
     expect(transaction).toBeDefined();
     expect(transaction.id).toBe(transactionId);
+    expect(transaction.payments[0]?.errorCode).toBe('prepaid_card_not_supported');
+    expect(transaction.details?.adjustedPayoutTotals?.chargebackFee?.original?.currencyCode).toBe('CAD');
   });
 
   test('should accepts query params and return a single transaction by ID', async () => {

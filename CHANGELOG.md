@@ -26,6 +26,15 @@ adding additional type guards.
 
 - Added `verifications` resource with `list` and `get` operations to check whether an account is ready for live payments and which verification steps are outstanding.
 - Added `verification.read` to `ApiKeyPermission` for `api_key.*` notifications.
+- Added `checkout_domain.read`, `checkout_domain.write`, `metrics.read` and `subscription_history.read` to
+  `ApiKeyPermission` for `api_key.*` notifications.
+- Added `preferred_network_not_supported` and `prepaid_card_not_supported` to `ErrorCode` for transaction payment
+  attempts.
+- Added `AUD` and `CAD` to `AdjustmentCurrencyCode` for chargeback fees.
+- Added `subscription_saved_during_purchase` to `SavedPaymentOrigin` for payment methods.
+- Added `subscription_import` to the `origin` filter when listing transactions.
+- Added `none` to the `scheduledChangeAction` filter when listing subscriptions, to return subscriptions without a
+  scheduled change.
 
 ---
 

@@ -64,6 +64,7 @@ describe('PaymentMethodsResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith(`/customers/${customerId}/payment-methods/${paymentMethodId}`);
     expect(paymentMethod).toBeDefined();
     expect(paymentMethod.id).toBe(paymentMethodId);
+    expect(paymentMethod.origin).toBe('subscription_saved_during_purchase');
   });
 
   test('should delete an existing payment method', async () => {
