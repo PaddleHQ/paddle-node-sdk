@@ -18,6 +18,7 @@ import { type ISubscriptionScheduledChangeResponse } from './subscription-schedu
 import { type ISubscriptionManagementResponse } from './subscription-management-response.js';
 import { type ISubscriptionItemResponse } from './subscription-item-response.js';
 import { type INextTransactionResponse } from './next-transaction-response.js';
+import { type ISubscriptionConsentRequirementResponse } from './subscription-consent-requirement-response.js';
 
 export interface ISubscriptionResponse {
   id: string;
@@ -45,4 +46,5 @@ export interface ISubscriptionResponse {
   next_transaction?: INextTransactionResponse | null;
   recurring_transaction_details?: ITransactionDetailsPreviewResponse | null;
   import_meta?: IImportMetaResponse | null;
+  consent_requirements: ISubscriptionConsentRequirementResponse[];
 }

@@ -7,6 +7,7 @@
 import {
   type IBillingDetailsNotificationResponse,
   type IImportMetaNotificationResponse,
+  type ISubscriptionConsentRequirementNotificationResponse,
   type ISubscriptionDiscountNotificationResponse,
   type ISubscriptionItemNotificationResponse,
   type ISubscriptionScheduledChangeNotificationResponse,
@@ -38,6 +39,7 @@ export interface ISubscriptionCreatedNotificationResponse {
   billing_cycle: ITimePeriodNotification;
   scheduled_change?: ISubscriptionScheduledChangeNotificationResponse | null;
   items: ISubscriptionItemNotificationResponse[];
+  consent_requirements: ISubscriptionConsentRequirementNotificationResponse[] | null;
   custom_data?: ICustomData | null;
   import_meta?: IImportMetaNotificationResponse | null;
 }

@@ -87,6 +87,34 @@ describe('SubscriptionsResource', () => {
     expect(subscription).toBeDefined();
     expect(subscription.id).toBe(subscriptionId);
     expect(subscription.managementUrls?.viewSubscription).toBe(SubscriptionMock.management_urls?.view_subscription);
+    expect(subscription.discount?.type).toBe('recurring');
+    expect(subscription.consentRequirements).toEqual([
+      {
+        id: 'subconreq_01gm302t81w94gyjpjpqypkzkf',
+        requirement: 'introductory_discount_ending',
+        status: 'pending',
+        createdAt: '2024-10-12T07:20:50.52Z',
+        consentPeriod: { startsAt: '2024-11-05T07:20:50.52Z', endsAt: '2024-11-12T07:20:50.52Z' },
+        grantedAt: null,
+        voidedAt: null,
+      },
+    ]);
+  });
+
+  test('should filter subscriptions by next billed at', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionMockResponse);
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    const queryParams: ListSubscriptionQueryParameters = {
+      nextBilledAt: ['2024-10-12T07:20:50.52Z', '2024-11-12T07:20:50.52Z'],
+    };
+
+    const subscriptionCollection = subscriptionsResource.list(queryParams);
+    await subscriptionCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      '/subscriptions?next_billed_at=2024-10-12T07%3A20%3A50.52Z%2C2024-11-12T07%3A20%3A50.52Z',
+    );
   });
 
   test('should accepts query params and return a single subscription by ID', async () => {
@@ -251,6 +279,8 @@ describe('SubscriptionsResource', () => {
       subscriptionToBeUpdated,
     );
     expect(subscription).toBeDefined();
+    expect(subscription.discount?.type).toBe('one-off');
+    expect(subscription.consentRequirements).toEqual([]);
   });
 
   test('should create an one off charge for an existing subscription', async () => {
