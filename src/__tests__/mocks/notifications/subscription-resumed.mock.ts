@@ -88,6 +88,7 @@ export const SubscriptionResumedMock: IEventsResponse<ISubscriptionNotificationR
     canceled_at: null,
     custom_data: null,
     discount: null,
+    consent_requirements: [],
     customer_id: 'ctm_01h7hswb86rtps5ggbq7ybydcw',
     billing_cycle: { interval: 'month', frequency: 1 },
     currency_code: 'USD',
@@ -121,6 +122,7 @@ export const SubscriptionResumedMockExpectation = {
     importMeta: null,
     customerId: 'ctm_01h7hswb86rtps5ggbq7ybydcw',
     discount: null,
+    consentRequirements: [],
     firstBilledAt: '2023-08-11T08:07:35.449123Z',
     id: 'sub_01h7ht5z5wdg9pz18jx1fagp8k',
     items: [
@@ -149,6 +151,8 @@ export const SubscriptionResumedMockExpectation = {
             currencyCode: 'USD',
           },
           unitPriceOverrides: [],
+          createdAt: null,
+          updatedAt: null,
         },
         product: {
           id: 'pro_01gsz4t5hdjse780zja8vvr7jg',
@@ -195,6 +199,8 @@ export const SubscriptionResumedMockExpectation = {
             currencyCode: 'USD',
           },
           unitPriceOverrides: [],
+          createdAt: null,
+          updatedAt: null,
         },
         product: {
           id: 'pro_01h1vjes1y163xfj1rh1tkfb65',

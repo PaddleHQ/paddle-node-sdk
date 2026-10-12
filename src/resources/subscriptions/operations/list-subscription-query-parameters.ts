@@ -12,6 +12,7 @@ export interface ListSubscriptionQueryParameters {
   collectionMode?: CollectionMode;
   customerId?: string[];
   id?: string[];
+  nextBilledAt?: string[];
   orderBy?: string;
   perPage?: number;
   priceId?: string[];

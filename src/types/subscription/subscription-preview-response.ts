@@ -19,6 +19,7 @@ import { type ISubscriptionManagementResponse } from './subscription-management-
 import { type ISubscriptionItemResponse } from './subscription-item-response.js';
 import { type INextTransactionResponse } from './next-transaction-response.js';
 import { type ISubscriptionPreviewUpdateSummary } from './subscription-preview-update-summary.js';
+import { type ISubscriptionConsentRequirementResponse } from './subscription-consent-requirement-response.js';
 
 export interface ISubscriptionPreviewResponse {
   status: SubscriptionStatus;
@@ -47,4 +48,5 @@ export interface ISubscriptionPreviewResponse {
   recurring_transaction_details?: ITransactionDetailsPreviewResponse | null;
   update_summary?: ISubscriptionPreviewUpdateSummary | null;
   import_meta?: IImportMetaResponse | null;
+  consent_requirements: ISubscriptionConsentRequirementResponse[];
 }

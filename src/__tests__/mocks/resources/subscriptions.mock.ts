@@ -94,6 +94,7 @@ export const SubscriptionMock: ISubscriptionResponse = {
     id: 'dsc_01gv5kpg05xp104ek2fmgjwttf',
     starts_at: '2024-10-12T07:20:50.52Z',
     ends_at: '2024-10-12T07:20:50.52Z',
+    type: 'recurring',
   },
   collection_mode: 'automatic',
   billing_details: {
@@ -188,6 +189,17 @@ export const SubscriptionMock: ISubscriptionResponse = {
   ],
   custom_data: { customer_reference_id: 'abcd1234' },
   import_meta: { external_id: '9b95b0b8-e10f-441a-862e-1936a6d818ab', imported_from: 'billing_platform' },
+  consent_requirements: [
+    {
+      id: 'subconreq_01gm302t81w94gyjpjpqypkzkf',
+      requirement: 'introductory_discount_ending',
+      status: 'pending',
+      created_at: '2024-10-12T07:20:50.52Z',
+      consent_period: { starts_at: '2024-11-05T07:20:50.52Z', ends_at: '2024-11-12T07:20:50.52Z' },
+      granted_at: null,
+      voided_at: null,
+    },
+  ],
   next_transaction: {
     adjustments: [
       {
@@ -363,6 +375,7 @@ export const SubscriptionPreviewMock: ISubscriptionPreviewResponse = {
     id: 'dsc_01gv5kpg05xp104ek2fmgjwttf',
     starts_at: null,
     ends_at: null,
+    type: 'one-off',
   },
   collection_mode: 'automatic',
   billing_details: {
@@ -457,6 +470,7 @@ export const SubscriptionPreviewMock: ISubscriptionPreviewResponse = {
   ],
   custom_data: { customer_reference_id: 'abcd1234' },
   import_meta: { external_id: '9b95b0b8-e10f-441a-862e-1936a6d818ab', imported_from: 'billing_platform' },
+  consent_requirements: [],
   immediate_transaction: {
     adjustments: [
       {

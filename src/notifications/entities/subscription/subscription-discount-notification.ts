@@ -4,16 +4,19 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type SubscriptionDiscountType } from '../../../enums/index.js';
 import { type ISubscriptionDiscountNotificationResponse } from '../../types/index.js';
 
 export class SubscriptionDiscountNotification {
   public readonly id: string;
   public readonly startsAt: string;
   public readonly endsAt: string | null;
+  public readonly type: SubscriptionDiscountType;
 
   constructor(subscriptionDiscount: ISubscriptionDiscountNotificationResponse) {
     this.id = subscriptionDiscount.id;
     this.startsAt = subscriptionDiscount.starts_at;
     this.endsAt = subscriptionDiscount.ends_at ?? null;
+    this.type = subscriptionDiscount.type;
   }
 }

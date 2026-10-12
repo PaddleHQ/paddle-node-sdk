@@ -25,6 +25,13 @@ adding additional type guards.
 ### Added
 
 - Added `viewSubscription` to subscription `managementUrls` and to customer portal session `urls.subscriptions[]`, linking to the subscription page in the customer portal with no form pre-opened.
+- Added `consentRequirements` to subscriptions, subscription previews, and `subscription.*` notifications, listing the
+  customer consents required for the subscription to renew. Added `SubscriptionConsentRequirementType` and
+  `SubscriptionConsentRequirementStatus` enums.
+- Added `type` (`recurring` or `one-off`) to subscription `discount` on subscriptions, subscription previews, and
+  `subscription.*` notifications. Added `SubscriptionDiscountType` enum.
+- Added `nextBilledAt` filter to `ListSubscriptionQueryParameters` when listing subscriptions.
+- Added `createdAt` and `updatedAt` to `items[].price` on `subscription.*` notifications.
 
 ---
 
