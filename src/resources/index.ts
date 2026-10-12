@@ -30,3 +30,4 @@ export * from './metrics/index.js';
 export * from './verifications/index.js';
 export * from './countries/index.js';
 export * from './currencies/index.js';
+export * from './checkout-domains/index.js';

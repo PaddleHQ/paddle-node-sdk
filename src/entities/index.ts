@@ -32,6 +32,7 @@ export * from './metrics/index.js';
 export * from './verification/index.js';
 export * from './country/index.js';
 export * from './currency/index.js';
+export * from './checkout-domain/index.js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type CustomData = Record<string, any>;
