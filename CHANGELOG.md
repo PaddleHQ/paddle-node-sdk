@@ -22,6 +22,13 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `subscriptions.listHistory(subscriptionId, queryParams?)` to list the history of changes made to a
+  subscription. Each `SubscriptionHistory` entry has a `detail` discriminated on `action`, mapped to a dedicated entity
+  per action (for example `SubscriptionHistoryCreatedDetail`). Filter by `action`, `source`, `actorType`, `actorId`,
+  `reason`, and `occurredAt` (with `[LTE]` and `[GTE]` operators).
+
 ---
 
 ## 3.10.0 - 2026-08-07

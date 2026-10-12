@@ -19,3 +19,4 @@ export * from './subscription-preview-update-summary.js';
 export * from './subscription-preview-summary-result.js';
 export * from './next-transaction-adjustment-preview.js';
 export * from './next-transaction-adjustment-item.js';
+export * from './subscription-consent-requirement.js';

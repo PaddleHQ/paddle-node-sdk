@@ -43,3 +43,4 @@ export * from './simulation-payload.js';
 export * from './payment-method-underlying-details.js';
 export * from './korean-market-underlying-details.js';
 export * from './south-korea-local-card-response.js';
+export * from './actor-response.js';
