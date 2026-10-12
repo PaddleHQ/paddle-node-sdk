@@ -55,7 +55,7 @@ adding additional type guards.
   `SubscriptionConsentRequirementStatus` enums.
 - Added `type` (`recurring` or `one-off`) to subscription `discount` on subscriptions, subscription previews, and
   `subscription.*` notifications. Added `SubscriptionDiscountType` enum.
-- Added `nextBilledAt` filter when listing subscriptions.
+- Added `nextBilledAt` filter when listing subscriptions. Pass `null` to return subscriptions with no next billing date.
 - Added `createdAt` and `updatedAt` to `items[].price` on `subscription.*` notifications.
 - Added `billingCycle.interval` and `billingCycle.frequency` filters to `prices.list()`.
 - Added `exposedAt` to API key notifications to indicate when an API key was first exposed.

@@ -117,6 +117,17 @@ describe('SubscriptionsResource', () => {
     );
   });
 
+  test('should filter subscriptions with no next billing date', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionMockResponse);
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+
+    const subscriptionCollection = subscriptionsResource.list({ nextBilledAt: null, status: ['active'] });
+    await subscriptionCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/subscriptions?next_billed_at=null&status=active');
+  });
+
   test('should accepts query params and return a single subscription by ID', async () => {
     const subscriptionId = SubscriptionMock.id;
     const paddleInstance = getPaddleTestClient();
