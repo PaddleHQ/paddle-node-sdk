@@ -22,6 +22,11 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `checkoutDomains` resource with `list`, `get`, `delete`, and `verifyPaymentMethod` operations for managing
+  checkout domains and verifying them for Apple Pay.
+
 ---
 
 ## 3.10.0 - 2026-08-07
