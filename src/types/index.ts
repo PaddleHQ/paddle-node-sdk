@@ -34,3 +34,4 @@ export * from './verification/index.js';
 export * from './country/index.js';
 export * from './currency/index.js';
 export * from './checkout-domain/index.js';
+export * from './ip-addresses/index.js';
