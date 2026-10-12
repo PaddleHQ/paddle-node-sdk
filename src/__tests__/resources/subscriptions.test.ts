@@ -61,6 +61,20 @@ describe('SubscriptionsResource', () => {
     expect(subscriptions.length).toBe(1);
   });
 
+  test('should accept none as a scheduled change action filter', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionMockResponse);
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    const queryParams: ListSubscriptionQueryParameters = {
+      scheduledChangeAction: ['none', 'cancel'],
+    };
+
+    const subscriptionCollection = subscriptionsResource.list(queryParams);
+    await subscriptionCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/subscriptions?scheduled_change_action=none%2Ccancel');
+  });
+
   test('should return a single subscription by ID', async () => {
     const subscriptionId = SubscriptionMock.id;
     const paddleInstance = getPaddleTestClient();

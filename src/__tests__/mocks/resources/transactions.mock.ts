@@ -221,7 +221,7 @@ export const TransactionMock: ITransactionResponse = {
       tax: '1500',
       total: '16500',
       fee: '825',
-      chargeback_fee: { amount: '1680', original: { amount: '1500', currency_code: 'USD' } },
+      chargeback_fee: { amount: '1680', original: { amount: '1500', currency_code: 'CAD' } },
       earnings: '15675',
       currency_code: 'AUD',
       exchange_rate: '1',
@@ -275,7 +275,7 @@ export const TransactionMock: ITransactionResponse = {
       stored_payment_method_id: '7636e781-3969-49f4-9c77-8226232e28a6',
       amount: '1050',
       status: 'authorized',
-      error_code: 'already_canceled',
+      error_code: 'prepaid_card_not_supported',
       method_details: {
         type: 'card',
         card: {

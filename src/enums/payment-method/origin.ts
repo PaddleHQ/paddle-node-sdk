@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type SavedPaymentOrigin = 'saved_during_purchase' | 'subscription';
+export type SavedPaymentOrigin = 'saved_during_purchase' | 'subscription' | 'subscription_saved_during_purchase';
