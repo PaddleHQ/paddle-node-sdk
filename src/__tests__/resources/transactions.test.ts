@@ -122,6 +122,24 @@ describe('TransactionsResource', () => {
     expect(transaction.id).toBe(transactionId);
   });
 
+  test('should map included adjustments and adjustment totals', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(TransactionMockResponse);
+    const transactionsResource = new TransactionsResource(paddleInstance);
+
+    const transaction = await transactionsResource.get(TransactionMock.id, {
+      include: ['adjustment', 'adjustments_totals'],
+    });
+
+    const adjustment = transaction.adjustments?.[0];
+    expect(adjustment?.type).toBe('partial');
+    expect(adjustment?.creditAppliedToBalance).toBeNull();
+    expect(adjustment?.taxRatesUsed).toEqual([
+      { taxRate: '0.5', totals: { subtotal: '100', tax: '50', total: '150' } },
+    ]);
+    expect(transaction.adjustmentsTotals?.retainedFee).toBe('5');
+  });
+
   test('should create a new transaction', async () => {
     const newTransaction: CreateTransactionRequestBody = CreateTransactionMock;
     const paddleInstance = getPaddleTestClient();

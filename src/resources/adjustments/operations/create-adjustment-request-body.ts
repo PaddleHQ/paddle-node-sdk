@@ -7,7 +7,7 @@
 import { type AdjustmentAction, type AdjustmentType, type AdjustmentTaxMode } from '../../../enums/index.js';
 
 export interface CreateAdjustmentLineItem {
-  amount: string | null;
+  amount?: string | null;
   itemId: string;
   type: AdjustmentType;
 }

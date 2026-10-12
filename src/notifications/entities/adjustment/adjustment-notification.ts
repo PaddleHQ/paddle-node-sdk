@@ -11,6 +11,7 @@ import {
   type CurrencyCode,
 } from '../../../enums/index.js';
 import { AdjustmentItemNotification } from './adjustment-item-notification.js';
+import { AdjustmentTaxRatesUsedNotification } from './adjustment-tax-rates-used-notification.js';
 import { PayoutTotalsAdjustmentNotification, TotalAdjustmentsNotification } from '../shared/index.js';
 import { type IAdjustmentNotificationResponse } from '../../types/index.js';
 
@@ -22,12 +23,13 @@ export class AdjustmentNotification {
   public readonly subscriptionId: string | null;
   public readonly customerId: string;
   public readonly reason: string;
-  public readonly creditAppliedToBalance: boolean;
+  public readonly creditAppliedToBalance: boolean | null;
   public readonly currencyCode: CurrencyCode;
   public readonly status: AdjustmentStatus;
   public readonly items: AdjustmentItemNotification[];
   public readonly totals: TotalAdjustmentsNotification;
   public readonly payoutTotals: PayoutTotalsAdjustmentNotification | null;
+  public readonly taxRatesUsed: AdjustmentTaxRatesUsedNotification[] | null;
   public readonly createdAt: string;
   public readonly updatedAt: string;
 
@@ -39,13 +41,16 @@ export class AdjustmentNotification {
     this.subscriptionId = adjustment.subscription_id ? adjustment.subscription_id : null;
     this.customerId = adjustment.customer_id;
     this.reason = adjustment.reason;
-    this.creditAppliedToBalance = adjustment.credit_applied_to_balance;
+    this.creditAppliedToBalance = adjustment.credit_applied_to_balance ?? null;
     this.currencyCode = adjustment.currency_code;
     this.status = adjustment.status;
     this.items = adjustment.items.map((item) => new AdjustmentItemNotification(item));
     this.totals = new TotalAdjustmentsNotification(adjustment.totals);
     this.payoutTotals = adjustment.payout_totals
       ? new PayoutTotalsAdjustmentNotification(adjustment.payout_totals)
+      : null;
+    this.taxRatesUsed = adjustment.tax_rates_used
+      ? adjustment.tax_rates_used.map((taxRatesUsed) => new AdjustmentTaxRatesUsedNotification(taxRatesUsed))
       : null;
     this.createdAt = adjustment.created_at;
     this.updatedAt = adjustment.updated_at;

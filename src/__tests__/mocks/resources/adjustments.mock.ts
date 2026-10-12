@@ -84,6 +84,16 @@ export const AdjustmentMock: IAdjustmentResponse = {
     tax: '1',
     retained_fee: '2',
   },
+  tax_rates_used: [
+    {
+      tax_rate: '0.05',
+      totals: {
+        subtotal: '1000',
+        tax: '50',
+        total: '1050',
+      },
+    },
+  ],
 };
 
 export const AdjustmentMockResponse: Response<IAdjustmentResponse> = {

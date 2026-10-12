@@ -5,8 +5,11 @@
  */
 
 import { IAdjustmentResponse, IEventsResponse } from '../../../types/index.js';
+import { IAdjustmentNotificationResponse } from '../../../notifications/index.js';
 
-export const AdjustmentUpdatedMock: IEventsResponse<IAdjustmentResponse> = {
+export const AdjustmentUpdatedMock: IEventsResponse<
+  Omit<IAdjustmentResponse, 'tax_rates_used'> & Pick<IAdjustmentNotificationResponse, 'tax_rates_used'>
+> = {
   event_id: 'evt_01h8c6wz4ac017hxdehrgdvpz4',
   event_type: 'adjustment.updated',
   occurred_at: '2023-08-21T14:10:08.650443Z',
@@ -51,7 +54,8 @@ export const AdjustmentUpdatedMock: IEventsResponse<IAdjustmentResponse> = {
     },
     transaction_id: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     subscription_id: 'sub_01h8bxswamxysj44zt5n48njwh',
-    credit_applied_to_balance: true,
+    credit_applied_to_balance: null,
+    tax_rates_used: null,
   },
 };
 
@@ -60,7 +64,7 @@ export const AdjustmentUpdatedMockExpectation = {
     action: 'refund',
     type: 'partial',
     createdAt: '2023-08-21T14:08:43.297512Z',
-    creditAppliedToBalance: true,
+    creditAppliedToBalance: null,
     currencyCode: 'USD',
     customerId: 'ctm_01h8441jn5pcwrfhwh78jqt8hk',
     id: 'adj_01h8c6tbrkpdd7vx61w7b1r0ap',
@@ -100,6 +104,7 @@ export const AdjustmentUpdatedMockExpectation = {
       total: '100',
       retainedFee: '2',
     },
+    taxRatesUsed: null,
     transactionId: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     updatedAt: '2023-08-21T14:10:08.42549Z',
   },

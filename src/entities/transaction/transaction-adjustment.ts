@@ -4,40 +4,51 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentAction, type AdjustmentStatus, type CurrencyCode } from '../../enums/index.js';
+import {
+  type AdjustmentActionType,
+  type AdjustmentAction,
+  type AdjustmentStatus,
+  type CurrencyCode,
+} from '../../enums/index.js';
 import { TransactionAdjustmentItem } from './transaction-adjustment-item.js';
 import { PayoutTotalsAdjustment, TotalAdjustments } from '../shared/index.js';
+import { AdjustmentTaxRatesUsed } from '../adjustment/index.js';
 import { type ITransactionAdjustmentResponse } from '../../types/index.js';
 
 export class TransactionAdjustment {
   public readonly id: string;
   public readonly action: AdjustmentAction;
+  public readonly type: AdjustmentActionType;
   public readonly transactionId: string;
   public readonly subscriptionId: string | null;
   public readonly customerId: string;
   public readonly reason: string;
-  public readonly creditAppliedToBalance: boolean;
+  public readonly creditAppliedToBalance: boolean | null;
   public readonly currencyCode: CurrencyCode;
   public readonly status: AdjustmentStatus;
   public readonly items: TransactionAdjustmentItem[];
   public readonly totals: TotalAdjustments | null;
   public readonly payoutTotals: PayoutTotalsAdjustment | null;
+  public readonly taxRatesUsed: AdjustmentTaxRatesUsed[];
   public readonly createdAt: string;
   public readonly updatedAt: string;
 
   constructor(adjustment: ITransactionAdjustmentResponse) {
     this.id = adjustment.id;
     this.action = adjustment.action;
+    this.type = adjustment.type;
     this.transactionId = adjustment.transaction_id;
     this.subscriptionId = adjustment.subscription_id ? adjustment.subscription_id : null;
     this.customerId = adjustment.customer_id;
     this.reason = adjustment.reason;
-    this.creditAppliedToBalance = adjustment.credit_applied_to_balance;
+    this.creditAppliedToBalance = adjustment.credit_applied_to_balance ?? null;
     this.currencyCode = adjustment.currency_code;
     this.status = adjustment.status;
     this.items = adjustment.items.map((item) => new TransactionAdjustmentItem(item));
     this.totals = adjustment.totals ? new TotalAdjustments(adjustment.totals) : null;
     this.payoutTotals = adjustment.payout_totals ? new PayoutTotalsAdjustment(adjustment.payout_totals) : null;
+    this.taxRatesUsed =
+      adjustment.tax_rates_used?.map((taxRatesUsed) => new AdjustmentTaxRatesUsed(taxRatesUsed)) ?? [];
     this.createdAt = adjustment.created_at;
     this.updatedAt = adjustment.updated_at;
   }

@@ -13,6 +13,7 @@ export class AdjustmentTotals {
   public readonly tax: string;
   public readonly total: string;
   public readonly fee: string;
+  public readonly retainedFee: string;
   public readonly earnings: string;
   public readonly breakdown: AdjustmentTotalsBreakdown | null;
   public readonly currencyCode: CurrencyCode;
@@ -22,6 +23,7 @@ export class AdjustmentTotals {
     this.tax = adjustmentTotals.tax;
     this.total = adjustmentTotals.total;
     this.fee = adjustmentTotals.fee;
+    this.retainedFee = adjustmentTotals.retained_fee;
     this.earnings = adjustmentTotals.earnings;
     this.breakdown = adjustmentTotals.breakdown ? new AdjustmentTotalsBreakdown(adjustmentTotals.breakdown) : null;
     this.currencyCode = adjustmentTotals.currency_code;
