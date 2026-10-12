@@ -18,6 +18,7 @@ export interface IProductNotificationResponse {
   custom_data?: ICustomData | null;
   status: Status;
   created_at: string;
+  updated_at?: string | null;
   import_meta?: IImportMetaNotificationResponse | null;
   prices?: ISharedPriceNotificationResponse[] | null;
 }

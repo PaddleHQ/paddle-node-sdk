@@ -22,6 +22,16 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `paddle.ipAddresses.get()` to get Paddle IP addresses, which you can add to your allowlist.
+- Added `billingCycle.interval` and `billingCycle.frequency` filters to `paddle.prices.list()`.
+- Added `exposedAt` to API key notifications to indicate when an API key was first exposed.
+
+### Fixed
+
+- Added missing `updated_at` to `IProductNotificationResponse`, used by `product.*` webhook events.
+
 ---
 
 ## 3.10.0 - 2026-08-07
