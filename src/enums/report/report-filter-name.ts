@@ -19,4 +19,11 @@ export type ReportFilterName =
   | 'product_updated_at'
   | 'price_updated_at'
   | 'remittance_reference'
-  | 'transaction_updated_at';
+  | 'transaction_updated_at'
+  | 'subscription_status'
+  | 'subscription_created_at'
+  | 'customer_country_code'
+  | 'subscription_scheduled_change_action'
+  | 'checkout_created_at'
+  | 'balance_movement_date'
+  | 'balance_movement_type';

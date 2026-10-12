@@ -123,6 +123,7 @@ export const SubscriptionImportedMock: IEventsResponse<ISubscriptionNotification
     collection_mode: 'automatic',
     first_billed_at: '2023-04-13T09:07:04.730931Z',
     scheduled_change: null,
+    consent_requirements: [],
     current_billing_period: { ends_at: '2023-05-13T09:07:04.730931Z', starts_at: '2023-04-13T09:07:04.730931Z' },
   },
 };
@@ -148,6 +149,7 @@ export const SubscriptionImportedMockExpectation = {
     importMeta: null,
     customerId: 'ctm_01gxwxe6vzgz6hcsbwjs6zrszr',
     discount: null,
+    consentRequirements: [],
     firstBilledAt: '2023-04-13T09:07:04.730931Z',
     id: 'sub_01gxwxwn84xqf0690d7qn5r2g7',
     items: [
@@ -176,6 +178,8 @@ export const SubscriptionImportedMockExpectation = {
             currencyCode: 'GBP',
           },
           unitPriceOverrides: [],
+          createdAt: null,
+          updatedAt: null,
         },
         product: {
           id: 'pro_01gsz4t5hdjse780zja8vvr7jg',
@@ -222,6 +226,8 @@ export const SubscriptionImportedMockExpectation = {
             currencyCode: 'GBP',
           },
           unitPriceOverrides: [],
+          createdAt: null,
+          updatedAt: null,
         },
         product: {
           createdAt: '2023-08-22T07:59:39.771451Z',
@@ -265,6 +271,8 @@ export const SubscriptionImportedMockExpectation = {
             currencyCode: 'GBP',
           },
           unitPriceOverrides: [],
+          createdAt: null,
+          updatedAt: null,
         },
         product: {
           createdAt: '2023-08-22T07:59:39.771451Z',

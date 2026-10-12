@@ -14,6 +14,7 @@ import {
 import { type ISubscriptionTimePeriodNotificationResponse } from './subscription-time-period-notification-response.js';
 import { type ISubscriptionScheduledChangeNotificationResponse } from './subscription-scheduled-change-notification-response.js';
 import { type ISubscriptionItemNotificationResponse } from './subscription-item-notification-response.js';
+import { type ISubscriptionConsentRequirementNotificationResponse } from './subscription-consent-requirement-notification-response.js';
 import { type ICustomData } from '../../../types/index.js';
 
 export interface ISubscriptionNotificationResponse {
@@ -37,6 +38,7 @@ export interface ISubscriptionNotificationResponse {
   billing_cycle: ITimePeriodNotification;
   scheduled_change?: ISubscriptionScheduledChangeNotificationResponse | null;
   items: ISubscriptionItemNotificationResponse[];
+  consent_requirements: ISubscriptionConsentRequirementNotificationResponse[] | null;
   custom_data?: ICustomData | null;
   import_meta?: IImportMetaNotificationResponse | null;
 }

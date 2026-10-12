@@ -221,7 +221,7 @@ export const TransactionMock: ITransactionResponse = {
       tax: '1500',
       total: '16500',
       fee: '825',
-      chargeback_fee: { amount: '1680', original: { amount: '1500', currency_code: 'USD' } },
+      chargeback_fee: { amount: '1680', original: { amount: '1500', currency_code: 'CAD' } },
       earnings: '15675',
       currency_code: 'AUD',
       exchange_rate: '1',
@@ -275,7 +275,7 @@ export const TransactionMock: ITransactionResponse = {
       stored_payment_method_id: '7636e781-3969-49f4-9c77-8226232e28a6',
       amount: '1050',
       status: 'authorized',
-      error_code: 'already_canceled',
+      error_code: 'prepaid_card_not_supported',
       method_details: {
         type: 'card',
         card: {
@@ -292,6 +292,29 @@ export const TransactionMock: ITransactionResponse = {
       created_at: '2024-10-12T07:20:50.52Z',
       captured_at: '2024-10-12T07:20:50.52Z',
     },
+    {
+      payment_attempt_id: '5c2d8e1a-3f4b-4a6c-9d7e-1b0a2c3d4e5f',
+      payment_method_id: 'paymtd_01gxwxw8xgmqqzs4vecthdb50f',
+      stored_payment_method_id: '7636e781-3969-49f4-9c77-8226232e28a6',
+      amount: '1050',
+      status: 'error',
+      error_code: 'blocked_by_policy',
+      method_details: {
+        type: 'card',
+        card: {
+          cardholder_name: '',
+          expiry_month: 0,
+          expiry_year: 0,
+          last4: '',
+          type: 'american_express',
+        },
+        paypal: null,
+        south_korea_local_card: null,
+        underlying_details: null,
+      },
+      created_at: '2024-10-12T07:21:50.52Z',
+      captured_at: null,
+    },
   ],
   checkout: { url: 'NO_VALUE' },
   created_at: '2024-10-12T07:20:50.52Z',
@@ -301,8 +324,9 @@ export const TransactionMock: ITransactionResponse = {
   adjustments: [
     {
       action: 'credit',
+      type: 'partial',
       created_at: '2024-10-12T07:20:50.52Z',
-      credit_applied_to_balance: true,
+      credit_applied_to_balance: null,
       currency_code: 'USD',
       customer_id: 'ctm_1234',
       id: 'adj_1234',
@@ -347,6 +371,16 @@ export const TransactionMock: ITransactionResponse = {
         subtotal: '1000',
         retained_fee: '2',
       },
+      tax_rates_used: [
+        {
+          tax_rate: '0.5',
+          totals: {
+            subtotal: '100',
+            tax: '50',
+            total: '150',
+          },
+        },
+      ],
       updated_at: '2024-10-12T07:20:50.52Z',
       transaction_id: 'txn_1234',
     },
@@ -360,6 +394,7 @@ export const TransactionMock: ITransactionResponse = {
     currency_code: 'USD',
     earnings: '100',
     fee: '10',
+    retained_fee: '5',
     subtotal: '90',
     tax: '10',
     total: '110',

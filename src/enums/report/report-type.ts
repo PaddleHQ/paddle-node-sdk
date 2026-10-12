@@ -15,4 +15,6 @@ export type ReportType =
    * @deprecated 'balance' is deprecated. Use 'payout_reconciliation' instead.
    */
   | 'balance'
-  | 'payout_reconciliation';
+  | 'payout_reconciliation'
+  | 'subscriptions'
+  | 'checkouts';

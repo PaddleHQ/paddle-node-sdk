@@ -66,6 +66,20 @@ describe('TransactionsResource', () => {
     expect(transactions.length).toBe(1);
   });
 
+  test('should accept subscription_import as an origin filter', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListTransactionMockResponse);
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    const queryParams: ListTransactionQueryParameters = {
+      origin: ['subscription_import', 'web'],
+    };
+
+    const transactionCollection = transactionsResource.list(queryParams);
+    await transactionCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/transactions?origin=subscription_import%2Cweb');
+  });
+
   test('should return a single transaction by ID', async () => {
     const transactionId = TransactionMock.id;
     const paddleInstance = getPaddleTestClient();
@@ -77,6 +91,21 @@ describe('TransactionsResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith(`/transactions/${transactionId}`, { queryParams: undefined });
     expect(transaction).toBeDefined();
     expect(transaction.id).toBe(transactionId);
+    expect(transaction.payments[0]?.errorCode).toBe('prepaid_card_not_supported');
+    expect(transaction.details?.adjustedPayoutTotals?.chargebackFee?.original?.currencyCode).toBe('CAD');
+  });
+
+  test('should map payment attempt error codes', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(TransactionMockResponse);
+
+    const transactionsResource = new TransactionsResource(paddleInstance);
+    const transaction = await transactionsResource.get(TransactionMock.id);
+
+    expect(transaction.payments.map((payment) => payment.errorCode)).toEqual([
+      'prepaid_card_not_supported',
+      'blocked_by_policy',
+    ]);
   });
 
   test('should accepts query params and return a single transaction by ID', async () => {
@@ -94,6 +123,24 @@ describe('TransactionsResource', () => {
     expect(transaction).toBeDefined();
     expect(paddleInstance.get).toHaveBeenCalledWith(`/transactions/${transactionId}`, new QueryParameters(queryParams));
     expect(transaction.id).toBe(transactionId);
+  });
+
+  test('should map included adjustments and adjustment totals', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(TransactionMockResponse);
+    const transactionsResource = new TransactionsResource(paddleInstance);
+
+    const transaction = await transactionsResource.get(TransactionMock.id, {
+      include: ['adjustment', 'adjustments_totals'],
+    });
+
+    const adjustment = transaction.adjustments?.[0];
+    expect(adjustment?.type).toBe('partial');
+    expect(adjustment?.creditAppliedToBalance).toBeNull();
+    expect(adjustment?.taxRatesUsed).toEqual([
+      { taxRate: '0.5', totals: { subtotal: '100', tax: '50', total: '150' } },
+    ]);
+    expect(transaction.adjustmentsTotals?.retainedFee).toBe('5');
   });
 
   test('should create a new transaction', async () => {
