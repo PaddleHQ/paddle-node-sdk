@@ -15,6 +15,7 @@ export class Report {
   public readonly type: ReportType;
   public readonly filters: ReportFilters[];
   public readonly expiresAt: string | null;
+  public readonly updatedAt: string;
   public readonly createdAt: string;
 
   constructor(reportResponse: IReportResponse) {
@@ -24,6 +25,7 @@ export class Report {
     this.type = reportResponse.type;
     this.filters = reportResponse.filters?.map((filter) => new ReportFilters(filter));
     this.expiresAt = reportResponse.expires_at ?? null;
+    this.updatedAt = reportResponse.updated_at;
     this.createdAt = reportResponse.created_at;
   }
 }

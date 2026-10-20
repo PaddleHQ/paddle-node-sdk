@@ -4,8 +4,11 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
+import { type SubscriptionDiscountType } from '../../enums/index.js';
+
 export interface ISubscriptionDiscountResponse {
   id: string;
   starts_at: string | null;
   ends_at?: string | null;
+  type: SubscriptionDiscountType;
 }

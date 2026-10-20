@@ -14,5 +14,6 @@ export interface IReportResponse {
   type: ReportType;
   filters: IReportFilters[];
   expires_at?: string | null;
+  updated_at: string;
   created_at: string;
 }

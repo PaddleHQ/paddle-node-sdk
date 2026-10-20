@@ -6,6 +6,7 @@
 
 export * from './subscription-discount.js';
 export * from './subscription-time-period.js';
+export * from './subscription-consent-requirement.js';
 export * from './subscription-scheduled-change.js';
 export * from './subscription-management.js';
 export * from './subscription-item.js';

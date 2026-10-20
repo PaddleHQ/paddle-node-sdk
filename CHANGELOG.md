@@ -22,6 +22,54 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `blocked_by_policy`, `preferred_network_not_supported` and `prepaid_card_not_supported` to `ErrorCode` for
+  transaction payment attempts. `blocked_by_policy` is returned when a payment is blocked by one of the seller's
+  configured policy checks.
+- Added `viewSubscription` to subscription `managementUrls` and to customer portal session `urls.subscriptions[]`,
+  linking to the subscription page in the customer portal with no form pre-opened.
+- Added `filter`, `from` and `to` query parameters to `events.list()` operation, to filter events by a Paddle ID or
+  email address and by time range.
+- Added `subscriptions` report type, which contains the current state of your subscriptions, with
+  `subscription_status`, `subscription_created_at`, `customer_country_code` and `subscription_scheduled_change_action`
+  report filter names.
+- Added `checkouts` report type, which contains conversion and recovery data for each checkout session, with the
+  `checkout_created_at` report filter name. `checkouts` reports also support `customer_country_code`.
+- Added `balance_movement_date` and `balance_movement_type` report filter names for use with `payout_reconciliation`
+  reports.
+- Added `updatedAt` to reports and report notifications.
+- Added `checkout_domain.read`, `checkout_domain.write`, `metrics.read`, `subscription_history.read` and
+  `verification.read` to `ApiKeyPermission` for `api_key.*` notifications.
+- Added `AUD` and `CAD` to `AdjustmentCurrencyCode` for chargeback fees.
+- Added `subscription_saved_during_purchase` to `SavedPaymentOrigin` for payment methods.
+- Added `subscription_import` to the `origin` filter when listing transactions.
+- Added `none` to the `scheduledChangeAction` filter when listing subscriptions, to return subscriptions without a
+  scheduled change.
+- Added `taxRatesUsed` to adjustments, adjustment notifications, and adjustments included on transactions. It's `null`
+  on adjustment notifications when no tax rates were used.
+- Added `type` to adjustments included on transactions.
+- Added `retainedFee` to `adjustmentsTotals` on transactions.
+- Added `consentRequirements` to subscriptions, subscription previews, and `subscription.*` notifications, listing the
+  customer consents required for the subscription to renew. Added `SubscriptionConsentRequirementType` and
+  `SubscriptionConsentRequirementStatus` enums.
+- Added `type` (`recurring` or `one-off`) to subscription `discount` on subscriptions, subscription previews, and
+  `subscription.*` notifications. Added `SubscriptionDiscountType` enum.
+- Added `nextBilledAt` filter when listing subscriptions. Pass `null` to return subscriptions with no next billing date.
+- Added `createdAt` and `updatedAt` to `items[].price` on `subscription.*` notifications.
+- Added `billingCycle.interval` and `billingCycle.frequency` filters to `prices.list()`.
+- Added `exposedAt` to API key notifications to indicate when an API key was first exposed.
+
+### Changed
+
+- `creditAppliedToBalance` on adjustments, adjustment notifications, and adjustments included on transactions is now
+  `boolean | null`, matching the API. It's only returned for `credit` adjustments.
+- `amount` is now optional on `CreateAdjustmentLineItem`, as it's only required for `partial` adjustment items.
+
+### Fixed
+
+- Added missing `updated_at` to `IProductNotificationResponse`, used by `product.*` webhook events.
+
 ---
 
 ## 3.10.0 - 2026-08-07

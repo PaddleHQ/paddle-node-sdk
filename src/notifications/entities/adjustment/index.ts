@@ -9,3 +9,5 @@ export * from './adjustment-proration-notification.js';
 export * from './adjustment-item-notification.js';
 export * from './adjustment-item-totals-notification.js';
 export * from './adjustment-notification.js';
+export * from './adjustment-tax-rates-used-totals-notification.js';
+export * from './adjustment-tax-rates-used-notification.js';

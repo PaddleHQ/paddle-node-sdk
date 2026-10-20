@@ -11,6 +11,7 @@ import { SubscriptionTimePeriod } from './subscription-time-period.js';
 import { SubscriptionScheduledChange } from './subscription-scheduled-change.js';
 import { SubscriptionManagement } from './subscription-management.js';
 import { SubscriptionItem } from './subscription-item.js';
+import { SubscriptionConsentRequirement } from './subscription-consent-requirement.js';
 import {
   type CustomData,
   NextTransaction,
@@ -46,6 +47,7 @@ export class SubscriptionPreview {
   public readonly recurringTransactionDetails: TransactionDetailsPreview | null;
   public readonly updateSummary: SubscriptionPreviewUpdateSummary | null;
   public readonly importMeta: ImportMeta | null;
+  public readonly consentRequirements: SubscriptionConsentRequirement[];
 
   constructor(subscriptionPreview: ISubscriptionPreviewResponse) {
     this.status = subscriptionPreview.status;
@@ -90,5 +92,10 @@ export class SubscriptionPreview {
       ? new SubscriptionPreviewUpdateSummary(subscriptionPreview.update_summary)
       : null;
     this.importMeta = subscriptionPreview.import_meta ? new ImportMeta(subscriptionPreview.import_meta) : null;
+    this.consentRequirements = subscriptionPreview.consent_requirements
+      ? subscriptionPreview.consent_requirements.map(
+          (consentRequirement) => new SubscriptionConsentRequirement(consentRequirement),
+        )
+      : [];
   }
 }

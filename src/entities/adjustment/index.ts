@@ -11,3 +11,5 @@ export * from './adjustment.js';
 export * from './adjustment-collection.js';
 export * from './adjustment-item-totals.js';
 export * from './adjustment-credit-note-pdf.js';
+export * from './adjustment-tax-rates-used-totals.js';
+export * from './adjustment-tax-rates-used.js';

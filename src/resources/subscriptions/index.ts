@@ -76,7 +76,11 @@ export class SubscriptionsResource extends BaseResource {
   }
 
   public list(queryParams?: ListSubscriptionQueryParameters): SubscriptionCollection {
-    const queryParameters = new QueryParameters(queryParams);
+    // The API filters on the literal string `null`, but QueryParameters drops null values.
+    const queryParameters = new QueryParameters({
+      ...queryParams,
+      nextBilledAt: queryParams?.nextBilledAt === null ? ['null'] : queryParams?.nextBilledAt,
+    });
     return new SubscriptionCollection(this.client, SubscriptionPaths.list + queryParameters.toQueryString());
   }
 
