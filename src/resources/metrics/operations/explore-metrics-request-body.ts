@@ -28,14 +28,27 @@ export interface ExploreMetricsOrderBy {
   dir: MetricsSortDirection;
 }
 
-export interface ExploreMetricsRequestBody {
+interface ExploreMetricsRequestBodyBase {
   entity: MetricEntity;
   from: string;
   to: string;
   measures: ExploreMetricsMeasure[];
   interval?: MetricsBucketInterval;
-  dimensions?: string[];
   filters?: ExploreMetricsFilter[];
-  orderBy?: ExploreMetricsOrderBy[];
   perPage?: number;
 }
+
+// The API rejects a query with dimensions but no order_by, as the ordering decides which segments land on the page.
+interface ExploreMetricsRequestBodyWithDimensions extends ExploreMetricsRequestBodyBase {
+  dimensions: string[];
+  orderBy: ExploreMetricsOrderBy[];
+}
+
+interface ExploreMetricsRequestBodyWithoutDimensions extends ExploreMetricsRequestBodyBase {
+  dimensions?: never;
+  orderBy?: ExploreMetricsOrderBy[];
+}
+
+export type ExploreMetricsRequestBody =
+  | ExploreMetricsRequestBodyWithDimensions
+  | ExploreMetricsRequestBodyWithoutDimensions;

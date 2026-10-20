@@ -383,6 +383,19 @@ describe('MetricsResource', () => {
       expect(paddleInstance.post).toHaveBeenCalledWith('/metrics/explore?after=eyJ2IjoxfQ', exploreRequestBody);
     });
 
+    test('should require orderBy when dimensions are passed', () => {
+      // @ts-expect-error - the API returns invalid_field for dimensions without order_by
+      const invalidBody: ExploreMetricsRequestBody = {
+        entity: 'transactions.completed',
+        from: '2026-05-01',
+        to: '2026-08-01',
+        measures: [{ field: 'gross_revenue', agg: 'sum' }],
+        dimensions: ['product'],
+      };
+
+      expect(invalidBody.dimensions).toEqual(['product']);
+    });
+
     test('should map omitted optional fields to defaults for derived measures', async () => {
       const paddleInstance = getPaddleTestClient();
       paddleInstance.post = jest.fn().mockResolvedValue({
