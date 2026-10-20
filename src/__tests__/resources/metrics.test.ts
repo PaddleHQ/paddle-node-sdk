@@ -412,7 +412,11 @@ describe('MetricsResource', () => {
         },
         meta: {
           ...MetricsExploreMockResponse.meta,
-          pagination: { ...MetricsExploreMockResponse.meta.pagination, has_more: false },
+          pagination: {
+            ...MetricsExploreMockResponse.meta.pagination,
+            next: 'https://api.paddle.com',
+            has_more: false,
+          },
         },
       });
 
@@ -431,6 +435,7 @@ describe('MetricsResource', () => {
       expect(measureField.agg).toBeNull();
       expect(result.series[0]?.dimensions).toEqual({});
       expect(result.pagination.hasMore).toBe(false);
+      expect(result.pagination.after).toBeNull();
     });
 
     test('should throw an ApiError when the query is rejected', async () => {
