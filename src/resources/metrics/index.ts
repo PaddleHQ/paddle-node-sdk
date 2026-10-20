@@ -6,6 +6,8 @@
 
 import { BaseResource, QueryParameters } from '../../internal/base/index.js';
 import {
+  type ExploreMetricsQueryParameters,
+  type ExploreMetricsRequestBody,
   type GetActiveSubscribersQueryParameters,
   type GetChargebacksQueryParameters,
   type GetCheckoutConversionQueryParameters,
@@ -13,8 +15,11 @@ import {
   type GetMonthlyRecurringRevenueQueryParameters,
   type GetRefundsQueryParameters,
   type GetRevenueQueryParameters,
+  type ListExploreEntitiesQueryParameters,
 } from './operations/index.js';
 import {
+  MetricEntityDefinition,
+  MetricsExplore,
   MetricsTimeseriesActiveSubscribers,
   MetricsTimeseriesChargebacks,
   MetricsTimeseriesCheckoutConversion,
@@ -24,6 +29,9 @@ import {
   MetricsTimeseriesRevenue,
 } from '../../entities/index.js';
 import {
+  type IMetricEntityDefinitionResponse,
+  type IMetricsExplorePaginatedMeta,
+  type IMetricsExploreResponse,
   type IMetricsTimeseriesActiveSubscribersResponse,
   type IMetricsTimeseriesChargebacksResponse,
   type IMetricsTimeseriesCheckoutConversionResponse,
@@ -42,7 +50,11 @@ const MetricsPaths = {
   refunds: '/metrics/refunds',
   chargebacks: '/metrics/chargebacks',
   checkoutConversion: '/metrics/checkout-conversion',
+  explore: '/metrics/explore',
+  listExploreEntities: '/metrics/explore/entities',
 } as const;
+
+type MetricsExploreApiResponse = Response<IMetricsExploreResponse> & { meta: IMetricsExplorePaginatedMeta };
 
 export * from './operations/index.js';
 
@@ -144,5 +156,37 @@ export class MetricsResource extends BaseResource {
     const data = this.handleResponse<IMetricsTimeseriesCheckoutConversionResponse>(response);
 
     return new MetricsTimeseriesCheckoutConversion(data);
+  }
+
+  public async explore(
+    exploreMetricsParameters: ExploreMetricsRequestBody,
+    queryParams?: ExploreMetricsQueryParameters,
+  ): Promise<MetricsExplore> {
+    const queryParameters = new QueryParameters(queryParams);
+
+    const response = await this.client.post<ExploreMetricsRequestBody, MetricsExploreApiResponse | ErrorResponse>(
+      MetricsPaths.explore + queryParameters.toQueryString(),
+      exploreMetricsParameters,
+    );
+
+    const data = this.handleResponse<IMetricsExploreResponse>(response);
+    const { pagination } = (response as MetricsExploreApiResponse).meta;
+
+    return new MetricsExplore(data, pagination);
+  }
+
+  public async listExploreEntities(
+    queryParams?: ListExploreEntitiesQueryParameters,
+  ): Promise<MetricEntityDefinition[]> {
+    const queryParameters = new QueryParameters(queryParams);
+
+    const response = await this.client.get<
+      ListExploreEntitiesQueryParameters | undefined,
+      Response<IMetricEntityDefinitionResponse[]> | ErrorResponse
+    >(MetricsPaths.listExploreEntities, queryParameters);
+
+    const data = this.handleResponse<IMetricEntityDefinitionResponse[]>(response);
+
+    return data.map((definition) => new MetricEntityDefinition(definition));
   }
 }

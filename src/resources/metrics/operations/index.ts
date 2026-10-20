@@ -11,3 +11,6 @@ export * from './get-revenue-query-parameters.js';
 export * from './get-refunds-query-parameters.js';
 export * from './get-chargebacks-query-parameters.js';
 export * from './get-checkout-conversion-query-parameters.js';
+export * from './explore-metrics-request-body.js';
+export * from './explore-metrics-query-parameters.js';
+export * from './list-explore-entities-query-parameters.js';
