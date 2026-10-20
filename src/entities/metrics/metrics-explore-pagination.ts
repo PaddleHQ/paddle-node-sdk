@@ -11,11 +11,14 @@ export class MetricsExplorePagination {
   public readonly next: string;
   public readonly hasMore: boolean;
   public readonly estimatedTotal: number;
+  // Explore pages by re-POSTing to `next`, which the SDK can't target, so callers pass this to `explore()` instead.
+  public readonly after: string | null;
 
   constructor(pagination: IMetricsExplorePagination) {
     this.perPage = pagination.per_page;
     this.next = pagination.next;
     this.hasMore = pagination.has_more;
     this.estimatedTotal = pagination.estimated_total;
+    this.after = new URLSearchParams(pagination.next.split('?')[1] ?? '').get('after');
   }
 }

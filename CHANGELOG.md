@@ -60,8 +60,7 @@ adding additional type guards.
 - Added `billingCycle.interval` and `billingCycle.frequency` filters to `prices.list()`.
 - Added `exposedAt` to API key notifications to indicate when an API key was first exposed.
 - Added `paddle.metrics.explore()` to run an Explore metrics query against `POST /metrics/explore`. Pagination state is
-  returned on `pagination`; pass the `after` cursor from `pagination.next` with the same request body to get the next
-  page.
+  returned on `pagination`; to get the next page, pass the same request body with `{ after: pagination.after }`.
 - Added `paddle.metrics.listExploreEntities()` to list queryable Explore metric entities and their dimensions, measures,
   and allowed aggregations from `GET /metrics/explore/entities`.
 

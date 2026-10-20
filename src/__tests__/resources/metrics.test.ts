@@ -371,6 +371,7 @@ describe('MetricsResource', () => {
       expect(result.pagination.next).toBe(MetricsExploreMockResponse.meta.pagination.next);
       expect(result.pagination.hasMore).toBe(true);
       expect(result.pagination.estimatedTotal).toBe(42);
+      expect(result.pagination.after).toBe('eyJ2IjoxLCJxaWQiOiIwMWpuOHg0azJwN3E5ciIsIm9mZiI6NX0');
     });
 
     test('should pass the after cursor as a query parameter', async () => {
