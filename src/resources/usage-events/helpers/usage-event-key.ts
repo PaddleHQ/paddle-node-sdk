@@ -4,7 +4,7 @@ export interface GenerateEventKeyOptions {
   prefix?: string;
 }
 
-// `event_key` must match ^[a-z0-9_-]{1,255}$
+// The API allows any 1-255 character `event_key`. Generated keys stay lowercase `a-z0-9_-` so they're safe in URLs and logs.
 const EVENT_KEY_MAX_LENGTH = 255;
 const EVENT_KEY_PATTERN = /^[a-z0-9_-]+$/;
 

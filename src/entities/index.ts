@@ -29,7 +29,6 @@ export * from './simulation/index.js';
 export * from './simulation-run/index.js';
 export * from './simulation-run-event/index.js';
 export * from './metrics/index.js';
-export * from './usage-event/index.js';
 export * from './usage-balance-unit/index.js';
 export * from './meter/index.js';
 export * from './usage-balance/index.js';

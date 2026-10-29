@@ -13,5 +13,6 @@ export interface CreateUsageEventRequestBody {
 }
 
 export interface CreateUsageEventsRequestBody {
+  /** 1-100 events. Paddle accepts or rejects the batch as a whole. */
   events: CreateUsageEventRequestBody[];
 }

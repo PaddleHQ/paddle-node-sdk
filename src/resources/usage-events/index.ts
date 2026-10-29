@@ -7,8 +7,6 @@
 import { BaseResource } from '../../internal/base/index.js';
 import { type ErrorResponse, type Response } from '../../internal/index.js';
 import { type CreateUsageEventsRequestBody } from './operations/index.js';
-import { UsageEventsResult } from '../../entities/index.js';
-import { type IUsageEventsResultResponse } from '../../types/index.js';
 import { type GenerateEventKeyOptions, UsageEventKey } from './helpers/usage-event-key.js';
 
 const UsageEventPaths = {
@@ -19,15 +17,25 @@ export * from './operations/index.js';
 export { type GenerateEventKeyOptions } from './helpers/usage-event-key.js';
 
 export class UsageEventsResource extends BaseResource {
-  public async create(createUsageEventsRequestBody: CreateUsageEventsRequestBody): Promise<UsageEventsResult> {
-    const response = await this.client.post<
-      CreateUsageEventsRequestBody,
-      Response<IUsageEventsResultResponse> | ErrorResponse
-    >(UsageEventPaths.create, createUsageEventsRequestBody);
+  /**
+   * Records a batch of 1-100 usage events. Resolves once Paddle accepts the whole batch.
+   *
+   * Throws an `ApiError` if Paddle rejects the batch:
+   * - `400` means no event in the batch was recorded. `errors` names each failed field by its
+   *   zero-based position, like `events[1].occurred_at`. Fix or remove those events, then send the batch again.
+   * - `429` (wait `retryAfter` seconds first), `5xx`, or a timeout means some events may have been recorded.
+   *   Send the same batch again.
+   *
+   * When you send a batch again, keep `customerId`, `action`, `eventKey` and `occurredAt` the same for each event.
+   * Paddle counts each event once, so resending doesn't count usage twice. Changing `occurredAt` records new usage.
+   */
+  public async create(createUsageEventsRequestBody: CreateUsageEventsRequestBody): Promise<void> {
+    const response = await this.client.post<CreateUsageEventsRequestBody, Response<object> | ErrorResponse>(
+      UsageEventPaths.create,
+      createUsageEventsRequestBody,
+    );
 
-    const data = this.handleResponse<IUsageEventsResultResponse>(response);
-
-    return new UsageEventsResult(data);
+    this.handleResponse<object>(response);
   }
 
   public generateEventKey(options?: GenerateEventKeyOptions): string {

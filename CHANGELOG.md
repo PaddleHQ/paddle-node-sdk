@@ -24,7 +24,15 @@ adding additional type guards.
 
 ### Added
 
-- `usageEvents` resource for usage-based billing: `create` to send usage events, plus `generateEventKey` and `deterministicEventKey` helpers for creating `event_key` values. Reuse the same `event_key` and `occurred_at` when retrying so usage is only counted once.
+- `usageEvents` resource for usage-based billing: `create` to send usage events, plus `generateEventKey` and
+  `deterministicEventKey` helpers for creating `event_key` values.
+  - `create` sends a batch of 1-100 events and resolves once Paddle accepts the whole batch. There are no per-event
+    results.
+  - A `400` `ApiError` means Paddle recorded no event in the batch. `errors` names each failed field by its zero-based
+    position, like `events[1].occurred_at`.
+  - After a `429` (wait `retryAfter` seconds), a `5xx` or a timeout, some events may have been recorded. Send the same
+    batch again, keeping `customer_id`, `action`, `event_key` and `occurred_at` unchanged, so usage is only counted
+    once. The SDK doesn't retry for you.
 - Added `usage_event.write` to API key permissions.
 
 ---

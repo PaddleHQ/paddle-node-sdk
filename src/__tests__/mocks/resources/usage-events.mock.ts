@@ -4,8 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { IUsageEventsResultResponse } from '../../../types/index.js';
-import { Response } from '../../../internal/index.js';
+import { ErrorResponse, Response } from '../../../internal/index.js';
 import { CreateUsageEventsRequestBody } from '../../../resources/usage-events/index.js';
 
 export const CreateUsageEventsMock: CreateUsageEventsRequestBody = {
@@ -17,48 +16,48 @@ export const CreateUsageEventsMock: CreateUsageEventsRequestBody = {
       quantity: '1',
       occurredAt: '2026-09-15T10:15:00Z',
     },
-  ],
-};
-
-export const UsageEventsAcceptedMock: IUsageEventsResultResponse = {
-  events: [
     {
-      event_key: 'call_7f3a9c2e',
-      status: 'accepted',
+      eventKey: 'tokens_9b1e4d6a',
+      customerId: 'ctm_01gw9m680k848184fpttwr0b7z',
+      action: 'tokens_processed',
+      quantity: '2048',
+      occurredAt: '2026-09-15T10:15:00Z',
     },
   ],
 };
 
-export const UsageEventsRejectedMock: IUsageEventsResultResponse = {
-  events: [
-    {
-      event_key: 'call_7f3a9c2e',
-      status: 'rejected',
-      error: {
-        type: 'request_error',
-        code: 'usage_event_future_timestamp',
-        detail: 'occurred_at cannot be more than 24 hours in the future',
-        documentation_url: 'https://developer.paddle.com/errors/usage-events/usage_event_future_timestamp',
-        errors: [
-          {
-            field: 'events[0].occurred_at',
-            message: 'must not be more than 24 hours in the future',
-          },
-        ],
-      },
-    },
-  ],
-};
-
-export const UsageEventsAcceptedMockResponse: Response<IUsageEventsResultResponse> = {
-  data: UsageEventsAcceptedMock,
+export const UsageEventsAcceptedMockResponse: Response<object> = {
+  data: {},
   meta: {
     request_id: 'cf40234b-e140-44d1-a83f-7bbdedd88589',
   },
 };
 
-export const UsageEventsRejectedMockResponse: Response<IUsageEventsResultResponse> = {
-  data: UsageEventsRejectedMock,
+export const UsageEventsBadRequestMockResponse: ErrorResponse = {
+  error: {
+    type: 'request_error',
+    code: 'bad_request',
+    detail: 'One or more usage events in the batch failed validation.',
+    documentation_url: 'https://developer.paddle.com/errors/shared/bad_request',
+    errors: [
+      {
+        field: 'events[1].occurred_at',
+        message: 'usage event occurred_at 2026-11-20T12:00:00Z is more than 24 hours in the future',
+      },
+    ],
+  },
+  meta: {
+    request_id: 'cf40234b-e140-44d1-a83f-7bbdedd88589',
+  },
+};
+
+export const UsageEventsTooManyRequestsMockResponse: ErrorResponse = {
+  error: {
+    type: 'request_error',
+    code: 'too_many_requests',
+    detail: 'Too many requests.',
+    documentation_url: 'https://developer.paddle.com/errors/shared/too_many_requests',
+  },
   meta: {
     request_id: 'cf40234b-e140-44d1-a83f-7bbdedd88589',
   },

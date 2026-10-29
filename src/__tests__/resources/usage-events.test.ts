@@ -8,10 +8,13 @@ import { getPaddleTestClient } from '../helpers/test-client.js';
 import {
   CreateUsageEventsMock,
   UsageEventsAcceptedMockResponse,
-  UsageEventsRejectedMockResponse,
+  UsageEventsBadRequestMockResponse,
+  UsageEventsTooManyRequestsMockResponse,
 } from '../mocks/resources/usage-events.mock.js';
 import { UsageEventsResource } from '../../resources/usage-events/index.js';
 import { NodeRuntime } from '../../internal/providers/runtime/node-runtime.js';
+import { ApiError } from '../../internal/errors/generic.js';
+import { rawResponse } from '../../internal/types/response.js';
 
 describe('UsageEventsResource', () => {
   beforeAll(() => {
@@ -22,32 +25,43 @@ describe('UsageEventsResource', () => {
     jest.restoreAllMocks();
   });
 
-  test('should create usage events', async () => {
+  test('should resolve when the batch is accepted', async () => {
     const paddleInstance = getPaddleTestClient();
     paddleInstance.post = jest.fn().mockResolvedValue(UsageEventsAcceptedMockResponse);
 
     const usageEventsResource = new UsageEventsResource(paddleInstance);
-    const usageEventsResult = await usageEventsResource.create(CreateUsageEventsMock);
 
+    await expect(usageEventsResource.create(CreateUsageEventsMock)).resolves.toBeUndefined();
     expect(paddleInstance.post).toHaveBeenCalledWith('/usage-events', CreateUsageEventsMock);
-    expect(usageEventsResult.events.length).toBe(1);
-    expect(usageEventsResult.events[0]?.eventKey).toBe('call_7f3a9c2e');
-    expect(usageEventsResult.events[0]?.status).toBe('accepted');
-    expect(usageEventsResult.events[0]?.error).toBeNull();
   });
 
-  test('should return rejected usage events with their error', async () => {
+  test('should throw an ApiError naming each failed event when the batch is rejected', async () => {
     const paddleInstance = getPaddleTestClient();
-    paddleInstance.post = jest.fn().mockResolvedValue(UsageEventsRejectedMockResponse);
+    paddleInstance.post = jest.fn().mockResolvedValue(UsageEventsBadRequestMockResponse);
 
     const usageEventsResource = new UsageEventsResource(paddleInstance);
-    const usageEventsResult = await usageEventsResource.create(CreateUsageEventsMock);
+    const request = usageEventsResource.create(CreateUsageEventsMock);
 
-    const usageEventResult = usageEventsResult.events[0];
-    expect(usageEventResult?.status).toBe('rejected');
-    expect(usageEventResult?.error?.code).toBe('usage_event_future_timestamp');
-    expect(usageEventResult?.error?.documentationUrl).toBeDefined();
-    expect(usageEventResult?.error?.errors[0]?.field).toBe('events[0].occurred_at');
+    await expect(request).rejects.toBeInstanceOf(ApiError);
+    await expect(request).rejects.toMatchObject({
+      code: 'bad_request',
+      errors: [{ field: 'events[1].occurred_at' }],
+    });
+  });
+
+  test('should throw an ApiError with retryAfter when rate limited', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue({
+      ...UsageEventsTooManyRequestsMockResponse,
+      [rawResponse]: { headers: new Map([['Retry-After', '30']]) },
+    });
+
+    const usageEventsResource = new UsageEventsResource(paddleInstance);
+
+    await expect(usageEventsResource.create(CreateUsageEventsMock)).rejects.toMatchObject({
+      code: 'too_many_requests',
+      retryAfter: 30,
+    });
   });
 
   test('should generate an event key that matches the event_key pattern', () => {
