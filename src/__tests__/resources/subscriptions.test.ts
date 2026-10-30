@@ -18,6 +18,7 @@ import {
 import {
   CancelSubscription,
   GetSubscriptionQueryParameters,
+  ListSubscriptionHistoryQueryParameters,
   ListSubscriptionQueryParameters,
   PauseSubscription,
   ResumeSubscription,
@@ -27,6 +28,37 @@ import {
 import { QueryParameters } from '../../internal/base/index.js';
 import { convertToSnakeCase } from '../../internal/index.js';
 import { TransactionMockResponse } from '../mocks/resources/transactions.mock.js';
+import {
+  ListSubscriptionHistoryMockResponse,
+  SubscriptionHistoryCanceledMock,
+  SubscriptionHistoryDetailMocks,
+} from '../mocks/resources/subscription-history.mock.js';
+import * as Entities from '../../entities/index.js';
+import {
+  Actor,
+  Address,
+  BillingDetails,
+  Business,
+  Customer,
+  Discount,
+  Price,
+  SubscriptionConsentRequirement,
+  SubscriptionHistory,
+  SubscriptionHistoryActivatedDetail,
+  SubscriptionHistoryBillingDetailsUpdatedDetail,
+  SubscriptionHistoryCanceledDetail,
+  SubscriptionHistoryConsentRequirementGrantedDetail,
+  SubscriptionHistoryCreatedDetail,
+  SubscriptionHistoryDiscount,
+  SubscriptionHistoryItem,
+  SubscriptionHistoryItemQuantityUpdatedDetail,
+  SubscriptionHistoryPaymentMethodUpdatedDetail,
+  SubscriptionHistoryScheduledChangeAddedDetail,
+  SubscriptionScheduledChange,
+  SubscriptionTimePeriod,
+  TimePeriod,
+} from '../../entities/index.js';
+import { ISubscriptionHistoryResponse } from '../../types/index.js';
 
 describe('SubscriptionsResource', () => {
   test('should return a list of subscriptions', async () => {
@@ -310,5 +342,207 @@ describe('SubscriptionsResource', () => {
     );
     expect(subscription).toBeDefined();
     expect(convertToSnakeCase(CreateSubscriptionMock)).toEqual(CreateSubscriptionExpectation);
+  });
+
+  test('should return a list of subscription history entries', async () => {
+    const subscriptionId = SubscriptionHistoryCanceledMock.subscription_id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionHistoryMockResponse);
+
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    const historyCollection = subscriptionsResource.listHistory(subscriptionId);
+
+    let history = await historyCollection.next();
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/history?`);
+    expect(history.length).toBe(ListSubscriptionHistoryMockResponse.data.length);
+    expect(history[0]).toBeInstanceOf(SubscriptionHistory);
+
+    history = await historyCollection.next();
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/history?after=1`);
+    expect(history.length).toBe(ListSubscriptionHistoryMockResponse.data.length);
+  });
+
+  test('should serialise query params when listing subscription history', async () => {
+    const subscriptionId = SubscriptionHistoryCanceledMock.subscription_id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionHistoryMockResponse);
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+    const queryParams: ListSubscriptionHistoryQueryParameters = {
+      action: ['subscription_canceled', 'subscription_created'],
+      source: ['api', 'customer_portal'],
+      actorType: ['customer', 'api_key'],
+      actorId: ['ctm_123', 'apikey_456'],
+      reason: ['customer_request'],
+      'occurredAt[GTE]': '2024-04-01T00:00:00Z',
+      'occurredAt[LTE]': '2024-05-01T00:00:00Z',
+      after: 'subhis_123',
+      perPage: 50,
+      orderBy: 'id[ASC]',
+    };
+
+    const historyCollection = subscriptionsResource.listHistory(subscriptionId, queryParams);
+    await historyCollection.next();
+
+    const expectedQuery = [
+      'action=subscription_canceled%2Csubscription_created',
+      'source=api%2Ccustomer_portal',
+      'actor_type=customer%2Capi_key',
+      'actor_id=ctm_123%2Capikey_456',
+      'reason=customer_request',
+      'occurred_at%5BGTE%5D=2024-04-01T00%3A00%3A00Z',
+      'occurred_at%5BLTE%5D=2024-05-01T00%3A00%3A00Z',
+      'after=subhis_123',
+      'per_page=50',
+      'order_by=id%5BASC%5D',
+    ].join('&');
+    expect(paddleInstance.get).toHaveBeenCalledWith(`/subscriptions/${subscriptionId}/history?${expectedQuery}`);
+  });
+
+  test('should map subscription history entries and their detail variants', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListSubscriptionHistoryMockResponse);
+    const subscriptionsResource = new SubscriptionsResource(paddleInstance);
+
+    const [canceled, activated, created, quantityUpdated, billingDetailsUpdated, scheduled, consent, paymentMethod] =
+      await subscriptionsResource.listHistory(SubscriptionHistoryCanceledMock.subscription_id).next();
+
+    expect(canceled?.id).toBe(SubscriptionHistoryCanceledMock.id);
+    expect(canceled?.groupId).toBe(SubscriptionHistoryCanceledMock.group_id);
+    expect(canceled?.subscriptionId).toBe(SubscriptionHistoryCanceledMock.subscription_id);
+    expect(canceled?.occurredAt).toBe(SubscriptionHistoryCanceledMock.occurred_at);
+    expect(canceled?.source).toBe('customer_portal');
+    expect(canceled?.actor).toBeInstanceOf(Actor);
+    expect(canceled?.actor).toEqual({ type: 'customer', id: 'ctm_01hv8wt8nffez4p2t6typn4a5j' });
+    expect(canceled?.reason).toBe('customer_request');
+    expect(canceled?.detail).toBeInstanceOf(SubscriptionHistoryCanceledDetail);
+    expect(canceled?.detail).toEqual({ action: 'subscription_canceled', effectiveFrom: 'next_billing_period' });
+
+    expect(activated?.actor.id).toBeNull();
+    expect(activated?.reason).toBeNull();
+    const activatedDetail = activated?.detail;
+    expect(activatedDetail).toBeInstanceOf(SubscriptionHistoryActivatedDetail);
+    if (activatedDetail?.action !== 'subscription_activated') {
+      throw new Error('expected subscription_activated detail');
+    }
+    expect(activatedDetail.status).toBe('active');
+    expect(activatedDetail.firstBilledAt).toBe('2024-04-12T12:42:28Z');
+    expect(activatedDetail.nextBilledAt).toBe('2024-05-12T12:42:28Z');
+    expect(activatedDetail.currentBillingPeriod).toBeInstanceOf(SubscriptionTimePeriod);
+    expect(activatedDetail.currentBillingPeriod.endsAt).toBe('2024-05-12T12:42:28Z');
+    expect(activatedDetail.transactionId).toBe('txn_01h89231k3a1q8mn6p4r5s7t9v');
+
+    const createdDetail = created?.detail;
+    expect(createdDetail).toBeInstanceOf(SubscriptionHistoryCreatedDetail);
+    if (createdDetail?.action !== 'subscription_created') {
+      throw new Error('expected subscription_created detail');
+    }
+    expect(createdDetail.status).toBe('trialing');
+    expect(createdDetail.collectionMode).toBe('automatic');
+    expect(createdDetail.billingDetails).toBeNull();
+    expect(createdDetail.customer).toBeInstanceOf(Customer);
+    expect(createdDetail.customer?.marketingConsent).toBe(true);
+    expect(createdDetail.address).toBeInstanceOf(Address);
+    expect(createdDetail.business).toBeInstanceOf(Business);
+    expect(createdDetail.currencyCode).toBe('USD');
+    expect(createdDetail.billingCycle).toBeInstanceOf(TimePeriod);
+    expect(createdDetail.billingCycle).toEqual({ interval: 'month', frequency: 1 });
+    expect(createdDetail.items?.[0]).toBeInstanceOf(SubscriptionHistoryItem);
+    expect(createdDetail.items?.[0]?.price).toBeInstanceOf(Price);
+    expect(createdDetail.items?.[0]?.quantity).toBe(2);
+    expect(createdDetail.customData).toEqual({ customer_reference_id: 'abcd1234' });
+    expect(createdDetail.discount).toBeInstanceOf(SubscriptionHistoryDiscount);
+    expect(createdDetail.discount?.discount).toBeInstanceOf(Discount);
+    expect(createdDetail.discount?.type).toBe('recurring');
+    expect(createdDetail.discount?.startsAt).toBe('2024-04-12T12:42:27Z');
+    expect(createdDetail.discount?.endsAt).toBeNull();
+    expect(createdDetail.hasPaymentMethod).toBe(true);
+
+    const quantityDetail = quantityUpdated?.detail;
+    expect(quantityDetail).toBeInstanceOf(SubscriptionHistoryItemQuantityUpdatedDetail);
+    if (quantityDetail?.action !== 'subscription_item_quantity_updated') {
+      throw new Error('expected subscription_item_quantity_updated detail');
+    }
+    expect(quantityDetail.price).toBeInstanceOf(Price);
+    expect(quantityDetail.quantity).toBe(3);
+    expect(quantityDetail.updateSummary).toEqual({ quantityDelta: -2 });
+    expect(quantityDetail.prorationBillingMode).toBe('prorated_immediately');
+    expect(quantityDetail.onPaymentFailure).toBe('prevent_change');
+    expect(quantityDetail.transactionId).toBeNull();
+
+    const billingDetailsDetail = billingDetailsUpdated?.detail;
+    expect(billingDetailsDetail).toBeInstanceOf(SubscriptionHistoryBillingDetailsUpdatedDetail);
+    if (billingDetailsDetail?.action !== 'subscription_billing_details_updated') {
+      throw new Error('expected subscription_billing_details_updated detail');
+    }
+    expect(billingDetailsDetail.billingDetails).toBeInstanceOf(BillingDetails);
+    expect(billingDetailsDetail.billingDetails.purchaseOrderNumber).toBe('PO-123');
+    expect(billingDetailsDetail.billingDetails.paymentTerms).toEqual({ interval: 'day', frequency: 30 });
+
+    const scheduledDetail = scheduled?.detail;
+    expect(scheduledDetail).toBeInstanceOf(SubscriptionHistoryScheduledChangeAddedDetail);
+    if (scheduledDetail?.action !== 'subscription_scheduled_change_added') {
+      throw new Error('expected subscription_scheduled_change_added detail');
+    }
+    expect(scheduledDetail.scheduledChange).toBeInstanceOf(SubscriptionScheduledChange);
+    expect(scheduledDetail.scheduledChange).toEqual({
+      action: 'pause',
+      effectiveAt: '2024-05-12T12:42:28Z',
+      resumeAt: null,
+    });
+
+    const consentDetail = consent?.detail;
+    expect(consentDetail).toBeInstanceOf(SubscriptionHistoryConsentRequirementGrantedDetail);
+    if (consentDetail?.action !== 'subscription_consent_requirement_granted') {
+      throw new Error('expected subscription_consent_requirement_granted detail');
+    }
+    expect(consentDetail.consentRequirement).toBeInstanceOf(SubscriptionConsentRequirement);
+    expect(consentDetail.consentRequirement).toEqual({
+      id: 'subconreq_01gm302t81w94gyjpjpqypkzkf',
+      requirement: 'trial_ending',
+      status: 'granted',
+      createdAt: '2024-04-12T12:42:27Z',
+      consentPeriod: { startsAt: '2024-04-20T00:00:00Z', endsAt: '2024-05-12T12:42:27Z' },
+      grantedAt: '2024-04-23T09:00:00Z',
+      voidedAt: null,
+    });
+
+    expect(paymentMethod?.actor).toEqual({ type: 'paddle_staff', id: null });
+    expect(paymentMethod?.detail).toBeInstanceOf(SubscriptionHistoryPaymentMethodUpdatedDetail);
+    expect(paymentMethod?.detail).toEqual({ action: 'subscription_payment_method_updated' });
+  });
+
+  test.each(SubscriptionHistoryDetailMocks.map((detail) => [detail.action, detail] as const))(
+    'should map %s subscription history detail to its entity',
+    (action, detail) => {
+      const history = new SubscriptionHistory({ ...SubscriptionHistoryCanceledMock, detail });
+      const suffix = action
+        .replace(/^subscription_/, '')
+        .split('_')
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join('');
+      const expectedClass = (Entities as Record<string, unknown>)[`SubscriptionHistory${suffix}Detail`];
+
+      expect(expectedClass).toBeDefined();
+      expect(history.detail).toBeInstanceOf(expectedClass as new (...args: never[]) => unknown);
+      expect(history.detail.action).toBe(action);
+      expect(Object.keys(history.detail).sort()).toEqual(
+        Object.keys(detail)
+          .map((key) => key.replace(/_([a-z])/g, (_, letter: string) => letter.toUpperCase()))
+          .sort(),
+      );
+    },
+  );
+
+  test('should cover every subscription history action in detail mocks', () => {
+    expect(new Set(SubscriptionHistoryDetailMocks.map((detail) => detail.action)).size).toBe(33);
+  });
+
+  test('should keep unrecognised subscription history actions as camelCased detail', () => {
+    const history = new SubscriptionHistory({
+      ...SubscriptionHistoryCanceledMock,
+      detail: { action: 'subscription_something_new', some_field: { nested_value: 1 } },
+    } as unknown as ISubscriptionHistoryResponse);
+
+    expect(history.detail).toEqual({ action: 'subscription_something_new', someField: { nestedValue: 1 } });
   });
 });

@@ -18,3 +18,4 @@ export * from './subscription-preview-response.js';
 export * from './subscription-preview-update-summary.js';
 export * from './subscription-result-response.js';
 export * from './subscription-update-non-catalog-price-request.js';
+export * from './subscription-consent-requirement-response.js';
