@@ -101,3 +101,18 @@ export const ListPriceMockResponse: ResponsePaginated<IPriceResponse> = {
     },
   },
 };
+
+export const PriceWithUnsupportedCountryOverrideMockResponse: Response<IPriceResponse> = {
+  data: {
+    ...PriceMock,
+    unit_price_overrides: [
+      {
+        country_codes: ['GB', 'RU'],
+        unit_price: { amount: '1000', currency_code: 'USD' },
+      },
+    ],
+  },
+  meta: {
+    request_id: '',
+  },
+};
