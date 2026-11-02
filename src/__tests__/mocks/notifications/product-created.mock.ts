@@ -19,6 +19,7 @@ export const ProductCreatedMock: IEventsResponse<IProductNotificationResponse> =
     type: 'standard',
     image_url: 'https://paddle-sandbox.s3.amazonaws.com/user/10889/2nmP8MQSret0aWeDemRw_icon1.png',
     created_at: '2023-08-16T14:38:08.3Z',
+    updated_at: '2023-08-16T14:38:08.3Z',
     custom_data: { features: { crm: false, reports: true, data_retention: true } },
     description:
       'Spend more time engaging with students with ChataApp Education. Includes features from our Pro plan, plus tools to help educators track student progress.',
@@ -46,7 +47,7 @@ export const ProductCreatedMockExpectation = {
     status: 'active',
     taxCategory: 'standard',
     type: 'standard',
-    updatedAt: null,
+    updatedAt: '2023-08-16T14:38:08.3Z',
   },
   eventId: 'evt_01h7zcgmnv3ee9cqrj9fpww3mg',
   eventType: 'product.created',

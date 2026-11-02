@@ -31,5 +31,7 @@ export interface ISubscriptionPriceNotificationResponse {
   status?: Status | null;
   custom_data?: ICustomData | null;
   import_meta?: IImportMetaNotificationResponse | null;
+  created_at?: string | null;
+  updated_at?: string | null;
   product?: ISharedProductNotificationResponse | null;
 }

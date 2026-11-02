@@ -34,3 +34,4 @@ export * from './simulation-event-response.js';
 export * from './payment-method-underlying-details.js';
 export * from './korean-market-underlying-details.js';
 export * from './south-korea-local-card.js';
+export * from './actor.js';

@@ -22,6 +22,8 @@ export const CustomerPortalSessionMock: ICustomerPortalSessionResponse = {
           'https://customer-portal.paddle.com/cpl_01j7zbyqs3vah3aafp4jf62qaw?action=cancel_subscription&subscription_id=sub_01h04vsc0qhwtsbsxh3422wjs4&token=pga_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjdG1fMDFncm5uNHp0YTVhMW1mMDJqanplN3kyeXMiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE3Mjc2NzkyMzh9._oO12IejzdKmyKTwb7BLjmiILkx4_cSyGjXraOBUI_g',
         update_subscription_payment_method:
           'https://customer-portal.paddle.com/cpl_01j7zbyqs3vah3aafp4jf62qaw?action=update_subscription_payment_method&subscription_id=sub_01h04vsc0qhwtsbsxh3422wjs4&token=pga_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjdG1fMDFncm5uNHp0YTVhMW1mMDJqanplN3kyeXMiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE3Mjc2NzkyMzh9._oO12IejzdKmyKTwb7BLjmiILkx4_cSyGjXraOBUI_g',
+        view_subscription:
+          'https://customer-portal.paddle.com/cpl_01j7zbyqs3vah3aafp4jf62qaw?action=view_subscription&subscription_id=sub_01h04vsc0qhwtsbsxh3422wjs4&token=pga_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjdG1fMDFncm5uNHp0YTVhMW1mMDJqanplN3kyeXMiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE3Mjc2NzkyMzh9._oO12IejzdKmyKTwb7BLjmiILkx4_cSyGjXraOBUI_g',
       },
     ],
   },

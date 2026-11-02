@@ -14,6 +14,7 @@ export const ReportMock: IReportResponse = {
   type: 'transactions',
   filters: [{ name: 'updated_at', operator: 'lt', value: '2024-10-13T07:20:50.52Z' }],
   expires_at: '2019-10-12T07:20:50.52Z',
+  updated_at: '2024-10-12T07:20:50.52Z',
   created_at: '2024-10-12T07:20:50.52Z',
 };
 

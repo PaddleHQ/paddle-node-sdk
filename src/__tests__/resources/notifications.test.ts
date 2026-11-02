@@ -12,7 +12,11 @@ import {
   NotificationMockResponse,
   NotificationReplayMockResponse,
 } from '../mocks/resources/notifications.mock.js';
-import { ListNotificationQueryParameters, NotificationsResource } from '../../resources/index.js';
+import {
+  ListNotificationLogQueryParameters,
+  ListNotificationQueryParameters,
+  NotificationsResource,
+} from '../../resources/index.js';
 
 describe('NotificationsResource', () => {
   test('should return a list of notifications', async () => {
@@ -86,5 +90,16 @@ describe('NotificationsResource', () => {
     notifications = await notificationCollection.next();
     expect(paddleInstance.get).toHaveBeenCalledWith('/notifications/ntf_1234/logs?after=1');
     expect(notifications.length).toBe(3);
+  });
+
+  test('should accept a partial set of query params for notification logs', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListNotificationLogsMockResponse);
+
+    const notificationsResource = new NotificationsResource(paddleInstance);
+    const queryParams: ListNotificationLogQueryParameters = { perPage: 10 };
+    await notificationsResource.getLogs('ntf_1234', queryParams).next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/notifications/ntf_1234/logs?per_page=10');
   });
 });
