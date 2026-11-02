@@ -4,7 +4,7 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type CatalogType, type Status } from '../../../enums/index.js';
+import { type CatalogType, type Interval, type Status } from '../../../enums/index.js';
 
 export interface ListPriceQueryParameters {
   after?: string;
@@ -16,4 +16,6 @@ export interface ListPriceQueryParameters {
   productId?: string[];
   status?: Status[];
   recurring?: boolean;
+  'billingCycle.interval'?: Interval;
+  'billingCycle.frequency'?: number;
 }

@@ -4,23 +4,31 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-import { type AdjustmentAction, type AdjustmentStatus, type CurrencyCode } from '../../enums/index.js';
+import {
+  type AdjustmentActionType,
+  type AdjustmentAction,
+  type AdjustmentStatus,
+  type CurrencyCode,
+} from '../../enums/index.js';
 import { type ITransactionAdjustmentItemResponse } from './transaction-adjustment-item-response.js';
 import { type IPayoutTotalsAdjustmentResponse, type ITotalAdjustmentsResponse } from '../shared/index.js';
+import { type IAdjustmentTaxRatesUsedResponse } from '../adjustment/index.js';
 
 export interface ITransactionAdjustmentResponse {
   id: string;
   action: AdjustmentAction;
+  type: AdjustmentActionType;
   transaction_id: string;
   subscription_id?: string | null;
   customer_id: string;
   reason: string;
-  credit_applied_to_balance: boolean;
+  credit_applied_to_balance: boolean | null;
   currency_code: CurrencyCode;
   status: AdjustmentStatus;
   items: ITransactionAdjustmentItemResponse[];
   totals?: ITotalAdjustmentsResponse | null;
   payout_totals?: IPayoutTotalsAdjustmentResponse | null;
+  tax_rates_used: IAdjustmentTaxRatesUsedResponse[];
   created_at: string;
   updated_at: string;
 }

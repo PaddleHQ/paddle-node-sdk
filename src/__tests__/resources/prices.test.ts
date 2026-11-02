@@ -50,6 +50,22 @@ describe('PricesResource', () => {
     expect(prices.length).toBe(1);
   });
 
+  test('should accept billing cycle filters and return a list of prices', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListPriceMockResponse);
+    const pricesResource = new PricesResource(paddleInstance);
+    const queryParams: ListPriceQueryParameters = {
+      'billingCycle.interval': 'month',
+      'billingCycle.frequency': 1,
+    };
+
+    const priceCollection = pricesResource.list(queryParams);
+    const prices = await priceCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/prices?billing_cycle.interval=month&billing_cycle.frequency=1');
+    expect(prices.length).toBe(1);
+  });
+
   test('should return a single price by ID', async () => {
     const priceId = PriceMock.id;
     const paddleInstance = getPaddleTestClient();

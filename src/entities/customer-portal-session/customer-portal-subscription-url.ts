@@ -10,10 +10,12 @@ export class CustomerPortalSubscriptionUrl {
   public readonly id: string;
   public readonly cancelSubscription: string;
   public readonly updateSubscriptionPaymentMethod: string;
+  public readonly viewSubscription: string;
 
   constructor(customerPortalSubscriptionUrlResponse: ICustomerPortalSubscriptionUrl) {
     this.id = customerPortalSubscriptionUrlResponse.id;
     this.cancelSubscription = customerPortalSubscriptionUrlResponse.cancel_subscription;
     this.updateSubscriptionPaymentMethod = customerPortalSubscriptionUrlResponse.update_subscription_payment_method;
+    this.viewSubscription = customerPortalSubscriptionUrlResponse.view_subscription;
   }
 }

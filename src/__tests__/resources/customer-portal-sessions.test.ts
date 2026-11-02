@@ -28,6 +28,9 @@ describe('CustomerPortalSessionsResource', () => {
     expect(createdCustomerPortalSession.id).toBeDefined();
     expect(createdCustomerPortalSession.customerId).toBe(customerId);
     expect(createdCustomerPortalSession.urls.subscriptions[0]?.id).toBe(subscriptionIds[0]);
+    expect(createdCustomerPortalSession.urls.subscriptions[0]?.viewSubscription).toBe(
+      CustomerPortalSessionMock.urls.subscriptions[0]?.view_subscription,
+    );
   });
 
   test('should create a customer portal session without subscription IDs', async () => {

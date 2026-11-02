@@ -12,9 +12,10 @@ export interface ListSubscriptionQueryParameters {
   collectionMode?: CollectionMode;
   customerId?: string[];
   id?: string[];
+  nextBilledAt?: string[] | null;
   orderBy?: string;
   perPage?: number;
   priceId?: string[];
-  scheduledChangeAction?: ScheduledChangeAction[];
+  scheduledChangeAction?: Array<ScheduledChangeAction | 'none'>;
   status?: SubscriptionStatus[];
 }

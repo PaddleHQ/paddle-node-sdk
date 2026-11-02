@@ -44,5 +44,5 @@ export interface ListTransactionQueryParameters {
   'updatedAt[GT]'?: string;
   'updatedAt[LTE]'?: string;
   'updatedAt[GTE]'?: string;
-  origin?: TransactionOrigin[];
+  origin?: Array<TransactionOrigin | 'subscription_import'>;
 }

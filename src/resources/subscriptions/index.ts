@@ -9,12 +9,19 @@ import {
   type CancelSubscription,
   type CreateSubscriptionCharge,
   type GetSubscriptionQueryParameters,
+  type ListSubscriptionHistoryQueryParameters,
   type ListSubscriptionQueryParameters,
   type PauseSubscription,
   type ResumeSubscription,
   type UpdateSubscriptionRequestBody,
 } from './operations/index.js';
-import { Subscription, SubscriptionCollection, SubscriptionPreview, Transaction } from '../../entities/index.js';
+import {
+  Subscription,
+  SubscriptionCollection,
+  SubscriptionHistoryCollection,
+  SubscriptionPreview,
+  Transaction,
+} from '../../entities/index.js';
 import {
   type ISubscriptionPreviewResponse,
   type ISubscriptionResponse,
@@ -34,6 +41,7 @@ const SubscriptionPaths = {
   createOneTimeCharge: '/subscriptions/{subscription_id}/charge',
   previewOneTimeCharge: '/subscriptions/{subscription_id}/charge/preview',
   getTransactionToUpdatePaymentMethod: '/subscriptions/{subscription_id}/update-payment-method-transaction',
+  listHistory: '/subscriptions/{subscription_id}/history',
 } as const;
 
 export * from './operations/index.js';
@@ -76,7 +84,11 @@ export class SubscriptionsResource extends BaseResource {
   }
 
   public list(queryParams?: ListSubscriptionQueryParameters): SubscriptionCollection {
-    const queryParameters = new QueryParameters(queryParams);
+    // The API filters on the literal string `null`, but QueryParameters drops null values.
+    const queryParameters = new QueryParameters({
+      ...queryParams,
+      nextBilledAt: queryParams?.nextBilledAt === null ? ['null'] : queryParams?.nextBilledAt,
+    });
     return new SubscriptionCollection(this.client, SubscriptionPaths.list + queryParameters.toQueryString());
   }
 
@@ -206,5 +218,16 @@ export class SubscriptionsResource extends BaseResource {
     const data = this.handleResponse<ITransactionResponse>(response);
 
     return new Transaction(data);
+  }
+
+  public listHistory(
+    subscriptionId: string,
+    queryParams?: ListSubscriptionHistoryQueryParameters,
+  ): SubscriptionHistoryCollection {
+    const queryParameters = new QueryParameters(queryParams);
+    const urlWithPathParams = new PathParameters(SubscriptionPaths.listHistory, {
+      subscription_id: subscriptionId,
+    }).deriveUrl();
+    return new SubscriptionHistoryCollection(this.client, urlWithPathParams + queryParameters.toQueryString());
   }
 }

@@ -31,6 +31,8 @@ export class SubscriptionPriceNotification {
   public readonly status: Status | null;
   public readonly customData: CustomData | null;
   public readonly importMeta: ImportMetaNotification | null;
+  public readonly createdAt: string | null;
+  public readonly updatedAt: string | null;
 
   constructor(price: ISubscriptionPriceNotificationResponse) {
     this.id = price.id;
@@ -49,5 +51,7 @@ export class SubscriptionPriceNotification {
     this.status = price.status ?? null;
     this.customData = price.custom_data ? price.custom_data : null;
     this.importMeta = price.import_meta ? new ImportMetaNotification(price.import_meta) : null;
+    this.createdAt = price.created_at ?? null;
+    this.updatedAt = price.updated_at ?? null;
   }
 }
