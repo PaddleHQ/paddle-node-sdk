@@ -8,6 +8,8 @@ export * from './time-period.js';
 export * from './trial-period.js';
 export * from './money.js';
 export * from './unit-price-override.js';
+export * from './money-optional-currency.js';
+export * from './price-trial-unit-price-override.js';
 export * from './billing-details.js';
 export * from './totals.js';
 export * from './tax-rates-used.js';

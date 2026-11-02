@@ -9,6 +9,8 @@ export * from './trial-period-notification.js';
 export * from './trial-period-notification-response.js';
 export * from './money-notification-response.js';
 export * from './unit-price-override-notification-response.js';
+export * from './money-optional-currency-notification-response.js';
+export * from './price-trial-unit-price-override-notification-response.js';
 export * from './shared-price-notification-response.js';
 export * from './shared-product-notification-response.js';
 export * from './billing-details-notification-response.js';

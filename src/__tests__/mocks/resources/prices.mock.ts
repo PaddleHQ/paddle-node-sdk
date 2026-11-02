@@ -12,6 +12,18 @@ export const CreatePriceMock: CreatePriceRequestBody = {
   description: 'calculus acsi explicabo spargo vergo cur defluo laboriosam curvo aqua',
   productId: 'pro_01gsz97mq9pa4fkyy0wqenepkz',
   unitPrice: { amount: '1000', currencyCode: 'USD' },
+  trialPeriod: {
+    interval: 'day',
+    frequency: 14,
+    requiresPaymentMethod: true,
+    unitPrice: { amount: '100' },
+    unitPriceOverrides: [
+      {
+        countryCodes: ['GB'],
+        unitPrice: { amount: '90', currencyCode: 'GBP' },
+      },
+    ],
+  },
 };
 
 export const UpdatePriceMock: UpdatePriceRequestBody = {
@@ -19,7 +31,15 @@ export const UpdatePriceMock: UpdatePriceRequestBody = {
   type: 'custom',
   name: 'Joshua',
   billingCycle: { interval: 'day', frequency: 10 },
-  trialPeriod: { interval: 'day', frequency: 10 },
+  trialPeriod: {
+    unitPrice: { amount: '100', currencyCode: 'USD' },
+    unitPriceOverrides: [
+      {
+        countryCodes: ['GB'],
+        unitPrice: { amount: '90', currencyCode: 'GBP' },
+      },
+    ],
+  },
   taxMode: 'account_setting',
   unitPrice: { amount: '1000', currencyCode: 'USD' },
   unitPriceOverrides: [
@@ -37,6 +57,18 @@ export const CreatePriceExpectation = {
   description: 'calculus acsi explicabo spargo vergo cur defluo laboriosam curvo aqua',
   product_id: 'pro_01gsz97mq9pa4fkyy0wqenepkz',
   unit_price: { amount: '1000', currency_code: 'USD' },
+  trial_period: {
+    interval: 'day',
+    frequency: 14,
+    requires_payment_method: true,
+    unit_price: { amount: '100' },
+    unit_price_overrides: [
+      {
+        country_codes: ['GB'],
+        unit_price: { amount: '90', currency_code: 'GBP' },
+      },
+    ],
+  },
 };
 
 export const UpdatePriceExpectation = {
@@ -44,7 +76,15 @@ export const UpdatePriceExpectation = {
   type: 'custom',
   name: 'Joshua',
   billing_cycle: { interval: 'day', frequency: 10 },
-  trial_period: { interval: 'day', frequency: 10 },
+  trial_period: {
+    unit_price: { amount: '100', currency_code: 'USD' },
+    unit_price_overrides: [
+      {
+        country_codes: ['GB'],
+        unit_price: { amount: '90', currency_code: 'GBP' },
+      },
+    ],
+  },
   tax_mode: 'account_setting',
   unit_price: { amount: '1000', currency_code: 'USD' },
   unit_price_overrides: [
@@ -65,7 +105,22 @@ export const PriceMock: IPriceResponse = {
   type: 'custom',
   name: 'Shad',
   billing_cycle: { interval: 'day', frequency: 10 },
-  trial_period: { interval: 'day', frequency: 10 },
+  trial_period: {
+    interval: 'day',
+    frequency: 10,
+    requires_payment_method: true,
+    unit_price: { amount: '100', currency_code: 'USD' },
+    unit_price_overrides: [
+      {
+        country_codes: ['GB'],
+        unit_price: { amount: '90', currency_code: 'GBP' },
+      },
+      {
+        country_codes: ['CA'],
+        unit_price: { amount: '80' },
+      },
+    ],
+  },
   tax_mode: 'account_setting',
   unit_price: { amount: '1000', currency_code: 'USD' },
   unit_price_overrides: [
