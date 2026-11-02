@@ -52,6 +52,7 @@ export const AdjustmentCreatedMock: IEventsResponse<IAdjustmentResponse> = {
     transaction_id: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     subscription_id: 'sub_01h8bxswamxysj44zt5n48njwh',
     credit_applied_to_balance: true,
+    tax_rates_used: [{ tax_rate: '0.08', totals: { subtotal: '92', tax: '8', total: '100' } }],
   },
 };
 
@@ -100,6 +101,7 @@ export const AdjustmentCreatedMockExpectation = {
       total: '100',
       retainedFee: '2',
     },
+    taxRatesUsed: [{ taxRate: '0.08', totals: { subtotal: '92', tax: '8', total: '100' } }],
     transactionId: 'txn_01h8bxpvx398a7zbawb77y0kp5',
     updatedAt: '0001-01-01T00:00:00Z',
   },

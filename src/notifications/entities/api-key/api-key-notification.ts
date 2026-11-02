@@ -13,6 +13,7 @@ export class ApiKeyNotification {
   public readonly key: string;
   public readonly status: ApiKeyStatus;
   public readonly permissions: ApiKeyPermission[];
+  public readonly exposedAt: string | null;
   public readonly expiresAt: string | null;
   public readonly rotatable: boolean | null;
   public readonly lastUsedAt: string | null;
@@ -26,6 +27,7 @@ export class ApiKeyNotification {
     this.key = apiKey.key;
     this.status = apiKey.status;
     this.permissions = apiKey.permissions;
+    this.exposedAt = apiKey.exposed_at ?? null;
     this.expiresAt = apiKey.expires_at ?? null;
     this.rotatable = apiKey.rotatable ?? null;
     this.lastUsedAt = apiKey.last_used_at ?? null;

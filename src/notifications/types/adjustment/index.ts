@@ -10,3 +10,4 @@ export * from './adjustment-item-notification-response.js';
 export * from './adjustment-notification-response.js';
 export * from './adjustment-totals-breakdown-notification.js';
 export * from './adjustment-totals-notification-response.js';
+export * from './adjustment-tax-rates-used-notification-response.js';
