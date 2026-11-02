@@ -32,4 +32,16 @@ describe('CustomerPortalSessionsResource', () => {
       CustomerPortalSessionMock.urls.subscriptions[0]?.view_subscription,
     );
   });
+
+  test('should create a customer portal session without subscription IDs', async () => {
+    const customerId = CustomerPortalSessionMock.customer_id;
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.post = jest.fn().mockResolvedValue(CustomerPortalSessionMockResponse);
+
+    const customerPortalSessionsResource = new CustomerPortalSessionsResource(paddleInstance);
+    const createdCustomerPortalSession = await customerPortalSessionsResource.create(customerId);
+
+    expect(paddleInstance.post).toHaveBeenCalledWith(`/customers/${customerId}/portal-sessions`, {});
+    expect(createdCustomerPortalSession.customerId).toBe(customerId);
+  });
 });
