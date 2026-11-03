@@ -31,3 +31,8 @@ export * from './usage-events/index.js';
 export * from './usage-balances/index.js';
 export * from './meters/index.js';
 export * from './usage-balance-units/index.js';
+export * from './verifications/index.js';
+export * from './countries/index.js';
+export * from './currencies/index.js';
+export * from './checkout-domains/index.js';
+export * from './ip-addresses/index.js';

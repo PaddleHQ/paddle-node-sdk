@@ -11,6 +11,7 @@ import {
   ListPriceMockResponse,
   PriceMock,
   PriceMockResponse,
+  PriceWithUnsupportedCountryOverrideMockResponse,
   UpdatePriceExpectation,
   UpdatePriceMock,
 } from '../mocks/resources/prices.mock.js';
@@ -50,6 +51,22 @@ describe('PricesResource', () => {
     expect(prices.length).toBe(1);
   });
 
+  test('should accept billing cycle filters and return a list of prices', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(ListPriceMockResponse);
+    const pricesResource = new PricesResource(paddleInstance);
+    const queryParams: ListPriceQueryParameters = {
+      'billingCycle.interval': 'month',
+      'billingCycle.frequency': 1,
+    };
+
+    const priceCollection = pricesResource.list(queryParams);
+    const prices = await priceCollection.next();
+
+    expect(paddleInstance.get).toHaveBeenCalledWith('/prices?billing_cycle.interval=month&billing_cycle.frequency=1');
+    expect(prices.length).toBe(1);
+  });
+
   test('should return a single price by ID', async () => {
     const priceId = PriceMock.id;
     const paddleInstance = getPaddleTestClient();
@@ -61,6 +78,22 @@ describe('PricesResource', () => {
     expect(paddleInstance.get).toHaveBeenCalledWith(`/prices/${priceId}`, { queryParams: undefined });
     expect(price).toBeDefined();
     expect(price.id).toBe(priceId);
+    expect(price.trialPeriod).toEqual({
+      interval: 'day',
+      frequency: 10,
+      requiresPaymentMethod: true,
+      unitPrice: { amount: '100', currencyCode: 'USD' },
+      unitPriceOverrides: [
+        {
+          countryCodes: ['GB'],
+          unitPrice: { amount: '90', currencyCode: 'GBP' },
+        },
+        {
+          countryCodes: ['CA'],
+          unitPrice: { amount: '80', currencyCode: null },
+        },
+      ],
+    });
   });
 
   test('should accepts query params and return a single price by ID', async () => {
@@ -75,6 +108,16 @@ describe('PricesResource', () => {
     expect(price).toBeDefined();
     expect(paddleInstance.get).toHaveBeenCalledWith(`/prices/${priceId}`, { queryParameters: undefined });
     expect(price.id).toBe(priceId);
+  });
+
+  test('should return unit price overrides that include unsupported country codes', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest.fn().mockResolvedValue(PriceWithUnsupportedCountryOverrideMockResponse);
+
+    const pricesResource = new PricesResource(paddleInstance);
+    const price = await pricesResource.get(PriceMock.id);
+
+    expect(price.unitPriceOverrides[0]?.countryCodes).toEqual(['GB', 'RU']);
   });
 
   test('should create a new price', async () => {

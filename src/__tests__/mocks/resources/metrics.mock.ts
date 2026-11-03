@@ -6,6 +6,9 @@
 
 import { MetricsTimeseriesInterval } from '../../../enums/index.js';
 import {
+  type IMetricEntityDefinitionResponse,
+  type IMetricsExplorePaginatedMeta,
+  type IMetricsExploreResponse,
   type IMetricsTimeseriesActiveSubscribersResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueChangeResponse,
   type IMetricsTimeseriesMonthlyRecurringRevenueResponse,
@@ -177,5 +180,125 @@ export const CheckoutConversionMockResponse: Response<IMetricsTimeseriesCheckout
   data: CheckoutConversionMock,
   meta: {
     request_id: '',
+  },
+};
+
+export const MetricsExploreMock: IMetricsExploreResponse = {
+  entity: 'transactions.completed',
+  interval: 'month',
+  currency_code: 'USD',
+  starts_at: '2026-05-01T00:00:00Z',
+  ends_at: '2026-08-01T00:00:00Z',
+  updated_at: '2026-08-01T06:00:00Z',
+  fields: {
+    dimensions: [
+      {
+        name: 'product',
+        type: 'string',
+      },
+    ],
+    measures: [
+      {
+        name: 'sum_gross_revenue',
+        type: 'currency',
+        field: 'gross_revenue',
+        agg: 'sum',
+      },
+    ],
+  },
+  series: [
+    {
+      dimensions: {
+        product: 'pro_01h1vjfevh5etwq3rb416a23h2',
+      },
+      timeseries: [
+        {
+          timestamp: '2026-05-01',
+          measures: {
+            sum_gross_revenue: '410500',
+          },
+        },
+        {
+          timestamp: '2026-06-01',
+          measures: {
+            sum_gross_revenue: '455200',
+          },
+        },
+      ],
+    },
+    {
+      dimensions: {
+        product: 'pro_01gsz4t5hdjse780zja8vvr7jg',
+      },
+      timeseries: [
+        {
+          timestamp: '2026-05-01',
+          measures: {
+            sum_gross_revenue: '298400',
+          },
+        },
+        {
+          timestamp: '2026-06-01',
+          measures: {
+            sum_gross_revenue: '301250',
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export const MetricsExploreMockResponse: Response<IMetricsExploreResponse> & { meta: IMetricsExplorePaginatedMeta } = {
+  data: MetricsExploreMock,
+  meta: {
+    request_id: 'b93d9c94-c28f-4e5d-af2e-044854d7afe8',
+    pagination: {
+      per_page: 2,
+      next: 'https://api.paddle.com/metrics/explore?after=eyJ2IjoxLCJxaWQiOiIwMWpuOHg0azJwN3E5ciIsIm9mZiI6NX0',
+      has_more: true,
+      estimated_total: 42,
+    },
+  },
+};
+
+export const MetricEntityDefinitionsMock: IMetricEntityDefinitionResponse[] = [
+  {
+    entity: 'checkouts',
+    time_dimension: {
+      intervals: ['day', 'week', 'month'],
+      max_lookback_days: 1096,
+    },
+    dimensions: [
+      {
+        name: 'product',
+        type: 'string',
+        filter_ops: ['in'],
+        multi_valued: true,
+      },
+      {
+        name: 'country',
+        type: 'string',
+        filter_ops: ['in'],
+      },
+    ],
+    measures: [
+      {
+        name: 'id',
+        type: 'string',
+        aggs: ['count', 'count_distinct'],
+      },
+      {
+        name: 'checkout_conversion',
+        type: 'decimal',
+        aggs: null,
+      },
+    ],
+  },
+];
+
+export const MetricEntityDefinitionsMockResponse: Response<IMetricEntityDefinitionResponse[]> = {
+  data: MetricEntityDefinitionsMock,
+  meta: {
+    request_id: 'ecd52aa1-a73c-43df-af3b-e87edec3b435',
   },
 };

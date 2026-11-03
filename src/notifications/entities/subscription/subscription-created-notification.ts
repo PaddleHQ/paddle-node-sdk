@@ -10,6 +10,7 @@ import { type ISubscriptionCreatedNotificationResponse } from '../../types/index
 import { BillingDetailsNotification, ImportMetaNotification, TimePeriodNotification } from '../shared/index.js';
 import { SubscriptionDiscountNotification } from './subscription-discount-notification.js';
 import { SubscriptionItemNotification } from './subscription-item-notification.js';
+import { SubscriptionConsentRequirementNotification } from './subscription-consent-requirement-notification.js';
 import { SubscriptionScheduledChangeNotification } from './subscription-scheduled-change-notification.js';
 import { SubscriptionTimePeriodNotification } from './subscription-time-period-notification.js';
 
@@ -35,6 +36,7 @@ export class SubscriptionCreatedNotification {
   public readonly billingCycle: TimePeriodNotification;
   public readonly scheduledChange: SubscriptionScheduledChangeNotification | null;
   public readonly items: SubscriptionItemNotification[];
+  public readonly consentRequirements: SubscriptionConsentRequirementNotification[] | null;
   public readonly customData: CustomData | null;
   public readonly importMeta: ImportMetaNotification | null;
 
@@ -66,6 +68,11 @@ export class SubscriptionCreatedNotification {
       ? new SubscriptionScheduledChangeNotification(subscription.scheduled_change)
       : null;
     this.items = subscription.items.map((item) => new SubscriptionItemNotification(item));
+    this.consentRequirements = subscription.consent_requirements
+      ? subscription.consent_requirements.map(
+          (consentRequirement) => new SubscriptionConsentRequirementNotification(consentRequirement),
+        )
+      : null;
     this.customData = subscription.custom_data ? subscription.custom_data : null;
     this.importMeta = subscription.import_meta ? new ImportMetaNotification(subscription.import_meta) : null;
   }

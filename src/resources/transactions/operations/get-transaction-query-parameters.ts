@@ -5,5 +5,17 @@
  */
 
 export interface GetTransactionQueryParameters {
-  include?: Array<'address' | 'adjustment' | 'adjustments_totals' | 'business' | 'customer' | 'discount'>;
+  include?: Array<
+    | 'address'
+    /**
+     * @deprecated 'adjustment' is deprecated. Use 'adjustments' instead.
+     */
+    | 'adjustment'
+    | 'adjustments'
+    | 'adjustments_totals'
+    | 'available_payment_methods'
+    | 'business'
+    | 'customer'
+    | 'discount'
+  >;
 }

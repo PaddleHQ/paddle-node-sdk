@@ -11,6 +11,7 @@ import {
   type CurrencyCode,
 } from '../../enums/index.js';
 import { AdjustmentItem } from './adjustment-item.js';
+import { AdjustmentTaxRatesUsed } from './adjustment-tax-rates-used.js';
 import { PayoutTotalsAdjustment, TotalAdjustments } from '../shared/index.js';
 import { type IAdjustmentResponse } from '../../types/index.js';
 
@@ -22,12 +23,13 @@ export class Adjustment {
   public readonly subscriptionId: string | null;
   public readonly customerId: string;
   public readonly reason: string;
-  public readonly creditAppliedToBalance: boolean;
+  public readonly creditAppliedToBalance: boolean | null;
   public readonly currencyCode: CurrencyCode;
   public readonly status: AdjustmentStatus;
   public readonly items: AdjustmentItem[];
   public readonly totals: TotalAdjustments;
   public readonly payoutTotals: PayoutTotalsAdjustment | null;
+  public readonly taxRatesUsed: AdjustmentTaxRatesUsed[];
   public readonly createdAt: string;
   public readonly updatedAt: string;
 
@@ -39,12 +41,14 @@ export class Adjustment {
     this.subscriptionId = adjustment.subscription_id ? adjustment.subscription_id : null;
     this.customerId = adjustment.customer_id;
     this.reason = adjustment.reason;
-    this.creditAppliedToBalance = adjustment.credit_applied_to_balance;
+    this.creditAppliedToBalance = adjustment.credit_applied_to_balance ?? null;
     this.currencyCode = adjustment.currency_code;
     this.status = adjustment.status;
     this.items = adjustment.items.map((item) => new AdjustmentItem(item));
     this.totals = new TotalAdjustments(adjustment.totals);
     this.payoutTotals = adjustment.payout_totals ? new PayoutTotalsAdjustment(adjustment.payout_totals) : null;
+    this.taxRatesUsed =
+      adjustment.tax_rates_used?.map((taxRatesUsed) => new AdjustmentTaxRatesUsed(taxRatesUsed)) ?? [];
     this.createdAt = adjustment.created_at;
     this.updatedAt = adjustment.updated_at;
   }

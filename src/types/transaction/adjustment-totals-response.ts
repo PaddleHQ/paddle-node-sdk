@@ -12,6 +12,7 @@ export interface IAdjustmentTotalsResponse {
   tax: string;
   total: string;
   fee: string;
+  retained_fee: string;
   earnings: string;
   breakdown?: IAdjustmentTotalsBreakdown | null;
   currency_code: CurrencyCode;

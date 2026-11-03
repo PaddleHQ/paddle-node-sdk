@@ -34,6 +34,107 @@ adding additional type guards.
     batch again, keeping `customer_id`, `action`, `event_key` and `occurred_at` unchanged, so usage is only counted
     once. The SDK doesn't retry for you.
 - Added `usage_event.write` to API key permissions.
+- Added `unitPrice` and `unitPriceOverrides` to price `trialPeriod` in requests, responses and webhook notifications,
+  for paid trials.
+  See [related changelog](https://developer.paddle.com/changelog/2026/paid-trials?utm_source=dx&utm_medium=paddle-node-sdk).
+- Added `MoneyOptionalCurrency` and `PriceTrialUnitPriceOverride` entities, where `currencyCode` may be omitted.
+
+### Changed
+
+- `UpdatePriceRequestBody.trialPeriod` now uses `ITrialPeriodUpdate`, so all trial period fields are optional when
+  updating a price.
+- Added `verifications` resource with `list` and `get` operations to check whether an account is ready for live
+  payments and which verification steps are outstanding.
+- Added `countries` resource with a `list` operation for `GET /countries`, returning `CountryDefinition` entities that
+  describe each country Paddle knows about, including its transaction and payout currencies, whether sales are allowed,
+  and its default tax mode.
+- Added `currencies` resource with a `list` operation for `GET /currencies`, returning `CurrencyDefinition` entities that
+  describe each currency Paddle supports, including decimal places, minimum payment amount, and the countries that use
+  it for automatic price conversion.
+- Added `checkoutDomains` resource with `list`, `get`, `delete`, and `verifyPaymentMethod` operations for managing
+  checkout domains and verifying them for Apple Pay.
+- Added `ipAddresses` resource with a `get` operation to get Paddle IP addresses, which you can add to your allowlist.
+- Added `CountryCodeSupported`, `CountryCodeNonSupported`, `CountryCodeIso3`, `CountryCodeIso3Supported`,
+  `CountryCodeIso3NonSupported` and `CountryDefinitionTaxMode` types.
+
+### Changed
+
+- Widened `CountryCode` to include the country codes Paddle doesn't support sales to (`AF`, `AN`, `AQ`, `BY`, `CD`,
+  `CF`, `CS`, `CU`, `HT`, `IR`, `KP`, `LY`, `ML`, `MM`, `NI`, `RU`, `SD`, `SO`, `SS`, `SY`, `VE`, `YE`, `ZW`), matching
+  the public API spec. `CountryCode` is now `CountryCodeSupported | CountryCodeNonSupported`. This affects addresses,
+  unit price overrides, and related notifications.
+### Fixed
+
+- `TransactionPreview.availablePaymentMethods` is now populated from the `available_payment_methods` list returned by
+  the API, and is typed as `AvailablePaymentMethod[]`. It was previously read from a non-existent field and was always
+  `null`.
+- Added `adjustments` as an `include` value when getting, listing, creating, and updating transactions. `adjustment` is
+  deprecated in favor of `adjustments`.
+- Added `available_payment_methods` as an `include` value when getting and listing transactions.
+- `after` and `perPage` are now optional when listing logs for a notification.
+- The request body and `effectiveFrom` are now optional when resuming a subscription, so subscriptions can be resumed
+  immediately without passing options.
+- `subscriptionIds` is now optional when creating a customer portal session.
+- All fields in `billingDetails` are now optional when updating subscriptions and transactions, and
+  `additionalInformation` accepts `null`.
+- `include` is now optional when getting a simulation run.
+- The `action` filter when listing adjustments now accepts a list of actions.
+- `pnpm build` now writes `src/version.ts` with a trailing newline, so `pnpm lint` passes after building.
+### Added
+
+- Added `blocked_by_policy`, `preferred_network_not_supported` and `prepaid_card_not_supported` to `ErrorCode` for
+  transaction payment attempts. `blocked_by_policy` is returned when a payment is blocked by one of the seller's
+  configured policy checks.
+- Added `viewSubscription` to subscription `managementUrls` and to customer portal session `urls.subscriptions[]`,
+  linking to the subscription page in the customer portal with no form pre-opened.
+- Added `filter`, `from` and `to` query parameters to `events.list()` operation, to filter events by a Paddle ID or
+  email address and by time range.
+- Added `subscriptions` report type, which contains the current state of your subscriptions, with
+  `subscription_status`, `subscription_created_at`, `customer_country_code` and `subscription_scheduled_change_action`
+  report filter names.
+- Added `checkouts` report type, which contains conversion and recovery data for each checkout session, with the
+  `checkout_created_at` report filter name. `checkouts` reports also support `customer_country_code`.
+- Added `balance_movement_date` and `balance_movement_type` report filter names for use with `payout_reconciliation`
+  reports.
+- Added `updatedAt` to reports and report notifications.
+- Added `checkout_domain.read`, `checkout_domain.write`, `metrics.read`, `subscription_history.read` and
+  `verification.read` to `ApiKeyPermission` for `api_key.*` notifications.
+- Added `AUD` and `CAD` to `AdjustmentCurrencyCode` for chargeback fees.
+- Added `subscription_saved_during_purchase` to `SavedPaymentOrigin` for payment methods.
+- Added `subscription_import` to the `origin` filter when listing transactions.
+- Added `none` to the `scheduledChangeAction` filter when listing subscriptions, to return subscriptions without a
+  scheduled change.
+- Added `taxRatesUsed` to adjustments, adjustment notifications, and adjustments included on transactions. It's `null`
+  on adjustment notifications when no tax rates were used.
+- Added `type` to adjustments included on transactions.
+- Added `retainedFee` to `adjustmentsTotals` on transactions.
+- Added `consentRequirements` to subscriptions, subscription previews, and `subscription.*` notifications, listing the
+  customer consents required for the subscription to renew. Added `SubscriptionConsentRequirementType` and
+  `SubscriptionConsentRequirementStatus` enums.
+- Added `type` (`recurring` or `one-off`) to subscription `discount` on subscriptions, subscription previews, and
+  `subscription.*` notifications. Added `SubscriptionDiscountType` enum.
+- Added `nextBilledAt` filter when listing subscriptions. Pass `null` to return subscriptions with no next billing date.
+- Added `createdAt` and `updatedAt` to `items[].price` on `subscription.*` notifications.
+- Added `billingCycle.interval` and `billingCycle.frequency` filters to `prices.list()`.
+- Added `exposedAt` to API key notifications to indicate when an API key was first exposed.
+- Added `paddle.metrics.explore()` to run an Explore metrics query against `POST /metrics/explore`. Pagination state is
+  returned on `pagination`; to get the next page, pass the same request body with `{ after: pagination.after }`.
+- Added `paddle.metrics.listExploreEntities()` to list queryable Explore metric entities and their dimensions, measures,
+  and allowed aggregations from `GET /metrics/explore/entities`.
+- Added `subscriptions.listHistory(subscriptionId, queryParams?)` to list the history of changes made to a
+  subscription. Each `SubscriptionHistory` entry has a `detail` discriminated on `action`, mapped to a dedicated entity
+  per action (for example `SubscriptionHistoryCreatedDetail`). Filter by `action`, `source`, `actorType`, `actorId`,
+  `reason`, and `occurredAt` (with `[LTE]` and `[GTE]` operators).
+
+### Changed
+
+- `creditAppliedToBalance` on adjustments, adjustment notifications, and adjustments included on transactions is now
+  `boolean | null`, matching the API. It's only returned for `credit` adjustments.
+- `amount` is now optional on `CreateAdjustmentLineItem`, as it's only required for `partial` adjustment items.
+
+### Fixed
+
+- Added missing `updated_at` to `IProductNotificationResponse`, used by `product.*` webhook events.
 
 ---
 

@@ -88,6 +88,22 @@ describe('SimulationRunsResource', () => {
     expect(simulationRun.id).toBe(simulationRunId);
   });
 
+  test('should accept query params without include for a single simulationRun', async () => {
+    const simulationRunId = SimulationRunMock.id;
+    const paddleInstance = getPaddleTestClient();
+
+    paddleInstance.get = jest.fn().mockResolvedValue(SimulationRunMockResponse);
+    const simulationRunsResource = new SimulationRunsResource(paddleInstance);
+
+    const queryParams: GetSimulationRunQueryParameters = {};
+    await simulationRunsResource.get(simulationId, simulationRunId, queryParams);
+
+    expect(paddleInstance.get).toHaveBeenCalledWith(
+      `/simulations/${simulationId}/runs/${simulationRunId}`,
+      new QueryParameters(queryParams),
+    );
+  });
+
   test('should create a new simulationRun', async () => {
     const paddleInstance = getPaddleTestClient();
 

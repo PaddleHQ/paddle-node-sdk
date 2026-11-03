@@ -4,4 +4,4 @@
  *  Changes may be overwritten as part of auto-generation.
  */
 
-export type AdjustmentCurrencyCode = 'EUR' | 'GBP' | 'USD';
+export type AdjustmentCurrencyCode = 'AUD' | 'CAD' | 'EUR' | 'GBP' | 'USD';

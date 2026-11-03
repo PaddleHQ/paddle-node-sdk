@@ -5,7 +5,11 @@
  */
 
 import { type ITimePeriodNotification } from './time-period-notification.js';
+import { type IMoneyOptionalCurrencyNotificationResponse } from './money-optional-currency-notification-response.js';
+import { type IPriceTrialUnitPriceOverrideNotificationResponse } from './price-trial-unit-price-override-notification-response.js';
 
 export interface ITrialPeriodNotificationResponse extends ITimePeriodNotification {
   requires_payment_method?: boolean;
+  unit_price?: IMoneyOptionalCurrencyNotificationResponse | null;
+  unit_price_overrides?: IPriceTrialUnitPriceOverrideNotificationResponse[];
 }

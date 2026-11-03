@@ -5,16 +5,25 @@
  */
 
 import { type Interval } from '../../enums/index.js';
+import { MoneyOptionalCurrency } from './money-optional-currency.js';
+import { PriceTrialUnitPriceOverride } from './price-trial-unit-price-override.js';
 import { type ITrialPeriodResponse } from '../../types/index.js';
 
 export class TrialPeriod {
   public readonly interval: Interval;
   public readonly frequency: number;
   public readonly requiresPaymentMethod: boolean | undefined;
+  public readonly unitPrice: MoneyOptionalCurrency | null;
+  public readonly unitPriceOverrides: PriceTrialUnitPriceOverride[];
 
   constructor(trialPeriod: ITrialPeriodResponse) {
     this.interval = trialPeriod.interval;
     this.frequency = trialPeriod.frequency;
     this.requiresPaymentMethod = trialPeriod.requires_payment_method;
+    this.unitPrice = trialPeriod.unit_price ? new MoneyOptionalCurrency(trialPeriod.unit_price) : null;
+    this.unitPriceOverrides =
+      trialPeriod.unit_price_overrides?.map(
+        (unitPriceOverride) => new PriceTrialUnitPriceOverride(unitPriceOverride),
+      ) ?? [];
   }
 }

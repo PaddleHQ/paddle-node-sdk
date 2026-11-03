@@ -28,6 +28,11 @@ import {
   UsageBalancesResource,
   MetersResource,
   UsageBalanceUnitsResource,
+  VerificationsResource,
+  CountriesResource,
+  CurrenciesResource,
+  CheckoutDomainsResource,
+  IpAddressesResource,
 } from './resources/index.js';
 import { EventsResource } from './resources/events/index.js';
 import { Webhooks } from './notifications/index.js';
@@ -68,6 +73,11 @@ export class Paddle {
   public usageBalances: UsageBalancesResource;
   public meters: MetersResource;
   public usageBalanceUnits: UsageBalanceUnitsResource;
+  public verifications: VerificationsResource;
+  public countries: CountriesResource;
+  public currencies: CurrenciesResource;
+  public checkoutDomains: CheckoutDomainsResource;
+  public ipAddresses: IpAddressesResource;
 
   constructor(apiKey: string, options?: PaddleOptions) {
     this.client = new Client(
@@ -104,5 +114,10 @@ export class Paddle {
     this.usageBalances = new UsageBalancesResource(this.client);
     this.meters = new MetersResource(this.client);
     this.usageBalanceUnits = new UsageBalanceUnitsResource(this.client);
+    this.verifications = new VerificationsResource(this.client);
+    this.countries = new CountriesResource(this.client);
+    this.currencies = new CurrenciesResource(this.client);
+    this.checkoutDomains = new CheckoutDomainsResource(this.client);
+    this.ipAddresses = new IpAddressesResource(this.client);
   }
 }
