@@ -33,7 +33,11 @@ adding additional type guards.
   - After a `429` (wait `retryAfter` seconds), a `5xx` or a timeout, some events may have been recorded. Send the same
     batch again, keeping `customer_id`, `action`, `event_key` and `occurred_at` unchanged, so usage is only counted
     once. The SDK doesn't retry for you.
-- Added `usage_event.write` to API key permissions.
+- `meters` resource for usage-based billing, with `list` and `get` operations.
+- `usageBalances` resource for usage-based billing, with `list` and `get` operations for a customer's usage balances.
+- `usageBalanceUnits` resource for usage-based billing, with `list` and `get` operations.
+- Added `meter.read`, `meter.write`, `usage_balance.read`, `usage_balance_unit.read`, `usage_balance_unit.write` and
+  `usage_event.write` to API key permissions.
 - Added `unitPrice` and `unitPriceOverrides` to price `trialPeriod` in requests, responses and webhook notifications,
   for paid trials.
   See [related changelog](https://developer.paddle.com/changelog/2026/paid-trials?utm_source=dx&utm_medium=paddle-node-sdk).

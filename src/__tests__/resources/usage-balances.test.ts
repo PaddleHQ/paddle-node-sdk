@@ -38,12 +38,12 @@ describe('UsageBalancesResource', () => {
     const usageBalancesResource = new UsageBalancesResource(paddleInstance);
     const usageBalanceCollection = usageBalancesResource.list(customerId, {
       after: '2',
-      usageBalanceUnitId: ['ubu_1', 'ubu_2'],
+      id: ['ubal_1', 'ubal_2'],
     });
     await usageBalanceCollection.next();
 
     expect(paddleInstance.get).toHaveBeenCalledWith(
-      `/customers/${customerId}/usage-balances?after=2&usage_balance_unit_id=ubu_1%2Cubu_2`,
+      `/customers/${customerId}/usage-balances?after=2&id=ubal_1%2Cubal_2`,
     );
   });
 

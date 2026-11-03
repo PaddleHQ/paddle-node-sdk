@@ -30,9 +30,9 @@ describe('MetersResource', () => {
     paddleInstance.get = jest.fn().mockResolvedValue(ListMeterMockResponse);
 
     const metersResource = new MetersResource(paddleInstance);
-    await metersResource.list({ action: ['api_call'], status: ['active'] }).next();
+    await metersResource.list({ id: ['mtr_1', 'mtr_2'], status: ['active'] }).next();
 
-    expect(paddleInstance.get).toHaveBeenCalledWith('/meters?action=api_call&status=active');
+    expect(paddleInstance.get).toHaveBeenCalledWith('/meters?id=mtr_1%2Cmtr_2&status=active');
   });
 
   test('should return a single meter by ID', async () => {

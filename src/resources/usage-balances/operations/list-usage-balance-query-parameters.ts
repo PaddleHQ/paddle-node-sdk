@@ -9,5 +9,4 @@ export interface ListUsageBalanceQueryParameters {
   id?: string[];
   orderBy?: string;
   perPage?: number;
-  usageBalanceUnitId?: string[];
 }

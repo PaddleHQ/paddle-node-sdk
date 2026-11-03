@@ -7,11 +7,9 @@
 import { type Status } from '../../../enums/index.js';
 
 export interface ListMeterQueryParameters {
-  action?: string[];
   after?: string;
   id?: string[];
   orderBy?: string;
   perPage?: number;
   status?: Status[];
-  usageBalanceUnitId?: string[];
 }
