@@ -21,6 +21,8 @@ export type ApiKeyPermission =
   | 'customer_portal_session.write'
   | 'discount.read'
   | 'discount.write'
+  | 'meter.read'
+  | 'meter.write'
   | 'metrics.read'
   | 'notification.read'
   | 'notification.write'
@@ -41,4 +43,8 @@ export type ApiKeyPermission =
   | 'subscription_history.read'
   | 'transaction.read'
   | 'transaction.write'
+  | 'usage_balance.read'
+  | 'usage_balance_unit.read'
+  | 'usage_balance_unit.write'
+  | 'usage_event.write'
   | 'verification.read';

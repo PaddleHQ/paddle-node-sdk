@@ -24,6 +24,10 @@ import {
   TransactionsResource,
   ClientTokensResource,
   MetricsResource,
+  UsageEventsResource,
+  UsageBalancesResource,
+  MetersResource,
+  UsageBalanceUnitsResource,
   VerificationsResource,
   CountriesResource,
   CurrenciesResource,
@@ -65,6 +69,10 @@ export class Paddle {
   public simulationRunEvents: SimulationRunEventsResource;
   public clientTokens: ClientTokensResource;
   public metrics: MetricsResource;
+  public usageEvents: UsageEventsResource;
+  public usageBalances: UsageBalancesResource;
+  public meters: MetersResource;
+  public usageBalanceUnits: UsageBalanceUnitsResource;
   public verifications: VerificationsResource;
   public countries: CountriesResource;
   public currencies: CurrenciesResource;
@@ -102,6 +110,10 @@ export class Paddle {
     this.simulationRunEvents = new SimulationRunEventsResource(this.client);
     this.clientTokens = new ClientTokensResource(this.client);
     this.metrics = new MetricsResource(this.client);
+    this.usageEvents = new UsageEventsResource(this.client);
+    this.usageBalances = new UsageBalancesResource(this.client);
+    this.meters = new MetersResource(this.client);
+    this.usageBalanceUnits = new UsageBalanceUnitsResource(this.client);
     this.verifications = new VerificationsResource(this.client);
     this.countries = new CountriesResource(this.client);
     this.currencies = new CurrenciesResource(this.client);
