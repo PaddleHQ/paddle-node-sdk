@@ -22,6 +22,10 @@ adding additional type guards.
 
 ## Unreleased
 
+---
+
+## 3.11.0 - 2026-11-04
+
 ### Added
 
 - `usageEvents` resource for usage-based billing: `create` to send usage events, plus `generateEventKey` and
@@ -42,11 +46,6 @@ adding additional type guards.
   for paid trials.
   See [related changelog](https://developer.paddle.com/changelog/2026/paid-trials?utm_source=dx&utm_medium=paddle-node-sdk).
 - Added `MoneyOptionalCurrency` and `PriceTrialUnitPriceOverride` entities, where `currencyCode` may be omitted.
-
-### Changed
-
-- `UpdatePriceRequestBody.trialPeriod` now uses `ITrialPeriodUpdate`, so all trial period fields are optional when
-  updating a price.
 - Added `verifications` resource with `list` and `get` operations to check whether an account is ready for live
   payments and which verification steps are outstanding.
 - Added `countries` resource with a `list` operation for `GET /countries`, returning `CountryDefinition` entities that
@@ -60,32 +59,6 @@ adding additional type guards.
 - Added `ipAddresses` resource with a `get` operation to get Paddle IP addresses, which you can add to your allowlist.
 - Added `CountryCodeSupported`, `CountryCodeNonSupported`, `CountryCodeIso3`, `CountryCodeIso3Supported`,
   `CountryCodeIso3NonSupported` and `CountryDefinitionTaxMode` types.
-
-### Changed
-
-- Widened `CountryCode` to include the country codes Paddle doesn't support sales to (`AF`, `AN`, `AQ`, `BY`, `CD`,
-  `CF`, `CS`, `CU`, `HT`, `IR`, `KP`, `LY`, `ML`, `MM`, `NI`, `RU`, `SD`, `SO`, `SS`, `SY`, `VE`, `YE`, `ZW`), matching
-  the public API spec. `CountryCode` is now `CountryCodeSupported | CountryCodeNonSupported`. This affects addresses,
-  unit price overrides, and related notifications.
-### Fixed
-
-- `TransactionPreview.availablePaymentMethods` is now populated from the `available_payment_methods` list returned by
-  the API, and is typed as `AvailablePaymentMethod[]`. It was previously read from a non-existent field and was always
-  `null`.
-- Added `adjustments` as an `include` value when getting, listing, creating, and updating transactions. `adjustment` is
-  deprecated in favor of `adjustments`.
-- Added `available_payment_methods` as an `include` value when getting and listing transactions.
-- `after` and `perPage` are now optional when listing logs for a notification.
-- The request body and `effectiveFrom` are now optional when resuming a subscription, so subscriptions can be resumed
-  immediately without passing options.
-- `subscriptionIds` is now optional when creating a customer portal session.
-- All fields in `billingDetails` are now optional when updating subscriptions and transactions, and
-  `additionalInformation` accepts `null`.
-- `include` is now optional when getting a simulation run.
-- The `action` filter when listing adjustments now accepts a list of actions.
-- `pnpm build` now writes `src/version.ts` with a trailing newline, so `pnpm lint` passes after building.
-### Added
-
 - Added `blocked_by_policy`, `preferred_network_not_supported` and `prepaid_card_not_supported` to `ErrorCode` for
   transaction payment attempts. `blocked_by_policy` is returned when a payment is blocked by one of the seller's
   configured policy checks.
@@ -132,12 +105,33 @@ adding additional type guards.
 
 ### Changed
 
+- `UpdatePriceRequestBody.trialPeriod` now uses `ITrialPeriodUpdate`, so all trial period fields are optional when
+  updating a price.
+- Widened `CountryCode` to include the country codes Paddle doesn't support sales to (`AF`, `AN`, `AQ`, `BY`, `CD`,
+  `CF`, `CS`, `CU`, `HT`, `IR`, `KP`, `LY`, `ML`, `MM`, `NI`, `RU`, `SD`, `SO`, `SS`, `SY`, `VE`, `YE`, `ZW`), matching
+  the public API spec. `CountryCode` is now `CountryCodeSupported | CountryCodeNonSupported`. This affects addresses,
+  unit price overrides, and related notifications.
 - `creditAppliedToBalance` on adjustments, adjustment notifications, and adjustments included on transactions is now
   `boolean | null`, matching the API. It's only returned for `credit` adjustments.
 - `amount` is now optional on `CreateAdjustmentLineItem`, as it's only required for `partial` adjustment items.
 
 ### Fixed
 
+- `TransactionPreview.availablePaymentMethods` is now populated from the `available_payment_methods` list returned by
+  the API, and is typed as `AvailablePaymentMethod[]`. It was previously read from a non-existent field and was always
+  `null`.
+- Added `adjustments` as an `include` value when getting, listing, creating, and updating transactions. `adjustment` is
+  deprecated in favor of `adjustments`.
+- Added `available_payment_methods` as an `include` value when getting and listing transactions.
+- `after` and `perPage` are now optional when listing logs for a notification.
+- The request body and `effectiveFrom` are now optional when resuming a subscription, so subscriptions can be resumed
+  immediately without passing options.
+- `subscriptionIds` is now optional when creating a customer portal session.
+- All fields in `billingDetails` are now optional when updating subscriptions and transactions, and
+  `additionalInformation` accepts `null`.
+- `include` is now optional when getting a simulation run.
+- The `action` filter when listing adjustments now accepts a list of actions.
+- `pnpm build` now writes `src/version.ts` with a trailing newline, so `pnpm lint` passes after building.
 - Added missing `updated_at` to `IProductNotificationResponse`, used by `product.*` webhook events.
 
 ---
