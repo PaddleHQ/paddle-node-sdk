@@ -80,4 +80,42 @@ describe('Webhooks validator in Node runtime', () => {
 
     jest.useRealTimers();
   });
+
+  test.each([
+    ['Validates signature with TS 5 seconds in the future', '2023-10-31T23:59:55Z', true],
+    ['Will reject if TS is more than 5 seconds in the future', '2023-10-31T23:59:54Z', false],
+    ['Will reject if TS is a day in the future', '2023-10-31T00:00:00Z', false],
+  ])('%s', async (_: string, time: string, result: boolean) => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(time));
+
+    expect(
+      await new WebhooksValidator().isValidSignature(
+        '{"data": ["1", "2"]}',
+        'VALID_SECRET',
+        'ts=1698796800;h1=a300428748dce5c70e4da19bffd60769591ea969c99dea3105d0ec9612cf43f9',
+      ),
+    ).toBe(result);
+
+    jest.useRealTimers();
+  });
+
+  test.each([
+    // h1 is the valid HMAC of `NaN:{"data": ["1", "2"]}`, which a non-numeric TS used to produce.
+    ['non-numeric TS', 'ts=abc;h1=a38b1397ffe0a88624e4f67c680b9c7f234a1541441349d14c94f144e7a6bfb3'],
+    ['truncated signature', 'ts=1698796800;h1=a300428748dce5c70e4da19bffd60769591ea969c99dea3105d0ec9612cf43f'],
+    [
+      'signature with extra characters',
+      'ts=1698796800;h1=a300428748dce5c70e4da19bffd60769591ea969c99dea3105d0ec9612cf43f9a',
+    ],
+  ])('should reject %s', async (_: string, signature: string) => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2023-11-01T00:00:00Z'));
+
+    expect(await new WebhooksValidator().isValidSignature('{"data": ["1", "2"]}', 'VALID_SECRET', signature)).toBe(
+      false,
+    );
+
+    jest.useRealTimers();
+  });
 });

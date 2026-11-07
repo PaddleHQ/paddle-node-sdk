@@ -24,6 +24,15 @@ adding additional type guards.
 
 ---
 
+## 3.11.1 - 2026-11-07
+
+### Fixed
+
+- `webhooks.unmarshal` and `webhooks.isSignatureValid` now reject signatures with a timestamp more than 5 seconds in
+  the future or a non-numeric timestamp, and compare signatures in constant time.
+
+---
+
 ## 3.11.0 - 2026-11-04
 
 ### Added
