@@ -39,11 +39,27 @@ export class WebhooksValidator {
     const headers = this.extractHeader(signature);
     const payloadWithTime = `${headers.ts}:${requestBody}`;
 
-    if (new Date().getTime() > new Date((headers.ts + WebhooksValidator.MAX_VALID_TIME_DIFFERENCE) * 1000).getTime()) {
+    // Bounding both directions stops a far-future ts from pinning one HMAC target for brute-forcing.
+    const timeDifference = Math.abs(Date.now() - headers.ts * 1000);
+    if (!Number.isFinite(timeDifference) || timeDifference > WebhooksValidator.MAX_VALID_TIME_DIFFERENCE * 1000) {
       return false;
     }
 
     const computedHash = await cryptoProvider.computeHmac(payloadWithTime, secretKey);
-    return computedHash === headers.h1;
+    return this.constantTimeEquals(computedHash, headers.h1);
+  }
+
+  // Runtime-agnostic so edge runtimes without node:crypto's timingSafeEqual are covered too.
+  private constantTimeEquals(a: string, b: string): boolean {
+    if (a.length !== b.length) {
+      return false;
+    }
+
+    let difference = 0;
+    for (let i = 0; i < a.length; i++) {
+      difference |= a.charCodeAt(i) ^ b.charCodeAt(i);
+    }
+
+    return difference === 0;
   }
 }
