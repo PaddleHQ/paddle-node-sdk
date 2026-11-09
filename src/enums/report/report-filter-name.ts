@@ -26,4 +26,7 @@ export type ReportFilterName =
   | 'subscription_scheduled_change_action'
   | 'checkout_created_at'
   | 'balance_movement_date'
-  | 'balance_movement_type';
+  | 'balance_movement_type'
+  | 'cancellation_flow_session_created_at'
+  | 'cancellation_flow_id'
+  | 'cancellation_flow_session_resolution';

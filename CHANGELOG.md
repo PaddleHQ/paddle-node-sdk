@@ -22,6 +22,14 @@ adding additional type guards.
 
 ## Unreleased
 
+### Added
+
+- Added `cancellation_flow_sessions` report type, which contains one row per cancellation flow session, with the
+  `cancellation_flow_session_created_at`, `cancellation_flow_id` and `cancellation_flow_session_resolution` report
+  filter names.
+- Added `CancellationFlowSessionResolutionFilter` type with the `salvaged`, `failed_to_salvage` and `abandoned` values
+  for the `cancellation_flow_session_resolution` filter.
+
 ---
 
 ## 3.11.1 - 2026-11-07
