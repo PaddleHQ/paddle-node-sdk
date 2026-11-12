@@ -8,6 +8,7 @@ import { RuntimeProvider } from '../providers/runtime-provider.js';
 import { SDK_VERSION } from '../../version.js';
 import { convertToSnakeCase } from './case-helpers.js';
 import { rawResponse as rawResponseSymbol, type ErrorResponse } from '../types/response.js';
+import { parseJsonObject, unexpectedResponseError } from './unexpected-response.js';
 
 export class Client {
   private readonly baseUrl: string;
@@ -43,6 +44,23 @@ export class Client {
     };
   }
 
+  // Proxies such as Cloudflare can answer with HTML or their own JSON. Anything that isn't a Paddle response
+  // becomes an ErrorResponse that keeps the status and headers instead of surfacing a SyntaxError.
+  private async parseResponse(rawResponse: globalThis.Response): Promise<object> {
+    const body = await rawResponse.text();
+
+    if (rawResponse.ok && body.trim() === '') {
+      return { [rawResponseSymbol]: rawResponse };
+    }
+
+    const parsed = parseJsonObject(body);
+    if (parsed && (rawResponse.ok || 'error' in parsed)) {
+      return { ...parsed, [rawResponseSymbol]: rawResponse };
+    }
+
+    return { ...unexpectedResponseError(rawResponse, body), [rawResponseSymbol]: rawResponse };
+  }
+
   public async get<Q, R>(url: string, queryParams?: QueryParameters<Q>): Promise<R> {
     let finalUrl = url.includes(this.baseUrl) ? url : `${this.baseUrl}${url}`;
 
@@ -61,7 +79,7 @@ export class Client {
 
     Logger.logResponse('GET', logUrl, headers, rawResponse);
 
-    return { ...(await rawResponse.json()), [rawResponseSymbol]: rawResponse } as R;
+    return (await this.parseResponse(rawResponse)) as R;
   }
 
   public async post<B, R>(url: string, requestBody: B): Promise<R> {
@@ -77,7 +95,7 @@ export class Client {
     });
     Logger.logResponse('POST', logUrl, headers, rawResponse);
 
-    return { ...(await rawResponse.json()), [rawResponseSymbol]: rawResponse } as R;
+    return (await this.parseResponse(rawResponse)) as R;
   }
 
   public async patch<B, R>(url: string, requestBody: B): Promise<R> {
@@ -94,7 +112,7 @@ export class Client {
 
     Logger.logResponse('PATCH', logUrl, headers, rawResponse);
 
-    return { ...(await rawResponse.json()), [rawResponseSymbol]: rawResponse } as R;
+    return (await this.parseResponse(rawResponse)) as R;
   }
 
   public async delete(url: string): Promise<ErrorResponse | undefined> {
@@ -115,7 +133,7 @@ export class Client {
       return rawResponse as unknown as undefined;
     } else {
       // Return the error response for unsuccessful delete operations
-      return { ...(await rawResponse.json()), [rawResponseSymbol]: rawResponse } as Promise<ErrorResponse>;
+      return (await this.parseResponse(rawResponse)) as ErrorResponse;
     }
   }
 }
