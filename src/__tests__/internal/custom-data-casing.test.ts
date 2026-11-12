@@ -239,5 +239,27 @@ describe('custom data', () => {
       expect(parsed.data.customData).toEqual(customData);
       expect(parsed.data.items[0]?.price?.customData).toEqual(customData);
     });
+
+    test('an unknown webhook event keeps keys inside custom_data', () => {
+      const event = {
+        event_id: 'evt_01jdw4vq5a26w8mpfc59mez047',
+        event_type: 'invoice.paid',
+        occurred_at: '2024-11-29T14:23:08.971054Z',
+        notification_id: 'ntf_01h90nmerv7vrn93f97j5v72p7',
+        data: {
+          id: 'inv_01jdw4vk9fr1n6smpbhykm6ha9',
+          custom_data: customData,
+          line_items: [{ price_id: 'pri_01gsz8x8sawmvhz1pv30nge1ke', custom_data: customData }],
+        },
+      };
+
+      const parsed = Webhooks.fromJson(event as unknown as IEvents);
+
+      expect(parsed.data).toEqual({
+        id: 'inv_01jdw4vk9fr1n6smpbhykm6ha9',
+        customData,
+        lineItems: [{ priceId: 'pri_01gsz8x8sawmvhz1pv30nge1ke', customData }],
+      });
+    });
   });
 });
