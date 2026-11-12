@@ -41,10 +41,9 @@ function decamelizeKeys(obj: any): ObjectWithData {
     output = {};
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        // Preserve customData contents at any nesting level
-        // Convert the key to snake_case, but don't recurse into the value
+        // Custom data is free-form, so its keys belong to the caller and are sent as written.
         if (key === 'customData' || key === 'custom_data') {
-          output['custom_data'] = obj[key];
+          output.custom_data = obj[key];
         } else {
           output[snakeCase(key)] = decamelizeKeys(obj[key]);
         }
@@ -59,6 +58,5 @@ export function convertToSnakeCase(input: unknown) {
     return input;
   }
 
-  // customData is now handled at any depth by decamelizeKeys
   return decamelizeKeys(input);
 }
