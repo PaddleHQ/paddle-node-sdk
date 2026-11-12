@@ -22,6 +22,16 @@ adding additional type guards.
 
 ## Unreleased
 
+### Fixed
+
+- Keys inside `customData` are now sent to the API as written wherever custom data appears in a request, not only at
+  the top level. Previously, nested keys were converted to snake_case, so `tenantId` was stored as `tenant_id`. This
+  affected simulation payloads in `simulations.create` and `simulations.update`, and custom data on non-catalog prices,
+  products and discounts in transaction and subscription requests. If you read the converted keys back, for example
+  `tenant_id`, new requests now store the key you sent.
+- `webhooks.unmarshal` now keeps keys inside `customData` as stored for event types the SDK doesn't recognize.
+  Previously they were rewritten, so `tenantId` became `tenantid` and `tenant_id` became `tenantId`.
+
 ---
 
 ## 3.12.0 - 2026-11-12
