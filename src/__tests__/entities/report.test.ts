@@ -1,10 +1,20 @@
 import { Report, ReportFilters } from '../../entities/index.js';
-import { type IReportResponse, type IReportFilters } from '../../types/index.js';
-import { type ReportFilterName, type ReportType } from '../../enums/index.js';
+import { type IEvents, type IReportResponse, type IReportFilters } from '../../types/index.js';
+import {
+  type CancellationFlowSessionResolutionFilter,
+  type ReportFilterName,
+  type ReportType,
+} from '../../enums/index.js';
 import { getPaddleTestClient } from '../helpers/test-client.js';
 import { ReportsResource } from '../../resources/index.js';
 import { Response } from '../../internal/index.js';
-import { ReportNotification, type IReportNotificationResponse } from '../../notifications/index.js';
+import {
+  ReportCreatedEvent,
+  ReportNotification,
+  ReportUpdatedEvent,
+  Webhooks,
+  type IReportNotificationResponse,
+} from '../../notifications/index.js';
 
 describe('Report Filter Names', () => {
   describe('remittance_reference filter', () => {
@@ -647,5 +657,117 @@ describe('Report updated_at', () => {
 
     expect(report.updatedAt).toBe('2026-02-01T10:31:00.00Z');
     expect(report.createdAt).toBe('2026-02-01T10:30:00.00Z');
+  });
+});
+
+describe('cancellation_flow_sessions Report Type', () => {
+  const resolutions: CancellationFlowSessionResolutionFilter[] = ['salvaged', 'failed_to_salvage', 'abandoned'];
+  const cancellationFlowSessionsFilters: IReportFilters[] = [
+    { name: 'cancellation_flow_session_created_at', operator: 'gte', value: '2026-10-01T00:00:00.00Z' },
+    { name: 'cancellation_flow_session_created_at', operator: 'lt', value: '2026-11-01T00:00:00.00Z' },
+    { name: 'cancellation_flow_id', operator: null, value: ['cfl_01jcdd6m9b2nmp4h4ezzv6x1y8'] },
+    { name: 'cancellation_flow_session_resolution', operator: null, value: resolutions },
+  ];
+  const reportResponse: IReportResponse = {
+    id: 'rep_01h7mrm9f6s7s5n5d5q5x5y5z5',
+    status: 'ready',
+    rows: 42,
+    type: 'cancellation_flow_sessions',
+    filters: cancellationFlowSessionsFilters,
+    expires_at: '2026-12-01T00:00:00.00Z',
+    updated_at: '2026-11-09T10:31:00.00Z',
+    created_at: '2026-11-09T10:30:00.00Z',
+  };
+
+  test('should support cancellation_flow_sessions as a valid report type with its filters', () => {
+    const report = new Report(reportResponse);
+
+    expect(report.type).toBe('cancellation_flow_sessions');
+    expect(report.rows).toBe(42);
+    expect(report.filters).toHaveLength(4);
+    expect(report.filters[0]).toEqual({
+      name: 'cancellation_flow_session_created_at',
+      operator: 'gte',
+      value: '2026-10-01T00:00:00.00Z',
+    });
+    expect(report.filters[1]?.operator).toBe('lt');
+    expect(report.filters[2]).toEqual({
+      name: 'cancellation_flow_id',
+      operator: null,
+      value: ['cfl_01jcdd6m9b2nmp4h4ezzv6x1y8'],
+    });
+    expect(report.filters[3]).toEqual({
+      name: 'cancellation_flow_session_resolution',
+      operator: null,
+      value: ['salvaged', 'failed_to_salvage', 'abandoned'],
+    });
+  });
+
+  test('should create cancellation_flow_sessions report via ReportsResource', async () => {
+    const paddleInstance = getPaddleTestClient();
+    const mockResponse: Response<IReportResponse> = {
+      data: { ...reportResponse, status: 'pending', rows: null, expires_at: null },
+      meta: { request_id: 'req_123' },
+    };
+
+    paddleInstance.post = jest.fn().mockResolvedValue(mockResponse);
+    const reportsResource = new ReportsResource(paddleInstance);
+
+    const createdReport = await reportsResource.create({
+      type: 'cancellation_flow_sessions',
+      filters: cancellationFlowSessionsFilters,
+    });
+
+    expect(paddleInstance.post).toHaveBeenCalledWith('/reports', {
+      type: 'cancellation_flow_sessions',
+      filters: cancellationFlowSessionsFilters,
+    });
+    expect(createdReport.type).toBe('cancellation_flow_sessions');
+    expect(createdReport.filters).toHaveLength(4);
+  });
+
+  test('should return cancellation_flow_sessions reports from list and get', async () => {
+    const paddleInstance = getPaddleTestClient();
+    paddleInstance.get = jest
+      .fn()
+      .mockResolvedValueOnce({
+        data: [reportResponse],
+        meta: {
+          request_id: 'req_123',
+          pagination: { per_page: 50, next: 'https://api.paddle.com/reports?after=rep_01', has_more: false },
+        },
+      })
+      .mockResolvedValueOnce({ data: reportResponse, meta: { request_id: 'req_456' } });
+    const reportsResource = new ReportsResource(paddleInstance);
+
+    const [listedReport] = await reportsResource.list().next();
+    const fetchedReport = await reportsResource.get(reportResponse.id);
+
+    expect(listedReport?.type).toBe('cancellation_flow_sessions');
+    expect(listedReport?.filters[3]?.name).toBe('cancellation_flow_session_resolution');
+    expect(fetchedReport.type).toBe('cancellation_flow_sessions');
+    expect(fetchedReport.filters[2]?.name).toBe('cancellation_flow_id');
+  });
+
+  test.each([
+    ['report.created', ReportCreatedEvent],
+    ['report.updated', ReportUpdatedEvent],
+  ])('should parse %s webhook for a cancellation_flow_sessions report', (eventType, EventClass) => {
+    const notificationResponse: IReportNotificationResponse = reportResponse;
+    const event = Webhooks.fromJson({
+      event_id: 'evt_01jcdd6m9b2nmp4h4ezzv6x1y9',
+      event_type: eventType,
+      occurred_at: '2026-11-09T10:31:00.00Z',
+      notification_id: 'ntf_01jcdd6m9b2nmp4h4ezzv6x1z0',
+      data: notificationResponse,
+    } as IEvents);
+
+    expect(event).toBeInstanceOf(EventClass);
+    const report = (event as ReportCreatedEvent | ReportUpdatedEvent).data;
+    expect(report).toBeInstanceOf(ReportNotification);
+    expect(report.type).toBe('cancellation_flow_sessions');
+    expect(report.filters).toHaveLength(4);
+    expect(report.filters[0]?.name).toBe('cancellation_flow_session_created_at');
+    expect(report.filters[3]?.value).toEqual(['salvaged', 'failed_to_salvage', 'abandoned']);
   });
 });
