@@ -7,8 +7,9 @@ export class ApiError extends Error {
   public readonly documentationUrl: string;
   public readonly errors: ErrorField[] | null;
   public readonly retryAfter: number | null;
+  public readonly status: number | null;
 
-  constructor(errorDetail: ErrorDetail, retryAfter: number | null) {
+  constructor(errorDetail: ErrorDetail, retryAfter: number | null, status: number | null = null) {
     super(errorDetail.detail);
 
     this.type = errorDetail.type;
@@ -17,5 +18,6 @@ export class ApiError extends Error {
     this.documentationUrl = errorDetail.documentation_url;
     this.errors = errorDetail.errors ? errorDetail.errors : null;
     this.retryAfter = retryAfter;
+    this.status = status;
   }
 }

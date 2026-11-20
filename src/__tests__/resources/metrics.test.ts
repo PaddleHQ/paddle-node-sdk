@@ -5,6 +5,7 @@
  */
 
 import { getPaddleTestClient } from '../helpers/test-client.js';
+import { apiResponse } from '../helpers/api-response.js';
 import {
   ActiveSubscribersMock,
   ActiveSubscribersMockResponse,
@@ -459,11 +460,7 @@ describe('MetricsResource', () => {
 
     test('should send the request body in snake_case', async () => {
       const originalFetch = global.fetch;
-      const mockFetch = jest.fn().mockResolvedValue({
-        status: 200,
-        headers: new Map(),
-        json: jest.fn().mockResolvedValue(MetricsExploreMockResponse),
-      });
+      const mockFetch = jest.fn().mockResolvedValue(apiResponse(200, MetricsExploreMockResponse));
       global.fetch = mockFetch;
 
       try {

@@ -3,6 +3,7 @@ import { Client } from '../../internal/api/client.js';
 import { Environment } from '../../internal/index.js';
 import { Collection } from '../../internal/base/collection.js';
 import { ApiError } from '../../internal/errors/generic.js';
+import { apiResponse } from '../helpers/api-response.js';
 
 class TestCollection extends Collection<Record<string, unknown>, Record<string, unknown>> {
   fromJson(data: Record<string, unknown>): Record<string, unknown> {
@@ -27,10 +28,9 @@ describe('Collection', () => {
   });
 
   test('throws ApiError with retryAfter when Retry-After header present (paginated)', async () => {
-    const mockResponse = {
-      status: 429,
-      headers: new Map([['Retry-After', '17']]),
-      json: jest.fn().mockResolvedValue({
+    const mockResponse = apiResponse(
+      429,
+      {
         error: {
           type: 'request_error',
           code: 'too_many_requests',
@@ -39,10 +39,11 @@ describe('Collection', () => {
           documentation_url: 'https://developer.paddle.com/errors/shared/too_many_requests',
         },
         meta: { request_id: 'req_pag_err_1' },
-      }),
-    } as unknown as Response;
+      },
+      { 'Retry-After': '17' },
+    );
 
-    mockFetch.mockResolvedValue(mockResponse);
+    mockFetch.mockImplementation(async () => mockResponse.clone());
 
     const col = new TestCollection(client, '/paginated');
 
@@ -59,21 +60,17 @@ describe('Collection', () => {
   });
 
   test('throws ApiError with undefined retryAfter when header absent (paginated)', async () => {
-    const mockResponse = {
-      status: 429,
-      headers: new Map(),
-      json: jest.fn().mockResolvedValue({
-        error: {
-          type: 'request_error',
-          code: 'conflict',
-          detail: 'Request conflicts with another change.',
-          documentation_url: 'https://developer.paddle.com/errors/shared/too_many_requests',
-        },
-        meta: { request_id: 'req_pag_err_2' },
-      }),
-    } as unknown as Response;
+    const mockResponse = apiResponse(429, {
+      error: {
+        type: 'request_error',
+        code: 'conflict',
+        detail: 'Request conflicts with another change.',
+        documentation_url: 'https://developer.paddle.com/errors/shared/too_many_requests',
+      },
+      meta: { request_id: 'req_pag_err_2' },
+    });
 
-    mockFetch.mockResolvedValue(mockResponse);
+    mockFetch.mockImplementation(async () => mockResponse.clone());
 
     const col = new TestCollection(client, '/paginated');
 
@@ -89,25 +86,36 @@ describe('Collection', () => {
     }
   });
 
-  test('successful paginated response maps data and updates pagination', async () => {
-    const mockResponse = {
-      status: 200,
-      headers: new Map(),
-      json: jest.fn().mockResolvedValue({
-        data: [{ id: 'a' }, { id: 'b' }],
-        meta: {
-          request_id: 'req_pag_ok',
-          pagination: {
-            per_page: 2,
-            next: '/paginated?page=2',
-            has_more: true,
-            estimated_total: 4,
-          },
-        },
+  test('throws ApiError with status and retryAfter for an HTML 429 response (paginated)', async () => {
+    mockFetch.mockResolvedValue(
+      new Response('<html><body>You are being rate limited</body></html>', {
+        status: 429,
+        headers: { 'Content-Type': 'text/html', 'Retry-After': '12' },
       }),
-    } as unknown as Response;
+    );
 
-    mockFetch.mockResolvedValue(mockResponse);
+    const col = new TestCollection(client, '/paginated');
+    const error = await col.next().catch((err: unknown) => err);
+
+    expect(error).toBeInstanceOf(ApiError);
+    expect(error).toMatchObject({ code: 'too_many_requests', status: 429, retryAfter: 12 });
+  });
+
+  test('successful paginated response maps data and updates pagination', async () => {
+    const mockResponse = apiResponse(200, {
+      data: [{ id: 'a' }, { id: 'b' }],
+      meta: {
+        request_id: 'req_pag_ok',
+        pagination: {
+          per_page: 2,
+          next: '/paginated?page=2',
+          has_more: true,
+          estimated_total: 4,
+        },
+      },
+    });
+
+    mockFetch.mockImplementation(async () => mockResponse.clone());
 
     const col = new TestCollection(client, '/paginated');
     const result = await col.next();

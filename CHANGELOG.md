@@ -24,6 +24,21 @@ adding additional type guards.
 
 ---
 
+## 3.12.0 - 2026-11-12
+
+### Added
+
+- `ApiError.status`, the HTTP status code of the response that caused the error.
+
+### Fixed
+
+- Responses that aren't JSON, such as an HTML `429` page from Cloudflare, now throw an `ApiError` instead of
+  `SyntaxError: Unexpected token '<'`. A `429` keeps the `too_many_requests` code and `retryAfter`, so documented retry
+  handling still works. Other unexpected responses use the `unexpected_response` code, with the HTTP status and the
+  start of the body in `detail`.
+
+---
+
 ## 3.11.1 - 2026-11-07
 
 ### Fixed
