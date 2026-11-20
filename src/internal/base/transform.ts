@@ -19,8 +19,8 @@ export function convertKeysToCamelCase(obj: object): object {
     // Convert the key to camelCase
     const camelCaseKey = toCamelCase(key);
 
-    // Recursively convert nested objects and arrays
-    converted[camelCaseKey] = convertKeysToCamelCase(value);
+    // Custom data is free-form, so its keys are returned as stored.
+    converted[camelCaseKey] = key === 'custom_data' ? value : convertKeysToCamelCase(value);
   }
 
   return converted;

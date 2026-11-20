@@ -1,14 +1,5 @@
-interface CustomData {
-  customData: unknown;
-}
-
 interface ObjectWithData {
   data: Record<string, unknown>;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function isTopLevelCustomDataCamel(input: any): input is CustomData {
-  return 'customData' in input;
 }
 
 function isObject(input: unknown): boolean {
@@ -50,7 +41,12 @@ function decamelizeKeys(obj: any): ObjectWithData {
     output = {};
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        output[snakeCase(key)] = decamelizeKeys(obj[key]);
+        // Custom data is free-form, so its keys belong to the caller and are sent as written.
+        if (key === 'customData' || key === 'custom_data') {
+          output.custom_data = obj[key];
+        } else {
+          output[snakeCase(key)] = decamelizeKeys(obj[key]);
+        }
       }
     }
   }
@@ -62,13 +58,5 @@ export function convertToSnakeCase(input: unknown) {
     return input;
   }
 
-  if (isTopLevelCustomDataCamel(input)) {
-    // top level customData
-    const { customData, ...rest } = input;
-    const result = decamelizeKeys(rest);
-    return { ...result, custom_data: customData };
-  } else {
-    // phew
-    return decamelizeKeys(input);
-  }
+  return decamelizeKeys(input);
 }
